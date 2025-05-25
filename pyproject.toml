@@ -8,8 +8,10 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "iprogress>=0.4",
     "ipykernel>=6.29.5",
     "matplotlib>=3.10.3",
+    "optuna>=4.3.0",
     "pandas>=2.2.3",
     "torch>=2.7.0",
     "torch-geometric>=2.6.1",
