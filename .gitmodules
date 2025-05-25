@@ -1,4 +1,0 @@
-[submodule "hackaton"]
-	path = hackaton
-	url = https://github.com/Graph-Classification-Noisy-Label/hackaton.git
-	branch = baselineCe
