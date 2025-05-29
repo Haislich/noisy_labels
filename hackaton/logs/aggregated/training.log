@@ -1,0 +1,30 @@
+2025-05-29 18:57:05,482 - INFO - ################################################################################
+2025-05-29 18:57:05,482 - INFO - Start case study with parameters:
+2025-05-29 18:57:05,483 - INFO - {'training': True, '_parameters': {}, '_buffers': {}, '_non_persistent_buffers_set': set(), '_backward_pre_hooks': OrderedDict(), '_backward_hooks': OrderedDict(), '_is_full_backward_hook': None, '_forward_hooks': OrderedDict(), '_forward_hooks_with_kwargs': OrderedDict(), '_forward_hooks_always_called': OrderedDict(), '_forward_pre_hooks': OrderedDict(), '_forward_pre_hooks_with_kwargs': OrderedDict(), '_state_dict_hooks': OrderedDict(), '_state_dict_pre_hooks': OrderedDict(), '_load_state_dict_pre_hooks': OrderedDict(), '_load_state_dict_post_hooks': OrderedDict(), '_modules': {'gnn_node': GNN_node(
+  (node_encoder): Embedding(1, 300)
+  (convs): ModuleList(
+    (0-10): 11 x GCNConv()
+  )
+  (batch_norms): ModuleList(
+    (0-10): 11 x BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+), 'graph_pred_linear': Linear(in_features=300, out_features=6, bias=True)}, 'num_layer': 11, 'drop_ratio': 0.2, 'JK': 'last', 'emb_dim': 300, 'num_class': 6, 'graph_pooling': 'mean', 'pool': <function global_mean_pool at 0x71d1127584a0>} epochs=50
+2025-05-29 18:57:36,413 - INFO - Case study end, 0.39299610894941633
+2025-05-29 18:57:36,413 - INFO - ################################################################################
+2025-05-29 18:57:36,413 - INFO - 
+
+2025-05-29 18:57:37,990 - INFO - ################################################################################
+2025-05-29 18:57:37,990 - INFO - Start case study with parameters:
+2025-05-29 18:57:37,990 - INFO - {'training': False, '_parameters': {}, '_buffers': {}, '_non_persistent_buffers_set': set(), '_backward_pre_hooks': OrderedDict(), '_backward_hooks': OrderedDict(), '_is_full_backward_hook': None, '_forward_hooks': OrderedDict(), '_forward_hooks_with_kwargs': OrderedDict(), '_forward_hooks_always_called': OrderedDict(), '_forward_pre_hooks': OrderedDict(), '_forward_pre_hooks_with_kwargs': OrderedDict(), '_state_dict_hooks': OrderedDict(), '_state_dict_pre_hooks': OrderedDict(), '_load_state_dict_pre_hooks': OrderedDict(), '_load_state_dict_post_hooks': OrderedDict(), '_modules': {'gnn_node': GNN_node(
+  (node_encoder): Embedding(1, 300)
+  (convs): ModuleList(
+    (0-10): 11 x GCNConv()
+  )
+  (batch_norms): ModuleList(
+    (0-10): 11 x BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+), 'graph_pred_linear': Linear(in_features=300, out_features=6, bias=True)}, 'num_layer': 11, 'drop_ratio': 0.2, 'JK': 'last', 'emb_dim': 300, 'num_class': 6, 'graph_pooling': 'mean', 'pool': <function global_mean_pool at 0x71d1127584a0>} epochs=50
+2025-05-29 18:57:52,356 - INFO - Case study end, -inf
+2025-05-29 18:57:52,356 - INFO - ################################################################################
+2025-05-29 18:57:52,356 - INFO - 
+

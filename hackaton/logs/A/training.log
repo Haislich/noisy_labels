@@ -1,0 +1,781 @@
+2025-05-29 23:13:40,742 - INFO - ################################################################################
+2025-05-29 23:13:40,742 - INFO - Start case study with parameters:
+2025-05-29 23:13:40,747 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.36523063702616004 num_layers=12 embedding_dim=128 num_epochs=20
+2025-05-29 23:13:56,943 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:13:56,943 - INFO - Epoch 0/20| Train Score: 0.2642, Loss: 1.3837, Accuracy: 0.2642, Confidence: 0.2487, Entropy: 1.7234| Val Score: 0.3125, Loss: 1.6836, Accuracy: 0.3125, Confidence: 0.2594, Entropy: 1.7116
+2025-05-29 23:14:12,781 - INFO - Epoch 1/20| Train Score: 0.3306, Loss: 1.3105, Accuracy: 0.3306, Confidence: 0.3115, Entropy: 1.6369| Val Score: 0.3116, Loss: 1.7059, Accuracy: 0.3116, Confidence: 0.3507, Entropy: 1.5824
+2025-05-29 23:14:28,489 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:14:28,489 - INFO - Epoch 2/20| Train Score: 0.3577, Loss: 1.2803, Accuracy: 0.3577, Confidence: 0.3394, Entropy: 1.6000| Val Score: 0.3870, Loss: 1.5726, Accuracy: 0.3870, Confidence: 0.3295, Entropy: 1.6151
+2025-05-29 23:14:44,054 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:14:44,054 - INFO - Epoch 3/20| Train Score: 0.3896, Loss: 1.2481, Accuracy: 0.3896, Confidence: 0.3629, Entropy: 1.5678| Val Score: 0.4149, Loss: 1.5238, Accuracy: 0.4149, Confidence: 0.3612, Entropy: 1.5793
+2025-05-29 23:14:59,528 - INFO - Epoch 4/20| Train Score: 0.4059, Loss: 1.2214, Accuracy: 0.4059, Confidence: 0.3789, Entropy: 1.5401| Val Score: 0.3183, Loss: 1.7460, Accuracy: 0.3183, Confidence: 0.4254, Entropy: 1.4721
+2025-05-29 23:15:14,886 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:15:14,886 - INFO - Epoch 5/20| Train Score: 0.4342, Loss: 1.1842, Accuracy: 0.4342, Confidence: 0.4090, Entropy: 1.4885| Val Score: 0.4269, Loss: 1.5062, Accuracy: 0.4269, Confidence: 0.4220, Entropy: 1.4828
+2025-05-29 23:15:30,407 - INFO - Epoch 6/20| Train Score: 0.4364, Loss: 1.1834, Accuracy: 0.4364, Confidence: 0.4131, Entropy: 1.4812| Val Score: 0.4176, Loss: 1.5464, Accuracy: 0.4176, Confidence: 0.4321, Entropy: 1.4576
+2025-05-29 23:15:46,206 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:15:46,207 - INFO - Epoch 7/20| Train Score: 0.4518, Loss: 1.1577, Accuracy: 0.4518, Confidence: 0.4230, Entropy: 1.4661| Val Score: 0.4397, Loss: 1.5073, Accuracy: 0.4397, Confidence: 0.4614, Entropy: 1.3919
+2025-05-29 23:16:01,832 - INFO - Epoch 8/20| Train Score: 0.4599, Loss: 1.1436, Accuracy: 0.4599, Confidence: 0.4331, Entropy: 1.4453| Val Score: 0.4020, Loss: 1.5623, Accuracy: 0.4020, Confidence: 0.4619, Entropy: 1.3898
+2025-05-29 23:16:17,317 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:16:17,317 - INFO - Epoch 9/20| Train Score: 0.4648, Loss: 1.1392, Accuracy: 0.4648, Confidence: 0.4405, Entropy: 1.4271| Val Score: 0.4672, Loss: 1.4467, Accuracy: 0.4672, Confidence: 0.4478, Entropy: 1.4342
+2025-05-29 23:16:32,744 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:16:32,744 - INFO - Epoch 10/20| Train Score: 0.4762, Loss: 1.1214, Accuracy: 0.4762, Confidence: 0.4531, Entropy: 1.4116| Val Score: 0.5013, Loss: 1.4115, Accuracy: 0.5013, Confidence: 0.4591, Entropy: 1.4162
+2025-05-29 23:16:48,273 - INFO - Epoch 11/20| Train Score: 0.4814, Loss: 1.1080, Accuracy: 0.4814, Confidence: 0.4637, Entropy: 1.3884| Val Score: 0.4845, Loss: 1.4303, Accuracy: 0.4845, Confidence: 0.5075, Entropy: 1.2979
+2025-05-29 23:17:03,667 - INFO - Epoch 12/20| Train Score: 0.4875, Loss: 1.0999, Accuracy: 0.4875, Confidence: 0.4635, Entropy: 1.3900| Val Score: 0.4796, Loss: 1.4307, Accuracy: 0.4796, Confidence: 0.4749, Entropy: 1.3693
+2025-05-29 23:17:19,327 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:17:19,327 - INFO - Epoch 13/20| Train Score: 0.4997, Loss: 1.0830, Accuracy: 0.4997, Confidence: 0.4772, Entropy: 1.3604| Val Score: 0.5235, Loss: 1.3730, Accuracy: 0.5235, Confidence: 0.4959, Entropy: 1.3242
+2025-05-29 23:17:34,852 - INFO - Epoch 14/20| Train Score: 0.4960, Loss: 1.0809, Accuracy: 0.4960, Confidence: 0.4793, Entropy: 1.3561| Val Score: 0.5004, Loss: 1.3820, Accuracy: 0.5004, Confidence: 0.4857, Entropy: 1.3389
+2025-05-29 23:17:50,197 - INFO - Epoch 15/20| Train Score: 0.5109, Loss: 1.0743, Accuracy: 0.5109, Confidence: 0.4866, Entropy: 1.3454| Val Score: 0.5133, Loss: 1.3661, Accuracy: 0.5133, Confidence: 0.4756, Entropy: 1.3703
+2025-05-29 23:18:05,923 - INFO - Epoch 16/20| Train Score: 0.5153, Loss: 1.0587, Accuracy: 0.5153, Confidence: 0.4910, Entropy: 1.3348| Val Score: 0.5080, Loss: 1.3900, Accuracy: 0.5080, Confidence: 0.5215, Entropy: 1.2736
+2025-05-29 23:18:21,598 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:18:21,599 - INFO - Epoch 17/20| Train Score: 0.5248, Loss: 1.0491, Accuracy: 0.5248, Confidence: 0.5011, Entropy: 1.3178| Val Score: 0.5275, Loss: 1.3757, Accuracy: 0.5275, Confidence: 0.5280, Entropy: 1.2553
+2025-05-29 23:18:37,146 - INFO - Epoch 18/20| Train Score: 0.5273, Loss: 1.0349, Accuracy: 0.5273, Confidence: 0.5062, Entropy: 1.3097| Val Score: 0.5146, Loss: 1.3716, Accuracy: 0.5146, Confidence: 0.5235, Entropy: 1.2706
+2025-05-29 23:18:52,763 - INFO - Epoch 19/20| Train Score: 0.5304, Loss: 1.0474, Accuracy: 0.5304, Confidence: 0.5061, Entropy: 1.3098| Val Score: 0.5270, Loss: 1.3510, Accuracy: 0.5270, Confidence: 0.5289, Entropy: 1.2625
+2025-05-29 23:18:53,093 - INFO - Case study end, 0.5274822695035462
+2025-05-29 23:18:53,093 - INFO - ################################################################################
+2025-05-29 23:18:53,094 - INFO - 
+
+2025-05-29 23:18:53,096 - INFO - ################################################################################
+2025-05-29 23:18:53,096 - INFO - Start case study with parameters:
+2025-05-29 23:18:53,101 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.3741458007064613 num_layers=12 embedding_dim=128 num_epochs=20
+2025-05-29 23:19:08,653 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:19:08,653 - INFO - Epoch 0/20| Train Score: 0.2725, Loss: 1.3780, Accuracy: 0.2725, Confidence: 0.2584, Entropy: 1.7141| Val Score: 0.3440, Loss: 1.6887, Accuracy: 0.3440, Confidence: 0.2661, Entropy: 1.7042
+2025-05-29 23:19:24,259 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:19:24,259 - INFO - Epoch 1/20| Train Score: 0.3515, Loss: 1.2936, Accuracy: 0.3515, Confidence: 0.3192, Entropy: 1.6292| Val Score: 0.3852, Loss: 1.6153, Accuracy: 0.3852, Confidence: 0.3564, Entropy: 1.5743
+2025-05-29 23:19:39,740 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:19:39,740 - INFO - Epoch 2/20| Train Score: 0.3939, Loss: 1.2473, Accuracy: 0.3939, Confidence: 0.3597, Entropy: 1.5681| Val Score: 0.4007, Loss: 1.5863, Accuracy: 0.4007, Confidence: 0.3869, Entropy: 1.5256
+2025-05-29 23:19:55,476 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:19:55,476 - INFO - Epoch 3/20| Train Score: 0.4059, Loss: 1.2211, Accuracy: 0.4059, Confidence: 0.3846, Entropy: 1.5297| Val Score: 0.4433, Loss: 1.5182, Accuracy: 0.4433, Confidence: 0.3770, Entropy: 1.5518
+2025-05-29 23:20:11,140 - INFO - Epoch 4/20| Train Score: 0.4311, Loss: 1.1886, Accuracy: 0.4311, Confidence: 0.4001, Entropy: 1.5038| Val Score: 0.4397, Loss: 1.5180, Accuracy: 0.4397, Confidence: 0.4025, Entropy: 1.5121
+2025-05-29 23:20:26,901 - INFO - Epoch 5/20| Train Score: 0.4337, Loss: 1.1680, Accuracy: 0.4337, Confidence: 0.4153, Entropy: 1.4738| Val Score: 0.3746, Loss: 1.5768, Accuracy: 0.3746, Confidence: 0.3712, Entropy: 1.5640
+2025-05-29 23:20:42,746 - INFO - Epoch 6/20| Train Score: 0.4469, Loss: 1.1653, Accuracy: 0.4469, Confidence: 0.4220, Entropy: 1.4639| Val Score: 0.4375, Loss: 1.4962, Accuracy: 0.4375, Confidence: 0.4397, Entropy: 1.4512
+2025-05-29 23:20:57,899 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:20:57,899 - INFO - Epoch 7/20| Train Score: 0.4516, Loss: 1.1494, Accuracy: 0.4516, Confidence: 0.4307, Entropy: 1.4486| Val Score: 0.4548, Loss: 1.4672, Accuracy: 0.4548, Confidence: 0.4184, Entropy: 1.4614
+2025-05-29 23:21:13,154 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:21:13,154 - INFO - Epoch 8/20| Train Score: 0.4686, Loss: 1.1334, Accuracy: 0.4686, Confidence: 0.4442, Entropy: 1.4220| Val Score: 0.4574, Loss: 1.5146, Accuracy: 0.4574, Confidence: 0.4529, Entropy: 1.4123
+2025-05-29 23:21:28,820 - INFO - Epoch 9/20| Train Score: 0.4770, Loss: 1.1232, Accuracy: 0.4770, Confidence: 0.4528, Entropy: 1.4091| Val Score: 0.4269, Loss: 1.5785, Accuracy: 0.4269, Confidence: 0.5030, Entropy: 1.3235
+2025-05-29 23:21:44,352 - INFO - Epoch 10/20| Train Score: 0.4825, Loss: 1.1054, Accuracy: 0.4825, Confidence: 0.4619, Entropy: 1.3919| Val Score: 0.4242, Loss: 1.4937, Accuracy: 0.4242, Confidence: 0.4415, Entropy: 1.4296
+2025-05-29 23:21:59,925 - INFO - Epoch 11/20| Train Score: 0.4863, Loss: 1.0973, Accuracy: 0.4863, Confidence: 0.4660, Entropy: 1.3822| Val Score: 0.3914, Loss: 1.6357, Accuracy: 0.3914, Confidence: 0.4884, Entropy: 1.3520
+2025-05-29 23:22:15,538 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:22:15,538 - INFO - Epoch 12/20| Train Score: 0.4911, Loss: 1.0982, Accuracy: 0.4911, Confidence: 0.4698, Entropy: 1.3741| Val Score: 0.4579, Loss: 1.4459, Accuracy: 0.4579, Confidence: 0.4792, Entropy: 1.3693
+2025-05-29 23:22:31,258 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:22:31,258 - INFO - Epoch 13/20| Train Score: 0.4966, Loss: 1.0902, Accuracy: 0.4966, Confidence: 0.4693, Entropy: 1.3796| Val Score: 0.4725, Loss: 1.4379, Accuracy: 0.4725, Confidence: 0.5004, Entropy: 1.3356
+2025-05-29 23:22:46,813 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:22:46,814 - INFO - Epoch 14/20| Train Score: 0.5058, Loss: 1.0777, Accuracy: 0.5058, Confidence: 0.4836, Entropy: 1.3527| Val Score: 0.5040, Loss: 1.4038, Accuracy: 0.5040, Confidence: 0.5043, Entropy: 1.3217
+2025-05-29 23:23:02,458 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:23:02,458 - INFO - Epoch 15/20| Train Score: 0.5171, Loss: 1.0601, Accuracy: 0.5171, Confidence: 0.4930, Entropy: 1.3367| Val Score: 0.5182, Loss: 1.3711, Accuracy: 0.5182, Confidence: 0.5154, Entropy: 1.3010
+2025-05-29 23:23:18,466 - INFO - Epoch 16/20| Train Score: 0.5172, Loss: 1.0603, Accuracy: 0.5172, Confidence: 0.4934, Entropy: 1.3336| Val Score: 0.5093, Loss: 1.3896, Accuracy: 0.5093, Confidence: 0.5060, Entropy: 1.3160
+2025-05-29 23:23:33,946 - INFO - Epoch 17/20| Train Score: 0.5298, Loss: 1.0429, Accuracy: 0.5298, Confidence: 0.5050, Entropy: 1.3096| Val Score: 0.4632, Loss: 1.4749, Accuracy: 0.4632, Confidence: 0.5103, Entropy: 1.3137
+2025-05-29 23:23:49,332 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:23:49,332 - INFO - Epoch 18/20| Train Score: 0.5289, Loss: 1.0419, Accuracy: 0.5289, Confidence: 0.5024, Entropy: 1.3165| Val Score: 0.5403, Loss: 1.3389, Accuracy: 0.5403, Confidence: 0.5328, Entropy: 1.2523
+2025-05-29 23:24:04,914 - INFO - Epoch 19/20| Train Score: 0.5423, Loss: 1.0204, Accuracy: 0.5423, Confidence: 0.5184, Entropy: 1.2840| Val Score: 0.4734, Loss: 1.4271, Accuracy: 0.4734, Confidence: 0.5237, Entropy: 1.2752
+2025-05-29 23:24:05,214 - INFO - Case study end, 0.5403368794326241
+2025-05-29 23:24:05,214 - INFO - ################################################################################
+2025-05-29 23:24:05,214 - INFO - 
+
+2025-05-29 23:24:05,216 - INFO - ################################################################################
+2025-05-29 23:24:05,216 - INFO - Start case study with parameters:
+2025-05-29 23:24:05,222 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.6678242158534466 num_layers=5 embedding_dim=64 num_epochs=20
+2025-05-29 23:24:09,562 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:24:09,562 - INFO - Epoch 0/20| Train Score: 0.2311, Loss: 1.4105, Accuracy: 0.2311, Confidence: 0.2221, Entropy: 1.7606| Val Score: 0.2238, Loss: 1.7535, Accuracy: 0.2238, Confidence: 0.2296, Entropy: 1.7661
+2025-05-29 23:24:13,956 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:24:13,956 - INFO - Epoch 1/20| Train Score: 0.3138, Loss: 1.3386, Accuracy: 0.3138, Confidence: 0.2750, Entropy: 1.6933| Val Score: 0.3440, Loss: 1.6558, Accuracy: 0.3440, Confidence: 0.2671, Entropy: 1.7000
+2025-05-29 23:24:18,169 - INFO - Epoch 2/20| Train Score: 0.3408, Loss: 1.3023, Accuracy: 0.3408, Confidence: 0.3050, Entropy: 1.6457| Val Score: 0.2948, Loss: 1.6791, Accuracy: 0.2948, Confidence: 0.2730, Entropy: 1.6698
+2025-05-29 23:24:22,440 - INFO - Epoch 3/20| Train Score: 0.3514, Loss: 1.2904, Accuracy: 0.3514, Confidence: 0.3203, Entropy: 1.6214| Val Score: 0.2637, Loss: 1.7435, Accuracy: 0.2637, Confidence: 0.3766, Entropy: 1.5069
+2025-05-29 23:24:26,986 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:24:26,986 - INFO - Epoch 4/20| Train Score: 0.3770, Loss: 1.2623, Accuracy: 0.3770, Confidence: 0.3399, Entropy: 1.5916| Val Score: 0.3471, Loss: 1.6458, Accuracy: 0.3471, Confidence: 0.3371, Entropy: 1.5873
+2025-05-29 23:24:31,301 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:24:31,302 - INFO - Epoch 5/20| Train Score: 0.3914, Loss: 1.2449, Accuracy: 0.3914, Confidence: 0.3507, Entropy: 1.5722| Val Score: 0.4295, Loss: 1.5129, Accuracy: 0.4295, Confidence: 0.3484, Entropy: 1.5587
+2025-05-29 23:24:35,569 - INFO - Epoch 6/20| Train Score: 0.4141, Loss: 1.2222, Accuracy: 0.4141, Confidence: 0.3669, Entropy: 1.5459| Val Score: 0.4043, Loss: 1.5557, Accuracy: 0.4043, Confidence: 0.3591, Entropy: 1.5522
+2025-05-29 23:24:39,858 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:24:39,859 - INFO - Epoch 7/20| Train Score: 0.4145, Loss: 1.2152, Accuracy: 0.4145, Confidence: 0.3778, Entropy: 1.5273| Val Score: 0.4526, Loss: 1.4903, Accuracy: 0.4526, Confidence: 0.4193, Entropy: 1.4606
+2025-05-29 23:24:44,190 - INFO - Epoch 8/20| Train Score: 0.4192, Loss: 1.2099, Accuracy: 0.4192, Confidence: 0.3840, Entropy: 1.5169| Val Score: 0.4331, Loss: 1.4995, Accuracy: 0.4331, Confidence: 0.4113, Entropy: 1.4729
+2025-05-29 23:24:48,498 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:24:48,498 - INFO - Epoch 9/20| Train Score: 0.4281, Loss: 1.1938, Accuracy: 0.4281, Confidence: 0.3924, Entropy: 1.5033| Val Score: 0.4836, Loss: 1.4382, Accuracy: 0.4836, Confidence: 0.4246, Entropy: 1.4433
+2025-05-29 23:24:52,829 - INFO - Epoch 10/20| Train Score: 0.4263, Loss: 1.1995, Accuracy: 0.4263, Confidence: 0.3933, Entropy: 1.5031| Val Score: 0.4441, Loss: 1.4920, Accuracy: 0.4441, Confidence: 0.4262, Entropy: 1.4315
+2025-05-29 23:24:57,132 - INFO - Epoch 11/20| Train Score: 0.4285, Loss: 1.1957, Accuracy: 0.4285, Confidence: 0.3996, Entropy: 1.4942| Val Score: 0.3941, Loss: 1.6007, Accuracy: 0.3941, Confidence: 0.4423, Entropy: 1.3990
+2025-05-29 23:25:01,599 - INFO - Epoch 12/20| Train Score: 0.4502, Loss: 1.1718, Accuracy: 0.4502, Confidence: 0.4095, Entropy: 1.4796| Val Score: 0.4118, Loss: 1.5352, Accuracy: 0.4118, Confidence: 0.4098, Entropy: 1.4848
+2025-05-29 23:25:05,961 - INFO - Epoch 13/20| Train Score: 0.4525, Loss: 1.1622, Accuracy: 0.4525, Confidence: 0.4161, Entropy: 1.4638| Val Score: 0.4486, Loss: 1.4794, Accuracy: 0.4486, Confidence: 0.4850, Entropy: 1.3456
+2025-05-29 23:25:10,289 - INFO - Epoch 14/20| Train Score: 0.4552, Loss: 1.1595, Accuracy: 0.4552, Confidence: 0.4206, Entropy: 1.4565| Val Score: 0.4583, Loss: 1.4475, Accuracy: 0.4583, Confidence: 0.4793, Entropy: 1.3684
+2025-05-29 23:25:14,658 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:25:14,659 - INFO - Epoch 15/20| Train Score: 0.4583, Loss: 1.1453, Accuracy: 0.4583, Confidence: 0.4290, Entropy: 1.4438| Val Score: 0.4867, Loss: 1.4384, Accuracy: 0.4867, Confidence: 0.4764, Entropy: 1.3420
+2025-05-29 23:25:18,878 - INFO - Epoch 16/20| Train Score: 0.4731, Loss: 1.1471, Accuracy: 0.4731, Confidence: 0.4307, Entropy: 1.4389| Val Score: 0.4619, Loss: 1.4728, Accuracy: 0.4619, Confidence: 0.4774, Entropy: 1.3390
+2025-05-29 23:25:23,254 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:25:23,254 - INFO - Epoch 17/20| Train Score: 0.4613, Loss: 1.1539, Accuracy: 0.4613, Confidence: 0.4308, Entropy: 1.4442| Val Score: 0.4996, Loss: 1.4061, Accuracy: 0.4996, Confidence: 0.4959, Entropy: 1.3131
+2025-05-29 23:25:27,616 - INFO - Epoch 18/20| Train Score: 0.4715, Loss: 1.1328, Accuracy: 0.4715, Confidence: 0.4387, Entropy: 1.4302| Val Score: 0.4809, Loss: 1.4346, Accuracy: 0.4809, Confidence: 0.5097, Entropy: 1.3076
+2025-05-29 23:25:31,823 - INFO - Epoch 19/20| Train Score: 0.4744, Loss: 1.1392, Accuracy: 0.4744, Confidence: 0.4456, Entropy: 1.4207| Val Score: 0.4229, Loss: 1.5506, Accuracy: 0.4229, Confidence: 0.5085, Entropy: 1.3025
+2025-05-29 23:25:32,317 - INFO - Case study end, 0.4995567375886525
+2025-05-29 23:25:32,317 - INFO - ################################################################################
+2025-05-29 23:25:32,317 - INFO - 
+
+2025-05-29 23:25:32,319 - INFO - ################################################################################
+2025-05-29 23:25:32,319 - INFO - Start case study with parameters:
+2025-05-29 23:25:32,325 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.2009079400433742 num_layers=12 embedding_dim=300 num_epochs=20
+2025-05-29 23:26:07,178 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:26:07,178 - INFO - Epoch 0/20| Train Score: 0.2990, Loss: 1.3629, Accuracy: 0.2990, Confidence: 0.3009, Entropy: 1.6521| Val Score: 0.3426, Loss: 1.6584, Accuracy: 0.3426, Confidence: 0.3651, Entropy: 1.5547
+2025-05-29 23:26:41,400 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:26:41,400 - INFO - Epoch 1/20| Train Score: 0.3861, Loss: 1.2633, Accuracy: 0.3861, Confidence: 0.3747, Entropy: 1.5499| Val Score: 0.3462, Loss: 1.6565, Accuracy: 0.3462, Confidence: 0.4285, Entropy: 1.4601
+2025-05-29 23:27:15,955 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:27:15,955 - INFO - Epoch 2/20| Train Score: 0.4019, Loss: 1.2170, Accuracy: 0.4019, Confidence: 0.3973, Entropy: 1.5064| Val Score: 0.3599, Loss: 1.6326, Accuracy: 0.3599, Confidence: 0.4018, Entropy: 1.5060
+2025-05-29 23:27:50,492 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:27:50,492 - INFO - Epoch 3/20| Train Score: 0.4242, Loss: 1.1897, Accuracy: 0.4242, Confidence: 0.4156, Entropy: 1.4825| Val Score: 0.3613, Loss: 1.5963, Accuracy: 0.3613, Confidence: 0.4071, Entropy: 1.4932
+2025-05-29 23:28:24,995 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:28:24,995 - INFO - Epoch 4/20| Train Score: 0.4593, Loss: 1.1437, Accuracy: 0.4593, Confidence: 0.4419, Entropy: 1.4312| Val Score: 0.4264, Loss: 1.5364, Accuracy: 0.4264, Confidence: 0.4254, Entropy: 1.4676
+2025-05-29 23:28:59,945 - INFO - Epoch 5/20| Train Score: 0.4697, Loss: 1.1224, Accuracy: 0.4697, Confidence: 0.4569, Entropy: 1.4008| Val Score: 0.4220, Loss: 1.5411, Accuracy: 0.4220, Confidence: 0.4589, Entropy: 1.3932
+2025-05-29 23:29:34,474 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:29:34,475 - INFO - Epoch 6/20| Train Score: 0.4863, Loss: 1.1006, Accuracy: 0.4863, Confidence: 0.4706, Entropy: 1.3782| Val Score: 0.4916, Loss: 1.4281, Accuracy: 0.4916, Confidence: 0.4729, Entropy: 1.3874
+2025-05-29 23:30:08,482 - INFO - Epoch 7/20| Train Score: 0.4959, Loss: 1.0849, Accuracy: 0.4959, Confidence: 0.4792, Entropy: 1.3636| Val Score: 0.3418, Loss: 1.7233, Accuracy: 0.3418, Confidence: 0.4512, Entropy: 1.3955
+2025-05-29 23:30:43,552 - INFO - Epoch 8/20| Train Score: 0.5130, Loss: 1.0613, Accuracy: 0.5130, Confidence: 0.4956, Entropy: 1.3251| Val Score: 0.4065, Loss: 1.5495, Accuracy: 0.4065, Confidence: 0.5069, Entropy: 1.3071
+2025-05-29 23:31:18,772 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:31:18,773 - INFO - Epoch 9/20| Train Score: 0.5143, Loss: 1.0567, Accuracy: 0.5143, Confidence: 0.5017, Entropy: 1.3178| Val Score: 0.5505, Loss: 1.3437, Accuracy: 0.5505, Confidence: 0.4918, Entropy: 1.3435
+2025-05-29 23:31:53,960 - INFO - Epoch 10/20| Train Score: 0.5328, Loss: 1.0177, Accuracy: 0.5328, Confidence: 0.5178, Entropy: 1.2835| Val Score: 0.4486, Loss: 1.5072, Accuracy: 0.4486, Confidence: 0.5334, Entropy: 1.2514
+2025-05-29 23:32:29,216 - INFO - Epoch 11/20| Train Score: 0.5400, Loss: 1.0118, Accuracy: 0.5400, Confidence: 0.5243, Entropy: 1.2739| Val Score: 0.4623, Loss: 1.5087, Accuracy: 0.4623, Confidence: 0.5663, Entropy: 1.1925
+2025-05-29 23:33:03,678 - INFO - Epoch 12/20| Train Score: 0.5593, Loss: 0.9945, Accuracy: 0.5593, Confidence: 0.5402, Entropy: 1.2422| Val Score: 0.5031, Loss: 1.4056, Accuracy: 0.5031, Confidence: 0.5298, Entropy: 1.2667
+2025-05-29 23:33:37,959 - INFO - Epoch 13/20| Train Score: 0.5679, Loss: 0.9684, Accuracy: 0.5679, Confidence: 0.5504, Entropy: 1.2172| Val Score: 0.4889, Loss: 1.4686, Accuracy: 0.4889, Confidence: 0.5399, Entropy: 1.2317
+2025-05-29 23:34:12,045 - INFO - Epoch 14/20| Train Score: 0.5789, Loss: 0.9483, Accuracy: 0.5789, Confidence: 0.5601, Entropy: 1.1975| Val Score: 0.4858, Loss: 1.4452, Accuracy: 0.4858, Confidence: 0.5398, Entropy: 1.2313
+2025-05-29 23:34:46,419 - INFO - Epoch 15/20| Train Score: 0.5791, Loss: 0.9402, Accuracy: 0.5791, Confidence: 0.5670, Entropy: 1.1790| Val Score: 0.5257, Loss: 1.3974, Accuracy: 0.5257, Confidence: 0.5573, Entropy: 1.1970
+2025-05-29 23:35:20,659 - INFO - Epoch 16/20| Train Score: 0.5995, Loss: 0.9108, Accuracy: 0.5995, Confidence: 0.5773, Entropy: 1.1516| Val Score: 0.5434, Loss: 1.4085, Accuracy: 0.5434, Confidence: 0.5825, Entropy: 1.1435
+2025-05-29 23:35:55,271 - INFO - Epoch 17/20| Train Score: 0.6033, Loss: 0.8961, Accuracy: 0.6033, Confidence: 0.5874, Entropy: 1.1298| Val Score: 0.5146, Loss: 1.4635, Accuracy: 0.5146, Confidence: 0.5904, Entropy: 1.1194
+2025-05-29 23:36:29,490 - INFO - Epoch 18/20| Train Score: 0.6020, Loss: 0.8931, Accuracy: 0.6020, Confidence: 0.5929, Entropy: 1.1171| Val Score: 0.5160, Loss: 1.4628, Accuracy: 0.5160, Confidence: 0.5975, Entropy: 1.1150
+2025-05-29 23:37:04,416 - INFO - Epoch 19/20| Train Score: 0.6166, Loss: 0.8669, Accuracy: 0.6166, Confidence: 0.5996, Entropy: 1.1019| Val Score: 0.5235, Loss: 1.4820, Accuracy: 0.5235, Confidence: 0.5946, Entropy: 1.1018
+2025-05-29 23:37:04,711 - INFO - Case study end, 0.550531914893617
+2025-05-29 23:37:04,711 - INFO - ################################################################################
+2025-05-29 23:37:04,711 - INFO - 
+
+2025-05-29 23:37:04,714 - INFO - ################################################################################
+2025-05-29 23:37:04,714 - INFO - Start case study with parameters:
+2025-05-29 23:37:04,719 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.10844812221060188 num_layers=8 embedding_dim=300 num_epochs=20
+2025-05-29 23:37:28,271 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:37:28,271 - INFO - Epoch 0/20| Train Score: 0.3518, Loss: 1.3044, Accuracy: 0.3518, Confidence: 0.3373, Entropy: 1.5963| Val Score: 0.2717, Loss: 1.8475, Accuracy: 0.2717, Confidence: 0.4035, Entropy: 1.4850
+2025-05-29 23:37:52,083 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:37:52,083 - INFO - Epoch 1/20| Train Score: 0.4225, Loss: 1.2014, Accuracy: 0.4225, Confidence: 0.4121, Entropy: 1.4779| Val Score: 0.3351, Loss: 1.7220, Accuracy: 0.3351, Confidence: 0.3796, Entropy: 1.5238
+2025-05-29 23:38:15,598 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:38:15,599 - INFO - Epoch 2/20| Train Score: 0.4556, Loss: 1.1475, Accuracy: 0.4556, Confidence: 0.4393, Entropy: 1.4330| Val Score: 0.4029, Loss: 1.6413, Accuracy: 0.4029, Confidence: 0.4191, Entropy: 1.4781
+2025-05-29 23:38:39,140 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:38:39,140 - INFO - Epoch 3/20| Train Score: 0.4861, Loss: 1.1100, Accuracy: 0.4861, Confidence: 0.4678, Entropy: 1.3791| Val Score: 0.5142, Loss: 1.4241, Accuracy: 0.5142, Confidence: 0.4496, Entropy: 1.4078
+2025-05-29 23:39:02,489 - INFO - Epoch 4/20| Train Score: 0.5014, Loss: 1.0833, Accuracy: 0.5014, Confidence: 0.4810, Entropy: 1.3549| Val Score: 0.2863, Loss: 1.8327, Accuracy: 0.2863, Confidence: 0.4537, Entropy: 1.4307
+2025-05-29 23:39:25,755 - INFO - Epoch 5/20| Train Score: 0.5393, Loss: 1.0225, Accuracy: 0.5393, Confidence: 0.5161, Entropy: 1.2829| Val Score: 0.4699, Loss: 1.4944, Accuracy: 0.4699, Confidence: 0.5135, Entropy: 1.2960
+2025-05-29 23:39:49,251 - INFO - Epoch 6/20| Train Score: 0.5532, Loss: 1.0084, Accuracy: 0.5532, Confidence: 0.5264, Entropy: 1.2649| Val Score: 0.4871, Loss: 1.4623, Accuracy: 0.4871, Confidence: 0.5213, Entropy: 1.2769
+2025-05-29 23:40:12,897 - INFO - Epoch 7/20| Train Score: 0.5675, Loss: 0.9727, Accuracy: 0.5675, Confidence: 0.5447, Entropy: 1.2248| Val Score: 0.3701, Loss: 1.6948, Accuracy: 0.3701, Confidence: 0.4715, Entropy: 1.3749
+2025-05-29 23:40:36,218 - INFO - Epoch 8/20| Train Score: 0.5615, Loss: 0.9756, Accuracy: 0.5615, Confidence: 0.5454, Entropy: 1.2233| Val Score: 0.4845, Loss: 1.5051, Accuracy: 0.4845, Confidence: 0.5581, Entropy: 1.1773
+2025-05-29 23:40:59,455 - INFO - Epoch 9/20| Train Score: 0.5814, Loss: 0.9328, Accuracy: 0.5814, Confidence: 0.5649, Entropy: 1.1793| Val Score: 0.3728, Loss: 1.7243, Accuracy: 0.3728, Confidence: 0.5134, Entropy: 1.2740
+2025-05-29 23:41:23,077 - INFO - Epoch 10/20| Train Score: 0.6025, Loss: 0.8930, Accuracy: 0.6025, Confidence: 0.5856, Entropy: 1.1329| Val Score: 0.3874, Loss: 1.8205, Accuracy: 0.3874, Confidence: 0.5633, Entropy: 1.1603
+2025-05-29 23:41:46,975 - INFO - Epoch 11/20| Train Score: 0.6200, Loss: 0.8665, Accuracy: 0.6200, Confidence: 0.5975, Entropy: 1.1057| Val Score: 0.3715, Loss: 1.7232, Accuracy: 0.3715, Confidence: 0.5281, Entropy: 1.2555
+2025-05-29 23:42:10,463 - INFO - Epoch 12/20| Train Score: 0.6305, Loss: 0.8474, Accuracy: 0.6305, Confidence: 0.6071, Entropy: 1.0820| Val Score: 0.4619, Loss: 1.5897, Accuracy: 0.4619, Confidence: 0.5808, Entropy: 1.1170
+2025-05-29 23:42:34,060 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:42:34,061 - INFO - Epoch 13/20| Train Score: 0.6451, Loss: 0.8169, Accuracy: 0.6451, Confidence: 0.6275, Entropy: 1.0322| Val Score: 0.5275, Loss: 1.4533, Accuracy: 0.5275, Confidence: 0.5764, Entropy: 1.1575
+2025-05-29 23:42:57,175 - INFO - Epoch 14/20| Train Score: 0.6612, Loss: 0.7852, Accuracy: 0.6612, Confidence: 0.6379, Entropy: 1.0084| Val Score: 0.4371, Loss: 1.7097, Accuracy: 0.4371, Confidence: 0.5831, Entropy: 1.1057
+2025-05-29 23:43:20,639 - INFO - Epoch 15/20| Train Score: 0.6582, Loss: 0.7862, Accuracy: 0.6582, Confidence: 0.6381, Entropy: 1.0055| Val Score: 0.4371, Loss: 1.7320, Accuracy: 0.4371, Confidence: 0.6044, Entropy: 1.0588
+2025-05-29 23:43:44,033 - INFO - Epoch 16/20| Train Score: 0.6844, Loss: 0.7226, Accuracy: 0.6844, Confidence: 0.6623, Entropy: 0.9451| Val Score: 0.5199, Loss: 1.5857, Accuracy: 0.5199, Confidence: 0.6519, Entropy: 0.9520
+2025-05-29 23:44:07,963 - INFO - Epoch 17/20| Train Score: 0.6961, Loss: 0.7127, Accuracy: 0.6961, Confidence: 0.6755, Entropy: 0.9138| Val Score: 0.3276, Loss: 2.1324, Accuracy: 0.3276, Confidence: 0.6100, Entropy: 1.0328
+2025-05-29 23:44:31,616 - INFO - Epoch 18/20| Train Score: 0.7117, Loss: 0.6706, Accuracy: 0.7117, Confidence: 0.6885, Entropy: 0.8817| Val Score: 0.4894, Loss: 1.6550, Accuracy: 0.4894, Confidence: 0.6470, Entropy: 0.9625
+2025-05-29 23:44:54,912 - INFO - Epoch 19/20| Train Score: 0.7172, Loss: 0.6413, Accuracy: 0.7172, Confidence: 0.7068, Entropy: 0.8330| Val Score: 0.4654, Loss: 1.7649, Accuracy: 0.4654, Confidence: 0.6374, Entropy: 0.9767
+2025-05-29 23:44:55,224 - INFO - Case study end, 0.5274822695035462
+2025-05-29 23:44:55,224 - INFO - ################################################################################
+2025-05-29 23:44:55,224 - INFO - 
+
+2025-05-29 23:44:55,226 - INFO - ################################################################################
+2025-05-29 23:44:55,226 - INFO - Start case study with parameters:
+2025-05-29 23:44:55,232 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.012043965742751434 num_layers=9 embedding_dim=300 num_epochs=20
+2025-05-29 23:45:21,254 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:45:21,254 - INFO - Epoch 0/20| Train Score: 0.3425, Loss: 1.3065, Accuracy: 0.3425, Confidence: 0.3330, Entropy: 1.6084| Val Score: 0.2819, Loss: 2.0909, Accuracy: 0.2819, Confidence: 0.4037, Entropy: 1.4559
+2025-05-29 23:45:47,432 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:45:47,432 - INFO - Epoch 1/20| Train Score: 0.4338, Loss: 1.1926, Accuracy: 0.4338, Confidence: 0.4217, Entropy: 1.4653| Val Score: 0.2886, Loss: 1.8749, Accuracy: 0.2886, Confidence: 0.4120, Entropy: 1.4794
+2025-05-29 23:46:13,995 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:46:13,995 - INFO - Epoch 2/20| Train Score: 0.4576, Loss: 1.1523, Accuracy: 0.4576, Confidence: 0.4430, Entropy: 1.4319| Val Score: 0.3387, Loss: 1.7087, Accuracy: 0.3387, Confidence: 0.4188, Entropy: 1.4705
+2025-05-29 23:46:40,202 - INFO - Epoch 3/20| Train Score: 0.4854, Loss: 1.0991, Accuracy: 0.4854, Confidence: 0.4742, Entropy: 1.3669| Val Score: 0.3152, Loss: 2.0449, Accuracy: 0.3152, Confidence: 0.6049, Entropy: 1.1168
+2025-05-29 23:47:06,097 - INFO - Epoch 4/20| Train Score: 0.5047, Loss: 1.0790, Accuracy: 0.5047, Confidence: 0.4845, Entropy: 1.3450| Val Score: 0.3262, Loss: 1.7479, Accuracy: 0.3262, Confidence: 0.4502, Entropy: 1.4096
+2025-05-29 23:47:32,256 - INFO - Epoch 5/20| Train Score: 0.5285, Loss: 1.0273, Accuracy: 0.5285, Confidence: 0.5130, Entropy: 1.2912| Val Score: 0.2970, Loss: 2.1332, Accuracy: 0.2970, Confidence: 0.5846, Entropy: 1.1185
+2025-05-29 23:47:58,362 - INFO - Epoch 6/20| Train Score: 0.5585, Loss: 0.9868, Accuracy: 0.5585, Confidence: 0.5359, Entropy: 1.2416| Val Score: 0.3076, Loss: 1.9119, Accuracy: 0.3076, Confidence: 0.5138, Entropy: 1.2784
+2025-05-29 23:48:24,383 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:48:24,384 - INFO - Epoch 7/20| Train Score: 0.5713, Loss: 0.9598, Accuracy: 0.5713, Confidence: 0.5545, Entropy: 1.2082| Val Score: 0.3910, Loss: 1.7896, Accuracy: 0.3910, Confidence: 0.5806, Entropy: 1.1214
+2025-05-29 23:48:50,484 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:48:50,484 - INFO - Epoch 8/20| Train Score: 0.5932, Loss: 0.9243, Accuracy: 0.5932, Confidence: 0.5699, Entropy: 1.1706| Val Score: 0.4176, Loss: 1.6456, Accuracy: 0.4176, Confidence: 0.5379, Entropy: 1.2166
+2025-05-29 23:49:16,537 - INFO - Epoch 9/20| Train Score: 0.6102, Loss: 0.8831, Accuracy: 0.6102, Confidence: 0.5939, Entropy: 1.1169| Val Score: 0.3559, Loss: 1.8849, Accuracy: 0.3559, Confidence: 0.5637, Entropy: 1.1724
+2025-05-29 23:49:42,580 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:49:42,580 - INFO - Epoch 10/20| Train Score: 0.6302, Loss: 0.8521, Accuracy: 0.6302, Confidence: 0.6070, Entropy: 1.0867| Val Score: 0.4548, Loss: 1.6731, Accuracy: 0.4548, Confidence: 0.5901, Entropy: 1.0890
+2025-05-29 23:50:08,423 - INFO - Epoch 11/20| Train Score: 0.6556, Loss: 0.7998, Accuracy: 0.6556, Confidence: 0.6316, Entropy: 1.0247| Val Score: 0.3998, Loss: 1.8727, Accuracy: 0.3998, Confidence: 0.6191, Entropy: 1.0240
+2025-05-29 23:50:34,915 - INFO - Epoch 12/20| Train Score: 0.6633, Loss: 0.7768, Accuracy: 0.6633, Confidence: 0.6441, Entropy: 0.9932| Val Score: 0.4357, Loss: 1.6953, Accuracy: 0.4357, Confidence: 0.5889, Entropy: 1.0900
+2025-05-29 23:50:34,915 - WARNING - Trial was pruned at epoch 12
+2025-05-29 23:50:34,915 - INFO - Case study end, 0.45478723404255317
+2025-05-29 23:50:34,916 - INFO - ################################################################################
+2025-05-29 23:50:34,916 - INFO - 
+
+2025-05-29 23:50:34,917 - INFO - ################################################################################
+2025-05-29 23:50:34,917 - INFO - Start case study with parameters:
+2025-05-29 23:50:34,922 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.19811202603835978 num_layers=3 embedding_dim=600 num_epochs=20
+2025-05-29 23:50:53,625 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:50:53,626 - INFO - Epoch 0/20| Train Score: 0.3625, Loss: 1.2887, Accuracy: 0.3625, Confidence: 0.3435, Entropy: 1.5995| Val Score: 0.2863, Loss: 1.7225, Accuracy: 0.2863, Confidence: 0.3494, Entropy: 1.5552
+2025-05-29 23:51:12,022 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:51:12,022 - INFO - Epoch 1/20| Train Score: 0.4395, Loss: 1.2043, Accuracy: 0.4395, Confidence: 0.3857, Entropy: 1.5263| Val Score: 0.2899, Loss: 1.6525, Accuracy: 0.2899, Confidence: 0.3765, Entropy: 1.5051
+2025-05-29 23:51:30,360 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:51:30,361 - INFO - Epoch 2/20| Train Score: 0.4463, Loss: 1.1768, Accuracy: 0.4463, Confidence: 0.3985, Entropy: 1.4975| Val Score: 0.3945, Loss: 1.6034, Accuracy: 0.3945, Confidence: 0.4140, Entropy: 1.4844
+2025-05-29 23:51:48,589 - INFO - Epoch 3/20| Train Score: 0.4672, Loss: 1.1577, Accuracy: 0.4672, Confidence: 0.4128, Entropy: 1.4753| Val Score: 0.3360, Loss: 1.8146, Accuracy: 0.3360, Confidence: 0.4811, Entropy: 1.3072
+2025-05-29 23:52:06,728 - INFO - Epoch 4/20| Train Score: 0.5043, Loss: 1.1130, Accuracy: 0.5043, Confidence: 0.4313, Entropy: 1.4397| Val Score: 0.3945, Loss: 1.5331, Accuracy: 0.3945, Confidence: 0.3983, Entropy: 1.4965
+2025-05-29 23:52:25,228 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:52:25,229 - INFO - Epoch 5/20| Train Score: 0.5010, Loss: 1.1098, Accuracy: 0.5010, Confidence: 0.4403, Entropy: 1.4222| Val Score: 0.4854, Loss: 1.4336, Accuracy: 0.4854, Confidence: 0.4388, Entropy: 1.4281
+2025-05-29 23:52:43,760 - INFO - Epoch 6/20| Train Score: 0.5178, Loss: 1.0871, Accuracy: 0.5178, Confidence: 0.4518, Entropy: 1.4027| Val Score: 0.2039, Loss: 2.4763, Accuracy: 0.2039, Confidence: 0.5636, Entropy: 1.1069
+2025-05-29 23:53:01,974 - INFO - Epoch 7/20| Train Score: 0.5281, Loss: 1.0705, Accuracy: 0.5281, Confidence: 0.4598, Entropy: 1.3870| Val Score: 0.3621, Loss: 1.6904, Accuracy: 0.3621, Confidence: 0.5046, Entropy: 1.2961
+2025-05-29 23:53:20,111 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:53:20,111 - INFO - Epoch 8/20| Train Score: 0.5509, Loss: 1.0477, Accuracy: 0.5509, Confidence: 0.4736, Entropy: 1.3593| Val Score: 0.4871, Loss: 1.4094, Accuracy: 0.4871, Confidence: 0.4780, Entropy: 1.3627
+2025-05-29 23:53:38,416 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:53:38,416 - INFO - Epoch 9/20| Train Score: 0.5465, Loss: 1.0549, Accuracy: 0.5465, Confidence: 0.4722, Entropy: 1.3668| Val Score: 0.4880, Loss: 1.4272, Accuracy: 0.4880, Confidence: 0.4408, Entropy: 1.4272
+2025-05-29 23:53:56,760 - INFO - Epoch 10/20| Train Score: 0.5409, Loss: 1.0394, Accuracy: 0.5409, Confidence: 0.4780, Entropy: 1.3534| Val Score: 0.3285, Loss: 2.1028, Accuracy: 0.3285, Confidence: 0.5485, Entropy: 1.1260
+2025-05-29 23:54:14,899 - INFO - Epoch 11/20| Train Score: 0.5674, Loss: 1.0140, Accuracy: 0.5674, Confidence: 0.4918, Entropy: 1.3245| Val Score: 0.4579, Loss: 1.4738, Accuracy: 0.4579, Confidence: 0.4630, Entropy: 1.3496
+2025-05-29 23:54:33,207 - INFO - Epoch 12/20| Train Score: 0.5659, Loss: 1.0120, Accuracy: 0.5659, Confidence: 0.4977, Entropy: 1.3151| Val Score: 0.4207, Loss: 1.4861, Accuracy: 0.4207, Confidence: 0.4784, Entropy: 1.3558
+2025-05-29 23:54:51,293 - INFO - Epoch 13/20| Train Score: 0.5839, Loss: 0.9874, Accuracy: 0.5839, Confidence: 0.5022, Entropy: 1.3066| Val Score: 0.4215, Loss: 1.5173, Accuracy: 0.4215, Confidence: 0.4506, Entropy: 1.4280
+2025-05-29 23:54:51,294 - WARNING - Trial was pruned at epoch 13
+2025-05-29 23:54:51,294 - INFO - Case study end, 0.488031914893617
+2025-05-29 23:54:51,294 - INFO - ################################################################################
+2025-05-29 23:54:51,294 - INFO - 
+
+2025-05-29 23:54:51,295 - INFO - ################################################################################
+2025-05-29 23:54:51,295 - INFO - Start case study with parameters:
+2025-05-29 23:54:51,301 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.5708692043569465 num_layers=10 embedding_dim=300 num_epochs=20
+2025-05-29 23:55:20,108 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:55:20,109 - INFO - Epoch 0/20| Train Score: 0.2881, Loss: 1.3527, Accuracy: 0.2881, Confidence: 0.2826, Entropy: 1.6780| Val Score: 0.2983, Loss: 1.6643, Accuracy: 0.2983, Confidence: 0.2962, Entropy: 1.6756
+2025-05-29 23:55:49,012 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:55:49,013 - INFO - Epoch 1/20| Train Score: 0.3634, Loss: 1.2732, Accuracy: 0.3634, Confidence: 0.3581, Entropy: 1.5744| Val Score: 0.4136, Loss: 1.5573, Accuracy: 0.4136, Confidence: 0.3743, Entropy: 1.5383
+2025-05-29 23:56:17,701 - INFO - Epoch 2/20| Train Score: 0.3848, Loss: 1.2479, Accuracy: 0.3848, Confidence: 0.3719, Entropy: 1.5481| Val Score: 0.3378, Loss: 1.6461, Accuracy: 0.3378, Confidence: 0.4277, Entropy: 1.4622
+2025-05-29 23:56:46,907 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:56:46,907 - INFO - Epoch 3/20| Train Score: 0.4123, Loss: 1.2083, Accuracy: 0.4123, Confidence: 0.3958, Entropy: 1.5109| Val Score: 0.4300, Loss: 1.5060, Accuracy: 0.4300, Confidence: 0.4484, Entropy: 1.4158
+2025-05-29 23:57:15,691 - INFO - Epoch 4/20| Train Score: 0.4302, Loss: 1.1920, Accuracy: 0.4302, Confidence: 0.4048, Entropy: 1.4918| Val Score: 0.4176, Loss: 1.5227, Accuracy: 0.4176, Confidence: 0.4906, Entropy: 1.3379
+2025-05-29 23:57:45,075 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:57:45,075 - INFO - Epoch 5/20| Train Score: 0.4347, Loss: 1.1803, Accuracy: 0.4347, Confidence: 0.4209, Entropy: 1.4623| Val Score: 0.4743, Loss: 1.4396, Accuracy: 0.4743, Confidence: 0.4477, Entropy: 1.4133
+2025-05-29 23:58:14,218 - INFO - Epoch 6/20| Train Score: 0.4648, Loss: 1.1460, Accuracy: 0.4648, Confidence: 0.4385, Entropy: 1.4329| Val Score: 0.4220, Loss: 1.5158, Accuracy: 0.4220, Confidence: 0.5070, Entropy: 1.3020
+2025-05-29 23:58:43,367 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-29 23:58:43,367 - INFO - Epoch 7/20| Train Score: 0.4536, Loss: 1.1412, Accuracy: 0.4536, Confidence: 0.4458, Entropy: 1.4218| Val Score: 0.4778, Loss: 1.4181, Accuracy: 0.4778, Confidence: 0.4949, Entropy: 1.3219
+2025-05-29 23:59:12,426 - INFO - Epoch 8/20| Train Score: 0.4710, Loss: 1.1207, Accuracy: 0.4710, Confidence: 0.4566, Entropy: 1.3986| Val Score: 0.4645, Loss: 1.4430, Accuracy: 0.4645, Confidence: 0.4880, Entropy: 1.3500
+2025-05-29 23:59:41,325 - INFO - Epoch 9/20| Train Score: 0.4802, Loss: 1.0973, Accuracy: 0.4802, Confidence: 0.4689, Entropy: 1.3735| Val Score: 0.4637, Loss: 1.4527, Accuracy: 0.4637, Confidence: 0.5046, Entropy: 1.3050
+2025-05-30 00:00:10,546 - INFO - Epoch 10/20| Train Score: 0.4951, Loss: 1.0844, Accuracy: 0.4951, Confidence: 0.4805, Entropy: 1.3510| Val Score: 0.4756, Loss: 1.4442, Accuracy: 0.4756, Confidence: 0.5328, Entropy: 1.2481
+2025-05-30 00:00:39,887 - INFO - Epoch 11/20| Train Score: 0.4967, Loss: 1.0905, Accuracy: 0.4967, Confidence: 0.4807, Entropy: 1.3540| Val Score: 0.4743, Loss: 1.4374, Accuracy: 0.4743, Confidence: 0.5318, Entropy: 1.2487
+2025-05-30 00:01:08,910 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:01:08,910 - INFO - Epoch 12/20| Train Score: 0.5075, Loss: 1.0699, Accuracy: 0.5075, Confidence: 0.4899, Entropy: 1.3392| Val Score: 0.4880, Loss: 1.4244, Accuracy: 0.4880, Confidence: 0.5296, Entropy: 1.2543
+2025-05-30 00:01:38,111 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:01:38,111 - INFO - Epoch 13/20| Train Score: 0.5009, Loss: 1.0731, Accuracy: 0.5009, Confidence: 0.4902, Entropy: 1.3343| Val Score: 0.4885, Loss: 1.4333, Accuracy: 0.4885, Confidence: 0.5325, Entropy: 1.2481
+2025-05-30 00:01:38,111 - WARNING - Trial was pruned at epoch 13
+2025-05-30 00:01:38,112 - INFO - Case study end, 0.48847517730496454
+2025-05-30 00:01:38,112 - INFO - ################################################################################
+2025-05-30 00:01:38,112 - INFO - 
+
+2025-05-30 00:01:38,113 - INFO - ################################################################################
+2025-05-30 00:01:38,113 - INFO - Start case study with parameters:
+2025-05-30 00:01:38,119 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.23253668247271725 num_layers=6 embedding_dim=600 num_epochs=20
+2025-05-30 00:02:13,362 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:02:13,362 - INFO - Epoch 0/20| Train Score: 0.3599, Loss: 1.3027, Accuracy: 0.3599, Confidence: 0.3732, Entropy: 1.5375| Val Score: 0.3754, Loss: 1.5814, Accuracy: 0.3754, Confidence: 0.3430, Entropy: 1.5980
+2025-05-30 00:02:49,373 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:02:49,374 - INFO - Epoch 1/20| Train Score: 0.4368, Loss: 1.1909, Accuracy: 0.4368, Confidence: 0.4159, Entropy: 1.4672| Val Score: 0.4153, Loss: 1.5252, Accuracy: 0.4153, Confidence: 0.4026, Entropy: 1.4989
+2025-05-30 00:03:25,179 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:03:25,180 - INFO - Epoch 2/20| Train Score: 0.4680, Loss: 1.1344, Accuracy: 0.4680, Confidence: 0.4480, Entropy: 1.4114| Val Score: 0.4521, Loss: 1.5156, Accuracy: 0.4521, Confidence: 0.3616, Entropy: 1.5777
+2025-05-30 00:04:00,284 - INFO - Epoch 3/20| Train Score: 0.4951, Loss: 1.1107, Accuracy: 0.4951, Confidence: 0.4652, Entropy: 1.3813| Val Score: 0.3621, Loss: 1.8111, Accuracy: 0.3621, Confidence: 0.5298, Entropy: 1.2702
+2025-05-30 00:04:35,894 - INFO - Epoch 4/20| Train Score: 0.5215, Loss: 1.0533, Accuracy: 0.5215, Confidence: 0.4938, Entropy: 1.3230| Val Score: 0.3218, Loss: 1.7745, Accuracy: 0.3218, Confidence: 0.4544, Entropy: 1.3820
+2025-05-30 00:05:11,258 - INFO - Epoch 5/20| Train Score: 0.5499, Loss: 1.0130, Accuracy: 0.5499, Confidence: 0.5165, Entropy: 1.2784| Val Score: 0.3976, Loss: 1.6123, Accuracy: 0.3976, Confidence: 0.5232, Entropy: 1.2566
+2025-05-30 00:05:46,595 - INFO - Epoch 6/20| Train Score: 0.5615, Loss: 0.9928, Accuracy: 0.5615, Confidence: 0.5308, Entropy: 1.2451| Val Score: 0.3644, Loss: 1.8942, Accuracy: 0.3644, Confidence: 0.5942, Entropy: 1.0783
+2025-05-30 00:06:22,006 - INFO - Epoch 7/20| Train Score: 0.5765, Loss: 0.9588, Accuracy: 0.5765, Confidence: 0.5457, Entropy: 1.2161| Val Score: 0.3781, Loss: 2.1318, Accuracy: 0.3781, Confidence: 0.6288, Entropy: 1.0012
+2025-05-30 00:06:58,065 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:06:58,065 - INFO - Epoch 8/20| Train Score: 0.5915, Loss: 0.9331, Accuracy: 0.5915, Confidence: 0.5620, Entropy: 1.1818| Val Score: 0.4654, Loss: 1.5828, Accuracy: 0.4654, Confidence: 0.5765, Entropy: 1.1447
+2025-05-30 00:07:33,463 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:07:33,464 - INFO - Epoch 9/20| Train Score: 0.5992, Loss: 0.9116, Accuracy: 0.5992, Confidence: 0.5726, Entropy: 1.1583| Val Score: 0.5084, Loss: 1.4732, Accuracy: 0.5084, Confidence: 0.5529, Entropy: 1.1795
+2025-05-30 00:08:08,830 - INFO - Epoch 10/20| Train Score: 0.6354, Loss: 0.8532, Accuracy: 0.6354, Confidence: 0.5978, Entropy: 1.0967| Val Score: 0.4424, Loss: 1.6936, Accuracy: 0.4424, Confidence: 0.5945, Entropy: 1.0933
+2025-05-30 00:08:45,006 - INFO - Epoch 11/20| Train Score: 0.6406, Loss: 0.8256, Accuracy: 0.6406, Confidence: 0.6109, Entropy: 1.0664| Val Score: 0.3923, Loss: 1.9148, Accuracy: 0.3923, Confidence: 0.6103, Entropy: 1.0276
+2025-05-30 00:09:21,403 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:09:21,404 - INFO - Epoch 12/20| Train Score: 0.6677, Loss: 0.7791, Accuracy: 0.6677, Confidence: 0.6320, Entropy: 1.0129| Val Score: 0.5146, Loss: 1.5390, Accuracy: 0.5146, Confidence: 0.6095, Entropy: 1.0415
+2025-05-30 00:09:57,463 - INFO - Epoch 13/20| Train Score: 0.6763, Loss: 0.7582, Accuracy: 0.6763, Confidence: 0.6449, Entropy: 0.9803| Val Score: 0.5062, Loss: 1.5898, Accuracy: 0.5062, Confidence: 0.6418, Entropy: 0.9590
+2025-05-30 00:10:33,433 - INFO - Epoch 14/20| Train Score: 0.6820, Loss: 0.7364, Accuracy: 0.6820, Confidence: 0.6514, Entropy: 0.9635| Val Score: 0.4508, Loss: 1.7786, Accuracy: 0.4508, Confidence: 0.6233, Entropy: 1.0079
+2025-05-30 00:10:54,611 - INFO - Case study end, 0.5146276595744681
+2025-05-30 00:10:54,611 - INFO - ################################################################################
+2025-05-30 00:10:54,611 - INFO - 
+
+2025-05-30 00:10:54,613 - INFO - ################################################################################
+2025-05-30 00:10:54,613 - INFO - Start case study with parameters:
+2025-05-30 00:10:54,619 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.471690924390142 num_layers=10 embedding_dim=64 num_epochs=20
+2025-05-30 00:11:02,434 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:11:02,434 - INFO - Epoch 0/20| Train Score: 0.2248, Loss: 1.4184, Accuracy: 0.2248, Confidence: 0.2128, Entropy: 1.7648| Val Score: 0.2957, Loss: 1.7421, Accuracy: 0.2957, Confidence: 0.2189, Entropy: 1.7675
+2025-05-30 00:11:10,096 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:11:10,096 - INFO - Epoch 1/20| Train Score: 0.3076, Loss: 1.3391, Accuracy: 0.3076, Confidence: 0.2788, Entropy: 1.6932| Val Score: 0.3692, Loss: 1.6309, Accuracy: 0.3692, Confidence: 0.2661, Entropy: 1.7053
+2025-05-30 00:11:17,723 - INFO - Epoch 2/20| Train Score: 0.3410, Loss: 1.2939, Accuracy: 0.3410, Confidence: 0.3149, Entropy: 1.6316| Val Score: 0.3249, Loss: 1.6716, Accuracy: 0.3249, Confidence: 0.3206, Entropy: 1.6266
+2025-05-30 00:11:25,346 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:11:25,347 - INFO - Epoch 3/20| Train Score: 0.3621, Loss: 1.2749, Accuracy: 0.3621, Confidence: 0.3303, Entropy: 1.6041| Val Score: 0.4047, Loss: 1.5475, Accuracy: 0.4047, Confidence: 0.3150, Entropy: 1.6318
+2025-05-30 00:11:33,064 - INFO - Epoch 4/20| Train Score: 0.3819, Loss: 1.2475, Accuracy: 0.3819, Confidence: 0.3549, Entropy: 1.5713| Val Score: 0.3949, Loss: 1.5693, Accuracy: 0.3949, Confidence: 0.3528, Entropy: 1.5619
+2025-05-30 00:11:40,720 - INFO - Epoch 5/20| Train Score: 0.3922, Loss: 1.2383, Accuracy: 0.3922, Confidence: 0.3639, Entropy: 1.5584| Val Score: 0.4012, Loss: 1.5473, Accuracy: 0.4012, Confidence: 0.3454, Entropy: 1.5790
+2025-05-30 00:11:48,351 - INFO - Epoch 6/20| Train Score: 0.4115, Loss: 1.2066, Accuracy: 0.4115, Confidence: 0.3840, Entropy: 1.5271| Val Score: 0.3976, Loss: 1.5197, Accuracy: 0.3976, Confidence: 0.3966, Entropy: 1.5085
+2025-05-30 00:11:56,108 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:11:56,108 - INFO - Epoch 7/20| Train Score: 0.4166, Loss: 1.2050, Accuracy: 0.4166, Confidence: 0.3948, Entropy: 1.5094| Val Score: 0.4552, Loss: 1.4473, Accuracy: 0.4552, Confidence: 0.4100, Entropy: 1.4946
+2025-05-30 00:12:03,820 - INFO - Epoch 8/20| Train Score: 0.4330, Loss: 1.1894, Accuracy: 0.4330, Confidence: 0.3974, Entropy: 1.5047| Val Score: 0.4246, Loss: 1.5174, Accuracy: 0.4246, Confidence: 0.4092, Entropy: 1.4746
+2025-05-30 00:12:11,502 - INFO - Epoch 9/20| Train Score: 0.4399, Loss: 1.1714, Accuracy: 0.4399, Confidence: 0.4142, Entropy: 1.4769| Val Score: 0.3497, Loss: 1.6495, Accuracy: 0.3497, Confidence: 0.4087, Entropy: 1.4769
+2025-05-30 00:12:19,064 - INFO - Epoch 10/20| Train Score: 0.4454, Loss: 1.1700, Accuracy: 0.4454, Confidence: 0.4192, Entropy: 1.4681| Val Score: 0.4184, Loss: 1.5297, Accuracy: 0.4184, Confidence: 0.4136, Entropy: 1.4722
+2025-05-30 00:12:26,676 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:12:26,676 - INFO - Epoch 11/20| Train Score: 0.4536, Loss: 1.1499, Accuracy: 0.4536, Confidence: 0.4295, Entropy: 1.4460| Val Score: 0.4840, Loss: 1.4251, Accuracy: 0.4840, Confidence: 0.4277, Entropy: 1.4563
+2025-05-30 00:12:34,421 - INFO - Epoch 12/20| Train Score: 0.4634, Loss: 1.1422, Accuracy: 0.4634, Confidence: 0.4324, Entropy: 1.4411| Val Score: 0.4765, Loss: 1.4292, Accuracy: 0.4765, Confidence: 0.4587, Entropy: 1.4028
+2025-05-30 00:12:42,214 - INFO - Epoch 13/20| Train Score: 0.4669, Loss: 1.1401, Accuracy: 0.4669, Confidence: 0.4383, Entropy: 1.4346| Val Score: 0.4761, Loss: 1.4090, Accuracy: 0.4761, Confidence: 0.4610, Entropy: 1.4036
+2025-05-30 00:12:42,214 - WARNING - Trial was pruned at epoch 13
+2025-05-30 00:12:42,215 - INFO - Case study end, 0.48404255319148937
+2025-05-30 00:12:42,215 - INFO - ################################################################################
+2025-05-30 00:12:42,215 - INFO - 
+
+2025-05-30 00:12:42,216 - INFO - ################################################################################
+2025-05-30 00:12:42,216 - INFO - Start case study with parameters:
+2025-05-30 00:12:42,222 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.2673663688682053 num_layers=7 embedding_dim=300 num_epochs=20
+2025-05-30 00:13:03,183 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:13:03,183 - INFO - Epoch 0/20| Train Score: 0.3312, Loss: 1.3254, Accuracy: 0.3312, Confidence: 0.3287, Entropy: 1.6136| Val Score: 0.2633, Loss: 1.8049, Accuracy: 0.2633, Confidence: 0.3602, Entropy: 1.5792
+2025-05-30 00:13:24,116 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:13:24,117 - INFO - Epoch 1/20| Train Score: 0.4048, Loss: 1.2241, Accuracy: 0.4048, Confidence: 0.3891, Entropy: 1.5155| Val Score: 0.4034, Loss: 1.5844, Accuracy: 0.4034, Confidence: 0.3495, Entropy: 1.5863
+2025-05-30 00:13:45,197 - INFO - Epoch 2/20| Train Score: 0.4373, Loss: 1.1863, Accuracy: 0.4373, Confidence: 0.4179, Entropy: 1.4741| Val Score: 0.3963, Loss: 1.5795, Accuracy: 0.3963, Confidence: 0.4058, Entropy: 1.5077
+2025-05-30 00:14:06,103 - INFO - Epoch 3/20| Train Score: 0.4702, Loss: 1.1424, Accuracy: 0.4702, Confidence: 0.4430, Entropy: 1.4287| Val Score: 0.2620, Loss: 2.0451, Accuracy: 0.2620, Confidence: 0.4841, Entropy: 1.3720
+2025-05-30 00:14:27,135 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:14:27,135 - INFO - Epoch 4/20| Train Score: 0.4786, Loss: 1.1155, Accuracy: 0.4786, Confidence: 0.4576, Entropy: 1.3976| Val Score: 0.4379, Loss: 1.5515, Accuracy: 0.4379, Confidence: 0.4793, Entropy: 1.3678
+2025-05-30 00:14:48,127 - INFO - Epoch 5/20| Train Score: 0.5094, Loss: 1.0733, Accuracy: 0.5094, Confidence: 0.4820, Entropy: 1.3504| Val Score: 0.3533, Loss: 1.8192, Accuracy: 0.3533, Confidence: 0.5345, Entropy: 1.2308
+2025-05-30 00:15:09,264 - INFO - Epoch 6/20| Train Score: 0.5099, Loss: 1.0719, Accuracy: 0.5099, Confidence: 0.4880, Entropy: 1.3398| Val Score: 0.4060, Loss: 1.5912, Accuracy: 0.4060, Confidence: 0.5096, Entropy: 1.2862
+2025-05-30 00:15:30,302 - INFO - Epoch 7/20| Train Score: 0.5421, Loss: 1.0145, Accuracy: 0.5421, Confidence: 0.5094, Entropy: 1.2951| Val Score: 0.3152, Loss: 1.9873, Accuracy: 0.3152, Confidence: 0.5512, Entropy: 1.1252
+2025-05-30 00:15:51,177 - INFO - Epoch 8/20| Train Score: 0.5479, Loss: 0.9999, Accuracy: 0.5479, Confidence: 0.5250, Entropy: 1.2602| Val Score: 0.4375, Loss: 1.5799, Accuracy: 0.4375, Confidence: 0.5124, Entropy: 1.2696
+2025-05-30 00:16:12,044 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:16:12,044 - INFO - Epoch 9/20| Train Score: 0.5654, Loss: 0.9796, Accuracy: 0.5654, Confidence: 0.5362, Entropy: 1.2384| Val Score: 0.5527, Loss: 1.3965, Accuracy: 0.5527, Confidence: 0.5907, Entropy: 1.1248
+2025-05-30 00:16:33,084 - INFO - Epoch 10/20| Train Score: 0.5697, Loss: 0.9638, Accuracy: 0.5697, Confidence: 0.5465, Entropy: 1.2170| Val Score: 0.5164, Loss: 1.4222, Accuracy: 0.5164, Confidence: 0.5489, Entropy: 1.2119
+2025-05-30 00:16:53,816 - INFO - Epoch 11/20| Train Score: 0.5894, Loss: 0.9354, Accuracy: 0.5894, Confidence: 0.5594, Entropy: 1.1908| Val Score: 0.5279, Loss: 1.4130, Accuracy: 0.5279, Confidence: 0.5552, Entropy: 1.1813
+2025-05-30 00:17:15,043 - INFO - Epoch 12/20| Train Score: 0.6048, Loss: 0.9017, Accuracy: 0.6048, Confidence: 0.5776, Entropy: 1.1494| Val Score: 0.4158, Loss: 1.8814, Accuracy: 0.4158, Confidence: 0.6559, Entropy: 0.9524
+2025-05-30 00:17:36,038 - INFO - Epoch 13/20| Train Score: 0.6109, Loss: 0.8861, Accuracy: 0.6109, Confidence: 0.5888, Entropy: 1.1192| Val Score: 0.4920, Loss: 1.5337, Accuracy: 0.4920, Confidence: 0.5867, Entropy: 1.1202
+2025-05-30 00:17:56,853 - INFO - Epoch 14/20| Train Score: 0.6220, Loss: 0.8635, Accuracy: 0.6220, Confidence: 0.5947, Entropy: 1.1061| Val Score: 0.4734, Loss: 1.5484, Accuracy: 0.4734, Confidence: 0.5167, Entropy: 1.2890
+2025-05-30 00:18:17,823 - INFO - Epoch 15/20| Train Score: 0.6431, Loss: 0.8278, Accuracy: 0.6431, Confidence: 0.6150, Entropy: 1.0607| Val Score: 0.4557, Loss: 1.5979, Accuracy: 0.4557, Confidence: 0.5648, Entropy: 1.1726
+2025-05-30 00:18:38,638 - INFO - Epoch 16/20| Train Score: 0.6492, Loss: 0.8040, Accuracy: 0.6492, Confidence: 0.6209, Entropy: 1.0422| Val Score: 0.5009, Loss: 1.6104, Accuracy: 0.5009, Confidence: 0.6343, Entropy: 0.9919
+2025-05-30 00:18:59,345 - INFO - Epoch 17/20| Train Score: 0.6654, Loss: 0.7883, Accuracy: 0.6654, Confidence: 0.6362, Entropy: 1.0125| Val Score: 0.5248, Loss: 1.5694, Accuracy: 0.5248, Confidence: 0.6457, Entropy: 0.9659
+2025-05-30 00:19:20,359 - INFO - Epoch 18/20| Train Score: 0.6678, Loss: 0.7782, Accuracy: 0.6678, Confidence: 0.6407, Entropy: 0.9966| Val Score: 0.5324, Loss: 1.5003, Accuracy: 0.5324, Confidence: 0.6283, Entropy: 1.0134
+2025-05-30 00:19:41,168 - INFO - Epoch 19/20| Train Score: 0.6854, Loss: 0.7337, Accuracy: 0.6854, Confidence: 0.6581, Entropy: 0.9551| Val Score: 0.4938, Loss: 1.5875, Accuracy: 0.4938, Confidence: 0.5872, Entropy: 1.0914
+2025-05-30 00:19:41,471 - INFO - Case study end, 0.5527482269503546
+2025-05-30 00:19:41,472 - INFO - ################################################################################
+2025-05-30 00:19:41,472 - INFO - 
+
+2025-05-30 00:19:41,474 - INFO - ################################################################################
+2025-05-30 00:19:41,474 - INFO - Start case study with parameters:
+2025-05-30 00:19:41,480 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.23704767076052644 num_layers=6 embedding_dim=300 num_epochs=20
+2025-05-30 00:19:59,762 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:19:59,762 - INFO - Epoch 0/20| Train Score: 0.3697, Loss: 1.2878, Accuracy: 0.3697, Confidence: 0.3463, Entropy: 1.5873| Val Score: 0.2070, Loss: 1.9702, Accuracy: 0.2070, Confidence: 0.4186, Entropy: 1.4256
+2025-05-30 00:20:17,983 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:20:17,984 - INFO - Epoch 1/20| Train Score: 0.4357, Loss: 1.1986, Accuracy: 0.4357, Confidence: 0.4090, Entropy: 1.4809| Val Score: 0.4100, Loss: 1.5625, Accuracy: 0.4100, Confidence: 0.4376, Entropy: 1.4436
+2025-05-30 00:20:36,271 - INFO - Epoch 2/20| Train Score: 0.4650, Loss: 1.1443, Accuracy: 0.4650, Confidence: 0.4367, Entropy: 1.4328| Val Score: 0.3546, Loss: 1.6631, Accuracy: 0.3546, Confidence: 0.4517, Entropy: 1.4201
+2025-05-30 00:20:54,634 - INFO - Epoch 3/20| Train Score: 0.4942, Loss: 1.1040, Accuracy: 0.4942, Confidence: 0.4626, Entropy: 1.3858| Val Score: 0.3728, Loss: 1.6110, Accuracy: 0.3728, Confidence: 0.4054, Entropy: 1.4823
+2025-05-30 00:21:12,626 - INFO - Epoch 4/20| Train Score: 0.5163, Loss: 1.0647, Accuracy: 0.5163, Confidence: 0.4861, Entropy: 1.3400| Val Score: 0.3874, Loss: 1.6601, Accuracy: 0.3874, Confidence: 0.4528, Entropy: 1.4202
+2025-05-30 00:21:30,752 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:21:30,752 - INFO - Epoch 5/20| Train Score: 0.5182, Loss: 1.0555, Accuracy: 0.5182, Confidence: 0.4907, Entropy: 1.3277| Val Score: 0.4229, Loss: 1.5857, Accuracy: 0.4229, Confidence: 0.5208, Entropy: 1.2681
+2025-05-30 00:21:48,655 - INFO - Epoch 6/20| Train Score: 0.5381, Loss: 1.0302, Accuracy: 0.5381, Confidence: 0.5029, Entropy: 1.3049| Val Score: 0.3754, Loss: 1.6905, Accuracy: 0.3754, Confidence: 0.4904, Entropy: 1.3140
+2025-05-30 00:22:06,721 - INFO - Epoch 7/20| Train Score: 0.5498, Loss: 1.0167, Accuracy: 0.5498, Confidence: 0.5155, Entropy: 1.2829| Val Score: 0.3378, Loss: 1.7954, Accuracy: 0.3378, Confidence: 0.4820, Entropy: 1.3412
+2025-05-30 00:22:25,011 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:22:25,011 - INFO - Epoch 8/20| Train Score: 0.5604, Loss: 0.9844, Accuracy: 0.5604, Confidence: 0.5305, Entropy: 1.2514| Val Score: 0.4300, Loss: 1.5647, Accuracy: 0.4300, Confidence: 0.4962, Entropy: 1.2897
+2025-05-30 00:22:43,051 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:22:43,051 - INFO - Epoch 9/20| Train Score: 0.5691, Loss: 0.9734, Accuracy: 0.5691, Confidence: 0.5419, Entropy: 1.2333| Val Score: 0.4965, Loss: 1.4489, Accuracy: 0.4965, Confidence: 0.5185, Entropy: 1.2792
+2025-05-30 00:23:01,510 - INFO - Epoch 10/20| Train Score: 0.5770, Loss: 0.9603, Accuracy: 0.5770, Confidence: 0.5439, Entropy: 1.2232| Val Score: 0.4096, Loss: 1.7158, Accuracy: 0.4096, Confidence: 0.5463, Entropy: 1.1897
+2025-05-30 00:23:19,752 - INFO - Epoch 11/20| Train Score: 0.6014, Loss: 0.9198, Accuracy: 0.6014, Confidence: 0.5647, Entropy: 1.1768| Val Score: 0.3989, Loss: 1.7763, Accuracy: 0.3989, Confidence: 0.5993, Entropy: 1.0622
+2025-05-30 00:23:38,010 - INFO - Epoch 12/20| Train Score: 0.6123, Loss: 0.8811, Accuracy: 0.6123, Confidence: 0.5859, Entropy: 1.1296| Val Score: 0.3209, Loss: 1.9545, Accuracy: 0.3209, Confidence: 0.5543, Entropy: 1.1631
+2025-05-30 00:23:56,163 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:23:56,163 - INFO - Epoch 13/20| Train Score: 0.6192, Loss: 0.8821, Accuracy: 0.6192, Confidence: 0.5867, Entropy: 1.1288| Val Score: 0.4987, Loss: 1.4962, Accuracy: 0.4987, Confidence: 0.6128, Entropy: 1.0553
+2025-05-30 00:24:14,309 - INFO - Epoch 14/20| Train Score: 0.6412, Loss: 0.8435, Accuracy: 0.6412, Confidence: 0.6026, Entropy: 1.0912| Val Score: 0.4761, Loss: 1.5736, Accuracy: 0.4761, Confidence: 0.5958, Entropy: 1.0886
+2025-05-30 00:24:32,358 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:24:32,358 - INFO - Epoch 15/20| Train Score: 0.6519, Loss: 0.8101, Accuracy: 0.6519, Confidence: 0.6163, Entropy: 1.0584| Val Score: 0.5191, Loss: 1.5283, Accuracy: 0.5191, Confidence: 0.6264, Entropy: 1.0047
+2025-05-30 00:24:50,272 - INFO - Epoch 16/20| Train Score: 0.6493, Loss: 0.8044, Accuracy: 0.6493, Confidence: 0.6218, Entropy: 1.0441| Val Score: 0.4734, Loss: 1.6463, Accuracy: 0.4734, Confidence: 0.6297, Entropy: 0.9996
+2025-05-30 00:25:08,102 - INFO - Epoch 17/20| Train Score: 0.6645, Loss: 0.7841, Accuracy: 0.6645, Confidence: 0.6341, Entropy: 1.0152| Val Score: 0.2043, Loss: 2.5918, Accuracy: 0.2043, Confidence: 0.6534, Entropy: 0.9463
+2025-05-30 00:25:25,941 - INFO - Epoch 18/20| Train Score: 0.6789, Loss: 0.7613, Accuracy: 0.6789, Confidence: 0.6438, Entropy: 0.9934| Val Score: 0.4583, Loss: 1.6914, Accuracy: 0.4583, Confidence: 0.6237, Entropy: 1.0144
+2025-05-30 00:25:43,541 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:25:43,541 - INFO - Epoch 19/20| Train Score: 0.6841, Loss: 0.7419, Accuracy: 0.6841, Confidence: 0.6498, Entropy: 0.9768| Val Score: 0.5541, Loss: 1.5274, Accuracy: 0.5541, Confidence: 0.6718, Entropy: 0.8970
+2025-05-30 00:25:43,833 - INFO - Case study end, 0.5540780141843972
+2025-05-30 00:25:43,833 - INFO - ################################################################################
+2025-05-30 00:25:43,833 - INFO - 
+
+2025-05-30 00:25:43,835 - INFO - ################################################################################
+2025-05-30 00:25:43,835 - INFO - Start case study with parameters:
+2025-05-30 00:25:43,842 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.3312289881065593 num_layers=6 embedding_dim=300 num_epochs=20
+2025-05-30 00:26:01,482 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:26:01,482 - INFO - Epoch 0/20| Train Score: 0.3641, Loss: 1.2926, Accuracy: 0.3641, Confidence: 0.3404, Entropy: 1.5930| Val Score: 0.3684, Loss: 1.6004, Accuracy: 0.3684, Confidence: 0.3782, Entropy: 1.5284
+2025-05-30 00:26:19,315 - INFO - Epoch 1/20| Train Score: 0.4207, Loss: 1.2092, Accuracy: 0.4207, Confidence: 0.4026, Entropy: 1.4968| Val Score: 0.3520, Loss: 1.6039, Accuracy: 0.3520, Confidence: 0.3890, Entropy: 1.5499
+2025-05-30 00:26:36,803 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:26:36,803 - INFO - Epoch 2/20| Train Score: 0.4464, Loss: 1.1712, Accuracy: 0.4464, Confidence: 0.4239, Entropy: 1.4617| Val Score: 0.3732, Loss: 1.6256, Accuracy: 0.3732, Confidence: 0.4430, Entropy: 1.4107
+2025-05-30 00:26:54,540 - INFO - Epoch 3/20| Train Score: 0.4770, Loss: 1.1246, Accuracy: 0.4770, Confidence: 0.4551, Entropy: 1.4004| Val Score: 0.3298, Loss: 1.6093, Accuracy: 0.3298, Confidence: 0.4015, Entropy: 1.4928
+2025-05-30 00:27:12,101 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:27:12,101 - INFO - Epoch 4/20| Train Score: 0.4849, Loss: 1.1104, Accuracy: 0.4849, Confidence: 0.4600, Entropy: 1.3964| Val Score: 0.4264, Loss: 1.4975, Accuracy: 0.4264, Confidence: 0.4673, Entropy: 1.3488
+2025-05-30 00:27:29,860 - INFO - Epoch 5/20| Train Score: 0.5140, Loss: 1.0648, Accuracy: 0.5140, Confidence: 0.4843, Entropy: 1.3468| Val Score: 0.3165, Loss: 1.7526, Accuracy: 0.3165, Confidence: 0.4411, Entropy: 1.4012
+2025-05-30 00:27:47,425 - INFO - Epoch 6/20| Train Score: 0.5227, Loss: 1.0494, Accuracy: 0.5227, Confidence: 0.4953, Entropy: 1.3250| Val Score: 0.3355, Loss: 2.1672, Accuracy: 0.3355, Confidence: 0.6477, Entropy: 0.9828
+2025-05-30 00:28:05,164 - INFO - Epoch 7/20| Train Score: 0.5349, Loss: 1.0359, Accuracy: 0.5349, Confidence: 0.5078, Entropy: 1.3031| Val Score: 0.4074, Loss: 1.5304, Accuracy: 0.4074, Confidence: 0.4626, Entropy: 1.3846
+2025-05-30 00:28:22,804 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:28:22,805 - INFO - Epoch 8/20| Train Score: 0.5390, Loss: 1.0276, Accuracy: 0.5390, Confidence: 0.5108, Entropy: 1.2932| Val Score: 0.4455, Loss: 1.5356, Accuracy: 0.4455, Confidence: 0.5109, Entropy: 1.2674
+2025-05-30 00:28:40,469 - INFO - Epoch 9/20| Train Score: 0.5509, Loss: 0.9954, Accuracy: 0.5509, Confidence: 0.5248, Entropy: 1.2659| Val Score: 0.3825, Loss: 1.7111, Accuracy: 0.3825, Confidence: 0.5526, Entropy: 1.1702
+2025-05-30 00:28:58,197 - INFO - Epoch 10/20| Train Score: 0.5758, Loss: 0.9699, Accuracy: 0.5758, Confidence: 0.5422, Entropy: 1.2289| Val Score: 0.4317, Loss: 1.5915, Accuracy: 0.4317, Confidence: 0.5526, Entropy: 1.1837
+2025-05-30 00:29:15,894 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:29:15,894 - INFO - Epoch 11/20| Train Score: 0.5737, Loss: 0.9616, Accuracy: 0.5737, Confidence: 0.5444, Entropy: 1.2275| Val Score: 0.5217, Loss: 1.4607, Accuracy: 0.5217, Confidence: 0.5887, Entropy: 1.1165
+2025-05-30 00:29:33,575 - INFO - Epoch 12/20| Train Score: 0.5857, Loss: 0.9447, Accuracy: 0.5857, Confidence: 0.5618, Entropy: 1.1908| Val Score: 0.4521, Loss: 1.5922, Accuracy: 0.4521, Confidence: 0.5920, Entropy: 1.1107
+2025-05-30 00:29:51,059 - INFO - Epoch 13/20| Train Score: 0.6014, Loss: 0.9236, Accuracy: 0.6014, Confidence: 0.5673, Entropy: 1.1770| Val Score: 0.3910, Loss: 1.7532, Accuracy: 0.3910, Confidence: 0.5743, Entropy: 1.1420
+2025-05-30 00:30:08,691 - INFO - Epoch 14/20| Train Score: 0.6022, Loss: 0.8996, Accuracy: 0.6022, Confidence: 0.5810, Entropy: 1.1432| Val Score: 0.4459, Loss: 1.6386, Accuracy: 0.4459, Confidence: 0.6102, Entropy: 1.0569
+2025-05-30 00:30:26,347 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:30:26,348 - INFO - Epoch 15/20| Train Score: 0.6144, Loss: 0.8883, Accuracy: 0.6144, Confidence: 0.5805, Entropy: 1.1407| Val Score: 0.5230, Loss: 1.4630, Accuracy: 0.5230, Confidence: 0.5830, Entropy: 1.1206
+2025-05-30 00:30:43,998 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:30:43,998 - INFO - Epoch 16/20| Train Score: 0.6275, Loss: 0.8567, Accuracy: 0.6275, Confidence: 0.5945, Entropy: 1.1086| Val Score: 0.5355, Loss: 1.4364, Accuracy: 0.5355, Confidence: 0.6045, Entropy: 1.0748
+2025-05-30 00:31:02,300 - INFO - Epoch 17/20| Train Score: 0.6331, Loss: 0.8449, Accuracy: 0.6331, Confidence: 0.6048, Entropy: 1.0888| Val Score: 0.5182, Loss: 1.4860, Accuracy: 0.5182, Confidence: 0.6169, Entropy: 1.0409
+2025-05-30 00:31:20,618 - INFO - Epoch 18/20| Train Score: 0.6431, Loss: 0.8257, Accuracy: 0.6431, Confidence: 0.6166, Entropy: 1.0580| Val Score: 0.3506, Loss: 1.9441, Accuracy: 0.3506, Confidence: 0.5785, Entropy: 1.0936
+2025-05-30 00:31:38,698 - INFO - Epoch 19/20| Train Score: 0.6499, Loss: 0.8053, Accuracy: 0.6499, Confidence: 0.6212, Entropy: 1.0477| Val Score: 0.4787, Loss: 1.6307, Accuracy: 0.4787, Confidence: 0.6151, Entropy: 1.0206
+2025-05-30 00:31:38,992 - INFO - Case study end, 0.5354609929078015
+2025-05-30 00:31:38,992 - INFO - ################################################################################
+2025-05-30 00:31:38,992 - INFO - 
+
+2025-05-30 00:31:38,994 - INFO - ################################################################################
+2025-05-30 00:31:38,994 - INFO - Start case study with parameters:
+2025-05-30 00:31:39,000 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.2665736208869961 num_layers=4 embedding_dim=300 num_epochs=20
+2025-05-30 00:31:51,413 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:31:51,414 - INFO - Epoch 0/20| Train Score: 0.3737, Loss: 1.2859, Accuracy: 0.3737, Confidence: 0.3412, Entropy: 1.6013| Val Score: 0.3564, Loss: 1.6225, Accuracy: 0.3564, Confidence: 0.3577, Entropy: 1.5497
+2025-05-30 00:32:03,853 - INFO - Epoch 1/20| Train Score: 0.4407, Loss: 1.2006, Accuracy: 0.4407, Confidence: 0.3935, Entropy: 1.5106| Val Score: 0.2553, Loss: 1.8073, Accuracy: 0.2553, Confidence: 0.4077, Entropy: 1.4693
+2025-05-30 00:32:16,363 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:32:16,364 - INFO - Epoch 2/20| Train Score: 0.4587, Loss: 1.1679, Accuracy: 0.4587, Confidence: 0.4130, Entropy: 1.4750| Val Score: 0.3577, Loss: 1.6143, Accuracy: 0.3577, Confidence: 0.3897, Entropy: 1.5172
+2025-05-30 00:32:28,876 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:32:28,877 - INFO - Epoch 3/20| Train Score: 0.4641, Loss: 1.1540, Accuracy: 0.4641, Confidence: 0.4262, Entropy: 1.4509| Val Score: 0.3989, Loss: 1.5738, Accuracy: 0.3989, Confidence: 0.4064, Entropy: 1.4931
+2025-05-30 00:32:41,398 - INFO - Epoch 4/20| Train Score: 0.4701, Loss: 1.1440, Accuracy: 0.4701, Confidence: 0.4329, Entropy: 1.4393| Val Score: 0.3750, Loss: 1.5628, Accuracy: 0.3750, Confidence: 0.4590, Entropy: 1.3715
+2025-05-30 00:32:53,709 - INFO - Epoch 5/20| Train Score: 0.5035, Loss: 1.1011, Accuracy: 0.5035, Confidence: 0.4496, Entropy: 1.4116| Val Score: 0.2527, Loss: 2.0335, Accuracy: 0.2527, Confidence: 0.4388, Entropy: 1.3791
+2025-05-30 00:33:06,172 - INFO - Epoch 6/20| Train Score: 0.5066, Loss: 1.0930, Accuracy: 0.5066, Confidence: 0.4583, Entropy: 1.3909| Val Score: 0.3129, Loss: 1.9497, Accuracy: 0.3129, Confidence: 0.6006, Entropy: 1.1206
+2025-05-30 00:33:18,705 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:33:18,706 - INFO - Epoch 7/20| Train Score: 0.5217, Loss: 1.0634, Accuracy: 0.5217, Confidence: 0.4720, Entropy: 1.3676| Val Score: 0.4082, Loss: 1.6949, Accuracy: 0.4082, Confidence: 0.4913, Entropy: 1.2895
+2025-05-30 00:33:31,172 - INFO - Epoch 8/20| Train Score: 0.5359, Loss: 1.0455, Accuracy: 0.5359, Confidence: 0.4840, Entropy: 1.3429| Val Score: 0.3905, Loss: 1.6350, Accuracy: 0.3905, Confidence: 0.5068, Entropy: 1.2770
+2025-05-30 00:33:43,662 - INFO - Epoch 9/20| Train Score: 0.5479, Loss: 1.0277, Accuracy: 0.5479, Confidence: 0.4951, Entropy: 1.3205| Val Score: 0.3785, Loss: 1.6840, Accuracy: 0.3785, Confidence: 0.4924, Entropy: 1.3191
+2025-05-30 00:33:56,167 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:33:56,168 - INFO - Epoch 10/20| Train Score: 0.5637, Loss: 1.0095, Accuracy: 0.5637, Confidence: 0.5079, Entropy: 1.2987| Val Score: 0.4969, Loss: 1.4469, Accuracy: 0.4969, Confidence: 0.4394, Entropy: 1.4586
+2025-05-30 00:34:08,693 - INFO - Epoch 11/20| Train Score: 0.5705, Loss: 0.9926, Accuracy: 0.5705, Confidence: 0.5132, Entropy: 1.2845| Val Score: 0.3967, Loss: 1.5807, Accuracy: 0.3967, Confidence: 0.4782, Entropy: 1.3298
+2025-05-30 00:34:21,181 - INFO - Epoch 12/20| Train Score: 0.5813, Loss: 0.9749, Accuracy: 0.5813, Confidence: 0.5234, Entropy: 1.2637| Val Score: 0.4300, Loss: 1.6321, Accuracy: 0.4300, Confidence: 0.5619, Entropy: 1.1249
+2025-05-30 00:34:33,481 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:34:33,482 - INFO - Epoch 13/20| Train Score: 0.5873, Loss: 0.9685, Accuracy: 0.5873, Confidence: 0.5297, Entropy: 1.2528| Val Score: 0.5505, Loss: 1.3841, Accuracy: 0.5505, Confidence: 0.5235, Entropy: 1.2549
+2025-05-30 00:34:45,950 - INFO - Epoch 14/20| Train Score: 0.5942, Loss: 0.9546, Accuracy: 0.5942, Confidence: 0.5415, Entropy: 1.2325| Val Score: 0.3834, Loss: 1.6209, Accuracy: 0.3834, Confidence: 0.5354, Entropy: 1.2069
+2025-05-30 00:34:58,473 - INFO - Epoch 15/20| Train Score: 0.5966, Loss: 0.9416, Accuracy: 0.5966, Confidence: 0.5447, Entropy: 1.2250| Val Score: 0.4056, Loss: 1.5760, Accuracy: 0.4056, Confidence: 0.5085, Entropy: 1.2701
+2025-05-30 00:35:10,950 - INFO - Epoch 16/20| Train Score: 0.6054, Loss: 0.9240, Accuracy: 0.6054, Confidence: 0.5539, Entropy: 1.2080| Val Score: 0.4309, Loss: 1.6009, Accuracy: 0.4309, Confidence: 0.5326, Entropy: 1.2078
+2025-05-30 00:35:23,305 - INFO - Epoch 17/20| Train Score: 0.6203, Loss: 0.8969, Accuracy: 0.6203, Confidence: 0.5657, Entropy: 1.1790| Val Score: 0.4530, Loss: 1.5491, Accuracy: 0.4530, Confidence: 0.5117, Entropy: 1.2635
+2025-05-30 00:35:35,730 - INFO - Epoch 18/20| Train Score: 0.6150, Loss: 0.8989, Accuracy: 0.6150, Confidence: 0.5678, Entropy: 1.1726| Val Score: 0.4215, Loss: 1.8981, Accuracy: 0.4215, Confidence: 0.5938, Entropy: 1.0789
+2025-05-30 00:35:48,247 - INFO - Epoch 19/20| Train Score: 0.6336, Loss: 0.8750, Accuracy: 0.6336, Confidence: 0.5757, Entropy: 1.1543| Val Score: 0.3918, Loss: 1.8007, Accuracy: 0.3918, Confidence: 0.5454, Entropy: 1.1759
+2025-05-30 00:35:48,539 - INFO - Case study end, 0.550531914893617
+2025-05-30 00:35:48,539 - INFO - ################################################################################
+2025-05-30 00:35:48,540 - INFO - 
+
+2025-05-30 00:35:48,541 - INFO - ################################################################################
+2025-05-30 00:35:48,541 - INFO - Start case study with parameters:
+2025-05-30 00:35:48,548 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.05640829464463651 num_layers=7 embedding_dim=300 num_epochs=20
+2025-05-30 00:36:09,674 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:36:09,674 - INFO - Epoch 0/20| Train Score: 0.3590, Loss: 1.3029, Accuracy: 0.3590, Confidence: 0.3391, Entropy: 1.5980| Val Score: 0.2163, Loss: 2.0589, Accuracy: 0.2163, Confidence: 0.4233, Entropy: 1.4574
+2025-05-30 00:36:30,817 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:36:30,818 - INFO - Epoch 1/20| Train Score: 0.4461, Loss: 1.1803, Accuracy: 0.4461, Confidence: 0.4191, Entropy: 1.4688| Val Score: 0.3768, Loss: 1.5993, Accuracy: 0.3768, Confidence: 0.4023, Entropy: 1.4951
+2025-05-30 00:36:51,855 - INFO - Epoch 2/20| Train Score: 0.4741, Loss: 1.1246, Accuracy: 0.4741, Confidence: 0.4535, Entropy: 1.4063| Val Score: 0.3626, Loss: 1.7223, Accuracy: 0.3626, Confidence: 0.4730, Entropy: 1.3592
+2025-05-30 00:37:12,864 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:37:12,865 - INFO - Epoch 3/20| Train Score: 0.5078, Loss: 1.0719, Accuracy: 0.5078, Confidence: 0.4869, Entropy: 1.3412| Val Score: 0.4020, Loss: 1.6164, Accuracy: 0.4020, Confidence: 0.4422, Entropy: 1.4352
+2025-05-30 00:37:33,943 - INFO - Epoch 4/20| Train Score: 0.5233, Loss: 1.0390, Accuracy: 0.5233, Confidence: 0.5027, Entropy: 1.3105| Val Score: 0.3041, Loss: 2.5964, Accuracy: 0.3041, Confidence: 0.6283, Entropy: 1.0153
+2025-05-30 00:37:54,969 - INFO - Epoch 5/20| Train Score: 0.5526, Loss: 1.0043, Accuracy: 0.5526, Confidence: 0.5244, Entropy: 1.2677| Val Score: 0.2863, Loss: 1.9339, Accuracy: 0.2863, Confidence: 0.5391, Entropy: 1.2124
+2025-05-30 00:38:16,164 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:38:16,164 - INFO - Epoch 6/20| Train Score: 0.5776, Loss: 0.9534, Accuracy: 0.5776, Confidence: 0.5483, Entropy: 1.2178| Val Score: 0.4344, Loss: 1.5970, Accuracy: 0.4344, Confidence: 0.5358, Entropy: 1.2263
+2025-05-30 00:38:37,084 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:38:37,084 - INFO - Epoch 7/20| Train Score: 0.5894, Loss: 0.9395, Accuracy: 0.5894, Confidence: 0.5618, Entropy: 1.1843| Val Score: 0.4756, Loss: 1.4674, Accuracy: 0.4756, Confidence: 0.5004, Entropy: 1.2863
+2025-05-30 00:38:58,330 - INFO - Epoch 8/20| Train Score: 0.6064, Loss: 0.8997, Accuracy: 0.6064, Confidence: 0.5789, Entropy: 1.1520| Val Score: 0.3373, Loss: 2.0026, Accuracy: 0.3373, Confidence: 0.5421, Entropy: 1.1834
+2025-05-30 00:39:19,140 - INFO - Epoch 9/20| Train Score: 0.6190, Loss: 0.8750, Accuracy: 0.6190, Confidence: 0.5896, Entropy: 1.1217| Val Score: 0.4025, Loss: 1.7749, Accuracy: 0.4025, Confidence: 0.5923, Entropy: 1.0971
+2025-05-30 00:39:40,281 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:39:40,282 - INFO - Epoch 10/20| Train Score: 0.6477, Loss: 0.8173, Accuracy: 0.6477, Confidence: 0.6158, Entropy: 1.0602| Val Score: 0.5000, Loss: 1.5210, Accuracy: 0.5000, Confidence: 0.5938, Entropy: 1.0960
+2025-05-30 00:40:01,260 - INFO - Epoch 11/20| Train Score: 0.6622, Loss: 0.7963, Accuracy: 0.6622, Confidence: 0.6289, Entropy: 1.0319| Val Score: 0.4238, Loss: 1.8084, Accuracy: 0.4238, Confidence: 0.6413, Entropy: 0.9868
+2025-05-30 00:40:22,073 - INFO - Epoch 12/20| Train Score: 0.6700, Loss: 0.7710, Accuracy: 0.6700, Confidence: 0.6408, Entropy: 1.0009| Val Score: 0.4295, Loss: 1.7245, Accuracy: 0.4295, Confidence: 0.5677, Entropy: 1.1324
+2025-05-30 00:40:43,038 - INFO - Epoch 13/20| Train Score: 0.6854, Loss: 0.7320, Accuracy: 0.6854, Confidence: 0.6585, Entropy: 0.9537| Val Score: 0.4827, Loss: 1.5971, Accuracy: 0.4827, Confidence: 0.6163, Entropy: 1.0401
+2025-05-30 00:41:04,064 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:41:04,065 - INFO - Epoch 14/20| Train Score: 0.6987, Loss: 0.6996, Accuracy: 0.6987, Confidence: 0.6714, Entropy: 0.9229| Val Score: 0.5324, Loss: 1.5944, Accuracy: 0.5324, Confidence: 0.6536, Entropy: 0.9550
+2025-05-30 00:41:25,216 - INFO - Epoch 15/20| Train Score: 0.7201, Loss: 0.6611, Accuracy: 0.7201, Confidence: 0.6880, Entropy: 0.8821| Val Score: 0.4659, Loss: 1.6668, Accuracy: 0.4659, Confidence: 0.6276, Entropy: 0.9890
+2025-05-30 00:41:46,261 - INFO - Epoch 16/20| Train Score: 0.7315, Loss: 0.6388, Accuracy: 0.7315, Confidence: 0.7028, Entropy: 0.8415| Val Score: 0.5324, Loss: 1.5350, Accuracy: 0.5324, Confidence: 0.6350, Entropy: 0.9960
+2025-05-30 00:42:07,411 - INFO - Epoch 17/20| Train Score: 0.7507, Loss: 0.5952, Accuracy: 0.7507, Confidence: 0.7155, Entropy: 0.8104| Val Score: 0.4645, Loss: 1.8055, Accuracy: 0.4645, Confidence: 0.6649, Entropy: 0.9073
+2025-05-30 00:42:28,518 - INFO - Epoch 18/20| Train Score: 0.7633, Loss: 0.5698, Accuracy: 0.7633, Confidence: 0.7342, Entropy: 0.7640| Val Score: 0.3901, Loss: 2.1594, Accuracy: 0.3901, Confidence: 0.6774, Entropy: 0.8653
+2025-05-30 00:42:49,589 - INFO - Epoch 19/20| Train Score: 0.7707, Loss: 0.5379, Accuracy: 0.7707, Confidence: 0.7400, Entropy: 0.7426| Val Score: 0.4393, Loss: 1.9223, Accuracy: 0.4393, Confidence: 0.6082, Entropy: 1.0391
+2025-05-30 00:42:49,889 - INFO - Case study end, 0.5323581560283688
+2025-05-30 00:42:49,889 - INFO - ################################################################################
+2025-05-30 00:42:49,889 - INFO - 
+
+2025-05-30 00:42:49,891 - INFO - ################################################################################
+2025-05-30 00:42:49,891 - INFO - Start case study with parameters:
+2025-05-30 00:42:49,897 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.4608624270379577 num_layers=7 embedding_dim=300 num_epochs=20
+2025-05-30 00:43:11,199 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:43:11,199 - INFO - Epoch 0/20| Train Score: 0.3282, Loss: 1.3160, Accuracy: 0.3282, Confidence: 0.3224, Entropy: 1.6215| Val Score: 0.3599, Loss: 1.6059, Accuracy: 0.3599, Confidence: 0.3878, Entropy: 1.5279
+2025-05-30 00:43:32,304 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:43:32,304 - INFO - Epoch 1/20| Train Score: 0.3967, Loss: 1.2260, Accuracy: 0.3967, Confidence: 0.3886, Entropy: 1.5186| Val Score: 0.3812, Loss: 1.5629, Accuracy: 0.3812, Confidence: 0.4113, Entropy: 1.5140
+2025-05-30 00:43:53,425 - INFO - Epoch 2/20| Train Score: 0.4294, Loss: 1.1969, Accuracy: 0.4294, Confidence: 0.4096, Entropy: 1.4866| Val Score: 0.3378, Loss: 1.6462, Accuracy: 0.3378, Confidence: 0.3902, Entropy: 1.5320
+2025-05-30 00:44:14,404 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:44:14,405 - INFO - Epoch 3/20| Train Score: 0.4530, Loss: 1.1515, Accuracy: 0.4530, Confidence: 0.4378, Entropy: 1.4345| Val Score: 0.4286, Loss: 1.5605, Accuracy: 0.4286, Confidence: 0.4771, Entropy: 1.3569
+2025-05-30 00:44:35,567 - INFO - Epoch 4/20| Train Score: 0.4655, Loss: 1.1410, Accuracy: 0.4655, Confidence: 0.4460, Entropy: 1.4192| Val Score: 0.3338, Loss: 1.6380, Accuracy: 0.3338, Confidence: 0.3768, Entropy: 1.5251
+2025-05-30 00:44:56,649 - INFO - Epoch 5/20| Train Score: 0.4806, Loss: 1.1174, Accuracy: 0.4806, Confidence: 0.4615, Entropy: 1.3936| Val Score: 0.4224, Loss: 1.5495, Accuracy: 0.4224, Confidence: 0.5185, Entropy: 1.2796
+2025-05-30 00:45:17,883 - INFO - Epoch 6/20| Train Score: 0.4989, Loss: 1.0951, Accuracy: 0.4989, Confidence: 0.4787, Entropy: 1.3591| Val Score: 0.3586, Loss: 1.7556, Accuracy: 0.3586, Confidence: 0.5244, Entropy: 1.2715
+2025-05-30 00:45:39,277 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:45:39,277 - INFO - Epoch 7/20| Train Score: 0.5043, Loss: 1.0840, Accuracy: 0.5043, Confidence: 0.4815, Entropy: 1.3559| Val Score: 0.4632, Loss: 1.5188, Accuracy: 0.4632, Confidence: 0.5566, Entropy: 1.2106
+2025-05-30 00:46:00,310 - INFO - Epoch 8/20| Train Score: 0.5167, Loss: 1.0453, Accuracy: 0.5167, Confidence: 0.4980, Entropy: 1.3191| Val Score: 0.4508, Loss: 1.5052, Accuracy: 0.4508, Confidence: 0.5311, Entropy: 1.2408
+2025-05-30 00:46:21,331 - INFO - Epoch 9/20| Train Score: 0.5275, Loss: 1.0364, Accuracy: 0.5275, Confidence: 0.5094, Entropy: 1.2948| Val Score: 0.4459, Loss: 1.5423, Accuracy: 0.4459, Confidence: 0.5310, Entropy: 1.2306
+2025-05-30 00:46:42,583 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:46:42,583 - INFO - Epoch 10/20| Train Score: 0.5505, Loss: 1.0004, Accuracy: 0.5505, Confidence: 0.5273, Entropy: 1.2589| Val Score: 0.4654, Loss: 1.4819, Accuracy: 0.4654, Confidence: 0.5294, Entropy: 1.2675
+2025-05-30 00:47:03,529 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:47:03,530 - INFO - Epoch 11/20| Train Score: 0.5402, Loss: 1.0140, Accuracy: 0.5402, Confidence: 0.5255, Entropy: 1.2646| Val Score: 0.4956, Loss: 1.4924, Accuracy: 0.4956, Confidence: 0.5744, Entropy: 1.1494
+2025-05-30 00:47:24,490 - INFO - Epoch 12/20| Train Score: 0.5703, Loss: 0.9519, Accuracy: 0.5703, Confidence: 0.5509, Entropy: 1.2091| Val Score: 0.4743, Loss: 1.4862, Accuracy: 0.4743, Confidence: 0.5358, Entropy: 1.2347
+2025-05-30 00:47:45,509 - INFO - Epoch 13/20| Train Score: 0.5790, Loss: 0.9519, Accuracy: 0.5790, Confidence: 0.5600, Entropy: 1.1906| Val Score: 0.4947, Loss: 1.4531, Accuracy: 0.4947, Confidence: 0.5258, Entropy: 1.2403
+2025-05-30 00:48:06,558 - INFO - Epoch 14/20| Train Score: 0.5725, Loss: 0.9574, Accuracy: 0.5725, Confidence: 0.5545, Entropy: 1.2035| Val Score: 0.4951, Loss: 1.5094, Accuracy: 0.4951, Confidence: 0.5981, Entropy: 1.0867
+2025-05-30 00:48:27,557 - INFO - Epoch 15/20| Train Score: 0.5946, Loss: 0.9270, Accuracy: 0.5946, Confidence: 0.5689, Entropy: 1.1684| Val Score: 0.4747, Loss: 1.5965, Accuracy: 0.4747, Confidence: 0.6196, Entropy: 1.0493
+2025-05-30 00:48:27,557 - WARNING - Trial was pruned at epoch 15
+2025-05-30 00:48:27,558 - INFO - Case study end, 0.49556737588652483
+2025-05-30 00:48:27,558 - INFO - ################################################################################
+2025-05-30 00:48:27,558 - INFO - 
+
+2025-05-30 00:48:27,559 - INFO - ################################################################################
+2025-05-30 00:48:27,559 - INFO - Start case study with parameters:
+2025-05-30 00:48:27,566 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.15083251066166892 num_layers=5 embedding_dim=64 num_epochs=20
+2025-05-30 00:48:31,902 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:48:31,902 - INFO - Epoch 0/20| Train Score: 0.2933, Loss: 1.3574, Accuracy: 0.2933, Confidence: 0.2671, Entropy: 1.7104| Val Score: 0.3936, Loss: 1.6227, Accuracy: 0.3936, Confidence: 0.2700, Entropy: 1.7043
+2025-05-30 00:48:36,228 - INFO - Epoch 1/20| Train Score: 0.3988, Loss: 1.2461, Accuracy: 0.3988, Confidence: 0.3318, Entropy: 1.6156| Val Score: 0.3834, Loss: 1.5953, Accuracy: 0.3834, Confidence: 0.3919, Entropy: 1.5359
+2025-05-30 00:48:40,530 - INFO - Epoch 2/20| Train Score: 0.4256, Loss: 1.2100, Accuracy: 0.4256, Confidence: 0.3730, Entropy: 1.5493| Val Score: 0.3794, Loss: 1.6061, Accuracy: 0.3794, Confidence: 0.4180, Entropy: 1.4599
+2025-05-30 00:48:44,870 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:48:44,870 - INFO - Epoch 3/20| Train Score: 0.4449, Loss: 1.1779, Accuracy: 0.4449, Confidence: 0.3969, Entropy: 1.5098| Val Score: 0.4916, Loss: 1.4694, Accuracy: 0.4916, Confidence: 0.3641, Entropy: 1.5718
+2025-05-30 00:48:49,175 - INFO - Epoch 4/20| Train Score: 0.4709, Loss: 1.1467, Accuracy: 0.4709, Confidence: 0.4173, Entropy: 1.4745| Val Score: 0.4255, Loss: 1.5459, Accuracy: 0.4255, Confidence: 0.4040, Entropy: 1.4830
+2025-05-30 00:48:53,521 - INFO - Epoch 5/20| Train Score: 0.4785, Loss: 1.1312, Accuracy: 0.4785, Confidence: 0.4298, Entropy: 1.4495| Val Score: 0.4818, Loss: 1.4426, Accuracy: 0.4818, Confidence: 0.4265, Entropy: 1.4621
+2025-05-30 00:48:57,892 - INFO - Epoch 6/20| Train Score: 0.4874, Loss: 1.1209, Accuracy: 0.4874, Confidence: 0.4381, Entropy: 1.4342| Val Score: 0.3980, Loss: 1.6232, Accuracy: 0.3980, Confidence: 0.4430, Entropy: 1.4176
+2025-05-30 00:49:02,236 - INFO - Epoch 7/20| Train Score: 0.4971, Loss: 1.1091, Accuracy: 0.4971, Confidence: 0.4470, Entropy: 1.4175| Val Score: 0.4535, Loss: 1.5164, Accuracy: 0.4535, Confidence: 0.4020, Entropy: 1.5044
+2025-05-30 00:49:06,641 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:49:06,642 - INFO - Epoch 8/20| Train Score: 0.5125, Loss: 1.0877, Accuracy: 0.5125, Confidence: 0.4592, Entropy: 1.3980| Val Score: 0.5279, Loss: 1.3565, Accuracy: 0.5279, Confidence: 0.4677, Entropy: 1.3779
+2025-05-30 00:49:10,993 - INFO - Epoch 9/20| Train Score: 0.5131, Loss: 1.0734, Accuracy: 0.5131, Confidence: 0.4712, Entropy: 1.3754| Val Score: 0.5213, Loss: 1.3910, Accuracy: 0.5213, Confidence: 0.4506, Entropy: 1.4224
+2025-05-30 00:49:15,258 - INFO - Epoch 10/20| Train Score: 0.5240, Loss: 1.0616, Accuracy: 0.5240, Confidence: 0.4795, Entropy: 1.3570| Val Score: 0.4543, Loss: 1.4776, Accuracy: 0.4543, Confidence: 0.4688, Entropy: 1.3759
+2025-05-30 00:49:19,610 - INFO - Epoch 11/20| Train Score: 0.5236, Loss: 1.0524, Accuracy: 0.5236, Confidence: 0.4868, Entropy: 1.3462| Val Score: 0.5058, Loss: 1.4360, Accuracy: 0.5058, Confidence: 0.4696, Entropy: 1.3697
+2025-05-30 00:49:23,936 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:49:23,937 - INFO - Epoch 12/20| Train Score: 0.5389, Loss: 1.0407, Accuracy: 0.5389, Confidence: 0.4927, Entropy: 1.3355| Val Score: 0.5328, Loss: 1.3895, Accuracy: 0.5328, Confidence: 0.5220, Entropy: 1.2797
+2025-05-30 00:49:28,275 - INFO - Epoch 13/20| Train Score: 0.5352, Loss: 1.0386, Accuracy: 0.5352, Confidence: 0.4946, Entropy: 1.3312| Val Score: 0.5275, Loss: 1.3616, Accuracy: 0.5275, Confidence: 0.5204, Entropy: 1.2869
+2025-05-30 00:49:32,606 - INFO - Epoch 14/20| Train Score: 0.5448, Loss: 1.0252, Accuracy: 0.5448, Confidence: 0.5013, Entropy: 1.3158| Val Score: 0.5235, Loss: 1.3737, Accuracy: 0.5235, Confidence: 0.5215, Entropy: 1.2622
+2025-05-30 00:49:36,951 - INFO - Epoch 15/20| Train Score: 0.5533, Loss: 1.0165, Accuracy: 0.5533, Confidence: 0.5089, Entropy: 1.3027| Val Score: 0.5155, Loss: 1.3913, Accuracy: 0.5155, Confidence: 0.5029, Entropy: 1.3053
+2025-05-30 00:49:41,298 - INFO - Epoch 16/20| Train Score: 0.5549, Loss: 1.0188, Accuracy: 0.5549, Confidence: 0.5112, Entropy: 1.2991| Val Score: 0.4659, Loss: 1.4957, Accuracy: 0.4659, Confidence: 0.5159, Entropy: 1.2871
+2025-05-30 00:49:45,630 - INFO - Epoch 17/20| Train Score: 0.5583, Loss: 1.0008, Accuracy: 0.5583, Confidence: 0.5194, Entropy: 1.2838| Val Score: 0.4867, Loss: 1.4727, Accuracy: 0.4867, Confidence: 0.5281, Entropy: 1.2643
+2025-05-30 00:49:49,886 - INFO - Epoch 18/20| Train Score: 0.5609, Loss: 1.0073, Accuracy: 0.5609, Confidence: 0.5176, Entropy: 1.2855| Val Score: 0.5075, Loss: 1.4268, Accuracy: 0.5075, Confidence: 0.5690, Entropy: 1.1688
+2025-05-30 00:49:54,066 - INFO - Epoch 19/20| Train Score: 0.5736, Loss: 0.9751, Accuracy: 0.5736, Confidence: 0.5314, Entropy: 1.2587| Val Score: 0.5257, Loss: 1.3939, Accuracy: 0.5257, Confidence: 0.5345, Entropy: 1.2297
+2025-05-30 00:49:54,369 - INFO - Case study end, 0.5328014184397163
+2025-05-30 00:49:54,369 - INFO - ################################################################################
+2025-05-30 00:49:54,369 - INFO - 
+
+2025-05-30 00:49:54,371 - INFO - ################################################################################
+2025-05-30 00:49:54,371 - INFO - Start case study with parameters:
+2025-05-30 00:49:54,377 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.29502876218985485 num_layers=8 embedding_dim=128 num_epochs=20
+2025-05-30 00:50:05,037 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:50:05,037 - INFO - Epoch 0/20| Train Score: 0.2952, Loss: 1.3547, Accuracy: 0.2952, Confidence: 0.2775, Entropy: 1.6879| Val Score: 0.2717, Loss: 1.7358, Accuracy: 0.2717, Confidence: 0.3861, Entropy: 1.5478
+2025-05-30 00:50:15,557 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:50:15,557 - INFO - Epoch 1/20| Train Score: 0.3887, Loss: 1.2514, Accuracy: 0.3887, Confidence: 0.3548, Entropy: 1.5713| Val Score: 0.3985, Loss: 1.5958, Accuracy: 0.3985, Confidence: 0.3821, Entropy: 1.5128
+2025-05-30 00:50:26,107 - INFO - Epoch 2/20| Train Score: 0.4062, Loss: 1.2102, Accuracy: 0.4062, Confidence: 0.3891, Entropy: 1.5182| Val Score: 0.2301, Loss: 2.0221, Accuracy: 0.2301, Confidence: 0.4595, Entropy: 1.4008
+2025-05-30 00:50:36,592 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:50:36,592 - INFO - Epoch 3/20| Train Score: 0.4296, Loss: 1.1820, Accuracy: 0.4296, Confidence: 0.4098, Entropy: 1.4829| Val Score: 0.4605, Loss: 1.4613, Accuracy: 0.4605, Confidence: 0.4205, Entropy: 1.4693
+2025-05-30 00:50:47,131 - INFO - Epoch 4/20| Train Score: 0.4650, Loss: 1.1479, Accuracy: 0.4650, Confidence: 0.4363, Entropy: 1.4437| Val Score: 0.3041, Loss: 1.8388, Accuracy: 0.3041, Confidence: 0.4971, Entropy: 1.3232
+2025-05-30 00:50:57,650 - INFO - Epoch 5/20| Train Score: 0.4675, Loss: 1.1432, Accuracy: 0.4675, Confidence: 0.4488, Entropy: 1.4279| Val Score: 0.3063, Loss: 1.8835, Accuracy: 0.3063, Confidence: 0.5366, Entropy: 1.2433
+2025-05-30 00:51:08,202 - INFO - Epoch 6/20| Train Score: 0.4766, Loss: 1.1200, Accuracy: 0.4766, Confidence: 0.4569, Entropy: 1.4101| Val Score: 0.4517, Loss: 1.4981, Accuracy: 0.4517, Confidence: 0.4887, Entropy: 1.3632
+2025-05-30 00:51:18,657 - INFO - Epoch 7/20| Train Score: 0.5029, Loss: 1.0847, Accuracy: 0.5029, Confidence: 0.4788, Entropy: 1.3695| Val Score: 0.4153, Loss: 1.5505, Accuracy: 0.4153, Confidence: 0.4940, Entropy: 1.3588
+2025-05-30 00:51:29,250 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:51:29,251 - INFO - Epoch 8/20| Train Score: 0.5073, Loss: 1.0781, Accuracy: 0.5073, Confidence: 0.4854, Entropy: 1.3535| Val Score: 0.4991, Loss: 1.4130, Accuracy: 0.4991, Confidence: 0.4983, Entropy: 1.3220
+2025-05-30 00:51:39,770 - INFO - Epoch 9/20| Train Score: 0.5116, Loss: 1.0626, Accuracy: 0.5116, Confidence: 0.4947, Entropy: 1.3354| Val Score: 0.3515, Loss: 1.7093, Accuracy: 0.3515, Confidence: 0.4916, Entropy: 1.3481
+2025-05-30 00:51:50,478 - INFO - Epoch 10/20| Train Score: 0.5228, Loss: 1.0389, Accuracy: 0.5228, Confidence: 0.5059, Entropy: 1.3128| Val Score: 0.4504, Loss: 1.4913, Accuracy: 0.4504, Confidence: 0.5158, Entropy: 1.2887
+2025-05-30 00:52:01,134 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:52:01,134 - INFO - Epoch 11/20| Train Score: 0.5176, Loss: 1.0446, Accuracy: 0.5176, Confidence: 0.5072, Entropy: 1.3076| Val Score: 0.5022, Loss: 1.4290, Accuracy: 0.5022, Confidence: 0.5114, Entropy: 1.2990
+2025-05-30 00:52:11,715 - INFO - Epoch 12/20| Train Score: 0.5300, Loss: 1.0340, Accuracy: 0.5300, Confidence: 0.5102, Entropy: 1.3025| Val Score: 0.4645, Loss: 1.4642, Accuracy: 0.4645, Confidence: 0.4834, Entropy: 1.3585
+2025-05-30 00:52:22,238 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:52:22,238 - INFO - Epoch 13/20| Train Score: 0.5424, Loss: 1.0124, Accuracy: 0.5424, Confidence: 0.5223, Entropy: 1.2782| Val Score: 0.5319, Loss: 1.3844, Accuracy: 0.5319, Confidence: 0.5319, Entropy: 1.2393
+2025-05-30 00:52:32,858 - INFO - Epoch 14/20| Train Score: 0.5381, Loss: 1.0022, Accuracy: 0.5381, Confidence: 0.5298, Entropy: 1.2618| Val Score: 0.5239, Loss: 1.3737, Accuracy: 0.5239, Confidence: 0.5258, Entropy: 1.2701
+2025-05-30 00:52:43,325 - INFO - Epoch 15/20| Train Score: 0.5463, Loss: 0.9983, Accuracy: 0.5463, Confidence: 0.5302, Entropy: 1.2592| Val Score: 0.4712, Loss: 1.5067, Accuracy: 0.4712, Confidence: 0.5305, Entropy: 1.2609
+2025-05-30 00:52:54,094 - INFO - Epoch 16/20| Train Score: 0.5617, Loss: 0.9780, Accuracy: 0.5617, Confidence: 0.5413, Entropy: 1.2326| Val Score: 0.5120, Loss: 1.4188, Accuracy: 0.5120, Confidence: 0.5285, Entropy: 1.2560
+2025-05-30 00:53:04,948 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:53:04,949 - INFO - Epoch 17/20| Train Score: 0.5670, Loss: 0.9617, Accuracy: 0.5670, Confidence: 0.5466, Entropy: 1.2232| Val Score: 0.5536, Loss: 1.3563, Accuracy: 0.5536, Confidence: 0.5670, Entropy: 1.1815
+2025-05-30 00:53:15,721 - INFO - Epoch 18/20| Train Score: 0.5735, Loss: 0.9471, Accuracy: 0.5735, Confidence: 0.5602, Entropy: 1.1899| Val Score: 0.4934, Loss: 1.4598, Accuracy: 0.4934, Confidence: 0.5340, Entropy: 1.2284
+2025-05-30 00:53:26,349 - INFO - Epoch 19/20| Train Score: 0.5796, Loss: 0.9455, Accuracy: 0.5796, Confidence: 0.5614, Entropy: 1.1951| Val Score: 0.5306, Loss: 1.3969, Accuracy: 0.5306, Confidence: 0.5563, Entropy: 1.1964
+2025-05-30 00:53:26,637 - INFO - Case study end, 0.5536347517730497
+2025-05-30 00:53:26,637 - INFO - ################################################################################
+2025-05-30 00:53:26,638 - INFO - 
+
+2025-05-30 00:53:26,640 - INFO - ################################################################################
+2025-05-30 00:53:26,640 - INFO - Start case study with parameters:
+2025-05-30 00:53:26,646 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.44513213663633894 num_layers=9 embedding_dim=128 num_epochs=20
+2025-05-30 00:53:38,675 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:53:38,675 - INFO - Epoch 0/20| Train Score: 0.2917, Loss: 1.3598, Accuracy: 0.2917, Confidence: 0.2609, Entropy: 1.7069| Val Score: 0.3546, Loss: 1.6477, Accuracy: 0.3546, Confidence: 0.2708, Entropy: 1.6936
+2025-05-30 00:53:50,558 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:53:50,559 - INFO - Epoch 1/20| Train Score: 0.3644, Loss: 1.2813, Accuracy: 0.3644, Confidence: 0.3371, Entropy: 1.6076| Val Score: 0.3848, Loss: 1.5723, Accuracy: 0.3848, Confidence: 0.3300, Entropy: 1.6237
+2025-05-30 00:54:02,344 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:54:02,344 - INFO - Epoch 2/20| Train Score: 0.4028, Loss: 1.2274, Accuracy: 0.4028, Confidence: 0.3794, Entropy: 1.5400| Val Score: 0.3856, Loss: 1.5718, Accuracy: 0.3856, Confidence: 0.4255, Entropy: 1.4529
+2025-05-30 00:54:14,057 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:54:14,057 - INFO - Epoch 3/20| Train Score: 0.4289, Loss: 1.1860, Accuracy: 0.4289, Confidence: 0.4081, Entropy: 1.4936| Val Score: 0.4322, Loss: 1.5590, Accuracy: 0.4322, Confidence: 0.4701, Entropy: 1.3925
+2025-05-30 00:54:25,928 - INFO - Epoch 4/20| Train Score: 0.4419, Loss: 1.1668, Accuracy: 0.4419, Confidence: 0.4287, Entropy: 1.4604| Val Score: 0.4051, Loss: 1.5602, Accuracy: 0.4051, Confidence: 0.3936, Entropy: 1.4916
+2025-05-30 00:54:37,752 - INFO - Epoch 5/20| Train Score: 0.4473, Loss: 1.1629, Accuracy: 0.4473, Confidence: 0.4320, Entropy: 1.4505| Val Score: 0.3812, Loss: 1.6054, Accuracy: 0.3812, Confidence: 0.4087, Entropy: 1.4840
+2025-05-30 00:54:49,493 - INFO - Epoch 6/20| Train Score: 0.4512, Loss: 1.1472, Accuracy: 0.4512, Confidence: 0.4411, Entropy: 1.4320| Val Score: 0.4043, Loss: 1.5281, Accuracy: 0.4043, Confidence: 0.4595, Entropy: 1.3994
+2025-05-30 00:55:01,313 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:55:01,314 - INFO - Epoch 7/20| Train Score: 0.4684, Loss: 1.1225, Accuracy: 0.4684, Confidence: 0.4564, Entropy: 1.4061| Val Score: 0.4552, Loss: 1.4884, Accuracy: 0.4552, Confidence: 0.4845, Entropy: 1.3330
+2025-05-30 00:55:13,087 - INFO - Epoch 8/20| Train Score: 0.4807, Loss: 1.1140, Accuracy: 0.4807, Confidence: 0.4657, Entropy: 1.3914| Val Score: 0.4007, Loss: 1.6081, Accuracy: 0.4007, Confidence: 0.5081, Entropy: 1.2874
+2025-05-30 00:55:24,913 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:55:24,913 - INFO - Epoch 9/20| Train Score: 0.4865, Loss: 1.1057, Accuracy: 0.4865, Confidence: 0.4715, Entropy: 1.3848| Val Score: 0.4685, Loss: 1.4328, Accuracy: 0.4685, Confidence: 0.5117, Entropy: 1.2869
+2025-05-30 00:55:36,658 - INFO - Epoch 10/20| Train Score: 0.4983, Loss: 1.0900, Accuracy: 0.4983, Confidence: 0.4812, Entropy: 1.3653| Val Score: 0.4388, Loss: 1.5041, Accuracy: 0.4388, Confidence: 0.5222, Entropy: 1.2880
+2025-05-30 00:55:48,505 - INFO - Epoch 11/20| Train Score: 0.4925, Loss: 1.0842, Accuracy: 0.4925, Confidence: 0.4840, Entropy: 1.3575| Val Score: 0.4233, Loss: 1.5506, Accuracy: 0.4233, Confidence: 0.5355, Entropy: 1.2638
+2025-05-30 00:56:00,211 - INFO - Epoch 12/20| Train Score: 0.5095, Loss: 1.0753, Accuracy: 0.5095, Confidence: 0.4938, Entropy: 1.3408| Val Score: 0.4645, Loss: 1.4542, Accuracy: 0.4645, Confidence: 0.5309, Entropy: 1.2686
+2025-05-30 00:56:11,970 - INFO - Epoch 13/20| Train Score: 0.5124, Loss: 1.0629, Accuracy: 0.5124, Confidence: 0.4986, Entropy: 1.3334| Val Score: 0.4273, Loss: 1.5680, Accuracy: 0.4273, Confidence: 0.5160, Entropy: 1.2927
+2025-05-30 00:56:11,970 - WARNING - Trial was pruned at epoch 13
+2025-05-30 00:56:11,971 - INFO - Case study end, 0.46852836879432624
+2025-05-30 00:56:11,971 - INFO - ################################################################################
+2025-05-30 00:56:11,971 - INFO - 
+
+2025-05-30 00:56:11,972 - INFO - ################################################################################
+2025-05-30 00:56:11,972 - INFO - Start case study with parameters:
+2025-05-30 00:56:11,978 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.29849883818442385 num_layers=9 embedding_dim=128 num_epochs=20
+2025-05-30 00:56:23,818 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:56:23,819 - INFO - Epoch 0/20| Train Score: 0.2984, Loss: 1.3601, Accuracy: 0.2984, Confidence: 0.2722, Entropy: 1.6997| Val Score: 0.2903, Loss: 1.6724, Accuracy: 0.2903, Confidence: 0.3039, Entropy: 1.6512
+2025-05-30 00:56:35,665 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:56:35,665 - INFO - Epoch 1/20| Train Score: 0.3598, Loss: 1.2747, Accuracy: 0.3598, Confidence: 0.3356, Entropy: 1.6027| Val Score: 0.3697, Loss: 1.6160, Accuracy: 0.3697, Confidence: 0.3280, Entropy: 1.6042
+2025-05-30 00:56:47,510 - INFO - Epoch 2/20| Train Score: 0.3985, Loss: 1.2237, Accuracy: 0.3985, Confidence: 0.3743, Entropy: 1.5410| Val Score: 0.2598, Loss: 2.4171, Accuracy: 0.2598, Confidence: 0.5887, Entropy: 1.1030
+2025-05-30 00:56:59,522 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:56:59,522 - INFO - Epoch 3/20| Train Score: 0.4212, Loss: 1.1947, Accuracy: 0.4212, Confidence: 0.4048, Entropy: 1.4922| Val Score: 0.3958, Loss: 1.6124, Accuracy: 0.3958, Confidence: 0.4164, Entropy: 1.4591
+2025-05-30 00:57:11,464 - INFO - Epoch 4/20| Train Score: 0.4444, Loss: 1.1588, Accuracy: 0.4444, Confidence: 0.4239, Entropy: 1.4609| Val Score: 0.3728, Loss: 1.6186, Accuracy: 0.3728, Confidence: 0.5208, Entropy: 1.3029
+2025-05-30 00:57:23,179 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:57:23,179 - INFO - Epoch 5/20| Train Score: 0.4440, Loss: 1.1585, Accuracy: 0.4440, Confidence: 0.4291, Entropy: 1.4521| Val Score: 0.4446, Loss: 1.4899, Accuracy: 0.4446, Confidence: 0.3904, Entropy: 1.5177
+2025-05-30 00:57:35,086 - INFO - Epoch 6/20| Train Score: 0.4592, Loss: 1.1387, Accuracy: 0.4592, Confidence: 0.4444, Entropy: 1.4264| Val Score: 0.4428, Loss: 1.5063, Accuracy: 0.4428, Confidence: 0.4252, Entropy: 1.4607
+2025-05-30 00:57:47,025 - INFO - Epoch 7/20| Train Score: 0.4802, Loss: 1.1089, Accuracy: 0.4802, Confidence: 0.4538, Entropy: 1.4057| Val Score: 0.3861, Loss: 1.6357, Accuracy: 0.3861, Confidence: 0.4712, Entropy: 1.3906
+2025-05-30 00:57:58,790 - INFO - Epoch 8/20| Train Score: 0.4888, Loss: 1.0930, Accuracy: 0.4888, Confidence: 0.4731, Entropy: 1.3774| Val Score: 0.4397, Loss: 1.5213, Accuracy: 0.4397, Confidence: 0.5011, Entropy: 1.3211
+2025-05-30 00:58:10,654 - INFO - Epoch 9/20| Train Score: 0.4931, Loss: 1.0875, Accuracy: 0.4931, Confidence: 0.4782, Entropy: 1.3625| Val Score: 0.4087, Loss: 1.5957, Accuracy: 0.4087, Confidence: 0.4645, Entropy: 1.3660
+2025-05-30 00:58:22,442 - INFO - Epoch 10/20| Train Score: 0.5004, Loss: 1.0657, Accuracy: 0.5004, Confidence: 0.4880, Entropy: 1.3447| Val Score: 0.3949, Loss: 1.5981, Accuracy: 0.3949, Confidence: 0.5151, Entropy: 1.2820
+2025-05-30 00:58:22,443 - WARNING - Trial was pruned at epoch 10
+2025-05-30 00:58:22,443 - INFO - Case study end, 0.4445921985815603
+2025-05-30 00:58:22,443 - INFO - ################################################################################
+2025-05-30 00:58:22,443 - INFO - 
+
+2025-05-30 00:58:22,444 - INFO - ################################################################################
+2025-05-30 00:58:22,445 - INFO - Start case study with parameters:
+2025-05-30 00:58:22,451 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.13279357598836633 num_layers=8 embedding_dim=128 num_epochs=20
+2025-05-30 00:58:33,122 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:58:33,122 - INFO - Epoch 0/20| Train Score: 0.3136, Loss: 1.3443, Accuracy: 0.3136, Confidence: 0.2827, Entropy: 1.6855| Val Score: 0.3980, Loss: 1.6313, Accuracy: 0.3980, Confidence: 0.3289, Entropy: 1.6071
+2025-05-30 00:58:43,708 - INFO - Epoch 1/20| Train Score: 0.4116, Loss: 1.2160, Accuracy: 0.4116, Confidence: 0.3774, Entropy: 1.5388| Val Score: 0.3413, Loss: 1.7324, Accuracy: 0.3413, Confidence: 0.3973, Entropy: 1.4900
+2025-05-30 00:58:54,229 - INFO - Epoch 2/20| Train Score: 0.4389, Loss: 1.1819, Accuracy: 0.4389, Confidence: 0.4158, Entropy: 1.4813| Val Score: 0.3954, Loss: 1.6342, Accuracy: 0.3954, Confidence: 0.4031, Entropy: 1.4951
+2025-05-30 00:59:04,986 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 00:59:04,986 - INFO - Epoch 3/20| Train Score: 0.4664, Loss: 1.1349, Accuracy: 0.4664, Confidence: 0.4374, Entropy: 1.4377| Val Score: 0.4264, Loss: 1.5497, Accuracy: 0.4264, Confidence: 0.4346, Entropy: 1.4378
+2025-05-30 00:59:15,828 - INFO - Epoch 4/20| Train Score: 0.4771, Loss: 1.1145, Accuracy: 0.4771, Confidence: 0.4534, Entropy: 1.4051| Val Score: 0.3462, Loss: 1.6567, Accuracy: 0.3462, Confidence: 0.3912, Entropy: 1.5079
+2025-05-30 00:59:26,539 - INFO - Epoch 5/20| Train Score: 0.5009, Loss: 1.0905, Accuracy: 0.5009, Confidence: 0.4682, Entropy: 1.3823| Val Score: 0.4020, Loss: 1.5766, Accuracy: 0.4020, Confidence: 0.4450, Entropy: 1.4112
+2025-05-30 00:59:37,296 - INFO - Epoch 6/20| Train Score: 0.5151, Loss: 1.0695, Accuracy: 0.5151, Confidence: 0.4813, Entropy: 1.3576| Val Score: 0.4056, Loss: 1.5329, Accuracy: 0.4056, Confidence: 0.4278, Entropy: 1.4445
+2025-05-30 00:59:48,149 - INFO - Epoch 7/20| Train Score: 0.5154, Loss: 1.0534, Accuracy: 0.5154, Confidence: 0.4957, Entropy: 1.3274| Val Score: 0.4176, Loss: 1.5236, Accuracy: 0.4176, Confidence: 0.4348, Entropy: 1.4260
+2025-05-30 00:59:58,908 - INFO - Epoch 8/20| Train Score: 0.5309, Loss: 1.0263, Accuracy: 0.5309, Confidence: 0.5063, Entropy: 1.3019| Val Score: 0.4162, Loss: 1.6191, Accuracy: 0.4162, Confidence: 0.4997, Entropy: 1.3186
+2025-05-30 01:00:09,713 - INFO - Epoch 9/20| Train Score: 0.5319, Loss: 1.0269, Accuracy: 0.5319, Confidence: 0.5119, Entropy: 1.2936| Val Score: 0.4162, Loss: 1.6253, Accuracy: 0.4162, Confidence: 0.4851, Entropy: 1.3140
+2025-05-30 01:00:20,493 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:00:20,493 - INFO - Epoch 10/20| Train Score: 0.5544, Loss: 0.9852, Accuracy: 0.5544, Confidence: 0.5296, Entropy: 1.2595| Val Score: 0.4743, Loss: 1.4952, Accuracy: 0.4743, Confidence: 0.5170, Entropy: 1.2871
+2025-05-30 01:00:31,023 - INFO - Epoch 11/20| Train Score: 0.5633, Loss: 0.9778, Accuracy: 0.5633, Confidence: 0.5391, Entropy: 1.2383| Val Score: 0.4300, Loss: 1.6118, Accuracy: 0.4300, Confidence: 0.5272, Entropy: 1.2522
+2025-05-30 01:00:41,426 - INFO - Epoch 12/20| Train Score: 0.5746, Loss: 0.9545, Accuracy: 0.5746, Confidence: 0.5513, Entropy: 1.2107| Val Score: 0.4016, Loss: 1.6638, Accuracy: 0.4016, Confidence: 0.5501, Entropy: 1.1958
+2025-05-30 01:00:51,895 - INFO - Epoch 13/20| Train Score: 0.5734, Loss: 0.9601, Accuracy: 0.5734, Confidence: 0.5514, Entropy: 1.2116| Val Score: 0.4171, Loss: 1.5797, Accuracy: 0.4171, Confidence: 0.5171, Entropy: 1.2459
+2025-05-30 01:00:51,896 - WARNING - Trial was pruned at epoch 13
+2025-05-30 01:00:51,896 - INFO - Case study end, 0.47429078014184395
+2025-05-30 01:00:51,896 - INFO - ################################################################################
+2025-05-30 01:00:51,896 - INFO - 
+
+2025-05-30 01:00:51,897 - INFO - ################################################################################
+2025-05-30 01:00:51,897 - INFO - Start case study with parameters:
+2025-05-30 01:00:51,904 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.2820992209279168 num_layers=6 embedding_dim=600 num_epochs=20
+2025-05-30 01:01:26,947 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:01:26,947 - INFO - Epoch 0/20| Train Score: 0.3598, Loss: 1.2974, Accuracy: 0.3598, Confidence: 0.3686, Entropy: 1.5498| Val Score: 0.4038, Loss: 1.5608, Accuracy: 0.4038, Confidence: 0.3742, Entropy: 1.5537
+2025-05-30 01:02:02,142 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:02:02,142 - INFO - Epoch 1/20| Train Score: 0.4285, Loss: 1.1937, Accuracy: 0.4285, Confidence: 0.4173, Entropy: 1.4636| Val Score: 0.4295, Loss: 1.5301, Accuracy: 0.4295, Confidence: 0.3807, Entropy: 1.5263
+2025-05-30 01:02:37,744 - INFO - Epoch 2/20| Train Score: 0.4747, Loss: 1.1341, Accuracy: 0.4747, Confidence: 0.4511, Entropy: 1.4047| Val Score: 0.4038, Loss: 1.5600, Accuracy: 0.4038, Confidence: 0.3800, Entropy: 1.5327
+2025-05-30 01:03:12,979 - INFO - Epoch 3/20| Train Score: 0.4987, Loss: 1.0930, Accuracy: 0.4987, Confidence: 0.4738, Entropy: 1.3642| Val Score: 0.4065, Loss: 1.6459, Accuracy: 0.4065, Confidence: 0.5133, Entropy: 1.2900
+2025-05-30 01:03:47,992 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:03:47,993 - INFO - Epoch 4/20| Train Score: 0.5217, Loss: 1.0533, Accuracy: 0.5217, Confidence: 0.4956, Entropy: 1.3249| Val Score: 0.4637, Loss: 1.4738, Accuracy: 0.4637, Confidence: 0.5288, Entropy: 1.2682
+2025-05-30 01:04:23,424 - INFO - Epoch 5/20| Train Score: 0.5423, Loss: 1.0219, Accuracy: 0.5423, Confidence: 0.5145, Entropy: 1.2828| Val Score: 0.3630, Loss: 1.7327, Accuracy: 0.3630, Confidence: 0.5365, Entropy: 1.2002
+2025-05-30 01:04:58,844 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:04:58,844 - INFO - Epoch 6/20| Train Score: 0.5544, Loss: 0.9914, Accuracy: 0.5544, Confidence: 0.5344, Entropy: 1.2370| Val Score: 0.4743, Loss: 1.4697, Accuracy: 0.4743, Confidence: 0.4721, Entropy: 1.3603
+2025-05-30 01:05:34,382 - INFO - Epoch 7/20| Train Score: 0.5797, Loss: 0.9617, Accuracy: 0.5797, Confidence: 0.5451, Entropy: 1.2186| Val Score: 0.4712, Loss: 1.5430, Accuracy: 0.4712, Confidence: 0.5605, Entropy: 1.1717
+2025-05-30 01:06:09,424 - INFO - Epoch 8/20| Train Score: 0.5909, Loss: 0.9393, Accuracy: 0.5909, Confidence: 0.5618, Entropy: 1.1854| Val Score: 0.4605, Loss: 1.6737, Accuracy: 0.4605, Confidence: 0.5279, Entropy: 1.2357
+2025-05-30 01:06:44,671 - INFO - Epoch 9/20| Train Score: 0.6129, Loss: 0.8940, Accuracy: 0.6129, Confidence: 0.5849, Entropy: 1.1341| Val Score: 0.4637, Loss: 1.5944, Accuracy: 0.4637, Confidence: 0.5659, Entropy: 1.1437
+2025-05-30 01:07:19,838 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:07:19,839 - INFO - Epoch 10/20| Train Score: 0.6188, Loss: 0.8783, Accuracy: 0.6188, Confidence: 0.5935, Entropy: 1.1150| Val Score: 0.5412, Loss: 1.4887, Accuracy: 0.5412, Confidence: 0.5891, Entropy: 1.1096
+2025-05-30 01:07:55,243 - INFO - Epoch 11/20| Train Score: 0.6328, Loss: 0.8436, Accuracy: 0.6328, Confidence: 0.6055, Entropy: 1.0825| Val Score: 0.4517, Loss: 1.6689, Accuracy: 0.4517, Confidence: 0.6087, Entropy: 1.0369
+2025-05-30 01:08:30,821 - INFO - Epoch 12/20| Train Score: 0.6516, Loss: 0.8085, Accuracy: 0.6516, Confidence: 0.6255, Entropy: 1.0324| Val Score: 0.4379, Loss: 1.7235, Accuracy: 0.4379, Confidence: 0.6001, Entropy: 1.0477
+2025-05-30 01:09:06,897 - INFO - Epoch 13/20| Train Score: 0.6630, Loss: 0.8008, Accuracy: 0.6630, Confidence: 0.6339, Entropy: 1.0196| Val Score: 0.5293, Loss: 1.5679, Accuracy: 0.5293, Confidence: 0.6391, Entropy: 0.9770
+2025-05-30 01:09:41,825 - INFO - Epoch 14/20| Train Score: 0.6814, Loss: 0.7516, Accuracy: 0.6814, Confidence: 0.6505, Entropy: 0.9763| Val Score: 0.4920, Loss: 1.7033, Accuracy: 0.4920, Confidence: 0.6726, Entropy: 0.8975
+2025-05-30 01:10:16,999 - INFO - Epoch 15/20| Train Score: 0.6858, Loss: 0.7346, Accuracy: 0.6858, Confidence: 0.6581, Entropy: 0.9517| Val Score: 0.5022, Loss: 1.6108, Accuracy: 0.5022, Confidence: 0.6358, Entropy: 0.9727
+2025-05-30 01:10:52,307 - INFO - Epoch 16/20| Train Score: 0.7093, Loss: 0.6962, Accuracy: 0.7093, Confidence: 0.6769, Entropy: 0.9083| Val Score: 0.5213, Loss: 1.5848, Accuracy: 0.5213, Confidence: 0.6388, Entropy: 0.9836
+2025-05-30 01:11:27,406 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:11:27,407 - INFO - Epoch 17/20| Train Score: 0.7238, Loss: 0.6655, Accuracy: 0.7238, Confidence: 0.6871, Entropy: 0.8797| Val Score: 0.5625, Loss: 1.5542, Accuracy: 0.5625, Confidence: 0.6751, Entropy: 0.8903
+2025-05-30 01:12:02,461 - INFO - Epoch 18/20| Train Score: 0.7226, Loss: 0.6539, Accuracy: 0.7226, Confidence: 0.6972, Entropy: 0.8543| Val Score: 0.5177, Loss: 1.6583, Accuracy: 0.5177, Confidence: 0.6597, Entropy: 0.9316
+2025-05-30 01:12:37,419 - INFO - Epoch 19/20| Train Score: 0.7348, Loss: 0.6243, Accuracy: 0.7348, Confidence: 0.7059, Entropy: 0.8296| Val Score: 0.3839, Loss: 2.4411, Accuracy: 0.3839, Confidence: 0.7008, Entropy: 0.8092
+2025-05-30 01:12:37,717 - INFO - Case study end, 0.5625
+2025-05-30 01:12:37,717 - INFO - ################################################################################
+2025-05-30 01:12:37,717 - INFO - 
+
+2025-05-30 01:12:37,718 - INFO - ################################################################################
+2025-05-30 01:12:37,719 - INFO - Start case study with parameters:
+2025-05-30 01:12:37,725 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.4022897532286356 num_layers=6 embedding_dim=600 num_epochs=20
+2025-05-30 01:13:12,989 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:13:12,990 - INFO - Epoch 0/20| Train Score: 0.3425, Loss: 1.3152, Accuracy: 0.3425, Confidence: 0.3542, Entropy: 1.5708| Val Score: 0.3546, Loss: 1.6349, Accuracy: 0.3546, Confidence: 0.3246, Entropy: 1.6110
+2025-05-30 01:13:48,598 - INFO - Epoch 1/20| Train Score: 0.4156, Loss: 1.2202, Accuracy: 0.4156, Confidence: 0.4007, Entropy: 1.4979| Val Score: 0.2491, Loss: 1.8160, Accuracy: 0.2491, Confidence: 0.4161, Entropy: 1.4564
+2025-05-30 01:14:24,464 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:14:24,465 - INFO - Epoch 2/20| Train Score: 0.4409, Loss: 1.1791, Accuracy: 0.4409, Confidence: 0.4237, Entropy: 1.4586| Val Score: 0.3808, Loss: 1.7070, Accuracy: 0.3808, Confidence: 0.4800, Entropy: 1.3344
+2025-05-30 01:15:00,795 - INFO - Epoch 3/20| Train Score: 0.4697, Loss: 1.1349, Accuracy: 0.4697, Confidence: 0.4478, Entropy: 1.4120| Val Score: 0.3781, Loss: 1.6360, Accuracy: 0.3781, Confidence: 0.4594, Entropy: 1.3956
+2025-05-30 01:15:36,747 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:15:36,747 - INFO - Epoch 4/20| Train Score: 0.5004, Loss: 1.0888, Accuracy: 0.5004, Confidence: 0.4705, Entropy: 1.3682| Val Score: 0.4251, Loss: 1.5219, Accuracy: 0.4251, Confidence: 0.4812, Entropy: 1.3563
+2025-05-30 01:16:13,234 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:16:13,235 - INFO - Epoch 5/20| Train Score: 0.4998, Loss: 1.0915, Accuracy: 0.4998, Confidence: 0.4766, Entropy: 1.3581| Val Score: 0.4441, Loss: 1.4952, Accuracy: 0.4441, Confidence: 0.4792, Entropy: 1.3379
+2025-05-30 01:16:49,303 - INFO - Epoch 6/20| Train Score: 0.5250, Loss: 1.0494, Accuracy: 0.5250, Confidence: 0.4940, Entropy: 1.3219| Val Score: 0.4198, Loss: 1.6360, Accuracy: 0.4198, Confidence: 0.5221, Entropy: 1.2563
+2025-05-30 01:17:24,264 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:17:24,264 - INFO - Epoch 7/20| Train Score: 0.5383, Loss: 1.0271, Accuracy: 0.5383, Confidence: 0.5140, Entropy: 1.2856| Val Score: 0.4654, Loss: 1.5129, Accuracy: 0.4654, Confidence: 0.5321, Entropy: 1.2172
+2025-05-30 01:18:00,168 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:18:00,169 - INFO - Epoch 8/20| Train Score: 0.5535, Loss: 0.9980, Accuracy: 0.5535, Confidence: 0.5222, Entropy: 1.2616| Val Score: 0.4668, Loss: 1.4812, Accuracy: 0.4668, Confidence: 0.5241, Entropy: 1.2338
+2025-05-30 01:18:36,222 - INFO - Epoch 9/20| Train Score: 0.5696, Loss: 0.9671, Accuracy: 0.5696, Confidence: 0.5439, Entropy: 1.2176| Val Score: 0.4193, Loss: 1.7108, Accuracy: 0.4193, Confidence: 0.5553, Entropy: 1.1755
+2025-05-30 01:19:12,078 - INFO - Epoch 10/20| Train Score: 0.5859, Loss: 0.9407, Accuracy: 0.5859, Confidence: 0.5533, Entropy: 1.1974| Val Score: 0.4570, Loss: 1.6839, Accuracy: 0.4570, Confidence: 0.5781, Entropy: 1.1149
+2025-05-30 01:19:48,119 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:19:48,119 - INFO - Epoch 11/20| Train Score: 0.5912, Loss: 0.9378, Accuracy: 0.5912, Confidence: 0.5645, Entropy: 1.1765| Val Score: 0.4703, Loss: 1.5413, Accuracy: 0.4703, Confidence: 0.5225, Entropy: 1.2436
+2025-05-30 01:20:24,532 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:20:24,533 - INFO - Epoch 12/20| Train Score: 0.6073, Loss: 0.9012, Accuracy: 0.6073, Confidence: 0.5807, Entropy: 1.1386| Val Score: 0.4911, Loss: 1.5643, Accuracy: 0.4911, Confidence: 0.6361, Entropy: 1.0015
+2025-05-30 01:21:00,576 - INFO - Epoch 13/20| Train Score: 0.6206, Loss: 0.8740, Accuracy: 0.6206, Confidence: 0.5888, Entropy: 1.1190| Val Score: 0.4610, Loss: 1.6000, Accuracy: 0.4610, Confidence: 0.6005, Entropy: 1.0374
+2025-05-30 01:21:00,576 - WARNING - Trial was pruned at epoch 13
+2025-05-30 01:21:00,577 - INFO - Case study end, 0.49113475177304966
+2025-05-30 01:21:00,577 - INFO - ################################################################################
+2025-05-30 01:21:00,577 - INFO - 
+
+2025-05-30 01:21:00,578 - INFO - ################################################################################
+2025-05-30 01:21:00,578 - INFO - Start case study with parameters:
+2025-05-30 01:21:00,584 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.314499968165412 num_layers=5 embedding_dim=600 num_epochs=20
+2025-05-30 01:21:30,907 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:21:30,908 - INFO - Epoch 0/20| Train Score: 0.3650, Loss: 1.2889, Accuracy: 0.3650, Confidence: 0.3665, Entropy: 1.5527| Val Score: 0.2602, Loss: 1.9697, Accuracy: 0.2602, Confidence: 0.5658, Entropy: 1.2124
+2025-05-30 01:22:01,293 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:22:01,293 - INFO - Epoch 1/20| Train Score: 0.4241, Loss: 1.2092, Accuracy: 0.4241, Confidence: 0.4081, Entropy: 1.4847| Val Score: 0.3511, Loss: 1.7023, Accuracy: 0.3511, Confidence: 0.4082, Entropy: 1.4754
+2025-05-30 01:22:31,784 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:22:31,784 - INFO - Epoch 2/20| Train Score: 0.4617, Loss: 1.1575, Accuracy: 0.4617, Confidence: 0.4295, Entropy: 1.4470| Val Score: 0.4193, Loss: 1.5092, Accuracy: 0.4193, Confidence: 0.3665, Entropy: 1.5638
+2025-05-30 01:23:02,262 - INFO - Epoch 3/20| Train Score: 0.4894, Loss: 1.1169, Accuracy: 0.4894, Confidence: 0.4546, Entropy: 1.4016| Val Score: 0.3927, Loss: 1.5876, Accuracy: 0.3927, Confidence: 0.4605, Entropy: 1.3770
+2025-05-30 01:23:32,573 - INFO - Epoch 4/20| Train Score: 0.5121, Loss: 1.0795, Accuracy: 0.5121, Confidence: 0.4758, Entropy: 1.3578| Val Score: 0.3932, Loss: 1.6565, Accuracy: 0.3932, Confidence: 0.5183, Entropy: 1.2760
+2025-05-30 01:24:02,834 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:24:02,835 - INFO - Epoch 5/20| Train Score: 0.5352, Loss: 1.0394, Accuracy: 0.5352, Confidence: 0.4969, Entropy: 1.3163| Val Score: 0.4672, Loss: 1.4559, Accuracy: 0.4672, Confidence: 0.4852, Entropy: 1.3178
+2025-05-30 01:24:33,235 - INFO - Epoch 6/20| Train Score: 0.5389, Loss: 1.0290, Accuracy: 0.5389, Confidence: 0.5099, Entropy: 1.2894| Val Score: 0.4313, Loss: 1.5254, Accuracy: 0.4313, Confidence: 0.4513, Entropy: 1.3849
+2025-05-30 01:25:03,165 - INFO - Epoch 7/20| Train Score: 0.5627, Loss: 1.0021, Accuracy: 0.5627, Confidence: 0.5178, Entropy: 1.2746| Val Score: 0.4255, Loss: 1.5725, Accuracy: 0.4255, Confidence: 0.4411, Entropy: 1.3963
+2025-05-30 01:25:33,207 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:25:33,208 - INFO - Epoch 8/20| Train Score: 0.5762, Loss: 0.9696, Accuracy: 0.5762, Confidence: 0.5409, Entropy: 1.2227| Val Score: 0.4765, Loss: 1.5648, Accuracy: 0.4765, Confidence: 0.5991, Entropy: 1.0619
+2025-05-30 01:26:02,934 - INFO - Epoch 9/20| Train Score: 0.5933, Loss: 0.9368, Accuracy: 0.5933, Confidence: 0.5564, Entropy: 1.1940| Val Score: 0.3537, Loss: 1.9826, Accuracy: 0.3537, Confidence: 0.6157, Entropy: 1.0447
+2025-05-30 01:26:32,645 - INFO - Epoch 10/20| Train Score: 0.6041, Loss: 0.9096, Accuracy: 0.6041, Confidence: 0.5682, Entropy: 1.1679| Val Score: 0.3351, Loss: 2.0592, Accuracy: 0.3351, Confidence: 0.5744, Entropy: 1.1222
+2025-05-30 01:27:02,126 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:27:02,127 - INFO - Epoch 11/20| Train Score: 0.6086, Loss: 0.9104, Accuracy: 0.6086, Confidence: 0.5752, Entropy: 1.1559| Val Score: 0.4823, Loss: 1.4957, Accuracy: 0.4823, Confidence: 0.5503, Entropy: 1.1915
+2025-05-30 01:27:32,338 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:27:32,338 - INFO - Epoch 12/20| Train Score: 0.6208, Loss: 0.8797, Accuracy: 0.6208, Confidence: 0.5838, Entropy: 1.1367| Val Score: 0.5062, Loss: 1.6055, Accuracy: 0.5062, Confidence: 0.6273, Entropy: 0.9998
+2025-05-30 01:28:02,470 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:28:02,470 - INFO - Epoch 13/20| Train Score: 0.6303, Loss: 0.8580, Accuracy: 0.6303, Confidence: 0.5934, Entropy: 1.1141| Val Score: 0.5106, Loss: 1.6427, Accuracy: 0.5106, Confidence: 0.6375, Entropy: 0.9736
+2025-05-30 01:28:32,546 - INFO - Epoch 14/20| Train Score: 0.6487, Loss: 0.8262, Accuracy: 0.6487, Confidence: 0.6142, Entropy: 1.0631| Val Score: 0.4588, Loss: 1.5574, Accuracy: 0.4588, Confidence: 0.5225, Entropy: 1.2335
+2025-05-30 01:29:02,694 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:29:02,694 - INFO - Epoch 15/20| Train Score: 0.6677, Loss: 0.7928, Accuracy: 0.6677, Confidence: 0.6240, Entropy: 1.0434| Val Score: 0.5182, Loss: 1.5846, Accuracy: 0.5182, Confidence: 0.6546, Entropy: 0.9435
+2025-05-30 01:29:32,627 - INFO - Epoch 16/20| Train Score: 0.6694, Loss: 0.7793, Accuracy: 0.6694, Confidence: 0.6355, Entropy: 1.0119| Val Score: 0.4601, Loss: 1.6692, Accuracy: 0.4601, Confidence: 0.5963, Entropy: 1.0650
+2025-05-30 01:30:02,622 - INFO - Epoch 17/20| Train Score: 0.6791, Loss: 0.7703, Accuracy: 0.6791, Confidence: 0.6387, Entropy: 1.0057| Val Score: 0.2380, Loss: 4.8977, Accuracy: 0.2380, Confidence: 0.7669, Entropy: 0.5988
+2025-05-30 01:30:33,024 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:30:33,025 - INFO - Epoch 18/20| Train Score: 0.6971, Loss: 0.7193, Accuracy: 0.6971, Confidence: 0.6546, Entropy: 0.9626| Val Score: 0.5461, Loss: 1.5102, Accuracy: 0.5461, Confidence: 0.6513, Entropy: 0.9509
+2025-05-30 01:31:03,057 - INFO - Epoch 19/20| Train Score: 0.6996, Loss: 0.7114, Accuracy: 0.6996, Confidence: 0.6654, Entropy: 0.9353| Val Score: 0.4424, Loss: 1.8794, Accuracy: 0.4424, Confidence: 0.6424, Entropy: 0.9529
+2025-05-30 01:31:03,358 - INFO - Case study end, 0.5460992907801419
+2025-05-30 01:31:03,358 - INFO - ################################################################################
+2025-05-30 01:31:03,358 - INFO - 
+
+2025-05-30 01:31:03,360 - INFO - ################################################################################
+2025-05-30 01:31:03,360 - INFO - Start case study with parameters:
+2025-05-30 01:31:03,367 - INFO - gnn_type='gcn' loss_type='nosy_ce' graph_pooling='mean' drop_ratio=0.18499788994786143 num_layers=4 embedding_dim=600 num_epochs=20
+2025-05-30 01:31:27,158 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:31:27,159 - INFO - Epoch 0/20| Train Score: 0.3779, Loss: 1.2809, Accuracy: 0.3779, Confidence: 0.3694, Entropy: 1.5534| Val Score: 0.2469, Loss: 2.1275, Accuracy: 0.2469, Confidence: 0.5165, Entropy: 1.2372
+2025-05-30 01:31:51,148 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:31:51,148 - INFO - Epoch 1/20| Train Score: 0.4508, Loss: 1.1746, Accuracy: 0.4508, Confidence: 0.4169, Entropy: 1.4669| Val Score: 0.3200, Loss: 1.9514, Accuracy: 0.3200, Confidence: 0.5661, Entropy: 1.1964
+2025-05-30 01:32:14,918 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:32:14,919 - INFO - Epoch 2/20| Train Score: 0.4774, Loss: 1.1464, Accuracy: 0.4774, Confidence: 0.4338, Entropy: 1.4407| Val Score: 0.3994, Loss: 1.5388, Accuracy: 0.3994, Confidence: 0.3591, Entropy: 1.5926
+2025-05-30 01:32:38,591 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:32:38,591 - INFO - Epoch 3/20| Train Score: 0.5076, Loss: 1.1017, Accuracy: 0.5076, Confidence: 0.4524, Entropy: 1.4008| Val Score: 0.4176, Loss: 1.5651, Accuracy: 0.4176, Confidence: 0.5101, Entropy: 1.2724
+2025-05-30 01:33:02,488 - INFO - Epoch 4/20| Train Score: 0.5191, Loss: 1.0725, Accuracy: 0.5191, Confidence: 0.4741, Entropy: 1.3598| Val Score: 0.3435, Loss: 1.6498, Accuracy: 0.3435, Confidence: 0.4306, Entropy: 1.4378
+2025-05-30 01:33:26,603 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:33:26,603 - INFO - Epoch 5/20| Train Score: 0.5327, Loss: 1.0501, Accuracy: 0.5327, Confidence: 0.4856, Entropy: 1.3396| Val Score: 0.4809, Loss: 1.4546, Accuracy: 0.4809, Confidence: 0.4804, Entropy: 1.3218
+2025-05-30 01:33:50,230 - INFO - Epoch 6/20| Train Score: 0.5632, Loss: 1.0054, Accuracy: 0.5632, Confidence: 0.5081, Entropy: 1.2947| Val Score: 0.3803, Loss: 1.6242, Accuracy: 0.3803, Confidence: 0.4729, Entropy: 1.3687
+2025-05-30 01:34:14,653 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:34:14,653 - INFO - Epoch 7/20| Train Score: 0.5790, Loss: 0.9831, Accuracy: 0.5790, Confidence: 0.5155, Entropy: 1.2793| Val Score: 0.5102, Loss: 1.4097, Accuracy: 0.5102, Confidence: 0.4636, Entropy: 1.3799
+2025-05-30 01:34:38,769 - INFO - [A] Best model updated at /home/haislich/Documents/noisy_labels/hackaton/checkpoints/A/model_A_best.pth
+2025-05-30 01:34:38,770 - INFO - Epoch 8/20| Train Score: 0.5869, Loss: 0.9696, Accuracy: 0.5869, Confidence: 0.5277, Entropy: 1.2561| Val Score: 0.5408, Loss: 1.3681, Accuracy: 0.5408, Confidence: 0.4757, Entropy: 1.3594
+2025-05-30 01:35:02,688 - INFO - Epoch 9/20| Train Score: 0.6005, Loss: 0.9315, Accuracy: 0.6005, Confidence: 0.5465, Entropy: 1.2199| Val Score: 0.4158, Loss: 1.5849, Accuracy: 0.4158, Confidence: 0.5204, Entropy: 1.2428
+2025-05-30 01:35:26,411 - INFO - Epoch 10/20| Train Score: 0.6134, Loss: 0.9086, Accuracy: 0.6134, Confidence: 0.5570, Entropy: 1.1944| Val Score: 0.4832, Loss: 1.5373, Accuracy: 0.4832, Confidence: 0.5317, Entropy: 1.2192
+2025-05-30 01:35:50,222 - INFO - Epoch 11/20| Train Score: 0.6435, Loss: 0.8657, Accuracy: 0.6435, Confidence: 0.5805, Entropy: 1.1466| Val Score: 0.5120, Loss: 1.5561, Accuracy: 0.5120, Confidence: 0.6071, Entropy: 1.0233
+2025-05-30 01:36:14,370 - INFO - Epoch 12/20| Train Score: 0.6455, Loss: 0.8520, Accuracy: 0.6455, Confidence: 0.5864, Entropy: 1.1321| Val Score: 0.3874, Loss: 1.6450, Accuracy: 0.3874, Confidence: 0.5190, Entropy: 1.2368
+2025-05-30 01:36:38,383 - INFO - Epoch 13/20| Train Score: 0.6494, Loss: 0.8389, Accuracy: 0.6494, Confidence: 0.5918, Entropy: 1.1176| Val Score: 0.5022, Loss: 1.4702, Accuracy: 0.5022, Confidence: 0.5371, Entropy: 1.2268
+2025-05-30 01:37:02,458 - INFO - Epoch 14/20| Train Score: 0.6613, Loss: 0.8070, Accuracy: 0.6613, Confidence: 0.6052, Entropy: 1.0854| Val Score: 0.5253, Loss: 1.4489, Accuracy: 0.5253, Confidence: 0.5758, Entropy: 1.1178
+2025-05-30 01:37:26,361 - INFO - Epoch 15/20| Train Score: 0.6822, Loss: 0.7721, Accuracy: 0.6822, Confidence: 0.6232, Entropy: 1.0468| Val Score: 0.4428, Loss: 1.6663, Accuracy: 0.4428, Confidence: 0.5411, Entropy: 1.1988
+2025-05-30 01:37:51,293 - INFO - Epoch 16/20| Train Score: 0.6907, Loss: 0.7611, Accuracy: 0.6907, Confidence: 0.6310, Entropy: 1.0313| Val Score: 0.4858, Loss: 1.6198, Accuracy: 0.4858, Confidence: 0.5836, Entropy: 1.0976
+2025-05-30 01:38:15,620 - INFO - Epoch 17/20| Train Score: 0.6946, Loss: 0.7369, Accuracy: 0.6946, Confidence: 0.6381, Entropy: 1.0159| Val Score: 0.3546, Loss: 1.9138, Accuracy: 0.3546, Confidence: 0.6036, Entropy: 1.0415
+2025-05-30 01:38:40,072 - INFO - Epoch 18/20| Train Score: 0.7100, Loss: 0.7048, Accuracy: 0.7100, Confidence: 0.6478, Entropy: 0.9884| Val Score: 0.3785, Loss: 1.8868, Accuracy: 0.3785, Confidence: 0.5694, Entropy: 1.0825
