@@ -34,28 +34,26 @@ class ModelTrainer:
         self.dataset = GraphDataset(
             Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
         )
-        self.model = EdgeVGAE(
-            1,
-            7,
-            self.config.hidden_dim,
-            self.config.latent_dim,
-            self.config.num_classes,
-        ).to(self.device)
-
         self.best_f1_scores = []
         self.eval_criterion = torch.nn.CrossEntropyLoss()
-        self.checkpoints_dir = Path(f"./checkpoints{self.config.dataset_name}")
-        os.makedirs(self.checkpoints_dir, exist_ok=True)
-        self.submissions_dir = Path(f"./submissions/{self.config.dataset_name}")
-        os.makedirs(self.submissions_dir, exist_ok=True)
+
+        self.checkpoints_dir = Path(f"./checkpoints/{self.config.dataset_name}")
+        self.checkpoints_dir.mkdir(exist_ok=True)
+
+        self.pretrained_models = list(self.checkpoints_dir.glob("model*.pth"))
+        # self.submissions_dir = Path(f"./submissions/{self.config.dataset_name}")
+        # self.submissions_dir.mkdir(exist_ok=True)
+
         self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
-        os.makedirs(self.logs_dir, exist_ok=True)
+        self.logs_dir.mkdir(exist_ok=True)
         logging.basicConfig(
             filename=self.logs_dir / "training.log",
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s",
             filemode="w",
         )
+        print(self.__dict__)
+        exit()
 
     def dataset_setup(self, seed: int):
         val_size = int(0.2 * len(self.dataset))
@@ -66,10 +64,6 @@ class ModelTrainer:
         )
         train_dataset = IndexedSubset(train_dataset)
         val_dataset = IndexedSubset(val_dataset)
-
-        # train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-
-        # val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
         return (train_dataset, val_dataset)
 
     def _eval_epoch(
@@ -186,12 +180,12 @@ class ModelTrainer:
         ).to(self.device)
 
         # Load pretrained models if any
-        # if len(self.pretrain_models) > 0:
-        #     n = len(self.pretrain_models)
-        #     model_file = self.pretrain_models[(cycle_num - 1) % n]
-        #     model_data = torch.load(model_file, map_location=torch.device(self.device))
-        #     model.load_state_dict(model_data["model_state_dict"])
-        #     logging.info(f"Loaded pretrained model: {model_file}")
+        if len(self.pretrained_models) > 0:
+            n = len(self.pretrained_models)
+            model_file = self.pretrained_models[(cycle - 1) % n]
+            model_data = torch.load(model_file, map_location=self.device)
+            model.load_state_dict(model_data["model_state_dict"])
+            logging.info(f"Loaded pretrained model: {model_file}")
 
         train_loader = DataLoader(
             train_data, batch_size=self.config.batch_size, shuffle=True
@@ -261,15 +255,15 @@ class ModelTrainer:
                     / f"cycle_{cycle}_epoch_{epoch}_"
                     / f"loss_{val_loss}_f1_{val_f1}.pth"
                 )
-                model.save(
-                    self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
-                    val_loss,
-                    val_f1,
-                    train_loss,
-                    self.config,
-                    epoch,
-                    cycle,
-                )
+                # model.save(
+                #     self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
+                #     val_loss,
+                #     val_f1,
+                #     train_loss,
+                #     self.config,
+                #     epoch,
+                #     cycle,
+                # )
 
                 logging.info(f"New best model saved: {best_model_path}")
                 logging.info(
@@ -326,3 +320,8 @@ class ModelTrainer:
             logging.info(f"- Final validation loss: {val_loss:.4f}")
             logging.info(f"- Final F1 score: {val_f1:.4f}")
         return results
+
+
+ModelTrainer(
+    ModelConfig("A"),
+)

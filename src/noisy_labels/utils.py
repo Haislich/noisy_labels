@@ -53,7 +53,7 @@ from noisy_labels.models import EdgeVGAE
 #         print(torch.load(checkpoint, weights_only=False))
 #     for checkpoint in p.glob("*.pth"):
 #         print(torch.load(checkpoint, weights_only=False))
-# p = Path(
-#     "/home/haislich/Documents/noisy_labels/checkpoints/A/model_A_cycle_1_epoch_32.pth"
-# )
-# EdgeVGAE.from_pretrained(p)
+p = Path(
+    "/home/haislich/Documents/noisy_labels/checkpoints/A/model_A_cycle_1_epoch_32.pth"
+)
+EdgeVGAE.from_pretrained(p)

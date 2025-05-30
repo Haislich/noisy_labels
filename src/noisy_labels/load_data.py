@@ -61,8 +61,10 @@ class GraphDataset(Dataset):
         transform=add_zeros,
         pre_transform=None,
     ):
-        self.raw_path = Path(filename)
-        self.cache_path = self.raw_path.with_suffix(f"{self.raw_path.stem}.pkl")
+        self.filename = Path(filename)
+        self.cache_path = self.filename.parent / f"{self.filename.stem}.pkl"
+        # print(self.cache_path)
+        # exit()
 
         super().__init__(None, transform, pre_transform)
 
@@ -84,7 +86,7 @@ class GraphDataset(Dataset):
         return self.transform(g) if self.transform else g
 
     def _build_graphs(self):
-        with gzip.open(self.raw_path, "rt", encoding="utf-8") as f:
+        with gzip.open(self.filename, "rt", encoding="utf-8") as f:
             dicts = json.load(f)
 
         data_list = [dict_to_graph(d) for d in dicts]
