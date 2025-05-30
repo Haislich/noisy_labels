@@ -26,11 +26,19 @@ class ModelTrainer:
     def __init__(
         self,
         config: ModelConfig,
+        epochs: int = 10,
+        learning_rate: float = 5e-3,
+        warmup_epochs: int = 0,
+        early_stopping_patience: float = 0.0,
         device: torch.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu"
         ),
     ):
         self.config = config
+        self.epochs = epochs
+        self.learning_rate = learning_rate
+        self.warmup_epochs = warmup_epochs
+        self.early_stopping_patience = early_stopping_patience
         self.device = device
         self.dataset = GraphDataset(
             Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
@@ -42,8 +50,6 @@ class ModelTrainer:
         self.checkpoints_dir.mkdir(exist_ok=True)
 
         self.pretrained_models = list(self.checkpoints_dir.glob("model*.pth"))
-        # self.submissions_dir = Path(f"./submissions/{self.config.dataset_name}")
-        # self.submissions_dir.mkdir(exist_ok=True)
 
         self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
         self.logs_dir.mkdir(exist_ok=True)
@@ -200,13 +206,13 @@ class ModelTrainer:
             val_data, batch_size=self.config.batch_size, shuffle=False
         )
 
-        optimizer = torch.optim.Adam(model.parameters(), lr=self.config.learning_rate)
+        optimizer = torch.optim.Adam(model.parameters(), lr=self.learning_rate)
         optimizer_u = None
         if isinstance(criterion, NCODLoss):
             optimizer_u = torch.optim.SGD(criterion.parameters(), lr=1e-3)
 
         # Warm-up scheduler
-        warmup_epochs = self.config.warmup  # Number of warm-up epochs
+        warmup_epochs = self.warmup_epochs  # Number of warm-up epochs
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
             optimizer,
             mode="max",  # Monitor validation
@@ -220,13 +226,13 @@ class ModelTrainer:
         best_f1 = 0.0
         epoch_best = 0
         best_model_path = None
-        progress_bar = tqdm(range(self.config.epochs), "")
+        progress_bar = tqdm(range(self.epochs), "")
         for epoch in progress_bar:
-            progress_bar.set_description_str(f"Epoch {epoch + 1}/{self.config.epochs}")
+            progress_bar.set_description_str(f"Epoch {epoch + 1}/{self.epochs}")
 
             # Warm-up phase
             if epoch < warmup_epochs:
-                warm_up_lr(epoch, warmup_epochs, self.config.learning_rate, optimizer)
+                warm_up_lr(epoch, warmup_epochs, self.learning_rate, optimizer)
                 if epoch == (warmup_epochs - 1):
                     logging.info("Warm-up epochs finished")
                     print("Warm-up epochs finished")
@@ -267,15 +273,15 @@ class ModelTrainer:
                     / f"cycle_{cycle}_epoch_{epoch}_"
                     / f"loss_{val_loss}_f1_{val_f1}.pth"
                 )
-                # model.save(
-                #     self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
-                #     val_loss,
-                #     val_f1,
-                #     train_loss,
-                #     self.config,
-                #     epoch,
-                #     cycle,
-                # )
+                model.save(
+                    self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
+                    val_loss,
+                    val_f1,
+                    train_loss,
+                    self.config,
+                    epoch,
+                    cycle,
+                )
 
                 logging.info(f"New best model saved: {best_model_path}")
                 logging.info(
@@ -288,7 +294,7 @@ class ModelTrainer:
 
             # If there is no improvement, reload the best parameters
             if (
-                (epoch - epoch_best) > self.config.early_stopping_patience // 2
+                (epoch - epoch_best) > self.early_stopping_patience // 2
                 and epoch % 10 == 0
                 # Reload only if there is something to reload
                 and best_model_path is not None
@@ -298,7 +304,7 @@ class ModelTrainer:
                 print(f"Reloading best model: {best_model_path}")
 
             # Early stopping based on validation loss
-            if (epoch - epoch_best) > self.config.early_stopping_patience:
+            if (epoch - epoch_best) > self.early_stopping_patience:
                 logging.info(f"Early stopping triggered at epoch {epoch}")
                 print(f"Early stopping triggered at epoch {epoch}")
                 break
@@ -365,8 +371,3 @@ class ModelTrainer:
             print(f"- Final validation loss: {val_loss:.4f}")
             print(f"- Final F1 score: {val_f1:.4f}")
         return results
-
-
-ModelTrainer(
-    ModelConfig("A", epochs=1),
-).train("ncod", cycles=1)

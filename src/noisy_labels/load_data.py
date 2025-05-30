@@ -56,7 +56,7 @@ def dict_to_graph(g):
 
 
 def add_zeros(data):
-    data.x = torch.zeros(
+    data.x = torch.ones(
         (data.num_nodes, 1), dtype=torch.float
     )  # Use float if used in GNN layers
     return data
@@ -76,7 +76,7 @@ class GraphDataset(Dataset):
 
         super().__init__(None, transform, pre_transform)
 
-        if self.cache_path.exists():
+        if False and self.cache_path.exists():
             with open(self.cache_path, "rb") as cache_file:
                 self.graphs: list[IndexedData] = pickle.load(cache_file)
         else:

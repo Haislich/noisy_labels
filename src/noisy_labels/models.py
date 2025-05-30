@@ -277,7 +277,6 @@ class EnsembleEdgeVGAE:
     def predict_with_ensemble_score(
         self,
         dataset_path: str | Path,
-        score_type: Literal["val_f1", "val_loss"] = "val_f1",
         batch_size: int = 32,
     ):
         test_dataset = GraphDataset(dataset_path)
@@ -295,7 +294,7 @@ class EnsembleEdgeVGAE:
         for model, model_metadata in zip(self.models, self.model_metadatas):
             predictions = model.predict(test_loader)
             all_predictions.append(predictions)
-            model_scores.append(model_metadata[score_type])
+            model_scores.append(model_metadata["val_f1"])
         # Convert to numpy arrays
         all_predictions = np.array(all_predictions)
         model_scores = np.array(model_scores)

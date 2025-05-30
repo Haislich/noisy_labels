@@ -55,3 +55,6 @@ def create_submission():
     folder_path = Path("./submission/")  # Path to the folder you want to compress
     output_file = Path("./submission/submission.gz")  # Output .gz file name
     gzip_folder(folder_path, output_file)
+
+
+create_submission()
