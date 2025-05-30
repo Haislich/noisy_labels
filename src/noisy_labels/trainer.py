@@ -17,6 +17,10 @@ from noisy_labels.model_config import ModelConfig
 from noisy_labels.models import EdgeVGAE
 
 
+def ciao():
+    print("Hello world")
+
+
 def warm_up_lr(epoch, num_epoch_warm_up, init_lr, optimizer):
     for params in optimizer.param_groups:
         params["lr"] = (epoch + 1) ** 3 * init_lr / num_epoch_warm_up**3
