@@ -4,8 +4,8 @@ import tarfile
 from pathlib import Path
 from typing import Literal
 
-import numpy as np
-import torch
+# import numpy as np
+# import torch
 
 
 def gzip_folder(folder_path, output_file):
@@ -29,16 +29,31 @@ def create_submission():
     gzip_folder(folder_path, output_file)
 
 
-p = Path(os.getcwd()) / "checkpoints"
-for checkpoint in p.glob("*.pth"):
-    dataset_name = p / str(checkpoint.stem).split("_")[1]
-    dataset_name.mkdir(exist_ok=True)
-    dst = (dataset_name / checkpoint.stem.rsplit("_", 4)[0]).with_suffix(
-        checkpoint.suffix
-    )
-    os.rename(checkpoint, dst)
-    # print(checkpoint)
-    # print(dataset_name)
-    # print(dst)
+import torch
 
-    # break
+from noisy_labels.models import EdgeVGAE
+
+# p = Path(os.getcwd()) / "checkpoints"
+
+# for checkpoint in p.glob("*.pth"):
+#     dataset_name = p / str(checkpoint.stem).split("_")[1]
+#     dataset_name.mkdir(exist_ok=True)
+#     dst = (dataset_name / checkpoint.stem.rsplit("_", 4)[0]).with_suffix(
+#         checkpoint.suffix
+#     )
+#     os.rename(checkpoint, dst)
+# print(checkpoint)
+# print(dataset_name)
+# print(dst)
+
+# break
+# for dataset_name in ["A", "B", "C", "D", "ABCD"]:
+#     p = p / dataset_name
+#     for checkpoint in p.glob("*.pth"):
+#         print(torch.load(checkpoint, weights_only=False))
+#     for checkpoint in p.glob("*.pth"):
+#         print(torch.load(checkpoint, weights_only=False))
+# p = Path(
+#     "/home/haislich/Documents/noisy_labels/checkpoints/A/model_A_cycle_1_epoch_32.pth"
+# )
+# EdgeVGAE.from_pretrained(p)
