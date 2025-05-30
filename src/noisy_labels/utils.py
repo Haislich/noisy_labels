@@ -1,7 +1,7 @@
 import os
 import tarfile
 from pathlib import Path
-
+import torch
 import pandas as pd
 
 try:
@@ -38,6 +38,16 @@ def save_predictions(predictions, test_path):
     output_df.to_csv(output_csv_path, index=False)
     print(f"Predictions saved to {output_csv_path}")
 
+def compute_class_weights(dataset, num_classes):
+    counts = [0] * num_classes
+    for g in dataset:
+        if g.y is not None:
+            counts[g.y.item()] += 1
+    total = sum(counts)
+    weights = [total / (c + 1e-6) for c in counts]
+    norm_weights = torch.tensor(weights)
+    norm_weights = norm_weights / norm_weights.sum()
+    return norm_weights
 
 def create_submission():
     for dataset_name in ["A", "B", "C", "D"]:
@@ -51,7 +61,7 @@ def create_submission():
         )
         test_path = f"./datasets/{dataset_name}/test.json.gz"
         predictions, _ = EnsembleEdgeVGAE(model_paths).predict_with_ensemble_score(
-            test_path
+            Path(test_path)
         )
         save_predictions(predictions, test_path)
 
@@ -61,3 +71,14 @@ def create_submission():
 
 
 create_submission()
+
+
+#import os
+#print(os.getcwd())
+
+
+
+
+
+
+

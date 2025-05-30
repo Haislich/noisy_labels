@@ -7,3 +7,4 @@ scikit-learn>=1.6.1
 torch>=2.7.0
 torch-geometric>=2.6.1
 tqdm>=4.67.1
+-e .
