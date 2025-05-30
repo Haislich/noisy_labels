@@ -1,21 +1,17 @@
 # source/trainer.py
 import logging
 import os
-from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Literal, Optional
+from typing import Dict, List, Optional
 
-import numpy as np
-import pandas as pd
 import torch
 from sklearn.metrics import f1_score
-from sklearn.model_selection import train_test_split
 from torch import nn
-from torch.utils.data import WeightedRandomSampler, random_split
+from torch.utils.data import random_split  # ,WeightedRandomSampler
 from torch_geometric.loader import DataLoader
 
-from noisy_labels.load_data import GraphDataset, IndexedSubset
+from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
+from noisy_labels.loss import NCODLoss
 from noisy_labels.model_config import ModelConfig
 from noisy_labels.models import EdgeVGAE
 
@@ -125,6 +121,7 @@ class ModelTrainer:
         train_loader: DataLoader,
         criterion: nn.Module,
         optimizer: torch.optim.Optimizer,
+        epoch: int,
         scheduler,
     ):
         model.train()
@@ -132,7 +129,7 @@ class ModelTrainer:
         total_samples = 0
 
         for data in train_loader:
-            data = data.to(self.device)
+            data: IndexedData = data.to(self.device)
             optimizer.zero_grad()
 
             # Forward pass
@@ -143,7 +140,17 @@ class ModelTrainer:
             # Calculate losses
             recon_loss = model.recon_loss(z, data.edge_index, data.edge_attr)
             kl_loss = model.kl_loss(mu, logvar)
-            class_loss = criterion(class_logits, data.y)
+            if False and isinstance(criterion, NCODLoss):
+                c = 1
+                # loss = criterion(
+                #     logits=class_logits,
+                #     indexes=data.idx,
+                #     embeddings=graph_emb,
+                #     targets=batch.y.to(device),
+                #     epoch=current_epoch,
+                # )
+            else:
+                class_loss = criterion(class_logits, data.y)
 
             # Total loss
             loss = 0.15 * recon_loss + 0.1 * kl_loss + class_loss
@@ -221,7 +228,7 @@ class ModelTrainer:
             # Training
             model.train()
             train_loss = self._train_epoch(
-                model, train_loader, criterion, optimizer, scheduler
+                model, train_loader, criterion, optimizer, epoch, scheduler
             )
 
             # Validation
@@ -262,18 +269,6 @@ class ModelTrainer:
                     self.config,
                     epoch,
                     cycle,
-                )
-                torch.save(
-                    {
-                        "model_state_dict": model.state_dict(),
-                        "optimizer_state_dict": optimizer.state_dict(),
-                        "epoch": epoch,
-                        "val_loss": val_loss,
-                        "val_f1": val_f1,
-                        "train_loss": train_loss,
-                        "config": self.config,
-                    },
-                    best_model_path,
                 )
 
                 logging.info(f"New best model saved: {best_model_path}")
@@ -331,171 +326,3 @@ class ModelTrainer:
             logging.info(f"- Final validation loss: {val_loss:.4f}")
             logging.info(f"- Final F1 score: {val_f1:.4f}")
         return results
-
-    def predict_with_ensemble(self, test_df):
-        test_dataset = create_dataset_from_dataframe(test_df, result=False)
-        test_loader = DataLoader(test_dataset, batch_size=24, shuffle=False)
-
-        all_predictions = []
-        model_losses = []
-
-        # Collect predictions and losses from all models
-        for model_path in self.models:
-            model = EdgeVGAE(
-                1,
-                7,
-                self.config.hidden_dim,
-                self.config.latent_dim,
-                self.config.num_classes,
-            ).to(self.device)
-            model_data = torch.load(model_path)
-            model.load_state_dict(model_data["model_state_dict"])
-            val_loss = model_data["val_loss"]
-
-            predictions = predict(model, self.device, test_loader)
-            all_predictions.append(predictions)
-            model_losses.append(val_loss)
-
-        # Convert to numpy arrays
-        all_predictions = np.array(all_predictions)
-        model_losses = np.array(model_losses)
-
-        # Calculate weights using softmax of negative losses
-        # Using negative losses because smaller loss should mean larger weight
-        weights = np.exp(-model_losses)
-        weights = weights / np.sum(weights)
-
-        logging.info("Model weights for ensemble:")
-        for model_path, weight, loss in zip(self.models, weights, model_losses):
-            logging.info(f"Model: {os.path.basename(model_path)}")
-            logging.info(f"- Loss: {loss:.4f}")
-            logging.info(f"- Weight: {weight:.4f}")
-
-        # Initialize array to store weighted votes for each class
-        num_samples = all_predictions.shape[1]
-        num_classes = self.config.num_classes
-        weighted_votes = np.zeros((num_samples, num_classes))
-
-        # Calculate weighted votes for each class
-        for i, predictions in enumerate(all_predictions):
-            for sample_idx in range(num_samples):
-                pred_class = predictions[sample_idx]
-                weighted_votes[sample_idx, pred_class] += weights[i]
-
-        # Get the class with maximum weighted votes
-        ensemble_predictions = np.argmax(weighted_votes, axis=1)
-
-        # Calculate confidence scores
-        confidence_scores = np.max(weighted_votes, axis=1)
-
-        # Log some statistics about the ensemble predictions
-        logging.info("\nEnsemble prediction statistics:")
-        unique_preds, pred_counts = np.unique(ensemble_predictions, return_counts=True)
-        for pred_class, count in zip(unique_preds, pred_counts):
-            logging.info(f"Class {pred_class}: {count} samples")
-        logging.info(f"Average confidence: {np.mean(confidence_scores):.4f}")
-        logging.info(f"Min confidence: {np.min(confidence_scores):.4f}")
-        logging.info(f"Max confidence: {np.max(confidence_scores):.4f}")
-
-        return ensemble_predictions, confidence_scores
-
-    def predict_with_ensemble_score(self, test_df):
-        test_dataset = GraphDataset()
-        test_loader = DataLoader(test_dataset, batch_size=24, shuffle=False)
-
-        all_predictions = []
-        model_scores = []
-
-        # Collect predictions and losses from all models
-        for model_path in self.models:
-            model = EdgeVGAE(
-                1,
-                7,
-                self.config.hidden_dim,
-                self.config.latent_dim,
-                self.config.num_classes,
-            ).to(self.device)
-            model_data = torch.load(model_path)
-            model.load_state_dict(model_data["model_state_dict"])
-            val_score = model_data["val_f1"]
-
-            predictions = predict(model, self.device, test_loader)
-            all_predictions.append(predictions)
-            model_scores.append(val_score)
-
-        # Convert to numpy arrays
-        all_predictions = np.array(all_predictions)
-        model_scores = np.array(model_scores)
-
-        # Calculate weights using softmax of negative losses
-        # Using negative losses because smaller loss should mean larger weight
-        weights = np.exp(model_scores)
-        weights = weights / np.sum(weights)
-
-        logging.info("Model weights for ensemble:")
-        for model_path, weight, loss in zip(self.models, weights, model_scores):
-            logging.info(f"Model: {os.path.basename(model_path)}")
-            logging.info(f"- Loss: {loss:.4f}")
-            logging.info(f"- Weight: {weight:.4f}")
-
-        # Initialize array to store weighted votes for each class
-        num_samples = all_predictions.shape[1]
-        num_classes = self.config.num_classes
-        weighted_votes = np.zeros((num_samples, num_classes))
-
-        # Calculate weighted votes for each class
-        for i, predictions in enumerate(all_predictions):
-            for sample_idx in range(num_samples):
-                pred_class = predictions[sample_idx]
-                weighted_votes[sample_idx, pred_class] += weights[i]
-
-        # Get the class with maximum weighted votes
-        ensemble_predictions = np.argmax(weighted_votes, axis=1)
-
-        # Calculate confidence scores
-        confidence_scores = np.max(weighted_votes, axis=1)
-
-        # Log some statistics about the ensemble predictions
-        logging.info("\nEnsemble prediction statistics:")
-        unique_preds, pred_counts = np.unique(ensemble_predictions, return_counts=True)
-        for pred_class, count in zip(unique_preds, pred_counts):
-            logging.info(f"Class {pred_class}: {count} samples")
-        logging.info(f"Average confidence: {np.mean(confidence_scores):.4f}")
-        logging.info(f"Min confidence: {np.min(confidence_scores):.4f}")
-        logging.info(f"Max confidence: {np.max(confidence_scores):.4f}")
-
-        return ensemble_predictions, confidence_scores
-
-    def predict_with_threshold(self, test_df, confidence_threshold=0.5):
-        """
-        Make predictions with a confidence threshold. Predictions below the threshold
-        will be marked as -1 (uncertain).
-        """
-        predictions, confidences = self.predict_with_ensemble(test_df)
-
-        # Mark low-confidence predictions as uncertain (-1)
-        predictions[confidences < confidence_threshold] = -1
-
-        logging.info(f"\nPredictions with confidence threshold {confidence_threshold}:")
-        logging.info(f"Total predictions: {len(predictions)}")
-        logging.info(f"Confident predictions: {np.sum(predictions != -1)}")
-        logging.info(f"Uncertain predictions: {np.sum(predictions == -1)}")
-
-        return predictions
-
-
-def predict(model, device, loader):
-    model.eval()
-    y_pred = []
-    with torch.no_grad():
-        for data in loader:
-            data = data.to(device)  # Move data to device if needed}
-
-            z, mu, logvar, class_logits = model(
-                data.x, data.edge_index, data.edge_attr, data.batch, eps=0.0
-            )
-
-            pred = class_logits.argmax(dim=1)  # Predicted class
-            y_pred.extend(pred.tolist())
-
-    return y_pred

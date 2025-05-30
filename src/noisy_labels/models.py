@@ -2,12 +2,15 @@
 import json
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Literal, Optional
 
+import numpy as np
 import torch
 import torch.nn.functional as F
+from torch.utils.data import DataLoader
 from torch_geometric.nn import MessagePassing, global_mean_pool
 
+from noisy_labels.load_data import GraphDataset
 from noisy_labels.model_config import ModelConfig
 
 
@@ -218,12 +221,29 @@ class EdgeVGAE(torch.nn.Module):
         logvar = torch.clamp(logvar, min=-10, max=10)  # Prevent extreme values
         return -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
 
+    def predict(self, dataloader: DataLoader):
+        self.eval()
+        y_pred = []
+        with torch.no_grad():
+            for data in dataloader:
+                data = data.to(self.device)  # Move data to device if needed}
+
+                z, mu, logvar, class_logits = self(
+                    data.x, data.edge_index, data.edge_attr, data.batch, eps=0.0
+                )
+
+                pred = class_logits.argmax(dim=1)  # Predicted class
+                y_pred.extend(pred.tolist())
+
+        return y_pred
+
 
 class EnsembleEdgeVGAE:
+    model_metadatas: List[Dict] = []
+    models: List[EdgeVGAE] = []
+    num_classes: int = -1
+
     def __init__(self, model_paths: List[Path | str]) -> None:
-        self.models: List[EdgeVGAE] = []
-        self.val_losses: List[float] = []
-        self.val_f1s: List[float] = []
         for model_path in model_paths:
             if isinstance(model_path, str):
                 model_path = Path(model_path)
@@ -233,9 +253,76 @@ class EnsembleEdgeVGAE:
                 continue
             model = EdgeVGAE.from_pretrained(model_path)
             self.models.append(model)
-            with open(model_metadata_path, "r") as models_metadata_fp:
-                models_metadata: Dict = json.load(models_metadata_fp)[model_path.stem]
-                val_loss = models_metadata["val_loss"]
-                val_f1 = models_metadata["val_f1"]
-                self.val_losses.append(val_loss)
-                self.val_f1s.append(val_f1)
+            with open(model_metadata_path, "r") as model_metadata_fp:
+                model_metadata: Dict = json.load(model_metadata_fp)[model_path.stem]
+                self.model_metadatas.append(model_metadata)
+                num_classes = int(model_metadata["config"]["num_classes"])
+                if self.num_classes == -1:
+                    self.num_classes = num_classes
+                elif self.num_classes != num_classes:
+                    print("This model has a different number of classes")
+                    continue
+
+    def predict_with_ensemble_score(
+        self,
+        dataset_path: str | Path,
+        score_type: Literal["val_f1", "val_loss"] = "val_f1",
+        batch_size: int = 32,
+    ):
+        test_dataset = GraphDataset(dataset_path)
+        test_loader = DataLoader(
+            test_dataset,
+            batch_size=batch_size,
+            shuffle=False,
+        )
+
+        all_predictions = []
+        model_scores = []
+
+        # Collect predictions and losses from all models
+        for model, model_metadata in zip(self.models, self.model_metadatas):
+            predictions = model.predict(test_loader)
+            all_predictions.append(predictions)
+            model_scores.append(model_metadata[score_type])
+        # Convert to numpy arrays
+        all_predictions = np.array(all_predictions)
+        model_scores = np.array(model_scores)
+
+        # Calculate weights using softmax of negative losses
+        # Using negative losses because smaller loss should mean larger weight
+        weights = np.exp(model_scores)
+        weights = weights / np.sum(weights)
+
+        # print("Model weights for ensemble:")
+        # for metadatas in self.model_metadatas:
+        #     print(f"Model: {model_path}")
+        #     print(f"- Loss: {loss:.4f}")
+        #     print(f"- Weight: {weight:.4f}")
+
+        # Initialize array to store weighted votes for each class
+        num_samples = all_predictions.shape[1]
+        num_classes = self.num_classes
+        weighted_votes = np.zeros((num_samples, num_classes))
+
+        # Calculate weighted votes for each class
+        for i, predictions in enumerate(all_predictions):
+            for sample_idx in range(num_samples):
+                pred_class = predictions[sample_idx]
+                weighted_votes[sample_idx, pred_class] += weights[i]
+
+        # Get the class with maximum weighted votes
+        ensemble_predictions = np.argmax(weighted_votes, axis=1)
+
+        # Calculate confidence scores
+        confidence_scores = np.max(weighted_votes, axis=1)
+
+        # Log some statistics about the ensemble predictions
+        print("\nEnsemble prediction statistics:")
+        unique_preds, pred_counts = np.unique(ensemble_predictions, return_counts=True)
+        for pred_class, count in zip(unique_preds, pred_counts):
+            print(f"Class {pred_class}: {count} samples")
+        print(f"Average confidence: {np.mean(confidence_scores):.4f}")
+        print(f"Min confidence: {np.min(confidence_scores):.4f}")
+        print(f"Max confidence: {np.max(confidence_scores):.4f}")
+
+        return ensemble_predictions, confidence_scores

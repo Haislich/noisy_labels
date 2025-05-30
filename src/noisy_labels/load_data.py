@@ -57,7 +57,7 @@ def add_zeros(data):
 class GraphDataset(Dataset):
     def __init__(
         self,
-        filename: Path,
+        filename: Path | str,
         transform=add_zeros,
         pre_transform=None,
     ):
