@@ -1,5 +1,4 @@
 # source/models.py - Contains all model definitions
-import gc
 import json
 from dataclasses import asdict
 from pathlib import Path
@@ -11,12 +10,8 @@ import torch.nn.functional as F
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import MessagePassing, global_mean_pool
 
-try:
-    from noisy_labels.load_data import GraphDataset
-    from noisy_labels.model_config import ModelConfig
-except ModuleNotFoundError:
-    from src.noisy_labels.load_data import GraphDataset
-    from src.noisy_labels.model_config import ModelConfig
+from noisy_labels.load_data import GraphDataset
+from noisy_labels.model_config import ModelConfig
 
 
 # Edge-aware encoder with classification capability

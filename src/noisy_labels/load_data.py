@@ -77,12 +77,14 @@ class GraphDataset(Dataset):
         super().__init__(None, transform, pre_transform)
 
         if False and self.cache_path.exists():
+            print("in cache")
             with open(self.cache_path, "rb") as cache_file:
                 self.graphs: list[IndexedData] = pickle.load(cache_file)
         else:
             self.graphs = self._build_graphs()
             with open(self.cache_path, "wb") as cache_file:
                 pickle.dump(self.graphs, cache_file)
+        print("terminato caricamento")
 
         self.num_graphs = len(self.graphs)
 
@@ -103,3 +105,14 @@ class GraphDataset(Dataset):
             data_list = [self.pre_transform(g) for g in data_list]
 
         return data_list
+
+
+# from time import sleep
+
+# a = GraphDataset("./datasets/A/train.json.gz")
+# b = GraphDataset("./datasets/B/train.json.gz")
+# c = GraphDataset("./datasets/C/train.json.gz")
+# d = GraphDataset("./datasets/B/train.json.gz")
+# a = GraphDataset("./datasets/B/train.json.gz")
+# print("caricato")
+# sleep(10)

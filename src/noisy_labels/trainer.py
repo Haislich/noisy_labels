@@ -11,28 +11,10 @@ from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool
 from tqdm.auto import tqdm
 
-try:
-    from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
-    from noisy_labels.loss import (
-        NCODLoss,
-        NoisyCrossEntropyLoss,
-        SymmetricCrossEntropyLoss,
-    )
-    from noisy_labels.model_config import ModelConfig
-    from noisy_labels.models import EdgeVGAE
-except ModuleNotFoundError:
-    from src.noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
-    from src.noisy_labels.loss import (
-        NCODLoss,
-        NoisyCrossEntropyLoss,
-        SymmetricCrossEntropyLoss,
-    )
-    from src.noisy_labels.model_config import ModelConfig
-    from src.noisy_labels.models import EdgeVGAE
-
-
-def ciao():
-    print("Hello world")
+from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
+from noisy_labels.loss import NCODLoss, NoisyCrossEntropyLoss, SymmetricCrossEntropyLoss
+from noisy_labels.model_config import ModelConfig
+from noisy_labels.models import EdgeVGAE
 
 
 def warm_up_lr(epoch, num_epoch_warm_up, init_lr, optimizer):
@@ -44,19 +26,47 @@ class ModelTrainer:
     def __init__(
         self,
         config: ModelConfig,
+        loss_type: Literal[
+            "cross_entropy",
+            "ncod",
+            "noisy_cross_entropy",
+            "symmetric_cross_entropy",
+            "symmetric_cross_entropy_weighted",
+            "outlier_discounting_loss",
+        ],
+        pretrained_models: Optional[List[str] | List[Path]],
         epochs: int = 10,
         learning_rate: float = 5e-3,
         warmup_epochs: int = 0,
         early_stopping_patience: float = 0.0,
+        cycles=10,
         device: torch.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu"
         ),
     ):
         self.config = config
+        if loss_type == "cross_entropy":
+            self.train_criterion = nn.CrossEntropyLoss()
+        elif loss_type == "ncod":
+            self.train_criterion = NCODLoss(
+                self.dataset, embedding_dimensions=self.config.latent_dim
+            )
+        elif loss_type == "noisy_cross_entropy":
+            self.train_criterion = NoisyCrossEntropyLoss(p_noisy=0.2)
+        elif loss_type == "symmetric_cross_entropy":
+            self.train_criterion = SymmetricCrossEntropyLoss()
+        elif loss_type == "symmetric_cross_entropy_weighted":
+            self.train_criterion = ...
+        elif "outlier_discounting_loss":
+            self.train_criterion = ...
+        else:
+            raise ValueError(f"Invalid loss, {loss_type} is not a valid loss.")
         self.epochs = epochs
+
         self.learning_rate = learning_rate
         self.warmup_epochs = warmup_epochs
         self.early_stopping_patience = early_stopping_patience
+        self.cycles = cycles
         self.device = device
         self.dataset = GraphDataset(
             Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
@@ -67,7 +77,10 @@ class ModelTrainer:
         self.checkpoints_dir = Path(f"./checkpoints/{self.config.dataset_name}")
         self.checkpoints_dir.mkdir(exist_ok=True)
 
-        self.pretrained_models = list(self.checkpoints_dir.glob("model*.pth"))
+        if pretrained_models is None:
+            self.pretrained_models = list(self.checkpoints_dir.glob("model*.pth"))
+        else:
+            self.pretrained_models = pretrained_models
 
         self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
         self.logs_dir.mkdir(exist_ok=True)
@@ -136,11 +149,9 @@ class ModelTrainer:
         self,
         model: EdgeVGAE,
         train_loader: DataLoader,
-        criterion: nn.Module,
         optimizer: torch.optim.Optimizer,
         optimizer_u: Optional[torch.optim.Optimizer],
         epoch: int,
-        scheduler,
     ):
         model.train()
         total_loss = 0.0
@@ -160,9 +171,9 @@ class ModelTrainer:
             # Calculate losses
             recon_loss = model.recon_loss(z, data.edge_index, data.edge_attr)
             kl_loss = model.kl_loss(mu, logvar)
-            if isinstance(criterion, NCODLoss):
+            if isinstance(self.train_criterion, NCODLoss):
                 graph_embeddings = global_mean_pool(z, data.batch)
-                class_loss = criterion(
+                class_loss = self.train_criterion(
                     logits=class_logits,
                     indexes=data.idx,
                     embeddings=graph_embeddings,
@@ -170,7 +181,7 @@ class ModelTrainer:
                     epoch=epoch,
                 )
             else:
-                class_loss = criterion(class_logits, data.y)
+                class_loss = self.train_criterion(class_logits, data.y)
 
             # Total loss
             loss = 0.15 * recon_loss + 0.1 * kl_loss + class_loss
@@ -193,7 +204,6 @@ class ModelTrainer:
     def _train_single_cycle(
         self,
         cycle: int,
-        criterion: nn.Module,
         train_data: IndexedSubset,
         val_data: IndexedSubset,
     ):
@@ -226,8 +236,8 @@ class ModelTrainer:
 
         optimizer = torch.optim.Adam(model.parameters(), lr=self.learning_rate)
         optimizer_u = None
-        if isinstance(criterion, NCODLoss):
-            optimizer_u = torch.optim.SGD(criterion.parameters(), lr=1e-3)
+        if isinstance(self.train_criterion, NCODLoss):
+            optimizer_u = torch.optim.SGD(self.train_criterion.parameters(), lr=1e-3)
 
         # Warm-up scheduler
         warmup_epochs = self.warmup_epochs  # Number of warm-up epochs
@@ -258,7 +268,11 @@ class ModelTrainer:
             # Training
             model.train()
             train_loss = self._train_epoch(
-                model, train_loader, criterion, optimizer, optimizer_u, epoch, scheduler
+                model,
+                train_loader,
+                optimizer,
+                optimizer_u,
+                epoch,
             )
 
             # Validation
@@ -332,33 +346,15 @@ class ModelTrainer:
 
     def train(
         self,
-        loss_type: Literal[
-            "cross_entropy", "ncod", "noisy_cross_entropy", "symmetric_cross_entropy"
-        ],
-        cycles=10,
     ):
         logging.info("Starting training")
         print("Starting training")
 
         results: List[Dict[str, int | float | Optional[Path]]] = []
-        progress_bar = tqdm(range(cycles))
-        if loss_type == "cross_entropy":
-            criterion = nn.CrossEntropyLoss()
-        elif loss_type == "ncod":
-            criterion = NCODLoss(
-                self.dataset, embedding_dimensions=self.config.latent_dim
-            )
-
-        elif loss_type == "noisy_cross_entropy":
-            criterion = NoisyCrossEntropyLoss(p_noisy=0.2)
-
-        elif loss_type == "symmetric_cross_entropy":
-            criterion = SymmetricCrossEntropyLoss()
-        else:
-            raise ValueError(f"Invalid loss, {loss_type} is not a valid loss.")
+        progress_bar = tqdm(range(self.cycles))
 
         for cycle in progress_bar:
-            progress_bar.set_description(f"Cycle {cycle}/{cycles}")
+            progress_bar.set_description(f"Cycle {cycle}/{self.cycles}")
             cycle_seed = cycle + 1
 
             logging.info(f"\nStarting cycle {cycle + 1} with seed {cycle_seed}")
@@ -366,7 +362,6 @@ class ModelTrainer:
             train_data, val_data = self.dataset_setup(seed=cycle + 1)
             val_loss, val_f1, model_path = self._train_single_cycle(
                 cycle + 1,
-                criterion,
                 train_data,
                 val_data,
             )
