@@ -7,7 +7,7 @@ from typing import Dict, List, Literal, Optional
 import numpy as np
 import torch
 import torch.nn.functional as F
-from torch.utils.data import DataLoader
+from torch_geometric.loader import DataLoader
 from torch_geometric.nn import MessagePassing, global_mean_pool
 
 from noisy_labels.load_data import GraphDataset
@@ -38,7 +38,13 @@ class EdgeEncoder(MessagePassing):
 
 
 class EdgeVGAEEncoder(torch.nn.Module):
-    def __init__(self, input_dim, edge_dim, hidden_dim, latent_dim):
+    def __init__(
+        self,
+        input_dim,
+        edge_dim,
+        hidden_dim,
+        latent_dim,
+    ):
         super(EdgeVGAEEncoder, self).__init__()
         self.conv1 = EdgeEncoder(input_dim, edge_dim, hidden_dim)
         self.conv2 = EdgeEncoder(hidden_dim, edge_dim, hidden_dim)
@@ -49,6 +55,7 @@ class EdgeVGAEEncoder(torch.nn.Module):
         self.logvar_layer = torch.nn.Linear(hidden_dim, latent_dim)
 
     def forward(self, x, edge_index, edge_attr):
+        x = x.float()
         x = self.drop(x)
         x = F.leaky_relu(self.conv1(x, edge_index, edge_attr), 0.15)
         x = self.drop(x)
@@ -65,8 +72,10 @@ class EdgeVGAE(torch.nn.Module):
         hidden_dim: int,
         latent_dim: int,
         num_classes: int,
+        device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),
     ):
         super(EdgeVGAE, self).__init__()
+        self.device = device
         self.encoder = EdgeVGAEEncoder(input_dim, edge_dim, hidden_dim, latent_dim)
         self.classifier = torch.nn.Linear(latent_dim, num_classes)  # Classifier head
 
@@ -133,8 +142,10 @@ class EdgeVGAE(torch.nn.Module):
         optimizer_path = None
         if optimizer_state_dict is not None:
             optimizer_path = (
-                model_path_root / f"{model_path.stem}_optimizer{model_path.suffix}"
+                model_path_root
+                / f"optimizer_{model_path.stem.split('_', 2)[2]}{model_path.suffix}"
             )
+
             with open(optimizer_path, "wb") as optimizer_path_fp:
                 torch.save(optimizer_state_dict, optimizer_path_fp)
         models_metadata.update(
@@ -243,7 +254,7 @@ class EnsembleEdgeVGAE:
     models: List[EdgeVGAE] = []
     num_classes: int = -1
 
-    def __init__(self, model_paths: List[Path | str]) -> None:
+    def __init__(self, model_paths: List[Path] | List[str]) -> None:
         for model_path in model_paths:
             if isinstance(model_path, str):
                 model_path = Path(model_path)
@@ -270,6 +281,7 @@ class EnsembleEdgeVGAE:
         batch_size: int = 32,
     ):
         test_dataset = GraphDataset(dataset_path)
+
         test_loader = DataLoader(
             test_dataset,
             batch_size=batch_size,

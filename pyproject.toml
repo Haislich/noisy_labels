@@ -3,19 +3,14 @@ name = "noisy-labels"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "haislich", email = "josedlv936@gmail.com" }
-]
+authors = [{ name = "haislich", email = "josedlv936@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = [
-    "ijson>=3.4.0",
     "iprogress>=0.4",
     "ipykernel>=6.29.5",
     "ipywidgets>=8.1.7",
     "matplotlib>=3.10.3",
-    "optuna>=4.3.0",
     "pandas>=2.2.3",
-    "rich>=14.0.0",
     "scikit-learn>=1.6.1",
     "torch>=2.7.0",
     "torch-geometric>=2.6.1",

@@ -10,31 +10,37 @@ from torch_geometric.data import Data, Dataset
 
 
 class IndexedData(Data):
-    idx: int
+    idx: torch.Tensor
 
     def __init__(
         self,
         x: torch.Tensor | None = None,
         edge_index: torch.Tensor | None = None,
         edge_attr: torch.Tensor | None = None,
-        y: torch.Tensor | int | float | None = None,
+        y: torch.Tensor | None = None,
         pos: torch.Tensor | None = None,
         time: torch.Tensor | None = None,
         **kwargs,
     ):
+        if x is not None:
+            x = x.to(dtype=torch.int32)
         super().__init__(x, edge_index, edge_attr, y, pos, time, **kwargs)
+
+    def to(self, device: torch.device):
+        _device = device.type
+        return super().to(_device)
 
 
 class IndexedSubset(Dataset):
-    def __init__(self, subset: torch.utils.data.Subset):
+    def __init__(self, subset: torch.utils.data.Subset[IndexedData]):
         self.subset = subset
 
     def __len__(self):
         return len(self.subset)
 
     def __getitem__(self, i):
-        data = self.subset[i]
-        data.idx = torch.tensor(i, dtype=torch.long)  # type: ignore
+        data: IndexedData = self.subset[i]
+        data.idx = torch.tensor(i)
         return data
 
 
@@ -50,7 +56,9 @@ def dict_to_graph(g):
 
 
 def add_zeros(data):
-    data.x = torch.zeros(data.num_nodes, dtype=torch.long)
+    data.x = torch.zeros(
+        (data.num_nodes, 1), dtype=torch.float
+    )  # Use float if used in GNN layers
     return data
 
 

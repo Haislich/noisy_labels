@@ -3,6 +3,8 @@ from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import Dataset
 
+from noisy_labels.load_data import IndexedData
+
 
 class NoisyCrossEntropyLoss(nn.Module):
     def __init__(self, p_noisy: float):
@@ -42,7 +44,7 @@ class NCODLoss(nn.Module):
 
     def __init__(
         self,
-        dataset: Dataset,
+        dataset: Dataset[IndexedData],
         embedding_dimensions: int = 300,
         total_epochs: int = 150,
         lambda_consistency: float = 1.0,
@@ -57,7 +59,7 @@ class NCODLoss(nn.Module):
         self.total_epochs = total_epochs
         self.lambda_consistency = lambda_consistency
 
-        labels = [int(elem.y) for elem in dataset]
+        labels = [int(elem.y.item()) for elem in dataset]  # type: ignore
         self.num_elements = len(labels)
         self.num_classes = max(labels) + 1
         tmp_bins: list[list[int]] = [[] for _ in range(self.num_classes)]

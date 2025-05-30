@@ -1,5 +1,0 @@
-model,accuracy,gnn_type,loss_type,graph_pooling,dropout,num_layers,embedding_dim
-A,0.5651595744680851,gin-virtual,noisy_ce,mean,0.4072362823036999,6,300
-B,0.5241071428571429,gcn,ncod,sum,0.20604927082840657,3,64
-C, 0.712890625,gcn-virtual,sce,max,0.22656907931569426,10,300
-D, 0.7028210116731517,gin-virtual,noisy_ce,attention,0.05487534801392718,4,600

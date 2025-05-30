@@ -1,0 +1,11 @@
+2025-05-30 18:36:58,331 - INFO - Starting training
+2025-05-30 18:36:58,541 - INFO - 
+Starting cycle 1 with seed 1
+2025-05-30 18:36:58,542 - INFO - 
+Starting training cycle 1
+2025-05-30 18:36:58,570 - INFO - Loaded pretrained model: checkpoints/A/model_A_cycle_5_epoch_5.pth
+2025-05-30 18:37:09,264 - INFO - New best model saved: checkpoints/A/cycle_1_epoch_0_/loss_0.9108581745878179_f1_0.7505401105945748.pth
+2025-05-30 18:37:09,264 - INFO - Best validation metrics - Loss: 0.9109, F1: 0.7505
+2025-05-30 18:37:09,264 - INFO - Cycle 1 completed:
+2025-05-30 18:37:09,264 - INFO - - Final validation loss: 0.9109
+2025-05-30 18:37:09,264 - INFO - - Final F1 score: 0.7505
