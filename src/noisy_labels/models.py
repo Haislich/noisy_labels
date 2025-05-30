@@ -1,4 +1,5 @@
 # source/models.py - Contains all model definitions
+import gc
 import json
 from dataclasses import asdict
 from pathlib import Path
@@ -250,11 +251,12 @@ class EdgeVGAE(torch.nn.Module):
 
 
 class EnsembleEdgeVGAE:
-    model_metadatas: List[Dict] = []
-    models: List[EdgeVGAE] = []
-    num_classes: int = -1
-
     def __init__(self, model_paths: List[Path] | List[str]) -> None:
+        self.model_paths = model_paths
+        self.model_metadatas: List[Dict] = []
+        self.models: List[EdgeVGAE] = []
+        self.num_classes: int = -1
+
         for model_path in model_paths:
             if isinstance(model_path, str):
                 model_path = Path(model_path)
@@ -283,7 +285,7 @@ class EnsembleEdgeVGAE:
 
         test_loader = DataLoader(
             test_dataset,
-            batch_size=batch_size,
+            batch_size=24,
             shuffle=False,
         )
 
@@ -304,11 +306,11 @@ class EnsembleEdgeVGAE:
         weights = np.exp(model_scores)
         weights = weights / np.sum(weights)
 
-        # print("Model weights for ensemble:")
-        # for metadatas in self.model_metadatas:
-        #     print(f"Model: {model_path}")
-        #     print(f"- Loss: {loss:.4f}")
-        #     print(f"- Weight: {weight:.4f}")
+        print("Model weights for ensemble:")
+        for model_path, weight, loss in zip(self.model_paths, weights, model_scores):
+            print(f"Model: {model_path}")
+            print(f"- Loss: {loss:.4f}")
+            print(f"- Weight: {weight:.4f}")
 
         # Initialize array to store weighted votes for each class
         num_samples = all_predictions.shape[1]
@@ -337,3 +339,10 @@ class EnsembleEdgeVGAE:
         print(f"Max confidence: {np.max(confidence_scores):.4f}")
 
         return ensemble_predictions, confidence_scores
+
+
+# EnsembleEdgeVGAE(
+#     model_paths=list(
+#         [Path(checkpoint) for checkpoint in Path("./checkpoints/D").glob("model*.pth")]
+#     )
+# ).predict_with_ensemble_score("./datasets/D/test.json.gz")

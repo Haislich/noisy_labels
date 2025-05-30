@@ -56,7 +56,7 @@ def dict_to_graph(g):
 
 
 def add_zeros(data):
-    data.x = torch.ones(
+    data.x = torch.zeros(
         (data.num_nodes, 1), dtype=torch.float
     )  # Use float if used in GNN layers
     return data
