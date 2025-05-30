@@ -4,7 +4,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from noisy_labels.models import EnsembleEdgeVGAE
+try:
+    from noisy_labels.models import EnsembleEdgeVGAE
+except ImportError:
+    from src.noisy_labels.models import EnsembleEdgeVGAE
 
 
 def gzip_folder(folder_path, output_file):
