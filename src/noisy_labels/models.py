@@ -1,7 +1,14 @@
 # source/models.py - Contains all model definitions
+import json
+from dataclasses import asdict
+from pathlib import Path
+from typing import Dict, List, Optional
+
 import torch
 import torch.nn.functional as F
 from torch_geometric.nn import MessagePassing, global_mean_pool
+
+from noisy_labels.model_config import ModelConfig
 
 
 # Edge-aware encoder with classification capability
@@ -27,8 +34,35 @@ class EdgeEncoder(MessagePassing):
         return aggr_out
 
 
+class EdgeVGAEEncoder(torch.nn.Module):
+    def __init__(self, input_dim, edge_dim, hidden_dim, latent_dim):
+        super(EdgeVGAEEncoder, self).__init__()
+        self.conv1 = EdgeEncoder(input_dim, edge_dim, hidden_dim)
+        self.conv2 = EdgeEncoder(hidden_dim, edge_dim, hidden_dim)
+        self.drop = torch.nn.Dropout(0.05)
+
+        # Mean and log variance layers
+        self.mu_layer = torch.nn.Linear(hidden_dim, latent_dim)
+        self.logvar_layer = torch.nn.Linear(hidden_dim, latent_dim)
+
+    def forward(self, x, edge_index, edge_attr):
+        x = self.drop(x)
+        x = F.leaky_relu(self.conv1(x, edge_index, edge_attr), 0.15)
+        x = self.drop(x)
+        x = F.leaky_relu(self.conv2(x, edge_index, edge_attr), 0.15)
+        # x = self.drop(x)
+        return self.mu_layer(x), self.logvar_layer(x)  # Return mean and log variance
+
+
 class EdgeVGAE(torch.nn.Module):
-    def __init__(self, input_dim, edge_dim, hidden_dim, latent_dim, num_classes):
+    def __init__(
+        self,
+        input_dim: int,
+        edge_dim: int,
+        hidden_dim: int,
+        latent_dim: int,
+        num_classes: int,
+    ):
         super(EdgeVGAE, self).__init__()
         self.encoder = EdgeVGAEEncoder(input_dim, edge_dim, hidden_dim, latent_dim)
         self.classifier = torch.nn.Linear(latent_dim, num_classes)  # Classifier head
@@ -42,6 +76,81 @@ class EdgeVGAE(torch.nn.Module):
 
         # Initialize weights using Kaiming initialization
         self.init_weights()
+
+    @staticmethod
+    def from_pretrained(
+        model_path: Path | str,
+        device: torch.device = torch.device(
+            "cuda" if torch.cuda.is_available() else "cpu"
+        ),
+    ):
+        if isinstance(model_path, str):
+            model_path = Path(model_path)
+        model_path_root = model_path.parent
+        models_metadata_path = model_path_root / "metadata.json"
+        with open(models_metadata_path, "r") as models_metadata_fp:
+            models_metadata: Dict = json.load(models_metadata_fp)[model_path.stem]
+            model_config_dict: Optional[Dict] = models_metadata.get("config", None)
+            if model_config_dict is None:
+                raise ValueError("No valid configuration found for model")
+            else:
+                model = EdgeVGAE(
+                    model_config_dict["input_dim"],
+                    model_config_dict["edge_dim"],
+                    model_config_dict["hidden_dim"],
+                    model_config_dict["latent_dim"],
+                    model_config_dict["num_classes"],
+                ).to(device)
+
+            models_state_dict = torch.load(model_path, map_location=device)
+            model.load_state_dict(models_state_dict)
+            return model
+
+    def save(
+        self,
+        model_path: Path | str,
+        val_loss: Optional[float] = None,
+        val_f1: Optional[float] = None,
+        train_loss: Optional[float] = None,
+        config: Optional[ModelConfig] = None,
+        epoch: Optional[int] = None,
+        cycle: Optional[int] = None,
+        optimizer_state_dict: Optional[Dict] = None,
+    ):
+        if isinstance(model_path, str):
+            model_path = Path(model_path)
+        with open(model_path, "wb") as model_path_fp:
+            torch.save(self.state_dict(), model_path_fp)
+        model_path_root = model_path.parent
+        models_metadata_path = model_path_root / "metadata.json"
+        models_metadata = {}
+        if models_metadata_path.exists():
+            with open(models_metadata_path, "r") as models_metadata_fp:
+                models_metadata = json.load(models_metadata_fp)
+        optimizer_path = None
+        if optimizer_state_dict is not None:
+            optimizer_path = (
+                model_path_root / f"{model_path.stem}_optimizer{model_path.suffix}"
+            )
+            with open(optimizer_path, "wb") as optimizer_path_fp:
+                torch.save(optimizer_state_dict, optimizer_path_fp)
+        models_metadata.update(
+            {
+                model_path.stem: {
+                    "optimizer_path": str(optimizer_path)
+                    if optimizer_path
+                    else optimizer_path,
+                    "epoch": epoch,
+                    "cycle": cycle,
+                    "val_loss": val_loss,
+                    "val_f1": val_f1,
+                    "train_loss": train_loss,
+                    "config": asdict(config) if config else config,
+                }
+            }
+        )
+        with open(models_metadata_path, "w") as models_metadata_fp:
+            json.dump(models_metadata, models_metadata_fp)
 
     def init_weights(self):
         for m in self.modules():
@@ -110,21 +219,23 @@ class EdgeVGAE(torch.nn.Module):
         return -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
 
 
-class EdgeVGAEEncoder(torch.nn.Module):
-    def __init__(self, input_dim, edge_dim, hidden_dim, latent_dim):
-        super(EdgeVGAEEncoder, self).__init__()
-        self.conv1 = EdgeEncoder(input_dim, edge_dim, hidden_dim)
-        self.conv2 = EdgeEncoder(hidden_dim, edge_dim, hidden_dim)
-        self.drop = torch.nn.Dropout(0.05)
-
-        # Mean and log variance layers
-        self.mu_layer = torch.nn.Linear(hidden_dim, latent_dim)
-        self.logvar_layer = torch.nn.Linear(hidden_dim, latent_dim)
-
-    def forward(self, x, edge_index, edge_attr):
-        x = self.drop(x)
-        x = F.leaky_relu(self.conv1(x, edge_index, edge_attr), 0.15)
-        x = self.drop(x)
-        x = F.leaky_relu(self.conv2(x, edge_index, edge_attr), 0.15)
-        # x = self.drop(x)
-        return self.mu_layer(x), self.logvar_layer(x)  # Return mean and log variance
+class EnsembleEdgeVGAE:
+    def __init__(self, model_paths: List[Path | str]) -> None:
+        self.models: List[EdgeVGAE] = []
+        self.val_losses: List[float] = []
+        self.val_f1s: List[float] = []
+        for model_path in model_paths:
+            if isinstance(model_path, str):
+                model_path = Path(model_path)
+            model_path_root = model_path.parent
+            model_metadata_path = model_path_root / "metadata.json"
+            if not model_metadata_path.exists():
+                continue
+            model = EdgeVGAE.from_pretrained(model_path)
+            self.models.append(model)
+            with open(model_metadata_path, "r") as models_metadata_fp:
+                models_metadata: Dict = json.load(models_metadata_fp)[model_path.stem]
+                val_loss = models_metadata["val_loss"]
+                val_f1 = models_metadata["val_f1"]
+                self.val_losses.append(val_loss)
+                self.val_f1s.append(val_f1)

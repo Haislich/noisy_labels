@@ -49,11 +49,16 @@ def dict_to_graph(g):
     )
 
 
+def add_zeros(data):
+    data.x = torch.zeros(data.num_nodes, dtype=torch.long)
+    return data
+
+
 class GraphDataset(Dataset):
     def __init__(
         self,
-        filename: str,
-        transform=None,
+        filename: Path,
+        transform=add_zeros,
         pre_transform=None,
     ):
         self.raw_path = Path(filename)

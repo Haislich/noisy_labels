@@ -12,30 +12,17 @@ import torch
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from torch import nn
+from torch.utils.data import WeightedRandomSampler, random_split
 from torch_geometric.loader import DataLoader
-from utils import set_seed
 
-from noisy_labels.load_data import GraphDataset
+from noisy_labels.load_data import GraphDataset, IndexedSubset
+from noisy_labels.model_config import ModelConfig
 from noisy_labels.models import EdgeVGAE
 
 
 def warm_up_lr(epoch, num_epoch_warm_up, init_lr, optimizer):
     for params in optimizer.param_groups:
         params["lr"] = (epoch + 1) ** 3 * init_lr / num_epoch_warm_up**3
-
-
-@dataclass
-class ModelConfig:
-    dataset_name: Literal["A", "B", "C", "D"]
-    batch_size: int = 64
-    hidden_dim: int = 128
-    latent_dim: int = 8
-    num_classes: int = 6
-    epochs: int = 1000
-    learning_rate: float = 0.0005
-    num_cycles: int = 5
-    warmup: int = 5
-    early_stopping_patience: int = 100
 
 
 class ModelTrainer:
@@ -48,13 +35,22 @@ class ModelTrainer:
     ):
         self.config = config
         self.device = device
-        self.models: List[str] = []
-        self.pretrain_models: List[str] = []
+        self.dataset = GraphDataset(
+            Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
+        )
+        self.model = EdgeVGAE(
+            1,
+            7,
+            self.config.hidden_dim,
+            self.config.latent_dim,
+            self.config.num_classes,
+        ).to(self.device)
+
         self.best_f1_scores = []
         self.eval_criterion = torch.nn.CrossEntropyLoss()
-        self.checkpoints_dir = Path("./checkpoints")
+        self.checkpoints_dir = Path(f"./checkpoints{self.config.dataset_name}")
         os.makedirs(self.checkpoints_dir, exist_ok=True)
-        self.submissions_dir = "./submissions"
+        self.submissions_dir = Path(f"./submissions/{self.config.dataset_name}")
         os.makedirs(self.submissions_dir, exist_ok=True)
         self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
         os.makedirs(self.logs_dir, exist_ok=True)
@@ -65,9 +61,24 @@ class ModelTrainer:
             filemode="w",
         )
 
-    def evaluate_model(
+    def dataset_setup(self, seed: int):
+        val_size = int(0.2 * len(self.dataset))
+        train_size = len(self.dataset) - val_size
+        generator = torch.Generator().manual_seed(seed)
+        train_dataset, val_dataset = random_split(
+            self.dataset, [train_size, val_size], generator=generator
+        )
+        train_dataset = IndexedSubset(train_dataset)
+        val_dataset = IndexedSubset(val_dataset)
+
+        # train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+
+        # val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+        return (train_dataset, val_dataset)
+
+    def _eval_epoch(
         self,
-        model: nn.Module,
+        model: EdgeVGAE,
         data_loader: DataLoader,
     ) -> Dict[str, float]:
         model.eval()
@@ -108,8 +119,56 @@ class ModelTrainer:
             "num_samples": total_samples,
         }
 
-    def train_single_cycle(self, cycle_num: int, train_data, val_data):
-        logging.info(f"\nStarting training cycle {cycle_num}")
+    def _train_epoch(
+        self,
+        model: EdgeVGAE,
+        train_loader: DataLoader,
+        criterion: nn.Module,
+        optimizer: torch.optim.Optimizer,
+        scheduler,
+    ):
+        model.train()
+        total_loss = 0.0
+        total_samples = 0
+
+        for data in train_loader:
+            data = data.to(self.device)
+            optimizer.zero_grad()
+
+            # Forward pass
+            z, mu, logvar, class_logits = model(
+                data.x, data.edge_index, data.edge_attr, data.batch
+            )
+
+            # Calculate losses
+            recon_loss = model.recon_loss(z, data.edge_index, data.edge_attr)
+            kl_loss = model.kl_loss(mu, logvar)
+            class_loss = criterion(class_logits, data.y)
+
+            # Total loss
+            loss = 0.15 * recon_loss + 0.1 * kl_loss + class_loss
+
+            # Backward pass
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            optimizer.step()
+            # scheduler.step()
+
+            # Accumulate loss
+            batch_size = data.y.size(0)
+            total_loss += loss.item() * batch_size
+            total_samples += batch_size
+
+        return float(total_loss / total_samples)
+
+    def _train_single_cycle(
+        self,
+        cycle: int,
+        criterion: nn.Module,
+        train_data: IndexedSubset,
+        val_data: IndexedSubset,
+    ):
+        logging.info(f"\nStarting training cycle {cycle}")
 
         model = EdgeVGAE(
             1,
@@ -120,12 +179,12 @@ class ModelTrainer:
         ).to(self.device)
 
         # Load pretrained models if any
-        if len(self.pretrain_models) > 0:
-            n = len(self.pretrain_models)
-            model_file = self.pretrain_models[(cycle_num - 1) % n]
-            model_data = torch.load(model_file, map_location=torch.device(self.device))
-            model.load_state_dict(model_data["model_state_dict"])
-            logging.info(f"Loaded pretrained model: {model_file}")
+        # if len(self.pretrain_models) > 0:
+        #     n = len(self.pretrain_models)
+        #     model_file = self.pretrain_models[(cycle_num - 1) % n]
+        #     model_data = torch.load(model_file, map_location=torch.device(self.device))
+        #     model.load_state_dict(model_data["model_state_dict"])
+        #     logging.info(f"Loaded pretrained model: {model_file}")
 
         train_loader = DataLoader(
             train_data, batch_size=self.config.batch_size, shuffle=True
@@ -144,13 +203,11 @@ class ModelTrainer:
             factor=0.7,  # Reduce LR by 50% on plateau
             patience=10,  # Number of epochs with no improvement
             min_lr=1e-6,
-            verbose=True,
         )
 
         best_val_loss = float("inf")
-        best_f1 = (
-            0.0  # Track best F1 score even though we're not using it for selection
-        )
+        # Track best F1 score even though we're not using it for selection
+        best_f1 = 0.0
         epoch_best = 0
         best_model_path = None
 
@@ -163,17 +220,19 @@ class ModelTrainer:
 
             # Training
             model.train()
-            train_loss = self.train_epoch(model, train_loader, optimizer, scheduler)
+            train_loss = self._train_epoch(
+                model, train_loader, criterion, optimizer, scheduler
+            )
 
             # Validation
-            val_metrics = self.evaluate_model(model, val_loader)
+            val_metrics = self._eval_epoch(model, val_loader)
             val_loss = val_metrics["cross_entropy_loss"]
             val_f1 = val_metrics["f1_score"]
 
             # Log every 10 epochs
             if (epoch + 1) % 10 == 0:
                 logging.info(
-                    f"Cycle {cycle_num}, Epoch {epoch + 1}, LR {optimizer.param_groups[0]['lr']:.3e}, "
+                    f"Cycle {cycle}, Epoch {epoch + 1}, LR {optimizer.param_groups[0]['lr']:.3e}, "
                     f"Train Loss: {train_loss:.4f}, "
                     f"Val Loss: {val_loss:.4f}, "
                     f"Val F1: {val_f1:.4f}"
@@ -183,20 +242,27 @@ class ModelTrainer:
             if epoch >= warmup_epochs:
                 scheduler.step(val_f1)
 
-            # Save model if it has the best validation loss so far
-            # if val_loss < best_val_loss:
+            # Save model if it has the best f1 score so far
             if val_f1 > best_f1:
                 best_val_loss = val_loss
-                best_f1 = val_f1  # Store F1 score of the best model
+                best_f1 = val_f1
                 epoch_best = epoch
 
                 # Save the model with both metrics in filename
                 best_model_path = (
-                    f"checkpoints/model_{self.config.folder_name}_"
-                    f"cycle_{cycle_num}_epoch_{epoch}_"
-                    f"loss_{val_loss:.3f}_f1_{val_f1:.3f}.pth"
+                    self.checkpoints_dir
+                    / f"cycle_{cycle}_epoch_{epoch}_"
+                    / f"loss_{val_loss}_f1_{val_f1}.pth"
                 )
-
+                model.save(
+                    self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
+                    val_loss,
+                    val_f1,
+                    train_loss,
+                    self.config,
+                    epoch,
+                    cycle,
+                )
                 torch.save(
                     {
                         "model_state_dict": model.state_dict(),
@@ -217,10 +283,12 @@ class ModelTrainer:
 
             # If there is no improvement, reload the best parameters
             if (
-                epoch - epoch_best
-            ) > self.config.early_stopping_patience // 2 and epoch % 10 == 0:
-                model_data = torch.load(best_model_path)
-                model.load_state_dict(model_data["model_state_dict"])
+                (epoch - epoch_best) > self.config.early_stopping_patience // 2
+                and epoch % 10 == 0
+                # Reload only if there is something to reload
+                and best_model_path is not None
+            ):
+                model = EdgeVGAE.from_pretrained(best_model_path)
                 logging.info(f"Reloading best model: {best_model_path}")
 
             # Early stopping based on validation loss
@@ -228,57 +296,24 @@ class ModelTrainer:
                 logging.info(f"Early stopping triggered at epoch {epoch}")
                 break
 
-        self.models.append(best_model_path)
+        # self.models.append(best_model_path)
         return best_val_loss, best_f1, best_model_path
 
-    def train_epoch(self, model, train_loader, optimizer, scheduler):
-        model.train()
-        total_loss = 0.0
-        total_samples = 0
-
-        for data in train_loader:
-            data = data.to(self.device)
-            optimizer.zero_grad()
-
-            # Forward pass
-            z, mu, logvar, class_logits = model(
-                data.x, data.edge_index, data.edge_attr, data.batch
-            )
-
-            # Calculate losses
-            recon_loss = model.recon_loss(z, data.edge_index, data.edge_attr)
-            kl_loss = model.kl_loss(mu, logvar)
-            class_loss = self.criterion(class_logits, data.y)
-
-            # Total loss
-            loss = 0.15 * recon_loss + 0.1 * kl_loss + class_loss
-
-            # Backward pass
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-            optimizer.step()
-            # scheduler.step()
-
-            # Accumulate loss
-            batch_size = data.y.size(0)
-            total_loss += loss.item() * batch_size
-            total_samples += batch_size
-
-        return total_loss / total_samples
-
-    def train_multiple_cycles(self, df, num_cycles=10):
-        self.load_pretrained()
-        results = []
+    def train(self, criterion: nn.Module, num_cycles=10):
+        logging.info("Starting training")
+        results: List[Dict[str, int | float | Optional[Path]]] = []
 
         for cycle in range(num_cycles):
             cycle_seed = cycle + 1
-            # cycle_seed = np.random.randint(100,1000)
-            set_seed(cycle_seed)
+
             logging.info(f"\nStarting cycle {cycle + 1} with seed {cycle_seed}")
 
-            train_data, val_data = self.prepare_data_split(df, seed=cycle + 1)
-            val_loss, val_f1, model_path = self.train_single_cycle(
-                cycle + 1, train_data, val_data
+            train_data, val_data = self.dataset_setup(seed=cycle + 1)
+            val_loss, val_f1, model_path = self._train_single_cycle(
+                cycle + 1,
+                criterion,
+                train_data,
+                val_data,
             )
 
             results.append(
@@ -295,56 +330,7 @@ class ModelTrainer:
             logging.info(f"Cycle {cycle + 1} completed:")
             logging.info(f"- Final validation loss: {val_loss:.4f}")
             logging.info(f"- Final F1 score: {val_f1:.4f}")
-
-            # # Keep only the top 5 models based on validation loss
-            # if len(self.models) > 5:
-            #     models_with_loss = [(path, self.get_model_loss(path)) for path in self.models]
-            #     models_with_loss.sort(key=lambda x: x[1])
-            #     self.models = [path for path, _ in models_with_loss[:5]]
-
-            #     # Log the kept models
-            #     logging.info("\nKept top 5 models:")
-            #     for model_path in self.models:
-            #         checkpoint = torch.load(model_path, map_location=self.device)
-            #         logging.info(f"- {os.path.basename(model_path)}")
-            #         logging.info(f"  Loss: {checkpoint['val_loss']:.4f}, F1: {checkpoint['val_f1']:.4f}")
-
-        # Save the paths of the best models to a file
-        model_paths_file = f"model_paths_{self.config.folder_name}.txt"
-        with open(model_paths_file, "w") as f:
-            for model_path in self.models:
-                f.write(f"{model_path}\n")
-        logging.info(f"Saved paths of the best models to {model_paths_file}")
-
         return results
-
-    def get_model_loss(self, model_path: str) -> float:
-        """Extract validation loss from saved model checkpoint"""
-        checkpoint = torch.load(model_path, map_location=self.device)
-        return checkpoint["val_loss"]
-
-    def prepare_data_split(self, df, seed=1):
-        db_lst = df.db.unique()
-        if len(db_lst) > 1:  # Same split than individual datasets
-            df_train = pd.DataFrame()
-            df_valid = pd.DataFrame()
-            for x in db_lst:
-                idx = df.db == x
-                tmp_train, tmp_valid = train_test_split(
-                    df.loc[idx, :], test_size=0.2, shuffle=True, random_state=seed
-                )
-                df_train = pd.concat([df_train, tmp_train], ignore_index=True)
-                df_valid = pd.concat([df_train, tmp_train], ignore_index=True)
-        else:
-            df_train, df_valid = train_test_split(
-                df, test_size=0.2, shuffle=True, random_state=seed
-            )
-
-        # Convert to PyTorch Geometric dataset
-        train_dataset = create_dataset_from_dataframe(df_train)
-        val_dataset = create_dataset_from_dataframe(df_valid)
-
-        return train_dataset, val_dataset
 
     def predict_with_ensemble(self, test_df):
         test_dataset = create_dataset_from_dataframe(test_df, result=False)
