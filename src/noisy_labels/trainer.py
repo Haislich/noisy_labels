@@ -11,10 +11,24 @@ from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool
 from tqdm.auto import tqdm
 
-from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
-from noisy_labels.loss import NCODLoss, NoisyCrossEntropyLoss, SymmetricCrossEntropyLoss
-from noisy_labels.model_config import ModelConfig
-from noisy_labels.models import EdgeVGAE
+try:
+    from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
+    from noisy_labels.loss import (
+        NCODLoss,
+        NoisyCrossEntropyLoss,
+        SymmetricCrossEntropyLoss,
+    )
+    from noisy_labels.model_config import ModelConfig
+    from noisy_labels.models import EdgeVGAE
+except ModuleNotFoundError:
+    from src.noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
+    from src.noisy_labels.loss import (
+        NCODLoss,
+        NoisyCrossEntropyLoss,
+        SymmetricCrossEntropyLoss,
+    )
+    from src.noisy_labels.model_config import ModelConfig
+    from src.noisy_labels.models import EdgeVGAE
 
 
 def ciao():

@@ -3,7 +3,10 @@ from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import Dataset
 
-from noisy_labels.load_data import IndexedData
+try:
+    from noisy_labels.load_data import IndexedData
+except ModuleNotFoundError:
+    from src.noisy_labels.load_data import IndexedData  # type: ignore
 
 
 class NoisyCrossEntropyLoss(nn.Module):

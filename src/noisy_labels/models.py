@@ -11,8 +11,12 @@ import torch.nn.functional as F
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import MessagePassing, global_mean_pool
 
-from noisy_labels.load_data import GraphDataset
-from noisy_labels.model_config import ModelConfig
+try:
+    from noisy_labels.load_data import GraphDataset
+    from noisy_labels.model_config import ModelConfig
+except ModuleNotFoundError:
+    from src.noisy_labels.load_data import GraphDataset
+    from src.noisy_labels.model_config import ModelConfig
 
 
 # Edge-aware encoder with classification capability
