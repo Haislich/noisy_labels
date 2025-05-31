@@ -13,17 +13,17 @@ from noisy_labels.trainer import ModelTrainer
 from noisy_labels.utils import save_predictions
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-EPOCHS = 1
+EPOCHS = 10
 CYCLES = 1
 ROUNDS = 1
 ROOT = os.getcwd()
 DEFAULT_LOSS = "cross_entropy_loss"
 LOSS_TYPES = [
-    "cross_entropy_loss",
-    # "ncod_loss",
-    # "noisy_cross_entropy_loss",
+    # "cross_entropy_loss",
+    "ncod_loss",
+    "noisy_cross_entropy_loss",
     # "symmetric_cross_entropy_loss",
-    # "weighted_symmetric_cross_entropy_loss",
+    "weighted_symmetric_cross_entropy_loss",
     # "outlier_discounting_loss",
 ]
 
@@ -104,8 +104,8 @@ def main():
         abcd_path = train_path.parent.parent / "ABCD" / "train.json.gz"
         if (
             abcd_path.exists()
-            or checkpoint_dir.exists()
-            or any(checkpoint_dir.iterdir())
+            and checkpoint_dir.exists()
+            and not any(checkpoint_dir.iterdir())
         ):
             logger.info(
                 f"Starting weak pretraining on ABCD ({ROUNDS=}, {CYCLES=}, {EPOCHS=})"
@@ -127,7 +127,7 @@ def main():
         trainer = ModelTrainer(
             ModelConfig(train_path), loss_type=best_loss, epochs=EPOCHS, cycles=CYCLES
         )
-        trainer.train(best_model_paths)
+        trainer.train()
 
     predictions, _ = EnsembleEdgeVGAE(test_path).predict_with_ensemble_score(test_path)
     save_predictions(predictions, test_path)

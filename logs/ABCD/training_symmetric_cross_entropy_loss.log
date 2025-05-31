@@ -1,8 +1,50 @@
-2025-05-31 17:09:28 | INFO | Cache found at datasets/ABCD/train.json.pkl
-2025-05-31 17:09:41 | INFO | Loading finished
-2025-05-31 17:09:43 | INFO | Cache found at datasets/ABCD/train.json.pkl
-2025-05-31 17:09:56 | INFO | Loading finished
-2025-05-31 17:09:57 | INFO | Pretraining - Round 1/1
-2025-05-31 17:09:57 | INFO | Starting training
-2025-05-31 17:09:57 | INFO | Starting cycle 1 with seed 1
-2025-05-31 17:09:57 | INFO | Starting training cycle 1
+2025-05-31 18:14:34 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 18:14:47 | INFO | Loading finished
+2025-05-31 18:14:48 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 18:15:03 | INFO | Loading finished
+2025-05-31 18:15:04 | INFO | Pretraining - Round 1/2
+2025-05-31 18:15:04 | INFO | Starting training
+2025-05-31 18:15:04 | INFO | Starting cycle 1 with seed 1
+2025-05-31 18:15:04 | INFO | Starting training cycle 1
+2025-05-31 18:15:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_ABCD_epoch_1.pth with an initial score of 0.2574110835098322
+2025-05-31 18:15:39 | INFO | New best model saved: checkpoints/ABCD/model_ABCD_epoch_1.pth
+2025-05-31 18:15:39 | INFO | Best validation metrics - Loss: 1.6445, F1: 0.2502
+2025-05-31 18:16:13 | INFO | Early stopping triggered at epoch 1
+2025-05-31 18:16:13 | INFO | Cycle 1 completed:
+2025-05-31 18:16:13 | INFO | - Final validation loss: 1.6445
+2025-05-31 18:16:13 | INFO | - Final F1 score: 0.2502
+2025-05-31 18:16:13 | INFO | Starting cycle 2 with seed 2
+2025-05-31 18:16:13 | INFO | Starting training cycle 2
+2025-05-31 18:16:13 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_ABCD_epoch_1.pth with an initial score of 0.2502258803300813
+2025-05-31 18:16:48 | INFO | New best model saved: checkpoints/ABCD/model_ABCD_epoch_2.pth
+2025-05-31 18:16:48 | INFO | Best validation metrics - Loss: 1.6533, F1: 0.2953
+2025-05-31 18:17:22 | INFO | Early stopping triggered at epoch 1
+2025-05-31 18:17:22 | INFO | Replaced worst model checkpoints/ABCD/model_ABCD_epoch_2.pth with improved one at: checkpoints/ABCD/model_ABCD_epoch_1.pth
+2025-05-31 18:17:22 | INFO | Cycle 2 completed:
+2025-05-31 18:17:22 | INFO | - Final validation loss: 1.6533
+2025-05-31 18:17:22 | INFO | - Final F1 score: 0.2953
+2025-05-31 18:17:22 | INFO | Starting training
+2025-05-31 18:17:22 | INFO | Starting cycle 1 with seed 1
+2025-05-31 18:17:22 | INFO | Starting training cycle 1
+2025-05-31 18:17:22 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_ABCD_epoch_1.pth with an initial score of 0.29529450825796244
+2025-05-31 18:17:58 | INFO | New best model saved: checkpoints/ABCD/model_ABCD_epoch_1.pth
+2025-05-31 18:17:58 | INFO | Best validation metrics - Loss: 1.6541, F1: 0.2431
+2025-05-31 18:18:33 | INFO | Early stopping triggered at epoch 1
+2025-05-31 18:18:33 | INFO | Cycle 1 completed:
+2025-05-31 18:18:33 | INFO | - Final validation loss: 1.6541
+2025-05-31 18:18:33 | INFO | - Final F1 score: 0.2431
+2025-05-31 18:18:33 | INFO | Starting cycle 2 with seed 2
+2025-05-31 18:18:33 | INFO | Starting training cycle 2
+2025-05-31 18:18:33 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_ABCD_epoch_1.pth with an initial score of 0.24309348421126598
+2025-05-31 18:19:07 | INFO | New best model saved: checkpoints/ABCD/model_ABCD_epoch_2.pth
+2025-05-31 18:19:07 | INFO | Best validation metrics - Loss: 1.7032, F1: 0.1999
+2025-05-31 18:19:44 | INFO | Early stopping triggered at epoch 1
+2025-05-31 18:19:44 | INFO | Cycle 2 completed:
+2025-05-31 18:19:44 | INFO | - Final validation loss: 1.7032
+2025-05-31 18:19:44 | INFO | - Final F1 score: 0.1999
+2025-05-31 18:19:44 | INFO | Starting training
+2025-05-31 18:19:44 | INFO | Starting cycle 1 with seed 1
+2025-05-31 18:19:44 | INFO | Starting training cycle 1
+2025-05-31 18:19:44 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_ABCD_epoch_2.pth with an initial score of 0.1999224173723496
+2025-05-31 18:23:28 | INFO | New best model saved: checkpoints/ABCD/model_ABCD_epoch_1.pth
+2025-05-31 18:23:28 | INFO | Best validation metrics - Loss: 1.6453, F1: 0.3214

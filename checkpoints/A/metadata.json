@@ -129,36 +129,36 @@
             "edge_dim": 7
         }
     },
-    "model_epoch_1_cross_entropy_loss": {
-        "val_loss": 1.3005981310039547,
-        "val_f1": 0.5680331213095261,
-        "train_loss": 2.095180259528735,
-        "config": {
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
-    "model_epoch_A_1": {
-        "val_loss": 1.3005981310039547,
-        "val_f1": 0.5680331213095261,
-        "train_loss": 2.095180259528735,
-        "config": {
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
     "model_A_epoch_1": {
-        "val_loss": 1.3923276933372444,
-        "val_f1": 0.5195815699350506,
-        "train_loss": 2.0140477782445596,
+        "val_loss": 1.5494937203454633,
+        "val_f1": 0.4460744620661969,
+        "train_loss": 0.27306404065155815,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_A_epoch_2": {
+        "val_loss": 1.3896380189462756,
+        "val_f1": 0.5659606590184993,
+        "train_loss": 1.3296855891004522,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_A_epoch_3": {
+        "val_loss": 1.4708092779132491,
+        "val_f1": 0.5047735180566931,
+        "train_loss": 2.723062795950166,
         "config": {
             "input_dim": 1,
             "edge_dim": 7,

@@ -313,10 +313,10 @@ class EnsembleEdgeVGAE:
         weights = weights / np.sum(weights)
 
         logger.info("Model weights for ensemble:")
-        for model_path, weight, loss in zip(self.model_paths, weights, model_scores):
-            logger.info(f"Model: {model_path}")
-            logger.info(f"- Loss: {loss:.4f}")
-            logger.info(f"- Weight: {weight:.4f}")
+        # for model_path, weight, loss in zip(self.model_paths, weights, model_scores):
+        #     logger.info(f"Model: {model_path}")
+        #     logger.info(f"- Loss: {loss:.4f}")
+        #     logger.info(f"- Weight: {weight:.4f}")
 
         # Initialize array to store weighted votes for each class
         num_samples = all_predictions.shape[1]

@@ -1,41 +1,53 @@
-# Estensione della procedura di training con torneo di funzioni di perdita e ensemble intelligente
 
-Questo progetto estende la procedura di training tradizionale con due contributi principali:
+# Acknowledgments
 
-1. **Weak pretraining come torneo tra funzioni di perdita**
-2. **Voting finale tramite ensemble sistematico dei migliori modelli**
+This repository builds upon ideas and code from the [winning solution](https://sites.google.com/view/learning-with-noisy-graph-labe/winners) of the [IJCNN 2025 Competition: Learning with Noisy Graph Labels](https://sites.google.com/view/learning-with-noisy-graph-labe?usp=sharing), adapted for the Deep Learning Hackathon.
 
-## 1. Weak Pretraining con Torneo tra Funzioni di Perdita
+The original approach employs a **Variational Graph Autoencoder (VGAE)** to filter out noisy samples, an **ensemble of models** to address different noise conditions, and an improved **weighted voting mechanism** to enhance prediction accuracy.
 
-La procedura di pretraining è stata modificata per testare in parallelo diverse funzioni di perdita. Ogni `ModelTrainer` viene instanziato con una diversa loss tra quelle selezionate (es. `cross_entropy_loss`, `ncod_loss`, ecc.).
+We also make use of pretrained weights provided by the original authors. These weights follow the naming convention:
 
-L’idea è trattare ogni loss come un partecipante a un torneo, eseguendo cicli di addestramento su tutto il dataset **ABCD**. Al termine di ogni round di training, vengono valutati i modelli e si seleziona, per ogni loss, quello con il miglior punteggio di validazione (F1 score). Successivamente, si seleziona la loss che ha ottenuto il **miglior risultato complessivo** in quel round.
+`model_[datasetname]_cycle_[cycle]_epoch_[epoch].pth`
 
-**Nota:** al momento si seleziona solo la loss che ha performato meglio nell’ultimo round, ma sarebbe opportuno calcolare una media o statistica su tutti i round precedenti. Questo è stato lasciato come `TODO`.
+We acknowledge and thank the authors of the original work for their valuable contribution of both code and pretrained models. You can find the original repository here: [Original Repo.](https://github.com/cminuttim/Learning-with-Noisy-Graph-Labels-Competition-IJCNN_2025)
 
-## 2. Gestione dei Modelli Preaddestrati
+## Extended Training Procedure with Loss Function Tournament and Intelligent Ensemble
 
-Durante il training, se sono disponibili modelli già preaddestrati, questi vengono caricati automaticamente. Viene selezionato il **modello peggiore** (basato sul F1 score) per cercare di migliorarlo.
+![Image teaser](./images/teaser.svg)
+This project improves the traditional training pipeline for learning from noisy labels through two key innovations:
 
-Se un modello con prestazioni migliori viene ottenuto, **sostituisce il peggiore** tra quelli preaddestrati. Questo meccanismo permette di mantenere nel tempo una collezione di modelli in costante miglioramento, limitando il numero di checkpoint salvati.
+1. **Weak pretraining using a loss function tournament**
+2. **Final prediction via ensemble of best models**
 
-## 3. Ensemble dei Migliori Modelli
+## 1. Weak Pretraining with Loss Function Tournament
 
-Una volta completato il training, viene eseguita una selezione dei modelli migliori in base al punteggio F1. In particolare:
+When the script is launched with both a `train_path` and a `test_path`, it checks for an aggregated dataset named `ABCD/train.json.gz`. If found, each available loss function competes in a tournament.
 
-- Viene caricato il metadata associato a ciascun modello.
-- I modelli vengono ordinati per F1 score.
-- Vengono selezionati i top-k modelli (default: `top_k = 5`).
-- Si costruisce un ensemble utilizzando questi modelli per la procedura di voting finale.
+Each participant (i.e., loss function) trains a model on the ABCD dataset for a set number of **rounds**, each made of **cycles** and **epochs**. After each round:
 
-Questa strategia supera l’ipotesi precedente secondo cui tutti i “migliori” modelli (uno per loss) siano effettivamente buoni. Ora si adotta una **classifica relativa**, includendo sistematicamente solo quelli realmente più performanti, migliorando la qualità del voting.
+- The best-performing model for each loss is selected.
+- Then, the loss function with the highest F1 score overall is chosen for finetuning.
 
-## Conclusioni
+## 2. Finetuning and Pre-trained Model Management
 
-Queste modifiche rendono la procedura di training più robusta e adattiva:
+Once weak pretraining is completed (or skipped if no ABCD data is found), finetuning is performed on the provided dataset.
 
-- Le funzioni di perdita competono tra loro, selezionando dinamicamente la più adatta.
-- I modelli vengono continuamente aggiornati e migliorati.
-- Il voting si basa su un ensemble ottimizzato, non più su scelte arbitrarie o statiche.
+During finetuning:
 
-Il sistema nel suo complesso è pensato per adattarsi in modo automatico e intelligente alla complessità del dataset e alle variazioni nei risultati tra diversi round di training.
+- Previously trained models are loaded from disk (if available).
+- The worst-performing model (based on validation F1 score) is selected.
+- A new model is trained using the best-performing loss from the pretraining phase.
+- If the new model outperforms the worst in the pool, it **replaces it**—both on disk and in the internal metadata.
+
+This guarantees a continuously improving collection of checkpoints while limiting their total number.
+
+## 3. Best Models Ensemble
+
+After training, an ensemble is built over the saved models to generate final predictions on the test set. This is done as follows:
+
+1. Load all available trained models.
+2. Sort them by validation F1 score.
+3. Select the top-k models (default behavior assumed to be top 5).
+4. Aggregate predictions using ensemble voting or averaging.
+
+This method avoids blindly trusting one "best" model per loss and instead builds a more robust consensus prediction.

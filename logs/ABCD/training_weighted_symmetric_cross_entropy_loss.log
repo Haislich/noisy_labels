@@ -1,6 +1,5 @@
-2025-05-31 17:09:43 | INFO | Cache found at datasets/ABCD/train.json.pkl
-2025-05-31 17:09:56 | INFO | Loading finished
-2025-05-31 17:09:57 | INFO | Pretraining - Round 1/1
-2025-05-31 17:09:57 | INFO | Starting training
-2025-05-31 17:09:57 | INFO | Starting cycle 1 with seed 1
-2025-05-31 17:09:57 | INFO | Starting training cycle 1
+2025-05-31 18:26:07 | INFO | Pretraining - Round 1/1
+2025-05-31 18:26:07 | INFO | Starting training
+2025-05-31 18:26:07 | INFO | Starting cycle 1 with seed 1
+2025-05-31 18:26:07 | INFO | Starting training cycle 1
+2025-05-31 18:26:07 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_ABCD_epoch_2.pth with an initial score of 0.1999224173723496
