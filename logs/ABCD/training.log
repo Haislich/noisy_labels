@@ -1,0 +1,45 @@
+2025-05-31 10:48:30 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:48:30 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:48:41 | INFO | Loading finished
+2025-05-31 10:48:43 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:48:43 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:48:54 | INFO | Loading finished
+2025-05-31 10:48:55 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:48:55 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:49:31 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:49:31 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:49:41 | INFO | Loading finished
+2025-05-31 10:49:43 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:49:43 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:49:54 | INFO | Loading finished
+2025-05-31 10:49:55 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:49:55 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:50:08 | INFO | Loading finished
+2025-05-31 10:50:09 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:50:09 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:50:21 | INFO | Loading finished
+2025-05-31 10:50:23 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:50:23 | INFO | Cache found at datasets/ABCD/train.json.pkl
+2025-05-31 10:50:35 | INFO | Loading finished
+2025-05-31 10:50:37 | INFO | Starting training
+2025-05-31 10:50:37 | INFO | Starting training
+2025-05-31 10:50:37 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 10:50:38 | INFO | 
+Starting training cycle 1
+2025-05-31 10:50:38 | INFO | 
+Starting training cycle 1
+2025-05-31 10:50:39 | INFO | Loaded pretrained model: checkpoints/ABCD/model_ABCD_cycle_2_epoch_919.pth
+2025-05-31 10:50:39 | INFO | Loaded pretrained model: checkpoints/ABCD/model_ABCD_cycle_2_epoch_919.pth
+2025-05-31 10:51:13 | INFO | 
+New best model saved: checkpoints/ABCD/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:51:13 | INFO | Best validation metrics - Loss: 2.7848, F1: 0.2012
+2025-05-31 10:51:13 | INFO | New best model saved: checkpoints/ABCD/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:51:13 | INFO | Best validation metrics - Loss: 2.7848, F1: 0.2012
+2025-05-31 10:51:13 | INFO | Cycle 1 completed:
+2025-05-31 10:51:13 | INFO | - Final validation loss: 2.7848
+2025-05-31 10:51:13 | INFO | - Final F1 score: 0.2012
+2025-05-31 10:51:13 | INFO | Cycle 1 completed:
+2025-05-31 10:51:13 | INFO | - Final validation loss: 2.7848
+2025-05-31 10:51:13 | INFO | - Final F1 score: 0.2012
+2025-05-31 10:51:13 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 2.784781659648558, 'val_f1': 0.20119015466757528, 'model_path': PosixPath('checkpoints/ABCD/model_cycle_0_outlier_discounting_loss.pth')}]

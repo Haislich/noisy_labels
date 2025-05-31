@@ -1,9 +1,12 @@
 # source/trainer.py
-import logging
+import json
+
+# from collections import deque
 from pathlib import Path
 from typing import Dict, List, Literal, Optional
 
 import torch
+from loguru import logger
 from sklearn.metrics import f1_score
 from torch import nn
 from torch.utils.data import random_split  # ,WeightedRandomSampler
@@ -11,28 +14,17 @@ from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool
 from tqdm.auto import tqdm
 
-try:
-    from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
-    from noisy_labels.loss import (
-        NCODLoss,
-        NoisyCrossEntropyLoss,
-        SymmetricCrossEntropyLoss,
-    )
-    from noisy_labels.model_config import ModelConfig
-    from noisy_labels.models import EdgeVGAE
-except ModuleNotFoundError:
-    from src.noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
-    from src.noisy_labels.loss import (
-        NCODLoss,
-        NoisyCrossEntropyLoss,
-        SymmetricCrossEntropyLoss,
-    )
-    from src.noisy_labels.model_config import ModelConfig
-    from src.noisy_labels.models import EdgeVGAE
-
-
-def ciao():
-    print("Hello world")
+from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
+from noisy_labels.loss import (
+    NCODLoss,
+    NoisyCrossEntropyLoss,
+    OutlierDiscountingLoss,
+    SymmetricCrossEntropyLoss,
+    WeightedSymmetricCrossEntropyLoss,
+)
+from noisy_labels.model_config import ModelConfig
+from noisy_labels.models import EdgeVGAE
+from noisy_labels.utils import compute_class_weights
 
 
 def warm_up_lr(epoch, num_epoch_warm_up, init_lr, optimizer):
@@ -44,38 +36,78 @@ class ModelTrainer:
     def __init__(
         self,
         config: ModelConfig,
+        loss_type: Literal[
+            "cross_entropy_loss",
+            "ncod_loss",
+            "noisy_cross_entropy_loss",
+            "symmetric_cross_entropy_loss",
+            "weighted_symmetric_cross_entropy_loss",
+            "outlier_discounting_loss",
+        ]
+        | str,
         epochs: int = 10,
         learning_rate: float = 5e-3,
         warmup_epochs: int = 0,
         early_stopping_patience: float = 0.0,
+        cycles=10,
         device: torch.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu"
         ),
     ):
         self.config = config
-        self.epochs = epochs
-        self.learning_rate = learning_rate
-        self.warmup_epochs = warmup_epochs
-        self.early_stopping_patience = early_stopping_patience
-        self.device = device
+
         self.dataset = GraphDataset(
             Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
         )
+        self.loss_type = loss_type
+        if loss_type == "cross_entropy_loss":
+            self.train_criterion = nn.CrossEntropyLoss()
+        elif loss_type == "ncod_loss":
+            self.train_criterion = NCODLoss(
+                self.dataset, embedding_dimensions=self.config.latent_dim
+            )
+        elif loss_type == "noisy_cross_entropy_loss":
+            self.train_criterion = NoisyCrossEntropyLoss(p_noisy=0.2)
+        elif loss_type == "symmetric_cross_entropy_loss":
+            self.train_criterion = SymmetricCrossEntropyLoss()
+        elif loss_type == "weighted_symmetric_cross_entropy_loss":
+            self.train_criterion = WeightedSymmetricCrossEntropyLoss(
+                self.config.num_classes
+            )
+        elif "outlier_discounting_loss":
+            self.train_criterion = OutlierDiscountingLoss()
+        else:
+            raise ValueError(f"Invalid loss, {loss_type} is not a valid loss.")
+        self.epochs = epochs
+
+        self.learning_rate = learning_rate
+        self.warmup_epochs = warmup_epochs
+        self.early_stopping_patience = early_stopping_patience
+        self.cycles = cycles
+        self.device = device
+
         self.best_f1_scores = []
         self.eval_criterion = torch.nn.CrossEntropyLoss()
 
         self.checkpoints_dir = Path(f"./checkpoints/{self.config.dataset_name}")
         self.checkpoints_dir.mkdir(exist_ok=True)
-
-        self.pretrained_models = list(self.checkpoints_dir.glob("model*.pth"))
+        self.metadata_path = self.checkpoints_dir / "metadata.json"
+        self.pretrained_models_path = list(
+            self.checkpoints_dir.glob("model*.pth")  # , maxlen=cycles
+        )
+        # if pretrained_models is None:
+        # else:
+        #     self.pretrained_models = pretrained_models
 
         self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
         self.logs_dir.mkdir(exist_ok=True)
-        logging.basicConfig(
-            filename=self.logs_dir / "training.log",
-            level=logging.INFO,
-            format="%(asctime)s - %(levelname)s - %(message)s",
-            filemode="w",
+
+        self._file_logger_id = logger.add(
+            self.logs_dir / f"training_{loss_type}.log",
+            format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
+            level="DEBUG",
+            colorize=False,
+            mode="w",
         )
 
     def dataset_setup(self, seed: int):
@@ -136,11 +168,9 @@ class ModelTrainer:
         self,
         model: EdgeVGAE,
         train_loader: DataLoader,
-        criterion: nn.Module,
         optimizer: torch.optim.Optimizer,
         optimizer_u: Optional[torch.optim.Optimizer],
         epoch: int,
-        scheduler,
     ):
         model.train()
         total_loss = 0.0
@@ -160,17 +190,22 @@ class ModelTrainer:
             # Calculate losses
             recon_loss = model.recon_loss(z, data.edge_index, data.edge_attr)
             kl_loss = model.kl_loss(mu, logvar)
-            if isinstance(criterion, NCODLoss):
+            if isinstance(self.train_criterion, NCODLoss):
                 graph_embeddings = global_mean_pool(z, data.batch)
-                class_loss = criterion(
+                class_loss = self.train_criterion(
                     logits=class_logits,
                     indexes=data.idx,
                     embeddings=graph_embeddings,
                     targets=data.y,
                     epoch=epoch,
                 )
+            elif isinstance(self.train_criterion, WeightedSymmetricCrossEntropyLoss):
+                weights = compute_class_weights(
+                    train_loader.dataset, self.config.num_classes
+                ).to(self.device)
+                class_loss = self.train_criterion(class_logits, data.y, weights)
             else:
-                class_loss = criterion(class_logits, data.y)
+                class_loss = self.train_criterion(class_logits, data.y)
 
             # Total loss
             loss = 0.15 * recon_loss + 0.1 * kl_loss + class_loss
@@ -193,20 +228,25 @@ class ModelTrainer:
     def _train_single_cycle(
         self,
         cycle: int,
-        criterion: nn.Module,
         train_data: IndexedSubset,
         val_data: IndexedSubset,
-    ):
-        logging.info(f"\nStarting training cycle {cycle}")
-        print(f"\nStarting training cycle {cycle}")
+    ) -> tuple[float, float, Path | None]:
+        logger.bind(trainer="Trainer").info(f"Starting training cycle {cycle}")
 
         # Load pretrained models if any
-        if len(self.pretrained_models) > 0:
-            n = len(self.pretrained_models)
-            model_path = self.pretrained_models[(cycle - 1) % n]
+        if len(self.pretrained_models_path) > 0:
+            with open(self.metadata_path, "r") as metadata_fp:
+                metadata = json.load(metadata_fp)
+
+            worst_idx = min(
+                range(len(self.pretrained_models_path)),
+                key=lambda i: metadata[self.pretrained_models_path[i].stem]["val_f1"],
+            )
+            model_path = self.pretrained_models_path[worst_idx]
             model = EdgeVGAE.from_pretrained(model_path)
-            logging.info(f"Loaded pretrained model: {model_path}")
-            print(f"Loaded pretrained model: {model_path}")
+            logger.bind(trainer="Trainer").info(
+                f"Loaded worst pretrained model for improvement: {model_path}"
+            )
 
         else:
             model = EdgeVGAE(
@@ -226,8 +266,8 @@ class ModelTrainer:
 
         optimizer = torch.optim.Adam(model.parameters(), lr=self.learning_rate)
         optimizer_u = None
-        if isinstance(criterion, NCODLoss):
-            optimizer_u = torch.optim.SGD(criterion.parameters(), lr=1e-3)
+        if isinstance(self.train_criterion, NCODLoss):
+            optimizer_u = torch.optim.SGD(self.train_criterion.parameters(), lr=1e-3)
 
         # Warm-up scheduler
         warmup_epochs = self.warmup_epochs  # Number of warm-up epochs
@@ -252,13 +292,16 @@ class ModelTrainer:
             if epoch < warmup_epochs:
                 warm_up_lr(epoch, warmup_epochs, self.learning_rate, optimizer)
                 if epoch == (warmup_epochs - 1):
-                    logging.info("Warm-up epochs finished")
-                    print("Warm-up epochs finished")
+                    logger.bind(trainer="Trainer").info("Warm-up epochs finished")
 
             # Training
             model.train()
             train_loss = self._train_epoch(
-                model, train_loader, criterion, optimizer, optimizer_u, epoch, scheduler
+                model,
+                train_loader,
+                optimizer,
+                optimizer_u,
+                epoch,
             )
 
             # Validation
@@ -268,7 +311,7 @@ class ModelTrainer:
 
             # Log every 10 epochs
             if (epoch + 1) % 10 == 0:
-                logging.info(
+                logger.bind(trainer="Trainer").info(
                     f"Cycle {cycle}, Epoch {epoch + 1}, LR {optimizer.param_groups[0]['lr']:.3e}, "
                     f"Train Loss: {train_loss:.4f}, "
                     f"Val Loss: {val_loss:.4f}, "
@@ -288,28 +331,22 @@ class ModelTrainer:
                 # Save the model with both metrics in filename
                 best_model_path = (
                     self.checkpoints_dir
-                    / f"cycle_{cycle}_epoch_{epoch}_"
-                    / f"loss_{val_loss}_f1_{val_f1}.pth"
+                    / f"model_epoch_{cycle * (epoch + 1)}_{self.loss_type}.pth"
                 )
                 model.save(
-                    self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
+                    best_model_path,
                     val_loss,
                     val_f1,
                     train_loss,
                     self.config,
-                    epoch,
-                    cycle,
                 )
 
-                logging.info(f"New best model saved: {best_model_path}")
-                logging.info(
+                logger.bind(trainer="Trainer").info(
+                    f"New best model saved: {best_model_path}"
+                )
+                logger.bind(trainer="Trainer").info(
                     f"Best validation metrics - Loss: {val_loss:.4f}, F1: {val_f1:.4f}"
                 )
-                print(f"New best model saved: {best_model_path}")
-                print(
-                    f"Best validation metrics - Loss: {val_loss:.4f}, F1: {val_f1:.4f}"
-                )
-
             # If there is no improvement, reload the best parameters
             if (
                 (epoch - epoch_best) > self.early_stopping_patience // 2
@@ -318,58 +355,68 @@ class ModelTrainer:
                 and best_model_path is not None
             ):
                 model = EdgeVGAE.from_pretrained(best_model_path)
-                logging.info(f"Reloading best model: {best_model_path}")
-                print(f"Reloading best model: {best_model_path}")
+                logger.bind(trainer="Trainer").info(
+                    f"Reloading best model: {best_model_path}"
+                )
 
             # Early stopping based on validation loss
             if (epoch - epoch_best) > self.early_stopping_patience:
-                logging.info(f"Early stopping triggered at epoch {epoch}")
-                print(f"Early stopping triggered at epoch {epoch}")
+                logger.bind(trainer="Trainer").info(
+                    f"Early stopping triggered at epoch {epoch}"
+                )
                 break
         progress_bar.close()
-        # self.models.append(best_model_path)
+        # Replace worst model in deque if improved
+        if best_model_path is not None:
+            worst_idx = (
+                min(
+                    range(len(self.pretrained_models_path)),
+                    key=lambda i: metadata[self.pretrained_models_path[i].stem][
+                        "val_f1"
+                    ],
+                )
+                if len(self.pretrained_models_path) > 0
+                else None
+            )
+
+            if (
+                worst_idx is None
+                or best_f1
+                > metadata[self.pretrained_models_path[worst_idx].stem]["val_f1"]
+            ):
+                if worst_idx is not None:
+                    self.pretrained_models_path[worst_idx] = best_model_path
+                else:
+                    self.pretrained_models_path.append(best_model_path)
         return best_val_loss, best_f1, best_model_path
 
     def train(
         self,
-        loss_type: Literal[
-            "cross_entropy", "ncod", "noisy_cross_entropy", "symmetric_cross_entropy"
-        ],
-        cycles=10,
+        pretrained_models_path: Optional[List[Path]] = None,
     ):
-        logging.info("Starting training")
-        print("Starting training")
+        if pretrained_models_path is not None:
+            self.pretrained_models_path = pretrained_models_path
+        logger.bind(trainer="Trainer").info("Starting training")
 
-        results: List[Dict[str, int | float | Optional[Path]]] = []
-        progress_bar = tqdm(range(cycles))
-        if loss_type == "cross_entropy":
-            criterion = nn.CrossEntropyLoss()
-        elif loss_type == "ncod":
-            criterion = NCODLoss(
-                self.dataset, embedding_dimensions=self.config.latent_dim
-            )
-
-        elif loss_type == "noisy_cross_entropy":
-            criterion = NoisyCrossEntropyLoss(p_noisy=0.2)
-
-        elif loss_type == "symmetric_cross_entropy":
-            criterion = SymmetricCrossEntropyLoss()
-        else:
-            raise ValueError(f"Invalid loss, {loss_type} is not a valid loss.")
+        results: List[Dict[str, int | float | Optional[str]]] = []
+        progress_bar = tqdm(range(self.cycles))
 
         for cycle in progress_bar:
-            progress_bar.set_description(f"Cycle {cycle}/{cycles}")
+            progress_bar.set_description(f"Cycle {cycle}/{self.cycles}")
             cycle_seed = cycle + 1
 
-            logging.info(f"\nStarting cycle {cycle + 1} with seed {cycle_seed}")
+            logger.bind(trainer="Trainer").info(
+                f"Starting cycle {cycle + 1} with seed {cycle_seed}"
+            )
 
-            train_data, val_data = self.dataset_setup(seed=cycle + 1)
+            train_data, val_data = self.dataset_setup(seed=cycle_seed)
             val_loss, val_f1, model_path = self._train_single_cycle(
                 cycle + 1,
-                criterion,
                 train_data,
                 val_data,
             )
+            if model_path is not None:
+                self.pretrained_models_path.append(model_path)
 
             results.append(
                 {
@@ -377,15 +424,18 @@ class ModelTrainer:
                     "seed": cycle_seed,
                     "val_loss": val_loss,
                     "val_f1": val_f1,
-                    "model_path": model_path,
+                    "model_path": str(model_path),
                 }
             )
 
             # Log summary of this cycle
-            logging.info(f"Cycle {cycle + 1} completed:")
-            logging.info(f"- Final validation loss: {val_loss:.4f}")
-            logging.info(f"- Final F1 score: {val_f1:.4f}")
-            print(f"Cycle {cycle + 1} completed:")
-            print(f"- Final validation loss: {val_loss:.4f}")
-            print(f"- Final F1 score: {val_f1:.4f}")
+
+            logger.bind(trainer="Trainer").info(f"Cycle {cycle + 1} completed:")
+            logger.bind(trainer="Trainer").info(
+                f"- Final validation loss: {val_loss:.4f}"
+            )
+            logger.bind(trainer="Trainer").info(f"- Final F1 score: {val_f1:.4f}")
         return results
+
+    # def __del__(self):
+    #     logger.remove(self._file_logger_id)

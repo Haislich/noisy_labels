@@ -2,19 +2,21 @@ use flate2::Compression;
 use flate2::read::GzDecoder;
 use flate2::write::GzEncoder;
 use serde_json::{Deserializer, Value};
+use std::env;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write};
-
 fn main() -> std::io::Result<()> {
-    let output_path = "./../hackaton/datasets/merged/merged_dataset_v2.json.gz";
+    let path = env::current_dir()?;
+    println!("The current directory is {}", path.display());
+    let output_path = "../datasets/ABCD/train.json.gz";
     let input_paths = [
-        "./../hackaton/datasets/A/train.json.gz",
-        "./../hackaton/datasets/B/train.json.gz",
-        "./../hackaton/datasets/C/train.json.gz",
-        "./../hackaton/datasets/D/train.json.gz",
+        "../datasets/A/train.json.gz",
+        "../datasets/B/train.json.gz",
+        "../datasets/C/train.json.gz",
+        "../datasets/D/train.json.gz",
     ];
 
-    let output_file = File::create(output_path)?;
+    let output_file = File::create(output_path).unwrap();
     let mut writer = BufWriter::new(GzEncoder::new(output_file, Compression::default()));
 
     writeln!(writer, "[")?;
@@ -42,6 +44,6 @@ fn main() -> std::io::Result<()> {
     writeln!(writer, "\n]")?;
     writer.flush()?;
 
-    println!("✅ Merged {} files into {}", input_paths.len(), output_path);
+    println!("Merged {} files into {}", input_paths.len(), output_path);
     Ok(())
 }

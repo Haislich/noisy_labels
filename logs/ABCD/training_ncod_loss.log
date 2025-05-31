@@ -1,0 +1,78 @@
+2025-05-31 13:20:18 | INFO | Starting training
+2025-05-31 13:20:18 | INFO | Starting cycle 1 with seed 1
+2025-05-31 13:20:18 | INFO | Starting training cycle 1
+2025-05-31 13:20:18 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_epoch_3_cross_entropy_loss.pth
+2025-05-31 13:20:52 | INFO | New best model saved: checkpoints/ABCD/model_epoch_1_cross_entropy_loss.pth
+2025-05-31 13:20:52 | INFO | Best validation metrics - Loss: 1.6164, F1: 0.2751
+2025-05-31 13:20:52 | INFO | Cycle 1 completed:
+2025-05-31 13:20:52 | INFO | - Final validation loss: 1.6164
+2025-05-31 13:20:52 | INFO | - Final F1 score: 0.2751
+2025-05-31 13:20:52 | INFO | Starting cycle 2 with seed 2
+2025-05-31 13:20:52 | INFO | Starting training cycle 2
+2025-05-31 13:20:52 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_epoch_3_ncod_loss.pth
+2025-05-31 13:21:24 | INFO | New best model saved: checkpoints/ABCD/model_epoch_2_cross_entropy_loss.pth
+2025-05-31 13:21:24 | INFO | Best validation metrics - Loss: 1.6927, F1: 0.2427
+2025-05-31 13:21:24 | INFO | Cycle 2 completed:
+2025-05-31 13:21:24 | INFO | - Final validation loss: 1.6927
+2025-05-31 13:21:24 | INFO | - Final F1 score: 0.2427
+2025-05-31 13:21:24 | INFO | Starting cycle 3 with seed 3
+2025-05-31 13:21:24 | INFO | Starting training cycle 3
+2025-05-31 13:21:24 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 13:21:57 | INFO | New best model saved: checkpoints/ABCD/model_epoch_3_cross_entropy_loss.pth
+2025-05-31 13:21:57 | INFO | Best validation metrics - Loss: 1.8663, F1: 0.2219
+2025-05-31 13:21:57 | INFO | Cycle 3 completed:
+2025-05-31 13:21:57 | INFO | - Final validation loss: 1.8663
+2025-05-31 13:21:57 | INFO | - Final F1 score: 0.2219
+2025-05-31 13:21:57 | INFO | Starting training
+2025-05-31 13:21:57 | INFO | Starting cycle 1 with seed 1
+2025-05-31 13:21:57 | INFO | Starting training cycle 1
+2025-05-31 13:21:57 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_epoch_3_ncod_loss.pth
+2025-05-31 13:22:31 | INFO | New best model saved: checkpoints/ABCD/model_epoch_1_ncod_loss.pth
+2025-05-31 13:22:31 | INFO | Best validation metrics - Loss: 1.6434, F1: 0.2722
+2025-05-31 13:22:31 | INFO | Cycle 1 completed:
+2025-05-31 13:22:31 | INFO | - Final validation loss: 1.6434
+2025-05-31 13:22:31 | INFO | - Final F1 score: 0.2722
+2025-05-31 13:22:31 | INFO | Starting cycle 2 with seed 2
+2025-05-31 13:22:31 | INFO | Starting training cycle 2
+2025-05-31 13:22:31 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 13:23:04 | INFO | New best model saved: checkpoints/ABCD/model_epoch_2_ncod_loss.pth
+2025-05-31 13:23:04 | INFO | Best validation metrics - Loss: 1.7458, F1: 0.2569
+2025-05-31 13:23:04 | INFO | Cycle 2 completed:
+2025-05-31 13:23:04 | INFO | - Final validation loss: 1.7458
+2025-05-31 13:23:04 | INFO | - Final F1 score: 0.2569
+2025-05-31 13:23:04 | INFO | Starting cycle 3 with seed 3
+2025-05-31 13:23:04 | INFO | Starting training cycle 3
+2025-05-31 13:23:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/ABCD/model_epoch_3_cross_entropy_loss.pth
+2025-05-31 13:23:38 | INFO | New best model saved: checkpoints/ABCD/model_epoch_3_ncod_loss.pth
+2025-05-31 13:23:38 | INFO | Best validation metrics - Loss: 1.7189, F1: 0.2691
+2025-05-31 13:23:38 | INFO | Cycle 3 completed:
+2025-05-31 13:23:38 | INFO | - Final validation loss: 1.7189
+2025-05-31 13:23:38 | INFO | - Final F1 score: 0.2691
+2025-05-31 13:23:38 | INFO | Finished weak pretraining of ABCD, starting training on A
+2025-05-31 13:23:38 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 13:23:43 | INFO | Loading finished
+2025-05-31 13:23:44 | INFO | Starting training
+2025-05-31 13:23:44 | INFO | Starting cycle 1 with seed 1
+2025-05-31 13:23:44 | INFO | Starting training cycle 1
+2025-05-31 13:23:44 | INFO | Loaded worst pretrained model for improvement: checkpoints/A/model_epoch_1_cross_entropy_loss.pth
+2025-05-31 13:23:55 | INFO | New best model saved: checkpoints/A/model_epoch_1_cross_entropy_loss.pth
+2025-05-31 13:23:55 | INFO | Best validation metrics - Loss: 1.5126, F1: 0.4398
+2025-05-31 13:23:55 | INFO | Cycle 1 completed:
+2025-05-31 13:23:55 | INFO | - Final validation loss: 1.5126
+2025-05-31 13:23:55 | INFO | - Final F1 score: 0.4398
+2025-05-31 13:23:55 | INFO | Starting cycle 2 with seed 2
+2025-05-31 13:23:55 | INFO | Starting training cycle 2
+2025-05-31 13:23:55 | INFO | Loaded worst pretrained model for improvement: checkpoints/A/model_epoch_1_cross_entropy_loss.pth
+2025-05-31 13:24:06 | INFO | New best model saved: checkpoints/A/model_epoch_2_cross_entropy_loss.pth
+2025-05-31 13:24:06 | INFO | Best validation metrics - Loss: 1.3072, F1: 0.5295
+2025-05-31 13:24:06 | INFO | Cycle 2 completed:
+2025-05-31 13:24:06 | INFO | - Final validation loss: 1.3072
+2025-05-31 13:24:06 | INFO | - Final F1 score: 0.5295
+2025-05-31 13:24:06 | INFO | Starting cycle 3 with seed 3
+2025-05-31 13:24:06 | INFO | Starting training cycle 3
+2025-05-31 13:24:06 | INFO | Loaded worst pretrained model for improvement: checkpoints/A/model_epoch_1_cross_entropy_loss.pth
+2025-05-31 13:24:17 | INFO | New best model saved: checkpoints/A/model_epoch_3_cross_entropy_loss.pth
+2025-05-31 13:24:17 | INFO | Best validation metrics - Loss: 1.5354, F1: 0.4511
+2025-05-31 13:24:17 | INFO | Cycle 3 completed:
+2025-05-31 13:24:17 | INFO | - Final validation loss: 1.5354
+2025-05-31 13:24:17 | INFO | - Final F1 score: 0.4511

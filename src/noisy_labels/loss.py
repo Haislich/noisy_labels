@@ -3,10 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import Dataset
 
-try:
-    from noisy_labels.load_data import IndexedData
-except ModuleNotFoundError:
-    from src.noisy_labels.load_data import IndexedData  # type: ignore
+from noisy_labels.load_data import IndexedData
 
 
 class NoisyCrossEntropyLoss(nn.Module):
@@ -22,6 +19,7 @@ class NoisyCrossEntropyLoss(nn.Module):
         )
         return (losses * weights).mean()
 
+
 class OutlierDiscountingLoss(torch.nn.Module):
     def __init__(self, gamma=2.0, alpha=0.25):
         super().__init__()
@@ -29,7 +27,7 @@ class OutlierDiscountingLoss(torch.nn.Module):
         self.alpha = alpha
 
     def forward(self, pred, labels):
-        ce_loss = F.cross_entropy(pred, labels, reduction='none')
+        ce_loss = F.cross_entropy(pred, labels, reduction="none")
         pt = torch.exp(-ce_loss)
 
         # Focal loss component per down-weight outliers
@@ -48,16 +46,20 @@ class OutlierDiscountingLoss(torch.nn.Module):
         return (focal_weight * ce_loss * discount_factor).mean()
 
 
-class SymmetricCrossEntropyWeighted(torch.nn.Module):
-    def __init__(self, alpha, beta, num_classes, class_weights=None):
+class WeightedSymmetricCrossEntropyLoss(torch.nn.Module):
+    def __init__(
+        self,
+        num_classes,
+        alpha: float = 0.1,
+        beta: float = 1.0,
+    ):
         super().__init__()
         self.alpha = alpha
         self.beta = beta
         self.num_classes = num_classes
-        self.class_weights = class_weights
 
-    def forward(self, pred, labels):
-        ce = F.cross_entropy(pred, labels, reduction="none", weight=self.class_weights)
+    def forward(self, pred, labels, class_weights):
+        ce = F.cross_entropy(pred, labels, reduction="none", weight=class_weights)
 
         pred_softmax = F.softmax(pred, dim=1)
         pred_softmax = torch.clamp(pred_softmax, min=1e-7, max=1.0)
@@ -65,8 +67,8 @@ class SymmetricCrossEntropyWeighted(torch.nn.Module):
         label_one_hot = torch.zeros(pred.size()).to(pred.device)
         label_one_hot.scatter_(1, labels.view(-1, 1), 1)
 
-        if self.class_weights is not None:
-            weights_per_sample = self.class_weights[labels].view(-1, 1)  # shape [B, 1]
+        if class_weights is not None:
+            weights_per_sample = class_weights[labels].view(-1, 1)  # shape [B, 1]
             rce = -torch.sum(
                 weights_per_sample * label_one_hot * torch.log(pred_softmax), dim=1
             )

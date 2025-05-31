@@ -1,13 +1,14 @@
 import os
+import pickle
 import tarfile
 from pathlib import Path
-import torch
-import pandas as pd
 
-try:
-    from noisy_labels.models import EnsembleEdgeVGAE
-except ImportError:
-    from src.noisy_labels.models import EnsembleEdgeVGAE
+import pandas as pd
+import torch
+
+from noisy_labels import logger
+from noisy_labels.load_data import GraphDataset
+from noisy_labels.models import EnsembleEdgeVGAE
 
 
 def gzip_folder(folder_path, output_file):
@@ -20,7 +21,7 @@ def gzip_folder(folder_path, output_file):
     """
     with tarfile.open(output_file, "w:gz") as tar:
         tar.add(folder_path, arcname=os.path.basename(folder_path))
-    print(f"Folder '{folder_path}' has been compressed into '{output_file}'")
+    logger.info(f"Folder '{folder_path}' has been compressed into '{output_file}'")
 
 
 def save_predictions(predictions, test_path):
@@ -36,7 +37,8 @@ def save_predictions(predictions, test_path):
     output_df = pd.DataFrame({"id": test_graph_ids, "pred": predictions})
 
     output_df.to_csv(output_csv_path, index=False)
-    print(f"Predictions saved to {output_csv_path}")
+    logger.info(f"Predictions saved to {output_csv_path}")
+
 
 def compute_class_weights(dataset, num_classes):
     counts = [0] * num_classes
@@ -49,8 +51,9 @@ def compute_class_weights(dataset, num_classes):
     norm_weights = norm_weights / norm_weights.sum()
     return norm_weights
 
+
 def create_submission():
-    for dataset_name in ["A", "B", "C", "D"]:
+    for dataset_name in ["ABCD"]:  # ["A", "B", "C", "D"]:
         model_paths = list(
             [
                 Path(checkpoint)
@@ -59,7 +62,7 @@ def create_submission():
                 )
             ]
         )
-        test_path = f"./datasets/{dataset_name}/test.json.gz"
+        test_path = f"./datasets/{dataset_name}/train.json.gz"
         predictions, _ = EnsembleEdgeVGAE(model_paths).predict_with_ensemble_score(
             Path(test_path)
         )
@@ -70,15 +73,41 @@ def create_submission():
     gzip_folder(folder_path, output_file)
 
 
-create_submission()
+def merge_pickles(paths, output_path):
+    merged = []
+    for path in paths:
+        logger.info(f"Loading {path}...")
+        with open(path, "rb") as f:
+            data_list = pickle.load(f)  # Each file should be a list[IndexedData]
+        merged.extend(data_list)
+
+    logger.info(f"Saving merged data to {output_path}...")
+    with open(output_path, "wb") as f:
+        pickle.dump(merged, f)
+    logger.info("Done.")
 
 
-#import os
-#print(os.getcwd())
+def cacheABCD():
+    # create the caches
+    GraphDataset("./datasets/A/train.json.gz")
+    GraphDataset("./datasets/B/train.json.gz")
+    GraphDataset("./datasets/C/train.json.gz")
+    GraphDataset("./datasets/D/train.json.gz")
+    merge_pickles(
+        [
+            "./datasets/A/train.json.pkl",
+            "./datasets/B/train.json.pkl",
+            "./datasets/C/train.json.pkl",
+            "./datasets/D/train.json.pkl",
+        ],
+        "./datasets/ABCD/train.json.pkl",
+    )
 
 
-
-
-
-
-
+test_path = "./datasets/A/train.json.gz"
+model_paths = list(
+    [Path(checkpoint) for checkpoint in Path("./checkpoints/A").glob("model*.pth")]
+)
+predictions, _ = EnsembleEdgeVGAE([]).predict_with_ensemble_score(Path(test_path))
+# create_submission()
+# logger.info("ciao")
