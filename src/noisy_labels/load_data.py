@@ -70,8 +70,6 @@ class GraphDataset(Dataset):
         transform=add_zeros,
         pre_transform=None,
     ):
-        logger.info(f"Called from __name__ = {__name__}")
-
         self.filename = Path(filename)
         self.cache_path = self.filename.parent / f"{self.filename.stem}.pkl"
 

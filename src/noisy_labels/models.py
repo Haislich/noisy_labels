@@ -235,7 +235,7 @@ class EdgeVGAE(torch.nn.Module):
 
 
 class EnsembleEdgeVGAE:
-    def __init__(self, model_paths: List[Path] | List[str]) -> None:
+    def __init__(self, model_paths: List[Path]) -> None:
         self.model_paths = model_paths
         self.model_metadatas: List[Dict] = []
         self.models: List[EdgeVGAE] = []
@@ -247,6 +247,7 @@ class EnsembleEdgeVGAE:
             model_path_root = model_path.parent
             model_metadata_path = model_path_root / "metadata.json"
             if not model_metadata_path.exists():
+                self.model_paths.remove(model_metadata_path)
                 continue
             model = EdgeVGAE.from_pretrained(model_path)
             self.models.append(model)
@@ -259,6 +260,10 @@ class EnsembleEdgeVGAE:
                 elif self.num_classes != num_classes:
                     logger.info("This model has a different number of classes")
                     continue
+
+        logger.info(
+            "Found models" + "\n".join((model._get_name() for model in self.models))
+        )
 
     def predict_with_ensemble_score(
         self,

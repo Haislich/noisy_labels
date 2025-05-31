@@ -1,4 +1,7 @@
 # source/trainer.py
+import json
+
+# from collections import deque
 from pathlib import Path
 from typing import Dict, List, Literal, Optional
 
@@ -52,6 +55,7 @@ class ModelTrainer:
         ),
     ):
         self.config = config
+
         self.dataset = GraphDataset(
             Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
         )
@@ -87,8 +91,10 @@ class ModelTrainer:
 
         self.checkpoints_dir = Path(f"./checkpoints/{self.config.dataset_name}")
         self.checkpoints_dir.mkdir(exist_ok=True)
-
-        self.pretrained_models = list(self.checkpoints_dir.glob("model*.pth"))
+        self.metadata_path = self.checkpoints_dir / "metadata.json"
+        self.pretrained_models_path = list(
+            self.checkpoints_dir.glob("model*.pth")  # , maxlen=cycles
+        )
         # if pretrained_models is None:
         # else:
         #     self.pretrained_models = pretrained_models
@@ -224,16 +230,22 @@ class ModelTrainer:
         cycle: int,
         train_data: IndexedSubset,
         val_data: IndexedSubset,
-    ):
+    ) -> tuple[float, float, Path | None]:
         logger.bind(trainer="Trainer").info(f"Starting training cycle {cycle}")
 
         # Load pretrained models if any
-        if len(self.pretrained_models) > 0:
-            n = len(self.pretrained_models)
-            model_path = self.pretrained_models[(cycle - 1) % n]
+        if len(self.pretrained_models_path) > 0:
+            with open(self.metadata_path, "r") as metadata_fp:
+                metadata = json.load(metadata_fp)
+
+            worst_idx = min(
+                range(len(self.pretrained_models_path)),
+                key=lambda i: metadata[self.pretrained_models_path[i].stem]["val_f1"],
+            )
+            model_path = self.pretrained_models_path[worst_idx]
             model = EdgeVGAE.from_pretrained(model_path)
             logger.bind(trainer="Trainer").info(
-                f"Loaded pretrained model: {model_path}"
+                f"Loaded worst pretrained model for improvement: {model_path}"
             )
 
         else:
@@ -354,17 +366,39 @@ class ModelTrainer:
                 )
                 break
         progress_bar.close()
+        # Replace worst model in deque if improved
+        if best_model_path is not None:
+            worst_idx = (
+                min(
+                    range(len(self.pretrained_models_path)),
+                    key=lambda i: metadata[self.pretrained_models_path[i].stem][
+                        "val_f1"
+                    ],
+                )
+                if len(self.pretrained_models_path) > 0
+                else None
+            )
+
+            if (
+                worst_idx is None
+                or best_f1
+                > metadata[self.pretrained_models_path[worst_idx].stem]["val_f1"]
+            ):
+                if worst_idx is not None:
+                    self.pretrained_models_path[worst_idx] = best_model_path
+                else:
+                    self.pretrained_models_path.append(best_model_path)
         return best_val_loss, best_f1, best_model_path
 
     def train(
         self,
-        pretrained_models: Optional[List[str] | List[Path]] = None,
+        pretrained_models_path: Optional[List[Path]] = None,
     ):
-        if pretrained_models is not None:
-            self.pretrained_models = pretrained_models
+        if pretrained_models_path is not None:
+            self.pretrained_models_path = pretrained_models_path
         logger.bind(trainer="Trainer").info("Starting training")
 
-        results: List[Dict[str, int | float | Optional[Path | str]]] = []
+        results: List[Dict[str, int | float | Optional[str]]] = []
         progress_bar = tqdm(range(self.cycles))
 
         for cycle in progress_bar:
@@ -381,6 +415,8 @@ class ModelTrainer:
                 train_data,
                 val_data,
             )
+            if model_path is not None:
+                self.pretrained_models_path.append(model_path)
 
             results.append(
                 {

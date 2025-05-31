@@ -4,7 +4,7 @@ from typing import Literal
 
 @dataclass
 class ModelConfig:
-    dataset_name: Literal["A", "B", "C", "D"] | str
+    dataset_name: Literal["A", "B", "C", "D", "ABCD"] | str
     input_dim: int = 1
     edge_dim: int = 7
     batch_size: int = 64
