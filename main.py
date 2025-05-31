@@ -73,9 +73,9 @@ def main():
             winners = {}
             for loss in results["round_0"].keys():
                 winners[loss] = max(results["round_0"][loss], key=lambda x: x["val_f1"])
-            pretrained_model_paths = [
-                Path(elem["model_path"]) for elem in winners.values()
-            ]
+            # pretrained_model_paths = [
+            #     Path(elem["model_path"]) for elem in winners.values()
+            # ]
             best_overall_loss: str = max(winners, key=lambda x: winners[x]["val_f1"])
             logger.info(
                 "Best F1 scores for each model: "
@@ -97,7 +97,7 @@ def main():
             epochs=EPOCHS,
             cycles=CYCLES,
         )
-        trainer.train()
+        trainer.train(pretrained_model_paths)
 
 
 if __name__ == "__main__":

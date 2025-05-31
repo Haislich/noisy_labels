@@ -235,11 +235,14 @@ class EdgeVGAE(torch.nn.Module):
 
 
 class EnsembleEdgeVGAE:
-    def __init__(self, model_paths: List[Path]) -> None:
+    def __init__(self, model_paths: List[Path], top_k: int = 5) -> None:
         self.model_paths = model_paths
         self.model_metadatas: List[Dict] = []
         self.models: List[EdgeVGAE] = []
         self.num_classes: int = -1
+        self.top_k = top_k
+
+        loaded = []
 
         for model_path in model_paths:
             if isinstance(model_path, str):
@@ -247,23 +250,30 @@ class EnsembleEdgeVGAE:
             model_path_root = model_path.parent
             model_metadata_path = model_path_root / "metadata.json"
             if not model_metadata_path.exists():
-                self.model_paths.remove(model_metadata_path)
+                logger.info(f"Could not find metadata for model {model_metadata_path}")
                 continue
-            model = EdgeVGAE.from_pretrained(model_path)
-            self.models.append(model)
+
             with open(model_metadata_path, "r") as model_metadata_fp:
                 model_metadata: Dict = json.load(model_metadata_fp)[model_path.stem]
-                self.model_metadatas.append(model_metadata)
-                num_classes = int(model_metadata["config"]["num_classes"])
-                if self.num_classes == -1:
-                    self.num_classes = num_classes
-                elif self.num_classes != num_classes:
-                    logger.info("This model has a different number of classes")
-                    continue
+                f1 = model_metadata["val_f1"]
+                loaded.append((f1, model_path, model_metadata))
 
-        logger.info(
-            "Found models" + "\n".join((model._get_name() for model in self.models))
-        )
+        loaded = sorted(loaded, key=lambda x: x[0], reverse=True)[: self.top_k]
+
+        for f1, model_path, metadata in loaded:
+            model = EdgeVGAE.from_pretrained(model_path)
+            self.models.append(model)
+            self.model_metadatas.append(metadata)
+            num_classes = int(metadata["config"]["num_classes"])
+            if self.num_classes == -1:
+                self.num_classes = num_classes
+            elif self.num_classes != num_classes:
+                logger.info("This model has a different number of classes")
+
+        self.model_paths = [mp for _, mp, _ in loaded]
+
+        if not self.model_paths:
+            raise ValueError("No valid pretrained models found.")
 
     def predict_with_ensemble_score(
         self,
