@@ -1,10 +1,11 @@
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal
 
 
 @dataclass
 class ModelConfig:
-    dataset_name: Literal["A", "B", "C", "D", "ABCD"] | str
+    dataset_path: Path
     input_dim: int = 1
     edge_dim: int = 7
     batch_size: int = 64

@@ -57,7 +57,7 @@ class ModelTrainer:
         self.config = config
 
         self.dataset = GraphDataset(
-            Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
+            self.config.dataset_path,
         )
         self.loss_type = loss_type
         if loss_type == "cross_entropy_loss":
@@ -89,17 +89,15 @@ class ModelTrainer:
         self.best_f1_scores = []
         self.eval_criterion = torch.nn.CrossEntropyLoss()
 
-        self.checkpoints_dir = Path(f"./checkpoints/{self.config.dataset_name}")
+        self.checkpoints_dir = Path(
+            f"./checkpoints/{Path(self.config.dataset_path).parent.name}"
+        )
         self.checkpoints_dir.mkdir(exist_ok=True)
         self.metadata_path = self.checkpoints_dir / "metadata.json"
         self.pretrained_models_path = list(
             self.checkpoints_dir.glob("model*.pth")  # , maxlen=cycles
         )
-        # if pretrained_models is None:
-        # else:
-        #     self.pretrained_models = pretrained_models
-
-        self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
+        self.logs_dir = Path(f"./logs/{Path(self.config.dataset_path).parent.name}")
         self.logs_dir.mkdir(exist_ok=True)
 
         self._file_logger_id = logger.add(
@@ -242,10 +240,11 @@ class ModelTrainer:
                 range(len(self.pretrained_models_path)),
                 key=lambda i: metadata[self.pretrained_models_path[i].stem]["val_f1"],
             )
+            val_f1 = metadata[worst_idx]["val_f1"]
             model_path = self.pretrained_models_path[worst_idx]
             model = EdgeVGAE.from_pretrained(model_path)
             logger.bind(trainer="Trainer").info(
-                f"Loaded worst pretrained model for improvement: {model_path}"
+                f"Loaded worst pretrained model for improvement: {model_path} with an initial score of {val_f1}"
             )
 
         else:
@@ -395,7 +394,7 @@ class ModelTrainer:
         pretrained_models_path: Optional[List[Path]] = None,
     ):
         if pretrained_models_path is not None:
-            self.pretrained_models_path += pretrained_models_path
+            self.pretrained_models_path = pretrained_models_path
         logger.bind(trainer="Trainer").info("Starting training")
 
         results: List[Dict[str, int | float | Optional[str]]] = []
