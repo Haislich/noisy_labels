@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 import numpy as np
 import torch
 import torch.nn.functional as F
+from loguru import logger
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import MessagePassing, global_mean_pool
 
@@ -256,7 +257,7 @@ class EnsembleEdgeVGAE:
                 if self.num_classes == -1:
                     self.num_classes = num_classes
                 elif self.num_classes != num_classes:
-                    print("This model has a different number of classes")
+                    logger.info("This model has a different number of classes")
                     continue
 
     def predict_with_ensemble_score(
@@ -289,11 +290,11 @@ class EnsembleEdgeVGAE:
         weights = np.exp(model_scores)
         weights = weights / np.sum(weights)
 
-        print("Model weights for ensemble:")
+        logger.info("Model weights for ensemble:")
         for model_path, weight, loss in zip(self.model_paths, weights, model_scores):
-            print(f"Model: {model_path}")
-            print(f"- Loss: {loss:.4f}")
-            print(f"- Weight: {weight:.4f}")
+            logger.info(f"Model: {model_path}")
+            logger.info(f"- Loss: {loss:.4f}")
+            logger.info(f"- Weight: {weight:.4f}")
 
         # Initialize array to store weighted votes for each class
         num_samples = all_predictions.shape[1]
@@ -313,12 +314,12 @@ class EnsembleEdgeVGAE:
         confidence_scores = np.max(weighted_votes, axis=1)
 
         # Log some statistics about the ensemble predictions
-        print("\nEnsemble prediction statistics:")
+        logger.info("\nEnsemble prediction statistics:")
         unique_preds, pred_counts = np.unique(ensemble_predictions, return_counts=True)
         for pred_class, count in zip(unique_preds, pred_counts):
-            print(f"Class {pred_class}: {count} samples")
-        print(f"Average confidence: {np.mean(confidence_scores):.4f}")
-        print(f"Min confidence: {np.min(confidence_scores):.4f}")
+            logger.info(f"Class {pred_class}: {count} samples")
+        logger.info(f"Average confidence: {np.mean(confidence_scores):.4f}")
+        logger.info(f"Min confidence: {np.min(confidence_scores):.4f}")
         print(f"Max confidence: {np.max(confidence_scores):.4f}")
 
         return ensemble_predictions, confidence_scores

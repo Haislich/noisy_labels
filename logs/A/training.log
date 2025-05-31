@@ -9,3 +9,372 @@ Starting training cycle 1
 2025-05-31 01:46:52,267 - INFO - Cycle 1 completed:
 2025-05-31 01:46:52,267 - INFO - - Final validation loss: 1.6985
 2025-05-31 01:46:52,267 - INFO - - Final F1 score: 0.4848
+2025-05-31 10:41:15 | INFO | Starting training
+2025-05-31 10:41:15 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 10:41:15 | INFO | 
+Starting training cycle 1
+2025-05-31 10:41:15 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:41:27 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:41:27 | INFO | Best validation metrics - Loss: 1.6211, F1: 0.4737
+2025-05-31 10:41:27 | INFO | Cycle 1 completed:
+2025-05-31 10:41:27 | INFO | - Final validation loss: 1.6211
+2025-05-31 10:41:27 | INFO | - Final F1 score: 0.4737
+2025-05-31 10:43:31 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:43:31 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:43:34 | INFO | Loading finished
+2025-05-31 10:43:35 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:43:35 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:43:38 | INFO | Loading finished
+2025-05-31 10:43:38 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:43:38 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:43:41 | INFO | Loading finished
+2025-05-31 10:43:42 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:43:42 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:43:45 | INFO | Loading finished
+2025-05-31 10:43:45 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:43:45 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:43:49 | INFO | Loading finished
+2025-05-31 10:43:49 | INFO | Starting training
+2025-05-31 10:43:49 | INFO | Starting training
+2025-05-31 10:43:49 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 10:43:49 | INFO | 
+Starting training cycle 1
+2025-05-31 10:43:49 | INFO | 
+Starting training cycle 1
+2025-05-31 10:43:49 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:43:49 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:44:00 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:44:00 | INFO | Best validation metrics - Loss: 1.3493, F1: 0.5448
+2025-05-31 10:44:00 | INFO | New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:44:00 | INFO | Best validation metrics - Loss: 1.3493, F1: 0.5448
+2025-05-31 10:44:00 | INFO | Cycle 1 completed:
+2025-05-31 10:44:00 | INFO | - Final validation loss: 1.3493
+2025-05-31 10:44:00 | INFO | - Final F1 score: 0.5448
+2025-05-31 10:44:00 | INFO | Cycle 1 completed:
+2025-05-31 10:44:00 | INFO | - Final validation loss: 1.3493
+2025-05-31 10:44:00 | INFO | - Final F1 score: 0.5448
+2025-05-31 10:44:00 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.349257710977649, 'val_f1': 0.5448277292218932, 'model_path': PosixPath('checkpoints/A/model_cycle_0_outlier_discounting_loss.pth')}]
+2025-05-31 10:52:45 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:52:45 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:52:48 | INFO | Loading finished
+2025-05-31 10:52:49 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:52:49 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:52:52 | INFO | Loading finished
+2025-05-31 10:52:52 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:52:52 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:52:56 | INFO | Loading finished
+2025-05-31 10:52:56 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:52:56 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:52:59 | INFO | Loading finished
+2025-05-31 10:52:59 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:52:59 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:53:03 | INFO | Loading finished
+2025-05-31 10:53:03 | INFO | Starting training
+2025-05-31 10:53:03 | INFO | Starting training
+2025-05-31 10:53:03 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 10:53:03 | INFO | 
+Starting training cycle 1
+2025-05-31 10:53:03 | INFO | 
+Starting training cycle 1
+2025-05-31 10:53:03 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:53:03 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:53:14 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:53:14 | INFO | Best validation metrics - Loss: 1.4886, F1: 0.4925
+2025-05-31 10:53:14 | INFO | New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:53:14 | INFO | Best validation metrics - Loss: 1.4886, F1: 0.4925
+2025-05-31 10:53:14 | INFO | Cycle 1 completed:
+2025-05-31 10:53:14 | INFO | - Final validation loss: 1.4886
+2025-05-31 10:53:14 | INFO | - Final F1 score: 0.4925
+2025-05-31 10:53:14 | INFO | Cycle 1 completed:
+2025-05-31 10:53:14 | INFO | - Final validation loss: 1.4886
+2025-05-31 10:53:14 | INFO | - Final F1 score: 0.4925
+2025-05-31 10:53:14 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.4885965213708, 'val_f1': 0.49250001657075004, 'model_path': PosixPath('checkpoints/A/model_cycle_0_outlier_discounting_loss.pth')}]
+2025-05-31 10:54:09 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:54:09 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:54:12 | INFO | Loading finished
+2025-05-31 10:54:13 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:54:13 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:54:16 | INFO | Loading finished
+2025-05-31 10:54:16 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:54:16 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:54:20 | INFO | Loading finished
+2025-05-31 10:54:20 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:54:20 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:54:23 | INFO | Loading finished
+2025-05-31 10:54:23 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 10:54:23 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 10:54:27 | INFO | Loading finished
+2025-05-31 10:54:27 | INFO | Starting training
+2025-05-31 10:54:27 | INFO | Starting training
+2025-05-31 10:54:27 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 10:54:27 | INFO | 
+Starting training cycle 1
+2025-05-31 10:54:27 | INFO | 
+Starting training cycle 1
+2025-05-31 10:54:27 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:54:27 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 10:54:38 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:54:38 | INFO | Best validation metrics - Loss: 1.3241, F1: 0.5785
+2025-05-31 10:54:38 | INFO | New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 10:54:38 | INFO | Best validation metrics - Loss: 1.3241, F1: 0.5785
+2025-05-31 10:54:38 | INFO | Cycle 1 completed:
+2025-05-31 10:54:38 | INFO | - Final validation loss: 1.3241
+2025-05-31 10:54:38 | INFO | - Final F1 score: 0.5785
+2025-05-31 10:54:38 | INFO | Cycle 1 completed:
+2025-05-31 10:54:38 | INFO | - Final validation loss: 1.3241
+2025-05-31 10:54:38 | INFO | - Final F1 score: 0.5785
+2025-05-31 10:54:38 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.3241356924070533, 'val_f1': 0.5785442747055453, 'model_path': PosixPath('checkpoints/A/model_cycle_0_outlier_discounting_loss.pth')}]
+2025-05-31 11:01:00 | INFO | Starting training
+2025-05-31 11:01:00 | INFO | Starting training
+2025-05-31 11:01:00 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:01:00 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:00 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:00 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:00 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:10 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_cross_entropy.pth
+2025-05-31 11:01:10 | INFO | Best validation metrics - Loss: 1.7679, F1: 0.3416
+2025-05-31 11:01:10 | INFO | New best model saved: checkpoints/A/model_cycle_0_cross_entropy.pth
+2025-05-31 11:01:10 | INFO | Best validation metrics - Loss: 1.7679, F1: 0.3416
+2025-05-31 11:01:10 | INFO | Cycle 1 completed:
+2025-05-31 11:01:10 | INFO | - Final validation loss: 1.7679
+2025-05-31 11:01:10 | INFO | - Final F1 score: 0.3416
+2025-05-31 11:01:10 | INFO | Cycle 1 completed:
+2025-05-31 11:01:10 | INFO | - Final validation loss: 1.7679
+2025-05-31 11:01:10 | INFO | - Final F1 score: 0.3416
+2025-05-31 11:01:10 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.7678807407406205, 'val_f1': 0.34161310934963185, 'model_path': PosixPath('checkpoints/A/model_cycle_0_cross_entropy.pth')}]
+2025-05-31 11:01:10 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:01:10 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:01:14 | INFO | Loading finished
+2025-05-31 11:01:14 | INFO | Starting training
+2025-05-31 11:01:14 | INFO | Starting training
+2025-05-31 11:01:14 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:01:14 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:14 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:14 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:14 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:25 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_ncod.pth
+2025-05-31 11:01:25 | INFO | Best validation metrics - Loss: 1.4724, F1: 0.4948
+2025-05-31 11:01:25 | INFO | New best model saved: checkpoints/A/model_cycle_0_ncod.pth
+2025-05-31 11:01:25 | INFO | Best validation metrics - Loss: 1.4724, F1: 0.4948
+2025-05-31 11:01:25 | INFO | Cycle 1 completed:
+2025-05-31 11:01:25 | INFO | - Final validation loss: 1.4724
+2025-05-31 11:01:25 | INFO | - Final F1 score: 0.4948
+2025-05-31 11:01:25 | INFO | Cycle 1 completed:
+2025-05-31 11:01:25 | INFO | - Final validation loss: 1.4724
+2025-05-31 11:01:25 | INFO | - Final F1 score: 0.4948
+2025-05-31 11:01:25 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.4724385628463528, 'val_f1': 0.49478844701157876, 'model_path': PosixPath('checkpoints/A/model_cycle_0_ncod.pth')}]
+2025-05-31 11:01:25 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:01:25 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:01:28 | INFO | Loading finished
+2025-05-31 11:01:28 | INFO | Starting training
+2025-05-31 11:01:28 | INFO | Starting training
+2025-05-31 11:01:28 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:01:29 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:29 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:29 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:29 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:39 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_noisy_cross_entropy.pth
+2025-05-31 11:01:39 | INFO | Best validation metrics - Loss: 1.3032, F1: 0.5744
+2025-05-31 11:01:39 | INFO | New best model saved: checkpoints/A/model_cycle_0_noisy_cross_entropy.pth
+2025-05-31 11:01:39 | INFO | Best validation metrics - Loss: 1.3032, F1: 0.5744
+2025-05-31 11:01:39 | INFO | Cycle 1 completed:
+2025-05-31 11:01:39 | INFO | - Final validation loss: 1.3032
+2025-05-31 11:01:39 | INFO | - Final F1 score: 0.5744
+2025-05-31 11:01:39 | INFO | Cycle 1 completed:
+2025-05-31 11:01:39 | INFO | - Final validation loss: 1.3032
+2025-05-31 11:01:39 | INFO | - Final F1 score: 0.5744
+2025-05-31 11:01:39 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.3032203895825867, 'val_f1': 0.574380232567404, 'model_path': PosixPath('checkpoints/A/model_cycle_0_noisy_cross_entropy.pth')}]
+2025-05-31 11:01:39 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:01:39 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:01:42 | INFO | Loading finished
+2025-05-31 11:01:43 | INFO | Starting training
+2025-05-31 11:01:43 | INFO | Starting training
+2025-05-31 11:01:43 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:01:43 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:43 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:43 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:43 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:54 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:54 | INFO | Best validation metrics - Loss: 1.9185, F1: 0.3011
+2025-05-31 11:01:54 | INFO | New best model saved: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:54 | INFO | Best validation metrics - Loss: 1.9185, F1: 0.3011
+2025-05-31 11:01:54 | INFO | Cycle 1 completed:
+2025-05-31 11:01:54 | INFO | - Final validation loss: 1.9185
+2025-05-31 11:01:54 | INFO | - Final F1 score: 0.3011
+2025-05-31 11:01:54 | INFO | Cycle 1 completed:
+2025-05-31 11:01:54 | INFO | - Final validation loss: 1.9185
+2025-05-31 11:01:54 | INFO | - Final F1 score: 0.3011
+2025-05-31 11:01:54 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.91854032218879, 'val_f1': 0.3011285700750338, 'model_path': PosixPath('checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth')}]
+2025-05-31 11:01:54 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:01:54 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:01:57 | INFO | Loading finished
+2025-05-31 11:01:57 | INFO | Starting training
+2025-05-31 11:01:57 | INFO | Starting training
+2025-05-31 11:01:57 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:01:57 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:57 | INFO | 
+Starting training cycle 1
+2025-05-31 11:01:57 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:01:57 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:02:25 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_symmetric_cross_entropy_weighted.pth
+2025-05-31 11:02:25 | INFO | Best validation metrics - Loss: 1.4898, F1: 0.5092
+2025-05-31 11:02:25 | INFO | New best model saved: checkpoints/A/model_cycle_0_symmetric_cross_entropy_weighted.pth
+2025-05-31 11:02:25 | INFO | Best validation metrics - Loss: 1.4898, F1: 0.5092
+2025-05-31 11:02:25 | INFO | Cycle 1 completed:
+2025-05-31 11:02:25 | INFO | - Final validation loss: 1.4898
+2025-05-31 11:02:25 | INFO | - Final F1 score: 0.5092
+2025-05-31 11:02:25 | INFO | Cycle 1 completed:
+2025-05-31 11:02:25 | INFO | - Final validation loss: 1.4898
+2025-05-31 11:02:25 | INFO | - Final F1 score: 0.5092
+2025-05-31 11:02:25 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.48984646205361, 'val_f1': 0.509165771848914, 'model_path': PosixPath('checkpoints/A/model_cycle_0_symmetric_cross_entropy_weighted.pth')}]
+2025-05-31 11:02:25 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:02:25 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:02:28 | INFO | Loading finished
+2025-05-31 11:02:28 | INFO | Starting training
+2025-05-31 11:02:28 | INFO | Starting training
+2025-05-31 11:02:28 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:02:28 | INFO | 
+Starting training cycle 1
+2025-05-31 11:02:28 | INFO | 
+Starting training cycle 1
+2025-05-31 11:02:28 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:02:28 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:02:39 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 11:02:39 | INFO | Best validation metrics - Loss: 1.5055, F1: 0.3841
+2025-05-31 11:02:39 | INFO | New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 11:02:39 | INFO | Best validation metrics - Loss: 1.5055, F1: 0.3841
+2025-05-31 11:02:39 | INFO | Cycle 1 completed:
+2025-05-31 11:02:39 | INFO | - Final validation loss: 1.5055
+2025-05-31 11:02:39 | INFO | - Final F1 score: 0.3841
+2025-05-31 11:02:39 | INFO | Cycle 1 completed:
+2025-05-31 11:02:39 | INFO | - Final validation loss: 1.5055
+2025-05-31 11:02:39 | INFO | - Final F1 score: 0.3841
+2025-05-31 11:02:39 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.5054978867794604, 'val_f1': 0.3841461289717408, 'model_path': PosixPath('checkpoints/A/model_cycle_0_outlier_discounting_loss.pth')}]
+2025-05-31 11:03:06 | INFO | Starting training
+2025-05-31 11:03:06 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:03:06 | INFO | 
+Starting training cycle 1
+2025-05-31 11:03:06 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:06 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:16 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_cross_entropy.pth
+2025-05-31 11:03:16 | INFO | Best validation metrics - Loss: 1.4256, F1: 0.5130
+2025-05-31 11:03:16 | INFO | Cycle 1 completed:
+2025-05-31 11:03:16 | INFO | - Final validation loss: 1.4256
+2025-05-31 11:03:16 | INFO | - Final F1 score: 0.5130
+2025-05-31 11:03:16 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.42558705637641, 'val_f1': 0.5129812242173182, 'model_path': PosixPath('checkpoints/A/model_cycle_0_cross_entropy.pth')}]
+2025-05-31 11:03:16 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:03:16 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:03:20 | INFO | Loading finished
+2025-05-31 11:03:20 | INFO | Starting training
+2025-05-31 11:03:20 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:03:21 | INFO | 
+Starting training cycle 1
+2025-05-31 11:03:21 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:21 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:32 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_ncod.pth
+2025-05-31 11:03:32 | INFO | Best validation metrics - Loss: 1.5416, F1: 0.4831
+2025-05-31 11:03:32 | INFO | Cycle 1 completed:
+2025-05-31 11:03:32 | INFO | - Final validation loss: 1.5416
+2025-05-31 11:03:32 | INFO | - Final F1 score: 0.4831
+2025-05-31 11:03:32 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.541580449604819, 'val_f1': 0.4830611966110575, 'model_path': PosixPath('checkpoints/A/model_cycle_0_ncod.pth')}]
+2025-05-31 11:03:32 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:03:32 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:03:35 | INFO | Loading finished
+2025-05-31 11:03:35 | INFO | Starting training
+2025-05-31 11:03:35 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:03:35 | INFO | 
+Starting training cycle 1
+2025-05-31 11:03:35 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:35 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:46 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_noisy_cross_entropy.pth
+2025-05-31 11:03:46 | INFO | Best validation metrics - Loss: 1.5818, F1: 0.4672
+2025-05-31 11:03:46 | INFO | Cycle 1 completed:
+2025-05-31 11:03:46 | INFO | - Final validation loss: 1.5818
+2025-05-31 11:03:46 | INFO | - Final F1 score: 0.4672
+2025-05-31 11:03:46 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.5818380937508658, 'val_f1': 0.46723242791488095, 'model_path': PosixPath('checkpoints/A/model_cycle_0_noisy_cross_entropy.pth')}]
+2025-05-31 11:03:46 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:03:46 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:03:49 | INFO | Loading finished
+2025-05-31 11:03:49 | INFO | Starting training
+2025-05-31 11:03:49 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:03:50 | INFO | 
+Starting training cycle 1
+2025-05-31 11:03:50 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:03:50 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:04:00 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:04:00 | INFO | Best validation metrics - Loss: 1.5961, F1: 0.4008
+2025-05-31 11:04:00 | INFO | Cycle 1 completed:
+2025-05-31 11:04:00 | INFO | - Final validation loss: 1.5961
+2025-05-31 11:04:00 | INFO | - Final F1 score: 0.4008
+2025-05-31 11:04:00 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.596076764113514, 'val_f1': 0.4008330654485244, 'model_path': PosixPath('checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth')}]
+2025-05-31 11:04:00 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:04:00 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:04:03 | INFO | Loading finished
+2025-05-31 11:04:04 | INFO | Starting training
+2025-05-31 11:04:04 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:04:04 | INFO | 
+Starting training cycle 1
+2025-05-31 11:04:04 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:04:04 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:04:32 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_symmetric_cross_entropy_weighted.pth
+2025-05-31 11:04:32 | INFO | Best validation metrics - Loss: 1.5028, F1: 0.4788
+2025-05-31 11:04:32 | INFO | Cycle 1 completed:
+2025-05-31 11:04:32 | INFO | - Final validation loss: 1.5028
+2025-05-31 11:04:32 | INFO | - Final F1 score: 0.4788
+2025-05-31 11:04:32 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.5027617106200954, 'val_f1': 0.4788001631238769, 'model_path': PosixPath('checkpoints/A/model_cycle_0_symmetric_cross_entropy_weighted.pth')}]
+2025-05-31 11:04:32 | INFO | Called from __name__ = noisy_labels.load_data
+2025-05-31 11:04:32 | INFO | Cache found at datasets/A/train.json.pkl
+2025-05-31 11:04:35 | INFO | Loading finished
+2025-05-31 11:04:35 | INFO | Starting training
+2025-05-31 11:04:35 | INFO | 
+Starting cycle 1 with seed 1
+2025-05-31 11:04:35 | INFO | 
+Starting training cycle 1
+2025-05-31 11:04:35 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:04:35 | INFO | Loaded pretrained model: checkpoints/A/model_cycle_0_symmetric_cross_entropy.pth
+2025-05-31 11:04:46 | INFO | 
+New best model saved: checkpoints/A/model_cycle_0_outlier_discounting_loss.pth
+2025-05-31 11:04:46 | INFO | Best validation metrics - Loss: 1.3740, F1: 0.5349
+2025-05-31 11:04:46 | INFO | Cycle 1 completed:
+2025-05-31 11:04:46 | INFO | - Final validation loss: 1.3740
+2025-05-31 11:04:46 | INFO | - Final F1 score: 0.5349
+2025-05-31 11:04:46 | INFO | [{'cycle': 1, 'seed': 1, 'val_loss': 1.3739552362590817, 'val_f1': 0.5349191242954524, 'model_path': PosixPath('checkpoints/A/model_cycle_0_outlier_discounting_loss.pth')}]

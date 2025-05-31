@@ -6,6 +6,7 @@ import pickle
 from pathlib import Path
 
 import torch
+from loguru import logger
 from torch_geometric.data import Data, Dataset
 
 
@@ -69,23 +70,29 @@ class GraphDataset(Dataset):
         transform=add_zeros,
         pre_transform=None,
     ):
+        logger.info(f"Called from __name__ = {__name__}")
+
         self.filename = Path(filename)
         self.cache_path = self.filename.parent / f"{self.filename.stem}.pkl"
-        # print(self.cache_path)
-        # exit()
 
         super().__init__(None, transform, pre_transform)
 
         if self.cache_path.exists():
-            print("in cache")
+            logger.info(f"Cache found at {self.cache_path}")
             with open(self.cache_path, "rb") as cache_file:
-                self.graphs: list[IndexedData] = pickle.load(cache_file)
+                self.graphs: list[IndexedData] = pickle.load(
+                    cache_file,
+                )
         else:
+            logger.info(
+                f"Cache not found at {self.cache_path}, the loading of the dataset will require some time..."
+            )
+
             self.graphs = self._build_graphs()
             with open(self.cache_path, "wb") as cache_file:
+                logger.info(f"Saving the cache for future use at {self.cache_path}")
                 pickle.dump(self.graphs, cache_file)
-        print("terminato caricamento")
-
+        logger.info("Loading finished")
         self.num_graphs = len(self.graphs)
 
     def len(self):
@@ -105,14 +112,3 @@ class GraphDataset(Dataset):
             data_list = [self.pre_transform(g) for g in data_list]
 
         return data_list
-
-
-# from time import sleep
-
-# a = GraphDataset("./datasets/A/train.json.gz")
-# b = GraphDataset("./datasets/B/train.json.gz")
-# c = GraphDataset("./datasets/C/train.json.gz")
-# d = GraphDataset("./datasets/B/train.json.gz")
-# a = GraphDataset("./datasets/B/train.json.gz")
-# print("caricato")
-# sleep(10)
