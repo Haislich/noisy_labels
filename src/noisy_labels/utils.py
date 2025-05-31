@@ -53,18 +53,10 @@ def compute_class_weights(dataset, num_classes):
 
 
 def create_submission():
-    for dataset_name in ["ABCD"]:  # ["A", "B", "C", "D"]:
-        model_paths = list(
-            [
-                Path(checkpoint)
-                for checkpoint in Path(f"./checkpoints/{dataset_name}").glob(
-                    "model*.pth"
-                )
-            ]
-        )
-        test_path = f"./datasets/{dataset_name}/train.json.gz"
-        predictions, _ = EnsembleEdgeVGAE(model_paths).predict_with_ensemble_score(
-            Path(test_path)
+    for dataset_name in ["A", "B", "C", "D"]:
+        test_path = f"./datasets/{dataset_name}/test.json.gz"
+        predictions, _ = EnsembleEdgeVGAE(dataset_name).predict_with_ensemble_score(
+            dataset_name
         )
         save_predictions(predictions, test_path)
 
@@ -102,14 +94,3 @@ def cacheABCD():
         ],
         "./datasets/ABCD/train.json.pkl",
     )
-
-
-test_path = "./datasets/A/train.json.gz"
-model_paths = list(
-    [Path(checkpoint) for checkpoint in Path("./checkpoints/A").glob("model*.pth")]
-)
-predictions, _ = EnsembleEdgeVGAE(model_paths).predict_with_ensemble_score(
-    Path(test_path)
-)
-# create_submission()
-# logger.info("ciao")

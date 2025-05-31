@@ -2,7 +2,7 @@
 import json
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Literal, Optional
 
 import numpy as np
 import torch
@@ -235,15 +235,19 @@ class EdgeVGAE(torch.nn.Module):
 
 
 class EnsembleEdgeVGAE:
-    def __init__(self, model_paths: List[Path], top_k: int = 5) -> None:
-        self.model_paths = model_paths
+    def __init__(
+        self,
+        dataset_path: Path,
+        top_k: int = 5,
+    ) -> None:
+        self.checkpoints_dir = Path(f"./checkpoints_dir/{dataset_path.parent.name}")
         self.model_metadatas: List[Dict] = []
         self.models: List[EdgeVGAE] = []
         self.num_classes: int = -1
         self.top_k = top_k
 
         loaded = []
-
+        model_paths = list(self.checkpoints_dir.glob("model*.pth"))
         for model_path in model_paths:
             if isinstance(model_path, str):
                 model_path = Path(model_path)
@@ -277,10 +281,10 @@ class EnsembleEdgeVGAE:
 
     def predict_with_ensemble_score(
         self,
-        dataset_path: str | Path,
+        dataset_name: Literal["A", "B", "C", "D", "ABCD"] | str,
         batch_size: int = 32,
     ):
-        test_dataset = GraphDataset(dataset_path)
+        test_dataset = GraphDataset(dataset_name)
 
         test_loader = DataLoader(
             test_dataset,
@@ -338,10 +342,3 @@ class EnsembleEdgeVGAE:
         print(f"Max confidence: {np.max(confidence_scores):.4f}")
 
         return ensemble_predictions, confidence_scores
-
-
-# EnsembleEdgeVGAE(
-#     model_paths=list(
-#         [Path(checkpoint) for checkpoint in Path("./checkpoints/D").glob("model*.pth")]
-#     )
-# ).predict_with_ensemble_score("./datasets/D/test.json.gz")

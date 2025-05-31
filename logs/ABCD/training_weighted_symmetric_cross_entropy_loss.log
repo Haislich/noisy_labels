@@ -1,9 +1,3 @@
-2025-05-31 15:20:29 | INFO | Cache found at datasets/ABCD/train.json.pkl
-2025-05-31 15:20:41 | INFO | Loading finished
-2025-05-31 15:20:42 | INFO | Cache found at datasets/ABCD/train.json.pkl
-2025-05-31 15:20:56 | INFO | Loading finished
-2025-05-31 15:20:57 | INFO | Cache found at datasets/ABCD/train.json.pkl
-2025-05-31 15:21:09 | INFO | Loading finished
 2025-05-31 15:21:10 | INFO | Cache found at datasets/ABCD/train.json.pkl
 2025-05-31 15:21:23 | INFO | Loading finished
 2025-05-31 15:21:24 | INFO | Starting training

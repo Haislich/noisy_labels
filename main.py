@@ -1,103 +1,125 @@
 import argparse
 import gc
+import os
+import random
 from pathlib import Path
 
 import torch
 from loguru import logger
 
 from noisy_labels.model_config import ModelConfig
+from noisy_labels.models import EnsembleEdgeVGAE
 from noisy_labels.trainer import ModelTrainer
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 EPOCHS = 1
-CYCLES = 3
+CYCLES = 1
 ROUNDS = 1
+ROOT = os.getcwd()
 DEFAULT_LOSS = "cross_entropy_loss"
+LOSS_TYPES = [
+    "cross_entropy_loss",
+    "ncod_loss",
+    "noisy_cross_entropy_loss",
+    "symmetric_cross_entropy_loss",
+    "weighted_symmetric_cross_entropy_loss",
+    "outlier_discounting_loss",
+]
+
+
+def losses_tournament(
+    dataset_name: str,
+    epochs: int,
+    cycles: int,
+    rounds: int,
+    config_stage: str,
+):
+    trainers = [
+        ModelTrainer(
+            ModelConfig(dataset_name),
+            loss_type=loss,
+            epochs=epochs,
+            cycles=cycles,
+        )
+        for loss in LOSS_TYPES
+    ]
+    results, best_losses, best_paths = {}, [], []
+
+    for round_idx in range(rounds):
+        logger.info(f"{config_stage} - Round {round_idx + 1}/{rounds}")
+        results[f"round_{round_idx}"] = {}
+        random.shuffle(trainers)
+
+        for trainer in trainers:
+            results[f"round_{round_idx}"][trainer.loss_type] = trainer.train()
+
+        round_winners = {
+            loss: max(entries, key=lambda x: x["val_f1"])
+            for loss, entries in results[f"round_{round_idx}"].items()
+        }
+        best_loss = max(round_winners, key=lambda k: round_winners[k]["val_f1"])
+        best_losses.append(best_loss)
+        best_paths += [Path(entry["model_path"]) for entry in round_winners.values()]
+
+        logger.info(
+            "Best F1 scores this round:\n"
+            + "\n".join(f"{k}: {v['val_f1']:.4f}" for k, v in round_winners.items())
+        )
+        logger.info(f"Best round loss: {best_loss}")
+
+    # Clean up memory
+    del trainers
+    gc.collect()
+    return best_losses, best_paths
 
 
 def main():
-    parser = argparse.ArgumentParser("Noisy Labels")
-    parser.add_argument(
-        "--test_path", help="Path to the corresponding test.json.gz", required=True
+    parser = argparse.ArgumentParser(
+        description="Train or evaluate a model on noisy labeled datasets."
     )
     parser.add_argument(
-        "--train_path",
-        help="Path to the corresponding train.json.gz (optional)",
-        required=False,
+        "--test_path",
+        type=str,
+        required=True,
+        help="Path to test.json.gz (e.g., ./datasets/XYZ/test.json.gz)",
+    )
+    parser.add_argument(
+        "--train_path", type=str, help="Optional path to train.json.gz for training"
     )
     args = parser.parse_args()
+
     test_path = Path(args.test_path)
+    dataset_name = test_path.parent.name
+
     if args.train_path:
         train_path = Path(args.train_path)
         if train_path.parent != test_path.parent:
             raise ValueError(
-                f"Train path and Test path must be relative to the same dataset, found train {train_path.parent} and test {test_path.parent} "
+                f"Train path and Test path must be in the same dataset folder.\n"
+                f"Got: train={train_path.parent}, test={test_path.parent}"
             )
-        #  /
-        logger.info(
-            f"Starting weak pretrain on ABCD, for {ROUNDS=}, {CYCLES=},{EPOCHS=}"
-        )
-        trainers = [
-            ModelTrainer(
-                ModelConfig("ABCD"),
-                loss_type=loss_type,
-                epochs=EPOCHS,
-                cycles=CYCLES,
-            )
-            for loss_type in [
-                "cross_entropy_loss",
-                "ncod_loss",
-                # "noisy_cross_entropy_loss",
-                # "symmetric_cross_entropy_loss",
-                # "weighted_symmetric_cross_entropy_loss",
-                # "outlier_discounting_loss",
-            ]
-        ]
-        results = {}
-        pretrained_model_paths = None
-        best_overall_loss = DEFAULT_LOSS
-        for round in range(ROUNDS):
-            results[f"round_{round}"] = {}
-            for trainer in trainers:
-                results[f"round_{round}"][trainer.loss_type] = trainer.train(
-                    pretrained_model_paths
-                )
 
-            winner_paths = []
-            for loss in results["round_0"]:
-                winner_paths.append(
-                    max(results["round_0"][loss], key=lambda x: x["val_f1"])[
-                        "model_path"
-                    ],
-                )
-            winners = {}
-            for loss in results["round_0"].keys():
-                winners[loss] = max(results["round_0"][loss], key=lambda x: x["val_f1"])
-            # pretrained_model_paths = [
-            #     Path(elem["model_path"]) for elem in winners.values()
-            # ]
-            best_overall_loss: str = max(winners, key=lambda x: winners[x]["val_f1"])
+        checkpoint_dir = Path(f"./checkpoints/{dataset_name}")
+        if checkpoint_dir.exists() and any(checkpoint_dir.iterdir()):
             logger.info(
-                "Best F1 scores for each model: "
-                + "\n".join((f"{k}:{v['val_f1']}" for k, v in winners.items()))
+                f"Starting weak pretraining on ABCD ({ROUNDS=}, {CYCLES=}, {EPOCHS=})"
             )
-            logger.info(f"Best overall loss {best_overall_loss}")
+            losses_tournament(
+                "ABCD", EPOCHS, CYCLES, ROUNDS, config_stage="Pretraining"
+            )
 
-        logger.info(
-            f"Finished weak pretraining of ABCD, starting training on {train_path.parent.name}"
+        logger.info(f"Finetuning on {dataset_name}")
+        best_losses, best_model_paths = losses_tournament(
+            dataset_name, EPOCHS, CYCLES, ROUNDS, config_stage="Finetuning"
         )
-        for trainer in trainers:
-            del trainer
-        del trainers
-        gc.collect()
 
+        best_loss = max(set(best_losses), key=best_losses.count)
         trainer = ModelTrainer(
-            ModelConfig(train_path.parent.name),
-            loss_type=best_overall_loss,
-            epochs=EPOCHS,
-            cycles=CYCLES,
+            ModelConfig(dataset_name), loss_type=best_loss, epochs=EPOCHS, cycles=CYCLES
         )
-        trainer.train(pretrained_model_paths)
+        trainer.train(best_model_paths)
+
+    EnsembleEdgeVGAE(dataset_name).predict_with_ensemble_score(dataset_name)
 
 
 if __name__ == "__main__":

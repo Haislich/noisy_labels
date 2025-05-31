@@ -66,11 +66,11 @@ def add_zeros(data):
 class GraphDataset(Dataset):
     def __init__(
         self,
-        filename: Path | str,
+        dataset_path: Path | str,
         transform=add_zeros,
         pre_transform=None,
     ):
-        self.filename = Path(filename)
+        self.filename = Path(dataset_path)
         self.cache_path = self.filename.parent / f"{self.filename.stem}.pkl"
 
         super().__init__(None, transform, pre_transform)
