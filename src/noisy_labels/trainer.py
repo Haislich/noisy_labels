@@ -12,9 +12,16 @@ from torch_geometric.nn import global_mean_pool
 from tqdm.auto import tqdm
 
 from noisy_labels.load_data import GraphDataset, IndexedData, IndexedSubset
-from noisy_labels.loss import NCODLoss, NoisyCrossEntropyLoss, SymmetricCrossEntropyLoss
+from noisy_labels.loss import (
+    NCODLoss,
+    NoisyCrossEntropyLoss,
+    OutlierDiscountingLoss,
+    SymmetricCrossEntropyLoss,
+    WeightedSymmetricCrossEntropyLoss,
+)
 from noisy_labels.model_config import ModelConfig
 from noisy_labels.models import EdgeVGAE
+from noisy_labels.utils import compute_class_weights
 
 
 def warm_up_lr(epoch, num_epoch_warm_up, init_lr, optimizer):
@@ -33,8 +40,9 @@ class ModelTrainer:
             "symmetric_cross_entropy",
             "symmetric_cross_entropy_weighted",
             "outlier_discounting_loss",
-        ],
-        pretrained_models: Optional[List[str] | List[Path]],
+        ]
+        | str,
+        pretrained_models: Optional[List[str] | List[Path]] = None,
         epochs: int = 10,
         learning_rate: float = 5e-3,
         warmup_epochs: int = 0,
@@ -45,6 +53,9 @@ class ModelTrainer:
         ),
     ):
         self.config = config
+        self.dataset = GraphDataset(
+            Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
+        )
         if loss_type == "cross_entropy":
             self.train_criterion = nn.CrossEntropyLoss()
         elif loss_type == "ncod":
@@ -56,9 +67,11 @@ class ModelTrainer:
         elif loss_type == "symmetric_cross_entropy":
             self.train_criterion = SymmetricCrossEntropyLoss()
         elif loss_type == "symmetric_cross_entropy_weighted":
-            self.train_criterion = ...
+            self.train_criterion = WeightedSymmetricCrossEntropyLoss(
+                self.config.num_classes
+            )
         elif "outlier_discounting_loss":
-            self.train_criterion = ...
+            self.train_criterion = OutlierDiscountingLoss()
         else:
             raise ValueError(f"Invalid loss, {loss_type} is not a valid loss.")
         self.epochs = epochs
@@ -68,9 +81,7 @@ class ModelTrainer:
         self.early_stopping_patience = early_stopping_patience
         self.cycles = cycles
         self.device = device
-        self.dataset = GraphDataset(
-            Path(f"./datasets/{self.config.dataset_name}/train.json.gz"),
-        )
+
         self.best_f1_scores = []
         self.eval_criterion = torch.nn.CrossEntropyLoss()
 
@@ -84,6 +95,7 @@ class ModelTrainer:
 
         self.logs_dir = Path(f"./logs/{self.config.dataset_name}")
         self.logs_dir.mkdir(exist_ok=True)
+        logging.basicConfig()
         logging.basicConfig(
             filename=self.logs_dir / "training.log",
             level=logging.INFO,
@@ -180,6 +192,11 @@ class ModelTrainer:
                     targets=data.y,
                     epoch=epoch,
                 )
+            elif isinstance(self.train_criterion, WeightedSymmetricCrossEntropyLoss):
+                weights = compute_class_weights(
+                    train_loader.dataset, self.config.num_classes
+                ).to(self.device)
+                class_loss = self.train_criterion(class_logits, data.y, weights)
             else:
                 class_loss = self.train_criterion(class_logits, data.y)
 
@@ -301,18 +318,14 @@ class ModelTrainer:
 
                 # Save the model with both metrics in filename
                 best_model_path = (
-                    self.checkpoints_dir
-                    / f"cycle_{cycle}_epoch_{epoch}_"
-                    / f"loss_{val_loss}_f1_{val_f1}.pth"
+                    self.checkpoints_dir / f"model_cycle_{(cycle + 1) * epoch}_{}.pth"
                 )
                 model.save(
-                    self.checkpoints_dir / f"cycle_{cycle}_epoch_{epoch}",
+                    best_model_path,
                     val_loss,
                     val_f1,
                     train_loss,
                     self.config,
-                    epoch,
-                    cycle,
                 )
 
                 logging.info(f"New best model saved: {best_model_path}")

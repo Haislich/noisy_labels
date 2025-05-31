@@ -1,8 +1,9 @@
 import os
 import tarfile
 from pathlib import Path
-import torch
+
 import pandas as pd
+import torch
 
 try:
     from noisy_labels.models import EnsembleEdgeVGAE
@@ -38,6 +39,7 @@ def save_predictions(predictions, test_path):
     output_df.to_csv(output_csv_path, index=False)
     print(f"Predictions saved to {output_csv_path}")
 
+
 def compute_class_weights(dataset, num_classes):
     counts = [0] * num_classes
     for g in dataset:
@@ -48,6 +50,7 @@ def compute_class_weights(dataset, num_classes):
     norm_weights = torch.tensor(weights)
     norm_weights = norm_weights / norm_weights.sum()
     return norm_weights
+
 
 def create_submission():
     for dataset_name in ["A", "B", "C", "D"]:
@@ -70,15 +73,8 @@ def create_submission():
     gzip_folder(folder_path, output_file)
 
 
-create_submission()
+# create_submission()
 
 
-#import os
-#print(os.getcwd())
-
-
-
-
-
-
-
+# import os
+# print(os.getcwd())

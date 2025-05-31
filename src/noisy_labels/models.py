@@ -2,7 +2,7 @@
 import json
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List, Literal, Optional
+from typing import Dict, List, Optional
 
 import numpy as np
 import torch
@@ -125,9 +125,6 @@ class EdgeVGAE(torch.nn.Module):
         val_f1: Optional[float] = None,
         train_loss: Optional[float] = None,
         config: Optional[ModelConfig] = None,
-        epoch: Optional[int] = None,
-        cycle: Optional[int] = None,
-        optimizer_state_dict: Optional[Dict] = None,
     ):
         if isinstance(model_path, str):
             model_path = Path(model_path)
@@ -139,23 +136,10 @@ class EdgeVGAE(torch.nn.Module):
         if models_metadata_path.exists():
             with open(models_metadata_path, "r") as models_metadata_fp:
                 models_metadata = json.load(models_metadata_fp)
-        optimizer_path = None
-        if optimizer_state_dict is not None:
-            optimizer_path = (
-                model_path_root
-                / f"optimizer_{model_path.stem.split('_', 2)[2]}{model_path.suffix}"
-            )
 
-            with open(optimizer_path, "wb") as optimizer_path_fp:
-                torch.save(optimizer_state_dict, optimizer_path_fp)
         models_metadata.update(
             {
                 model_path.stem: {
-                    "optimizer_path": str(optimizer_path)
-                    if optimizer_path
-                    else optimizer_path,
-                    "epoch": epoch,
-                    "cycle": cycle,
                     "val_loss": val_loss,
                     "val_f1": val_f1,
                     "train_loss": train_loss,

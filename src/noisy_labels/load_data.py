@@ -76,7 +76,7 @@ class GraphDataset(Dataset):
 
         super().__init__(None, transform, pre_transform)
 
-        if False and self.cache_path.exists():
+        if self.cache_path.exists():
             print("in cache")
             with open(self.cache_path, "rb") as cache_file:
                 self.graphs: list[IndexedData] = pickle.load(cache_file)
