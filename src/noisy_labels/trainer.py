@@ -395,7 +395,7 @@ class ModelTrainer:
         pretrained_models_path: Optional[List[Path]] = None,
     ):
         if pretrained_models_path is not None:
-            self.pretrained_models_path = pretrained_models_path
+            self.pretrained_models_path += pretrained_models_path
         logger.bind(trainer="Trainer").info("Starting training")
 
         results: List[Dict[str, int | float | Optional[str]]] = []

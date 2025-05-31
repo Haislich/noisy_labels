@@ -108,6 +108,8 @@ test_path = "./datasets/A/train.json.gz"
 model_paths = list(
     [Path(checkpoint) for checkpoint in Path("./checkpoints/A").glob("model*.pth")]
 )
-predictions, _ = EnsembleEdgeVGAE([]).predict_with_ensemble_score(Path(test_path))
+predictions, _ = EnsembleEdgeVGAE(model_paths).predict_with_ensemble_score(
+    Path(test_path)
+)
 # create_submission()
 # logger.info("ciao")
