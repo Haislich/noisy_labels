@@ -13,18 +13,18 @@ from noisy_labels.trainer import ModelTrainer
 from noisy_labels.utils import save_predictions
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-EPOCHS = 30
-CYCLES = 3
-ROUNDS = 2
+EPOCHS = 60
+CYCLES = 10
+ROUNDS = 5
 ROOT = os.getcwd()
 DEFAULT_LOSS = "cross_entropy_loss"
 LOSS_TYPES = [
-    # "cross_entropy_loss",
-    # "ncod_loss",
+    "cross_entropy_loss",
+    "ncod_loss",
     "noisy_cross_entropy_loss",
-    # "symmetric_cross_entropy_loss",
-    # "weighted_symmetric_cross_entropy_loss",
-    # "outlier_discounting_loss",
+    "symmetric_cross_entropy_loss",
+    "weighted_symmetric_cross_entropy_loss",
+    "outlier_discounting_loss",
 ]
 
 
