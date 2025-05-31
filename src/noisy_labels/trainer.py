@@ -1,5 +1,6 @@
 # source/trainer.py
 import json
+from dataclasses import asdict
 
 # from collections import deque
 from pathlib import Path
@@ -236,15 +237,23 @@ class ModelTrainer:
             with open(self.metadata_path, "r") as metadata_fp:
                 metadata = json.load(metadata_fp)
 
-            worst_idx = min(
-                range(len(self.pretrained_models_path)),
-                key=lambda i: metadata[self.pretrained_models_path[i].stem]["val_f1"],
+            # Filter paths to those that are also in metadata
+            valid_pretrained_paths = [
+                path for path in self.pretrained_models_path if path.stem in metadata
+            ]
+
+            if not valid_pretrained_paths:
+                raise ValueError("No valid pretrained models found in metadata.")
+
+            # Select the worst model
+            worst_model_path = min(
+                valid_pretrained_paths, key=lambda path: metadata[path.stem]["val_f1"]
             )
-            val_f1 = metadata[worst_idx]["val_f1"]
-            model_path = self.pretrained_models_path[worst_idx]
-            model = EdgeVGAE.from_pretrained(model_path)
+            val_f1 = metadata[worst_model_path.stem]["val_f1"]
+
+            model = EdgeVGAE.from_pretrained(worst_model_path)
             logger.bind(trainer="Trainer").info(
-                f"Loaded worst pretrained model for improvement: {model_path} with an initial score of {val_f1}"
+                f"Loaded worst pretrained model for improvement: {worst_model_path} with an initial score of {val_f1}"
             )
 
         else:
@@ -330,7 +339,7 @@ class ModelTrainer:
                 # Save the model with both metrics in filename
                 best_model_path = (
                     self.checkpoints_dir
-                    / f"model_epoch_{cycle * (epoch + 1)}_{self.loss_type}.pth"
+                    / f"model_{self.config.dataset_path.parent.name}_epoch_{cycle * (epoch + 1)}.pth"
                 )
                 model.save(
                     best_model_path,
@@ -367,26 +376,56 @@ class ModelTrainer:
         progress_bar.close()
         # Replace worst model in deque if improved
         if best_model_path is not None:
-            worst_idx = (
-                min(
-                    range(len(self.pretrained_models_path)),
-                    key=lambda i: metadata[self.pretrained_models_path[i].stem][
-                        "val_f1"
-                    ],
-                )
-                if len(self.pretrained_models_path) > 0
-                else None
-            )
+            with open(self.metadata_path, "r") as metadata_fp:
+                metadata = json.load(metadata_fp)
 
-            if (
-                worst_idx is None
-                or best_f1
-                > metadata[self.pretrained_models_path[worst_idx].stem]["val_f1"]
-            ):
-                if worst_idx is not None:
+            valid_pretrained_paths = [
+                path for path in self.pretrained_models_path if path.stem in metadata
+            ]
+
+            if valid_pretrained_paths:
+                worst_model_path = min(
+                    valid_pretrained_paths,
+                    key=lambda path: metadata[path.stem]["val_f1"],
+                )
+                worst_f1 = metadata[worst_model_path.stem]["val_f1"]
+                config_dict = asdict(self.config)
+                config_dict.pop("dataset_path")
+                if best_f1 > worst_f1:
+                    # Replace in list
+                    worst_idx = self.pretrained_models_path.index(worst_model_path)
                     self.pretrained_models_path[worst_idx] = best_model_path
+
+                    # Replace file
+                    worst_model_path.unlink()  # delete old file
+                    best_model_path.rename(worst_model_path)  # move best into old slot
+                    self.pretrained_models_path[worst_idx] = worst_model_path
+
+                    # Update metadata
+                    metadata[worst_model_path.stem] = {
+                        "val_loss": best_val_loss,
+                        "val_f1": best_f1,
+                        "train_loss": train_loss,
+                        "config": config_dict,
+                    }
+
+                    with open(self.metadata_path, "w") as metadata_fp:
+                        json.dump(metadata, metadata_fp, indent=4)
+
+                    logger.bind(trainer="Trainer").info(
+                        f"Replaced worst model {best_model_path} with improved one at: {worst_model_path}"
+                    )
                 else:
+                    # If it’s better than nothing, add to the end
                     self.pretrained_models_path.append(best_model_path)
+                    metadata[best_model_path.stem] = {
+                        "val_loss": best_val_loss,
+                        "val_f1": best_f1,
+                        "train_loss": train_loss,
+                        "config": config_dict,
+                    }
+                    with open(self.metadata_path, "w") as metadata_fp:
+                        json.dump(metadata, metadata_fp, indent=4)
         return best_val_loss, best_f1, best_model_path
 
     def train(

@@ -8,7 +8,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -22,7 +21,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -36,7 +34,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -50,7 +47,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -64,7 +60,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -78,7 +73,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -92,7 +86,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -106,7 +99,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -120,7 +112,6 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
@@ -134,59 +125,41 @@
             "hidden_dim": 128,
             "latent_dim": 8,
             "num_classes": 6,
-            "dataset_name": "A",
             "input_dim": 1,
             "edge_dim": 7
         }
     },
-    "model_epoch_2_cross_entropy_loss": {
-        "val_loss": 1.3072247868734048,
-        "val_f1": 0.529453943979989,
-        "train_loss": 2.1634394454617873,
-        "config": {
-            "dataset_name": "A",
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
-    "model_epoch_3_cross_entropy_loss": {
-        "val_loss": 1.535382922659529,
-        "val_f1": 0.4510814810704672,
-        "train_loss": 2.1812428143007536,
-        "config": {
-            "dataset_name": "A",
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
-    "model_epoch_4_cross_entropy_loss": {
-        "val_loss": 1.3557750798286277,
-        "val_f1": 0.5650468757210392,
-        "train_loss": 2.2277351846086217,
-        "config": {
-            "dataset_name": "A",
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
     "model_epoch_1_cross_entropy_loss": {
-        "val_loss": 1.5125936261305573,
-        "val_f1": 0.4398381541330072,
-        "train_loss": 1.821213199737224,
+        "val_loss": 1.3005981310039547,
+        "val_f1": 0.5680331213095261,
+        "train_loss": 2.095180259528735,
         "config": {
-            "dataset_name": "A",
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_epoch_A_1": {
+        "val_loss": 1.3005981310039547,
+        "val_f1": 0.5680331213095261,
+        "train_loss": 2.095180259528735,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_A_epoch_1": {
+        "val_loss": 1.3923276933372444,
+        "val_f1": 0.5195815699350506,
+        "train_loss": 2.0140477782445596,
+        "config": {
             "input_dim": 1,
             "edge_dim": 7,
             "batch_size": 64,

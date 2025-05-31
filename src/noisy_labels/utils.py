@@ -54,9 +54,9 @@ def compute_class_weights(dataset, num_classes):
 
 def create_submission():
     for dataset_name in ["A", "B", "C", "D"]:
-        test_path = f"./datasets/{dataset_name}/test.json.gz"
-        predictions, _ = EnsembleEdgeVGAE(dataset_name).predict_with_ensemble_score(
-            dataset_name
+        test_path = Path(f"./datasets/{dataset_name}/test.json.gz")
+        predictions, _ = EnsembleEdgeVGAE(test_path).predict_with_ensemble_score(
+            test_path
         )
         save_predictions(predictions, test_path)
 

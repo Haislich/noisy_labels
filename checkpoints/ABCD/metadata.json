@@ -1,1 +1,93 @@
-{"model_ABCD_cycle_2_epoch_919": {"val_loss": 0.6974953306402932, "val_f1": 0.7636367762715558, "train_loss": 0.8887834587272355, "config": {"batch_size": 24, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6, "dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7}}, "model_ABCD_cycle_1_epoch_75": {"val_loss": 1.1554806016068508, "val_f1": 0.5898561509280683, "train_loss": 1.3027558661355765, "config": {"batch_size": 24, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6, "dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7}}, "model_ABCD_cycle_1_epoch_780": {"val_loss": 0.7130696556550709, "val_f1": 0.7555403293197427, "train_loss": 0.9035417456800026, "config": {"batch_size": 24, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6, "dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7}}, "model_ABCD_cycle_2_epoch_100": {"val_loss": 1.1372274430270524, "val_f1": 0.5919703335052147, "train_loss": 1.3063958990724434, "config": {"batch_size": 24, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6, "dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7}}, "model_ABCD_cycle_3_epoch_108": {"val_loss": 1.1199469856838598, "val_f1": 0.591358121703335, "train_loss": 1.2912072695526546, "config": {"batch_size": 24, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6, "dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7}}, "model_ABCD_cycle_3_epoch_999": {"val_loss": 0.6774696083045861, "val_f1": 0.7717576586262, "train_loss": 0.861100847297161, "config": {"batch_size": 24, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6, "dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7}}, "model_cycle_0_outlier_discounting_loss": {"val_loss": 2.784781659648558, "val_f1": 0.20119015466757528, "train_loss": 1.09340338571474, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_1_cross_entropy_loss": {"val_loss": 1.7379395749620947, "val_f1": 0.24533357504656467, "train_loss": 2.626851312328562, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_2_cross_entropy_loss": {"val_loss": 1.6875435123487401, "val_f1": 0.2784468728408791, "train_loss": 1.867825450908166, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_3_cross_entropy_loss": {"val_loss": 1.6075431627192536, "val_f1": 0.2520593898620192, "train_loss": 2.0068783898304305, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_1_ncod_loss": {"val_loss": 1.6718745238471662, "val_f1": 0.2867214288597899, "train_loss": 3.119122228994709, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_2_ncod_loss": {"val_loss": 1.726098347750378, "val_f1": 0.2130788015043665, "train_loss": 2.818099121549236, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_3_ncod_loss": {"val_loss": 1.6490503171828803, "val_f1": 0.235933612944699, "train_loss": 2.7755266615498626, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_4_cross_entropy_loss": {"val_loss": 1.6393805031935191, "val_f1": 0.29506437069801744, "train_loss": 1.933068729842982, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_5_cross_entropy_loss": {"val_loss": 1.90398911917935, "val_f1": 0.20978647122304173, "train_loss": 1.9044705940031978, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_6_cross_entropy_loss": {"val_loss": 1.5954789225734882, "val_f1": 0.3329791798658373, "train_loss": 1.8831272612483028, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_9_cross_entropy_loss": {"val_loss": 1.7058950930868033, "val_f1": 0.2541920147827132, "train_loss": 2.0397614618393365, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_7_cross_entropy_loss": {"val_loss": 1.613047223140397, "val_f1": 0.28934889024882854, "train_loss": 1.9029141310025028, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_8_cross_entropy_loss": {"val_loss": 1.5808713845352629, "val_f1": 0.3022917744765036, "train_loss": 1.9665597737451372, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_18_cross_entropy_loss": {"val_loss": 1.6587404209765446, "val_f1": 0.27418935928746474, "train_loss": 1.7915017295513307, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_10_cross_entropy_loss": {"val_loss": 1.7217878913496172, "val_f1": 0.25827517325687366, "train_loss": 1.9385457359143157, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_20_cross_entropy_loss": {"val_loss": 1.6215830563677711, "val_f1": 0.31141555739936244, "train_loss": 1.7520910522009832, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_4_ncod_loss": {"val_loss": 1.6896147012163112, "val_f1": 0.22615275154410125, "train_loss": 2.756445572105259, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_6_ncod_loss": {"val_loss": 2.063602162830865, "val_f1": 0.21827030052371788, "train_loss": 3.3376580713537063, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_8_ncod_loss": {"val_loss": 1.7892284712205662, "val_f1": 0.1843042057068926, "train_loss": 2.9431815278790165, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_5_ncod_loss": {"val_loss": 1.6613860987084057, "val_f1": 0.2792777537910335, "train_loss": 2.819933696127102, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_7_ncod_loss": {"val_loss": 1.6913595262542795, "val_f1": 0.19344084412554619, "train_loss": 2.9343861923152077, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_14_ncod_loss": {"val_loss": 1.692428512359733, "val_f1": 0.22775741250050974, "train_loss": 2.7380563525737496, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_16_ncod_loss": {"val_loss": 1.6986365605714537, "val_f1": 0.22705875339372902, "train_loss": 2.753802064365689, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_24_ncod_loss": {"val_loss": 1.6731124641427217, "val_f1": 0.25565096839950885, "train_loss": 2.6632292194016083, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_9_ncod_loss": {"val_loss": 1.7571917282316907, "val_f1": 0.20598103538621443, "train_loss": 2.844804158851282, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_18_ncod_loss": {"val_loss": 1.6698694148375712, "val_f1": 0.21964655816068102, "train_loss": 2.7004012697462922, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_27_ncod_loss": {"val_loss": 1.6434335649766276, "val_f1": 0.2863807942638153, "train_loss": 2.6826136607663913, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_10_ncod_loss": {"val_loss": 1.8020846995639472, "val_f1": 0.052787171420631364, "train_loss": 2.8889762920024884, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_20_ncod_loss": {"val_loss": 1.6877865096047333, "val_f1": 0.24176866847079734, "train_loss": 2.742022489433858, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_1_noisy_cross_entropy_loss": {"val_loss": 1.9506492579161232, "val_f1": 0.16935077789486752, "train_loss": 2.1683664546357777, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_2_noisy_cross_entropy_loss": {"val_loss": 1.6962654318245627, "val_f1": 0.2466752027238092, "train_loss": 1.6461766852850754, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_1_outlier_discounting_loss": {"val_loss": 1.6553333955298335, "val_f1": 0.22547465160583627, "train_loss": 0.5325475090817386, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_2_outlier_discounting_loss": {"val_loss": 1.655258044993973, "val_f1": 0.2960186251501221, "train_loss": 0.3581241680957146, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_1_symmetric_cross_entropy_loss": {"val_loss": 2.030485186593267, "val_f1": 0.14767139020906245, "train_loss": 2.2667229223470327, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_2_symmetric_cross_entropy_loss": {"val_loss": 1.8134062042466261, "val_f1": 0.251002570463845, "train_loss": 1.3840162088895638, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_1_weighted_symmetric_cross_entropy_loss": {"val_loss": 1.7991262083075488, "val_f1": 0.27643135328502855, "train_loss": 0.4298105975516765, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}, "model_epoch_2_weighted_symmetric_cross_entropy_loss": {"val_loss": 1.7433548807139785, "val_f1": 0.25135388149698124, "train_loss": 0.35288156290141914, "config": {"dataset_name": "ABCD", "input_dim": 1, "edge_dim": 7, "batch_size": 64, "hidden_dim": 128, "latent_dim": 8, "num_classes": 6}}}
+{
+    "model_ABCD_cycle_2_epoch_919": {
+        "val_loss": 0.6974953306402932,
+        "val_f1": 0.7636367762715558,
+        "train_loss": 0.8887834587272355,
+        "config": {
+            "batch_size": 24,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6,
+            "input_dim": 1,
+            "edge_dim": 7
+        }
+    },
+    "model_ABCD_cycle_1_epoch_75": {
+        "val_loss": 1.1554806016068508,
+        "val_f1": 0.5898561509280683,
+        "train_loss": 1.3027558661355765,
+        "config": {
+            "batch_size": 24,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6,
+            "input_dim": 1,
+            "edge_dim": 7
+        }
+    },
+    "model_ABCD_cycle_1_epoch_780": {
+        "val_loss": 0.7130696556550709,
+        "val_f1": 0.7555403293197427,
+        "train_loss": 0.9035417456800026,
+        "config": {
+            "batch_size": 24,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6,
+            "input_dim": 1,
+            "edge_dim": 7
+        }
+    },
+    "model_ABCD_cycle_2_epoch_100": {
+        "val_loss": 1.1372274430270524,
+        "val_f1": 0.5919703335052147,
+        "train_loss": 1.3063958990724434,
+        "config": {
+            "batch_size": 24,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6,
+            "input_dim": 1,
+            "edge_dim": 7
+        }
+    },
+    "model_ABCD_cycle_3_epoch_108": {
+        "val_loss": 1.1199469856838598,
+        "val_f1": 0.591358121703335,
+        "train_loss": 1.2912072695526546,
+        "config": {
+            "batch_size": 24,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6,
+            "input_dim": 1,
+            "edge_dim": 7
+        }
+    },
+    "model_ABCD_cycle_3_epoch_999": {
+        "val_loss": 0.6774696083045861,
+        "val_f1": 0.7717576586262,
+        "train_loss": 0.861100847297161,
+        "config": {
+            "batch_size": 24,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6,
+            "input_dim": 1,
+            "edge_dim": 7
+        }
+    },
+    "model_ABCD_epoch_1": {
+        "val_loss": 1.6061961898573778,
+        "val_f1": 0.3137994624689848,
+        "train_loss": 2.271433607992704,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    }
+}

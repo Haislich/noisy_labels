@@ -2,7 +2,7 @@
 import json
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List, Literal, Optional
+from typing import Dict, List, Optional
 
 import numpy as np
 import torch
@@ -137,14 +137,16 @@ class EdgeVGAE(torch.nn.Module):
         if models_metadata_path.exists():
             with open(models_metadata_path, "r") as models_metadata_fp:
                 models_metadata = json.load(models_metadata_fp)
-
+        if config is not None:
+            config_dict = asdict(config)
+            config_dict.pop("dataset_path")
         models_metadata.update(
             {
                 model_path.stem: {
                     "val_loss": val_loss,
                     "val_f1": val_f1,
                     "train_loss": train_loss,
-                    "config": asdict(config) if config else config,
+                    "config": config_dict,
                 }
             }
         )
@@ -240,7 +242,8 @@ class EnsembleEdgeVGAE:
         dataset_path: Path,
         top_k: int = 5,
     ) -> None:
-        self.checkpoints_dir = Path(f"./checkpoints_dir/{dataset_path.parent.name}")
+        self.checkpoints_dir = Path(f"./checkpoints/{dataset_path.parent.name}")
+        print(self.checkpoints_dir)
         self.model_metadatas: List[Dict] = []
         self.models: List[EdgeVGAE] = []
         self.num_classes: int = -1
@@ -281,14 +284,14 @@ class EnsembleEdgeVGAE:
 
     def predict_with_ensemble_score(
         self,
-        dataset_name: Literal["A", "B", "C", "D", "ABCD"] | str,
-        batch_size: int = 32,
+        dataset_path: Path,
+        batch_size: int = 64,
     ):
-        test_dataset = GraphDataset(dataset_name)
+        test_dataset = GraphDataset(dataset_path)
 
         test_loader = DataLoader(
             test_dataset,
-            batch_size=24,
+            batch_size,
             shuffle=False,
         )
 
@@ -339,6 +342,6 @@ class EnsembleEdgeVGAE:
             logger.info(f"Class {pred_class}: {count} samples")
         logger.info(f"Average confidence: {np.mean(confidence_scores):.4f}")
         logger.info(f"Min confidence: {np.min(confidence_scores):.4f}")
-        print(f"Max confidence: {np.max(confidence_scores):.4f}")
+        logger.info(f"Max confidence: {np.max(confidence_scores):.4f}")
 
         return ensemble_predictions, confidence_scores

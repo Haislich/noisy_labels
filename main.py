@@ -10,6 +10,7 @@ from loguru import logger
 from noisy_labels.model_config import ModelConfig
 from noisy_labels.models import EnsembleEdgeVGAE
 from noisy_labels.trainer import ModelTrainer
+from noisy_labels.utils import save_predictions
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 EPOCHS = 1
@@ -19,16 +20,16 @@ ROOT = os.getcwd()
 DEFAULT_LOSS = "cross_entropy_loss"
 LOSS_TYPES = [
     "cross_entropy_loss",
-    "ncod_loss",
-    "noisy_cross_entropy_loss",
-    "symmetric_cross_entropy_loss",
-    "weighted_symmetric_cross_entropy_loss",
-    "outlier_discounting_loss",
+    # "ncod_loss",
+    # "noisy_cross_entropy_loss",
+    # "symmetric_cross_entropy_loss",
+    # "weighted_symmetric_cross_entropy_loss",
+    # "outlier_discounting_loss",
 ]
 
 
 def losses_tournament(
-    dataset_name: str,
+    dataset_path: Path,
     epochs: int,
     cycles: int,
     rounds: int,
@@ -36,7 +37,7 @@ def losses_tournament(
 ):
     trainers = [
         ModelTrainer(
-            ModelConfig(dataset_name),
+            ModelConfig(dataset_path),
             loss_type=loss,
             epochs=epochs,
             cycles=cycles,
@@ -100,26 +101,36 @@ def main():
             )
 
         checkpoint_dir = Path(f"./checkpoints/{dataset_name}")
-        if checkpoint_dir.exists() and any(checkpoint_dir.iterdir()):
+        abcd_path = train_path.parent.parent / "ABCD" / "train.json.gz"
+        if (
+            abcd_path.exists()
+            or checkpoint_dir.exists()
+            or any(checkpoint_dir.iterdir())
+        ):
             logger.info(
                 f"Starting weak pretraining on ABCD ({ROUNDS=}, {CYCLES=}, {EPOCHS=})"
             )
             losses_tournament(
-                "ABCD", EPOCHS, CYCLES, ROUNDS, config_stage="Pretraining"
+                abcd_path, EPOCHS, CYCLES, ROUNDS, config_stage="Pretraining"
+            )
+        else:
+            logger.warning(
+                "Cannot do weak pretraining, either found pretrained models for the datase, or couldn't find the aggregated dataset"
             )
 
         logger.info(f"Finetuning on {dataset_name}")
         best_losses, best_model_paths = losses_tournament(
-            dataset_name, EPOCHS, CYCLES, ROUNDS, config_stage="Finetuning"
+            train_path, EPOCHS, CYCLES, ROUNDS, config_stage="Finetuning"
         )
 
         best_loss = max(set(best_losses), key=best_losses.count)
         trainer = ModelTrainer(
-            ModelConfig(dataset_name), loss_type=best_loss, epochs=EPOCHS, cycles=CYCLES
+            ModelConfig(train_path), loss_type=best_loss, epochs=EPOCHS, cycles=CYCLES
         )
         trainer.train(best_model_paths)
 
-    EnsembleEdgeVGAE(dataset_name).predict_with_ensemble_score(dataset_name)
+    predictions, _ = EnsembleEdgeVGAE(test_path).predict_with_ensemble_score(test_path)
+    save_predictions(predictions, test_path)
 
 
 if __name__ == "__main__":
