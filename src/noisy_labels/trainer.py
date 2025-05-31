@@ -75,7 +75,7 @@ class ModelTrainer:
             self.train_criterion = WeightedSymmetricCrossEntropyLoss(
                 self.config.num_classes
             )
-        elif "outlier_discounting_loss":
+        elif loss_type == "outlier_discounting_loss":
             self.train_criterion = OutlierDiscountingLoss()
         else:
             raise ValueError(f"Invalid loss, {loss_type} is not a valid loss.")
@@ -95,19 +95,32 @@ class ModelTrainer:
         )
         self.checkpoints_dir.mkdir(exist_ok=True)
         self.metadata_path = self.checkpoints_dir / "metadata.json"
-        self.pretrained_models_path = list(
-            self.checkpoints_dir.glob("model*.pth")  # , maxlen=cycles
-        )
+        # self.pretrained_models_path = list(
+        #     self.checkpoints_dir.glob("model*.pth")  # , maxlen=cycles
+        # )
+        self.pretrained_models_path = self.get_valid_pretrained()
         self.logs_dir = Path(f"./logs/{Path(self.config.dataset_path).parent.name}")
         self.logs_dir.mkdir(exist_ok=True)
 
         self._file_logger_id = logger.add(
-            self.logs_dir / f"training_{loss_type}.log",
+            self.logs_dir / "training.log",
             format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
             level="DEBUG",
             colorize=False,
-            mode="w",
+            mode="a",
         )
+
+    def get_valid_pretrained(
+        self, pretrained_models_path: Optional[List[Path]] = None
+    ) -> List[Path]:
+        if not self.metadata_path.exists():
+            return []
+
+        with self.metadata_path.open() as fp:
+            metadata = json.load(fp)
+        if pretrained_models_path is None:
+            pretrained_models_path = list(self.checkpoints_dir.glob("model*.pth"))
+        return [p for p in pretrained_models_path if p.exists() and p.stem in metadata]
 
     def dataset_setup(self, seed: int):
         val_size = int(0.2 * len(self.dataset))
@@ -239,22 +252,31 @@ class ModelTrainer:
 
             # Filter paths to those that are also in metadata
             valid_pretrained_paths = [
-                path for path in self.pretrained_models_path if path.stem in metadata
+                path
+                for path in self.pretrained_models_path
+                if path.stem in metadata and path.exists()
             ]
 
-            if not valid_pretrained_paths:
-                raise ValueError("No valid pretrained models found in metadata.")
+            if valid_pretrained_paths:
+                # Select the worst model
+                worst_model_path = min(
+                    valid_pretrained_paths,
+                    key=lambda path: metadata[path.stem]["val_f1"],
+                )
+                val_f1 = metadata[worst_model_path.stem]["val_f1"]
 
-            # Select the worst model
-            worst_model_path = min(
-                valid_pretrained_paths, key=lambda path: metadata[path.stem]["val_f1"]
-            )
-            val_f1 = metadata[worst_model_path.stem]["val_f1"]
-
-            model = EdgeVGAE.from_pretrained(worst_model_path)
-            logger.bind(trainer="Trainer").info(
-                f"Loaded worst pretrained model for improvement: {worst_model_path} with an initial score of {val_f1}"
-            )
+                model = EdgeVGAE.from_pretrained(worst_model_path)
+                logger.bind(trainer="Trainer").info(
+                    f"Loaded worst pretrained model for improvement: {worst_model_path} with an initial score of {val_f1}"
+                )
+            else:
+                model = EdgeVGAE(
+                    self.config.input_dim,
+                    self.config.edge_dim,
+                    self.config.hidden_dim,
+                    self.config.latent_dim,
+                    self.config.num_classes,
+                ).to(self.device)
 
         else:
             model = EdgeVGAE(
@@ -397,35 +419,41 @@ class ModelTrainer:
                     self.pretrained_models_path[worst_idx] = best_model_path
 
                     # Replace file
-                    worst_model_path.unlink()  # delete old file
-                    best_model_path.rename(worst_model_path)  # move best into old slot
+                    if worst_model_path.exists():
+                        worst_model_path.unlink()  # delete old file
+                    if best_model_path.exists():
+                        best_model_path.rename(
+                            worst_model_path
+                        )  # move best into old slot
                     self.pretrained_models_path[worst_idx] = worst_model_path
 
                     # Update metadata
-                    metadata[worst_model_path.stem] = {
-                        "val_loss": best_val_loss,
-                        "val_f1": best_f1,
-                        "train_loss": train_loss,
-                        "config": config_dict,
-                    }
+                    if worst_model_path.exists():
+                        metadata[worst_model_path.stem] = {
+                            "val_loss": best_val_loss,
+                            "val_f1": best_f1,
+                            "train_loss": train_loss,
+                            "config": config_dict,
+                        }
 
-                    with open(self.metadata_path, "w") as metadata_fp:
-                        json.dump(metadata, metadata_fp, indent=4)
+                        with open(self.metadata_path, "w") as metadata_fp:
+                            json.dump(metadata, metadata_fp, indent=4)
 
-                    logger.bind(trainer="Trainer").info(
-                        f"Replaced worst model {best_model_path} with improved one at: {worst_model_path}"
-                    )
+                        logger.bind(trainer="Trainer").info(
+                            f"Replaced worst model {best_model_path} with improved one at: {worst_model_path}"
+                        )
                 else:
                     # If it’s better than nothing, add to the end
-                    self.pretrained_models_path.append(best_model_path)
-                    metadata[best_model_path.stem] = {
-                        "val_loss": best_val_loss,
-                        "val_f1": best_f1,
-                        "train_loss": train_loss,
-                        "config": config_dict,
-                    }
-                    with open(self.metadata_path, "w") as metadata_fp:
-                        json.dump(metadata, metadata_fp, indent=4)
+                    if best_model_path.exists():
+                        self.pretrained_models_path.append(best_model_path)
+                        metadata[best_model_path.stem] = {
+                            "val_loss": best_val_loss,
+                            "val_f1": best_f1,
+                            "train_loss": train_loss,
+                            "config": config_dict,
+                        }
+                        with open(self.metadata_path, "w") as metadata_fp:
+                            json.dump(metadata, metadata_fp, indent=4)
         return best_val_loss, best_f1, best_model_path
 
     def train(
@@ -433,7 +461,10 @@ class ModelTrainer:
         pretrained_models_path: Optional[List[Path]] = None,
     ):
         if pretrained_models_path is not None:
-            self.pretrained_models_path = pretrained_models_path
+            self.pretrained_models_path = self.get_valid_pretrained(
+                pretrained_models_path
+            )
+
         logger.bind(trainer="Trainer").info("Starting training")
 
         results: List[Dict[str, int | float | Optional[str]]] = []

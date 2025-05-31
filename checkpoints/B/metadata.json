@@ -129,36 +129,10 @@
             "edge_dim": 7
         }
     },
-    "model_B_epoch_1": {
-        "val_loss": 1.5413459709712438,
-        "val_f1": 0.4948592383367464,
-        "train_loss": 0.3394207217863628,
-        "config": {
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
     "model_B_epoch_2": {
-        "val_loss": 1.5273328747068133,
-        "val_f1": 0.4607410202618991,
-        "train_loss": 0.3171190368277686,
-        "config": {
-            "input_dim": 1,
-            "edge_dim": 7,
-            "batch_size": 64,
-            "hidden_dim": 128,
-            "latent_dim": 8,
-            "num_classes": 6
-        }
-    },
-    "model_B_epoch_3": {
-        "val_loss": 1.5312826769692558,
-        "val_f1": 0.47730920507561175,
-        "train_loss": 0.32218136276517595,
+        "val_loss": 1.5585975442613875,
+        "val_f1": 0.4030322487247071,
+        "train_loss": 0.5939358498368944,
         "config": {
             "input_dim": 1,
             "edge_dim": 7,
@@ -169,9 +143,35 @@
         }
     },
     "model_B_epoch_4": {
-        "val_loss": 1.5413459709712438,
-        "val_f1": 0.4948592383367464,
-        "train_loss": 0.3284612681184496,
+        "val_loss": 1.5885043927601405,
+        "val_f1": 0.4785172831681859,
+        "train_loss": 0.3183286121913365,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_B_epoch_9": {
+        "val_loss": 1.536208541052682,
+        "val_f1": 0.46767709082565573,
+        "train_loss": 1.4604627234595162,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_B_epoch_8": {
+        "val_loss": 1.551822430746896,
+        "val_f1": 0.4830982585520979,
+        "train_loss": 0.3433184453419277,
         "config": {
             "input_dim": 1,
             "edge_dim": 7,

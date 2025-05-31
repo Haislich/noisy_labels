@@ -130,9 +130,9 @@
         }
     },
     "model_D_epoch_1": {
-        "val_loss": 0.6414717946071106,
-        "val_f1": 0.6872511380684819,
-        "train_loss": 0.2673858618689882,
+        "val_loss": 0.7273787399210355,
+        "val_f1": 0.6457524651415859,
+        "train_loss": 0.867538537960572,
         "config": {
             "input_dim": 1,
             "edge_dim": 7,
@@ -143,9 +143,74 @@
         }
     },
     "model_D_epoch_2": {
-        "val_loss": 0.6414717946071106,
-        "val_f1": 0.6872511380684819,
-        "train_loss": 0.15873135446574438,
+        "val_loss": 0.6895134259986506,
+        "val_f1": 0.6626533100485308,
+        "train_loss": 0.850923484633405,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_D_epoch_3": {
+        "val_loss": 0.7556133233155722,
+        "val_f1": 0.6191220836916468,
+        "train_loss": 3.423950314985639,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_D_epoch_6": {
+        "val_loss": 0.6895134259986506,
+        "val_f1": 0.6626533100485308,
+        "train_loss": 0.8087529196813412,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_D_epoch_9": {
+        "val_loss": 0.8608395223023827,
+        "val_f1": 0.5987692604266529,
+        "train_loss": 0.8725514212471038,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_D_epoch_12": {
+        "val_loss": 0.7589710300302691,
+        "val_f1": 0.6379527060728158,
+        "train_loss": 0.16655722347446916,
+        "config": {
+            "input_dim": 1,
+            "edge_dim": 7,
+            "batch_size": 64,
+            "hidden_dim": 128,
+            "latent_dim": 8,
+            "num_classes": 6
+        }
+    },
+    "model_D_epoch_4": {
+        "val_loss": 0.7143958758287393,
+        "val_f1": 0.6501476974559366,
+        "train_loss": 0.21187180303877895,
         "config": {
             "input_dim": 1,
             "edge_dim": 7,

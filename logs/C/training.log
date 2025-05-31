@@ -1,0 +1,476 @@
+2025-05-31 19:38:40 | INFO | Cache found at datasets/C/train.json.pkl
+2025-05-31 19:38:42 | INFO | Loading finished
+2025-05-31 19:38:43 | INFO | Finetuning - Round 1/2
+2025-05-31 19:38:43 | INFO | Finetuning - Round 1/2
+2025-05-31 19:38:43 | INFO | Starting training
+2025-05-31 19:38:43 | INFO | Starting training
+2025-05-31 19:38:43 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:38:43 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:38:43 | INFO | Starting training cycle 1
+2025-05-31 19:38:43 | INFO | Starting training cycle 1
+2025-05-31 19:38:43 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.7004061064189632
+2025-05-31 19:38:43 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.7004061064189632
+2025-05-31 19:38:50 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:38:50 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:38:50 | INFO | Best validation metrics - Loss: 1.0023, F1: 0.6108
+2025-05-31 19:38:50 | INFO | Best validation metrics - Loss: 1.0023, F1: 0.6108
+2025-05-31 19:38:57 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:38:57 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:38:57 | INFO | Best validation metrics - Loss: 0.7596, F1: 0.7285
+2025-05-31 19:38:57 | INFO | Best validation metrics - Loss: 0.7596, F1: 0.7285
+2025-05-31 19:39:04 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:39:04 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:39:04 | INFO | Replaced worst model checkpoints/C/model_C_epoch_2.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:39:04 | INFO | Replaced worst model checkpoints/C/model_C_epoch_2.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:39:04 | INFO | Cycle 1 completed:
+2025-05-31 19:39:04 | INFO | Cycle 1 completed:
+2025-05-31 19:39:04 | INFO | - Final validation loss: 0.7596
+2025-05-31 19:39:04 | INFO | - Final validation loss: 0.7596
+2025-05-31 19:39:04 | INFO | - Final F1 score: 0.7285
+2025-05-31 19:39:04 | INFO | - Final F1 score: 0.7285
+2025-05-31 19:39:04 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:39:04 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:39:04 | INFO | Starting training cycle 2
+2025-05-31 19:39:04 | INFO | Starting training cycle 2
+2025-05-31 19:39:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.7284790459215121
+2025-05-31 19:39:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.7284790459215121
+2025-05-31 19:39:11 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:39:11 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:39:11 | INFO | Best validation metrics - Loss: 0.9309, F1: 0.6469
+2025-05-31 19:39:11 | INFO | Best validation metrics - Loss: 0.9309, F1: 0.6469
+2025-05-31 19:39:18 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:39:18 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:39:18 | INFO | Best validation metrics - Loss: 0.8256, F1: 0.6799
+2025-05-31 19:39:18 | INFO | Best validation metrics - Loss: 0.8256, F1: 0.6799
+2025-05-31 19:39:25 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:39:25 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:39:25 | INFO | Best validation metrics - Loss: 0.8708, F1: 0.6912
+2025-05-31 19:39:25 | INFO | Best validation metrics - Loss: 0.8708, F1: 0.6912
+2025-05-31 19:39:32 | INFO | Early stopping triggered at epoch 3
+2025-05-31 19:39:32 | INFO | Early stopping triggered at epoch 3
+2025-05-31 19:39:32 | INFO | Replaced worst model checkpoints/C/model_C_epoch_6.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:39:32 | INFO | Replaced worst model checkpoints/C/model_C_epoch_6.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:39:32 | INFO | Cycle 2 completed:
+2025-05-31 19:39:32 | INFO | Cycle 2 completed:
+2025-05-31 19:39:32 | INFO | - Final validation loss: 0.8708
+2025-05-31 19:39:32 | INFO | - Final validation loss: 0.8708
+2025-05-31 19:39:32 | INFO | - Final F1 score: 0.6912
+2025-05-31 19:39:32 | INFO | - Final F1 score: 0.6912
+2025-05-31 19:39:32 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:39:32 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:39:32 | INFO | Starting training cycle 3
+2025-05-31 19:39:32 | INFO | Starting training cycle 3
+2025-05-31 19:39:32 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6912004870035431
+2025-05-31 19:39:32 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6912004870035431
+2025-05-31 19:39:39 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:39:39 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:39:39 | INFO | Best validation metrics - Loss: 0.9766, F1: 0.6274
+2025-05-31 19:39:39 | INFO | Best validation metrics - Loss: 0.9766, F1: 0.6274
+2025-05-31 19:39:46 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:39:46 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:39:46 | INFO | Best validation metrics - Loss: 0.8166, F1: 0.6401
+2025-05-31 19:39:46 | INFO | Best validation metrics - Loss: 0.8166, F1: 0.6401
+2025-05-31 19:39:53 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:39:53 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:39:53 | INFO | Cycle 3 completed:
+2025-05-31 19:39:53 | INFO | Cycle 3 completed:
+2025-05-31 19:39:53 | INFO | - Final validation loss: 0.8166
+2025-05-31 19:39:53 | INFO | - Final validation loss: 0.8166
+2025-05-31 19:39:53 | INFO | - Final F1 score: 0.6401
+2025-05-31 19:39:53 | INFO | - Final F1 score: 0.6401
+2025-05-31 19:39:53 | INFO | Starting training
+2025-05-31 19:39:53 | INFO | Starting training
+2025-05-31 19:39:53 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:39:53 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:39:53 | INFO | Starting training cycle 1
+2025-05-31 19:39:53 | INFO | Starting training cycle 1
+2025-05-31 19:39:53 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.7284790459215121
+2025-05-31 19:39:53 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.7284790459215121
+2025-05-31 19:40:07 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:40:07 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:40:07 | INFO | Best validation metrics - Loss: 1.1746, F1: 0.5265
+2025-05-31 19:40:07 | INFO | Best validation metrics - Loss: 1.1746, F1: 0.5265
+2025-05-31 19:40:22 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:40:22 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:40:22 | INFO | Cycle 1 completed:
+2025-05-31 19:40:22 | INFO | Cycle 1 completed:
+2025-05-31 19:40:22 | INFO | - Final validation loss: 1.1746
+2025-05-31 19:40:22 | INFO | - Final validation loss: 1.1746
+2025-05-31 19:40:22 | INFO | - Final F1 score: 0.5265
+2025-05-31 19:40:22 | INFO | - Final F1 score: 0.5265
+2025-05-31 19:40:22 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:40:22 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:40:22 | INFO | Starting training cycle 2
+2025-05-31 19:40:22 | INFO | Starting training cycle 2
+2025-05-31 19:40:22 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.526515305171244
+2025-05-31 19:40:22 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.526515305171244
+2025-05-31 19:40:37 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:40:37 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:40:37 | INFO | Best validation metrics - Loss: 1.1702, F1: 0.5282
+2025-05-31 19:40:37 | INFO | Best validation metrics - Loss: 1.1702, F1: 0.5282
+2025-05-31 19:40:51 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:40:51 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:40:51 | INFO | Best validation metrics - Loss: 1.0128, F1: 0.6098
+2025-05-31 19:40:51 | INFO | Best validation metrics - Loss: 1.0128, F1: 0.6098
+2025-05-31 19:41:06 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:41:06 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:41:06 | INFO | Replaced worst model checkpoints/C/model_C_epoch_4.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:41:06 | INFO | Replaced worst model checkpoints/C/model_C_epoch_4.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:41:06 | INFO | Cycle 2 completed:
+2025-05-31 19:41:06 | INFO | Cycle 2 completed:
+2025-05-31 19:41:06 | INFO | - Final validation loss: 1.0128
+2025-05-31 19:41:06 | INFO | - Final validation loss: 1.0128
+2025-05-31 19:41:06 | INFO | - Final F1 score: 0.6098
+2025-05-31 19:41:06 | INFO | - Final F1 score: 0.6098
+2025-05-31 19:41:06 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:41:06 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:41:06 | INFO | Starting training cycle 3
+2025-05-31 19:41:06 | INFO | Starting training cycle 3
+2025-05-31 19:41:06 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6098218416532991
+2025-05-31 19:41:06 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6098218416532991
+2025-05-31 19:41:21 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:41:21 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:41:21 | INFO | Best validation metrics - Loss: 1.1453, F1: 0.5751
+2025-05-31 19:41:21 | INFO | Best validation metrics - Loss: 1.1453, F1: 0.5751
+2025-05-31 19:41:36 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:41:36 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:41:36 | INFO | Cycle 3 completed:
+2025-05-31 19:41:36 | INFO | Cycle 3 completed:
+2025-05-31 19:41:36 | INFO | - Final validation loss: 1.1453
+2025-05-31 19:41:36 | INFO | - Final validation loss: 1.1453
+2025-05-31 19:41:36 | INFO | - Final F1 score: 0.5751
+2025-05-31 19:41:36 | INFO | - Final F1 score: 0.5751
+2025-05-31 19:41:36 | INFO | Best F1 scores this round:
+noisy_cross_entropy_loss: 0.7285
+weighted_symmetric_cross_entropy_loss: 0.6098
+2025-05-31 19:41:36 | INFO | Best F1 scores this round:
+noisy_cross_entropy_loss: 0.7285
+weighted_symmetric_cross_entropy_loss: 0.6098
+2025-05-31 19:41:36 | INFO | Best round loss: noisy_cross_entropy_loss
+2025-05-31 19:41:36 | INFO | Best round loss: noisy_cross_entropy_loss
+2025-05-31 19:41:36 | INFO | Finetuning - Round 2/2
+2025-05-31 19:41:36 | INFO | Finetuning - Round 2/2
+2025-05-31 19:41:36 | INFO | Starting training
+2025-05-31 19:41:36 | INFO | Starting training
+2025-05-31 19:41:36 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:41:36 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:41:36 | INFO | Starting training cycle 1
+2025-05-31 19:41:36 | INFO | Starting training cycle 1
+2025-05-31 19:41:36 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.5281623837461559
+2025-05-31 19:41:36 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.5281623837461559
+2025-05-31 19:41:43 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:41:43 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:41:43 | INFO | Best validation metrics - Loss: 0.8626, F1: 0.6830
+2025-05-31 19:41:43 | INFO | Best validation metrics - Loss: 0.8626, F1: 0.6830
+2025-05-31 19:41:50 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:41:50 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:41:50 | INFO | Best validation metrics - Loss: 0.8216, F1: 0.6864
+2025-05-31 19:41:50 | INFO | Best validation metrics - Loss: 0.8216, F1: 0.6864
+2025-05-31 19:41:56 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:41:56 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:41:56 | INFO | Replaced worst model checkpoints/C/model_C_epoch_2.pth with improved one at: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:41:56 | INFO | Replaced worst model checkpoints/C/model_C_epoch_2.pth with improved one at: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:41:56 | INFO | Cycle 1 completed:
+2025-05-31 19:41:56 | INFO | Cycle 1 completed:
+2025-05-31 19:41:56 | INFO | - Final validation loss: 0.8216
+2025-05-31 19:41:56 | INFO | - Final validation loss: 0.8216
+2025-05-31 19:41:56 | INFO | - Final F1 score: 0.6864
+2025-05-31 19:41:56 | INFO | - Final F1 score: 0.6864
+2025-05-31 19:41:56 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:41:56 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:41:56 | INFO | Starting training cycle 2
+2025-05-31 19:41:56 | INFO | Starting training cycle 2
+2025-05-31 19:41:56 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6829862153439076
+2025-05-31 19:41:56 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6829862153439076
+2025-05-31 19:42:03 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:42:03 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:42:03 | INFO | Best validation metrics - Loss: 0.9224, F1: 0.6271
+2025-05-31 19:42:03 | INFO | Best validation metrics - Loss: 0.9224, F1: 0.6271
+2025-05-31 19:42:10 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:42:10 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:42:10 | INFO | Cycle 2 completed:
+2025-05-31 19:42:10 | INFO | Cycle 2 completed:
+2025-05-31 19:42:10 | INFO | - Final validation loss: 0.9224
+2025-05-31 19:42:10 | INFO | - Final validation loss: 0.9224
+2025-05-31 19:42:10 | INFO | - Final F1 score: 0.6271
+2025-05-31 19:42:10 | INFO | - Final F1 score: 0.6271
+2025-05-31 19:42:10 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:42:10 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:42:10 | INFO | Starting training cycle 3
+2025-05-31 19:42:10 | INFO | Starting training cycle 3
+2025-05-31 19:42:10 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6271369659790633
+2025-05-31 19:42:10 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6271369659790633
+2025-05-31 19:42:17 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:42:17 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:42:17 | INFO | Best validation metrics - Loss: 0.8717, F1: 0.6573
+2025-05-31 19:42:17 | INFO | Best validation metrics - Loss: 0.8717, F1: 0.6573
+2025-05-31 19:42:24 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:42:24 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:42:24 | INFO | Replaced worst model checkpoints/C/model_C_epoch_3.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:42:24 | INFO | Replaced worst model checkpoints/C/model_C_epoch_3.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:42:24 | INFO | Cycle 3 completed:
+2025-05-31 19:42:24 | INFO | Cycle 3 completed:
+2025-05-31 19:42:24 | INFO | - Final validation loss: 0.8717
+2025-05-31 19:42:24 | INFO | - Final validation loss: 0.8717
+2025-05-31 19:42:24 | INFO | - Final F1 score: 0.6573
+2025-05-31 19:42:24 | INFO | - Final F1 score: 0.6573
+2025-05-31 19:42:24 | INFO | Starting training
+2025-05-31 19:42:24 | INFO | Starting training
+2025-05-31 19:42:24 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:42:24 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:42:24 | INFO | Starting training cycle 1
+2025-05-31 19:42:24 | INFO | Starting training cycle 1
+2025-05-31 19:42:24 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6829862153439076
+2025-05-31 19:42:24 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6829862153439076
+2025-05-31 19:42:39 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:42:39 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:42:39 | INFO | Best validation metrics - Loss: 1.0573, F1: 0.5699
+2025-05-31 19:42:39 | INFO | Best validation metrics - Loss: 1.0573, F1: 0.5699
+2025-05-31 19:42:53 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:42:53 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:42:53 | INFO | Best validation metrics - Loss: 0.9350, F1: 0.6112
+2025-05-31 19:42:53 | INFO | Best validation metrics - Loss: 0.9350, F1: 0.6112
+2025-05-31 19:43:07 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:43:07 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:43:07 | INFO | Best validation metrics - Loss: 0.9827, F1: 0.6419
+2025-05-31 19:43:07 | INFO | Best validation metrics - Loss: 0.9827, F1: 0.6419
+2025-05-31 19:43:22 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:43:22 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:43:22 | INFO | Best validation metrics - Loss: 0.9004, F1: 0.6577
+2025-05-31 19:43:22 | INFO | Best validation metrics - Loss: 0.9004, F1: 0.6577
+2025-05-31 19:43:36 | INFO | New best model saved: checkpoints/C/model_C_epoch_5.pth
+2025-05-31 19:43:36 | INFO | New best model saved: checkpoints/C/model_C_epoch_5.pth
+2025-05-31 19:43:36 | INFO | Best validation metrics - Loss: 0.9102, F1: 0.6628
+2025-05-31 19:43:36 | INFO | Best validation metrics - Loss: 0.9102, F1: 0.6628
+2025-05-31 19:43:50 | INFO | Early stopping triggered at epoch 5
+2025-05-31 19:43:50 | INFO | Early stopping triggered at epoch 5
+2025-05-31 19:43:50 | INFO | Replaced worst model checkpoints/C/model_C_epoch_5.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:43:50 | INFO | Replaced worst model checkpoints/C/model_C_epoch_5.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:43:50 | INFO | Cycle 1 completed:
+2025-05-31 19:43:50 | INFO | Cycle 1 completed:
+2025-05-31 19:43:50 | INFO | - Final validation loss: 0.9102
+2025-05-31 19:43:50 | INFO | - Final validation loss: 0.9102
+2025-05-31 19:43:50 | INFO | - Final F1 score: 0.6628
+2025-05-31 19:43:50 | INFO | - Final F1 score: 0.6628
+2025-05-31 19:43:50 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:43:50 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:43:50 | INFO | Starting training cycle 2
+2025-05-31 19:43:50 | INFO | Starting training cycle 2
+2025-05-31 19:43:50 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6628335678874386
+2025-05-31 19:43:50 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_1.pth with an initial score of 0.6628335678874386
+2025-05-31 19:44:04 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:44:04 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:44:04 | INFO | Best validation metrics - Loss: 2.0128, F1: 0.2882
+2025-05-31 19:44:04 | INFO | Best validation metrics - Loss: 2.0128, F1: 0.2882
+2025-05-31 19:44:18 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:44:18 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:44:18 | INFO | Best validation metrics - Loss: 1.1260, F1: 0.5558
+2025-05-31 19:44:18 | INFO | Best validation metrics - Loss: 1.1260, F1: 0.5558
+2025-05-31 19:44:33 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:44:33 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:44:33 | INFO | Cycle 2 completed:
+2025-05-31 19:44:33 | INFO | Cycle 2 completed:
+2025-05-31 19:44:33 | INFO | - Final validation loss: 1.1260
+2025-05-31 19:44:33 | INFO | - Final validation loss: 1.1260
+2025-05-31 19:44:33 | INFO | - Final F1 score: 0.5558
+2025-05-31 19:44:33 | INFO | - Final F1 score: 0.5558
+2025-05-31 19:44:33 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:44:33 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:44:33 | INFO | Starting training cycle 3
+2025-05-31 19:44:33 | INFO | Starting training cycle 3
+2025-05-31 19:44:33 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_4.pth with an initial score of 0.5558026317505311
+2025-05-31 19:44:33 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_4.pth with an initial score of 0.5558026317505311
+2025-05-31 19:44:47 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:44:47 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:44:47 | INFO | Best validation metrics - Loss: 1.2892, F1: 0.5656
+2025-05-31 19:44:47 | INFO | Best validation metrics - Loss: 1.2892, F1: 0.5656
+2025-05-31 19:45:01 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:45:01 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:45:01 | INFO | Replaced worst model checkpoints/C/model_C_epoch_3.pth with improved one at: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:45:01 | INFO | Replaced worst model checkpoints/C/model_C_epoch_3.pth with improved one at: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:45:01 | INFO | Cycle 3 completed:
+2025-05-31 19:45:01 | INFO | Cycle 3 completed:
+2025-05-31 19:45:01 | INFO | - Final validation loss: 1.2892
+2025-05-31 19:45:01 | INFO | - Final validation loss: 1.2892
+2025-05-31 19:45:01 | INFO | - Final F1 score: 0.5656
+2025-05-31 19:45:01 | INFO | - Final F1 score: 0.5656
+2025-05-31 19:45:01 | INFO | Best F1 scores this round:
+noisy_cross_entropy_loss: 0.6864
+weighted_symmetric_cross_entropy_loss: 0.6628
+2025-05-31 19:45:01 | INFO | Best F1 scores this round:
+noisy_cross_entropy_loss: 0.6864
+weighted_symmetric_cross_entropy_loss: 0.6628
+2025-05-31 19:45:01 | INFO | Best round loss: noisy_cross_entropy_loss
+2025-05-31 19:45:01 | INFO | Best round loss: noisy_cross_entropy_loss
+2025-05-31 19:45:02 | INFO | Cache found at datasets/C/train.json.pkl
+2025-05-31 19:45:02 | INFO | Cache found at datasets/C/train.json.pkl
+2025-05-31 19:45:04 | INFO | Loading finished
+2025-05-31 19:45:04 | INFO | Loading finished
+2025-05-31 19:45:04 | INFO | Starting training
+2025-05-31 19:45:04 | INFO | Starting training
+2025-05-31 19:45:04 | INFO | Starting training
+2025-05-31 19:45:04 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:45:04 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:45:04 | INFO | Starting cycle 1 with seed 1
+2025-05-31 19:45:04 | INFO | Starting training cycle 1
+2025-05-31 19:45:04 | INFO | Starting training cycle 1
+2025-05-31 19:45:04 | INFO | Starting training cycle 1
+2025-05-31 19:45:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.28823210060013177
+2025-05-31 19:45:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.28823210060013177
+2025-05-31 19:45:04 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.28823210060013177
+2025-05-31 19:45:11 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:45:11 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:45:11 | INFO | New best model saved: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:45:11 | INFO | Best validation metrics - Loss: 0.9245, F1: 0.6263
+2025-05-31 19:45:11 | INFO | Best validation metrics - Loss: 0.9245, F1: 0.6263
+2025-05-31 19:45:11 | INFO | Best validation metrics - Loss: 0.9245, F1: 0.6263
+2025-05-31 19:45:18 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:45:18 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:45:18 | INFO | Early stopping triggered at epoch 1
+2025-05-31 19:45:18 | INFO | Replaced worst model checkpoints/C/model_C_epoch_1.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:45:18 | INFO | Replaced worst model checkpoints/C/model_C_epoch_1.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:45:18 | INFO | Replaced worst model checkpoints/C/model_C_epoch_1.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:45:18 | INFO | Cycle 1 completed:
+2025-05-31 19:45:18 | INFO | Cycle 1 completed:
+2025-05-31 19:45:18 | INFO | Cycle 1 completed:
+2025-05-31 19:45:18 | INFO | - Final validation loss: 0.9245
+2025-05-31 19:45:18 | INFO | - Final validation loss: 0.9245
+2025-05-31 19:45:18 | INFO | - Final validation loss: 0.9245
+2025-05-31 19:45:18 | INFO | - Final F1 score: 0.6263
+2025-05-31 19:45:18 | INFO | - Final F1 score: 0.6263
+2025-05-31 19:45:18 | INFO | - Final F1 score: 0.6263
+2025-05-31 19:45:18 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:45:18 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:45:18 | INFO | Starting cycle 2 with seed 2
+2025-05-31 19:45:18 | INFO | Starting training cycle 2
+2025-05-31 19:45:18 | INFO | Starting training cycle 2
+2025-05-31 19:45:18 | INFO | Starting training cycle 2
+2025-05-31 19:45:18 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_4.pth with an initial score of 0.5655697172699229
+2025-05-31 19:45:18 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_4.pth with an initial score of 0.5655697172699229
+2025-05-31 19:45:18 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_4.pth with an initial score of 0.5655697172699229
+2025-05-31 19:45:25 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:45:25 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:45:25 | INFO | New best model saved: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:45:25 | INFO | Best validation metrics - Loss: 1.2891, F1: 0.6469
+2025-05-31 19:45:25 | INFO | Best validation metrics - Loss: 1.2891, F1: 0.6469
+2025-05-31 19:45:25 | INFO | Best validation metrics - Loss: 1.2891, F1: 0.6469
+2025-05-31 19:45:32 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:45:32 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:45:32 | INFO | New best model saved: checkpoints/C/model_C_epoch_4.pth
+2025-05-31 19:45:32 | INFO | Best validation metrics - Loss: 0.8151, F1: 0.6862
+2025-05-31 19:45:32 | INFO | Best validation metrics - Loss: 0.8151, F1: 0.6862
+2025-05-31 19:45:32 | INFO | Best validation metrics - Loss: 0.8151, F1: 0.6862
+2025-05-31 19:45:40 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:45:40 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:45:40 | INFO | Early stopping triggered at epoch 2
+2025-05-31 19:45:40 | INFO | Replaced worst model checkpoints/C/model_C_epoch_4.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:45:40 | INFO | Replaced worst model checkpoints/C/model_C_epoch_4.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:45:40 | INFO | Replaced worst model checkpoints/C/model_C_epoch_4.pth with improved one at: checkpoints/C/model_C_epoch_1.pth
+2025-05-31 19:45:40 | INFO | Cycle 2 completed:
+2025-05-31 19:45:40 | INFO | Cycle 2 completed:
+2025-05-31 19:45:40 | INFO | Cycle 2 completed:
+2025-05-31 19:45:40 | INFO | - Final validation loss: 0.8151
+2025-05-31 19:45:40 | INFO | - Final validation loss: 0.8151
+2025-05-31 19:45:40 | INFO | - Final validation loss: 0.8151
+2025-05-31 19:45:40 | INFO | - Final F1 score: 0.6862
+2025-05-31 19:45:40 | INFO | - Final F1 score: 0.6862
+2025-05-31 19:45:40 | INFO | - Final F1 score: 0.6862
+2025-05-31 19:45:40 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:45:40 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:45:40 | INFO | Starting cycle 3 with seed 3
+2025-05-31 19:45:40 | INFO | Starting training cycle 3
+2025-05-31 19:45:40 | INFO | Starting training cycle 3
+2025-05-31 19:45:40 | INFO | Starting training cycle 3
+2025-05-31 19:45:40 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6469025442799131
+2025-05-31 19:45:40 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6469025442799131
+2025-05-31 19:45:40 | INFO | Loaded worst pretrained model for improvement: checkpoints/C/model_C_epoch_2.pth with an initial score of 0.6469025442799131
+2025-05-31 19:45:47 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:45:47 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:45:47 | INFO | New best model saved: checkpoints/C/model_C_epoch_3.pth
+2025-05-31 19:45:47 | INFO | Best validation metrics - Loss: 0.9540, F1: 0.5994
+2025-05-31 19:45:47 | INFO | Best validation metrics - Loss: 0.9540, F1: 0.5994
+2025-05-31 19:45:47 | INFO | Best validation metrics - Loss: 0.9540, F1: 0.5994
+2025-05-31 19:45:54 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:45:54 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:45:54 | INFO | New best model saved: checkpoints/C/model_C_epoch_6.pth
+2025-05-31 19:45:54 | INFO | Best validation metrics - Loss: 0.8294, F1: 0.6473
+2025-05-31 19:45:54 | INFO | Best validation metrics - Loss: 0.8294, F1: 0.6473
+2025-05-31 19:45:54 | INFO | Best validation metrics - Loss: 0.8294, F1: 0.6473
+2025-05-31 19:46:01 | INFO | New best model saved: checkpoints/C/model_C_epoch_9.pth
+2025-05-31 19:46:01 | INFO | New best model saved: checkpoints/C/model_C_epoch_9.pth
+2025-05-31 19:46:01 | INFO | New best model saved: checkpoints/C/model_C_epoch_9.pth
+2025-05-31 19:46:01 | INFO | Best validation metrics - Loss: 0.7686, F1: 0.6627
+2025-05-31 19:46:01 | INFO | Best validation metrics - Loss: 0.7686, F1: 0.6627
+2025-05-31 19:46:01 | INFO | Best validation metrics - Loss: 0.7686, F1: 0.6627
+2025-05-31 19:46:08 | INFO | New best model saved: checkpoints/C/model_C_epoch_12.pth
+2025-05-31 19:46:08 | INFO | New best model saved: checkpoints/C/model_C_epoch_12.pth
+2025-05-31 19:46:08 | INFO | New best model saved: checkpoints/C/model_C_epoch_12.pth
+2025-05-31 19:46:08 | INFO | Best validation metrics - Loss: 0.8708, F1: 0.6991
+2025-05-31 19:46:08 | INFO | Best validation metrics - Loss: 0.8708, F1: 0.6991
+2025-05-31 19:46:08 | INFO | Best validation metrics - Loss: 0.8708, F1: 0.6991
+2025-05-31 19:46:15 | INFO | New best model saved: checkpoints/C/model_C_epoch_15.pth
+2025-05-31 19:46:15 | INFO | New best model saved: checkpoints/C/model_C_epoch_15.pth
+2025-05-31 19:46:15 | INFO | New best model saved: checkpoints/C/model_C_epoch_15.pth
+2025-05-31 19:46:15 | INFO | Best validation metrics - Loss: 0.6930, F1: 0.7384
+2025-05-31 19:46:15 | INFO | Best validation metrics - Loss: 0.6930, F1: 0.7384
+2025-05-31 19:46:15 | INFO | Best validation metrics - Loss: 0.6930, F1: 0.7384
+2025-05-31 19:46:22 | INFO | Early stopping triggered at epoch 5
+2025-05-31 19:46:22 | INFO | Early stopping triggered at epoch 5
+2025-05-31 19:46:22 | INFO | Early stopping triggered at epoch 5
+2025-05-31 19:46:22 | INFO | Replaced worst model checkpoints/C/model_C_epoch_15.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:46:22 | INFO | Replaced worst model checkpoints/C/model_C_epoch_15.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:46:22 | INFO | Replaced worst model checkpoints/C/model_C_epoch_15.pth with improved one at: checkpoints/C/model_C_epoch_2.pth
+2025-05-31 19:46:22 | INFO | Cycle 3 completed:
+2025-05-31 19:46:22 | INFO | Cycle 3 completed:
+2025-05-31 19:46:22 | INFO | Cycle 3 completed:
+2025-05-31 19:46:22 | INFO | - Final validation loss: 0.6930
+2025-05-31 19:46:22 | INFO | - Final validation loss: 0.6930
+2025-05-31 19:46:22 | INFO | - Final validation loss: 0.6930
+2025-05-31 19:46:22 | INFO | - Final F1 score: 0.7384
+2025-05-31 19:46:22 | INFO | - Final F1 score: 0.7384
+2025-05-31 19:46:22 | INFO | - Final F1 score: 0.7384
+2025-05-31 19:46:22 | INFO | Cache found at datasets/C/test.json.pkl
+2025-05-31 19:46:22 | INFO | Cache found at datasets/C/test.json.pkl
+2025-05-31 19:46:22 | INFO | Cache found at datasets/C/test.json.pkl
+2025-05-31 19:46:23 | INFO | Loading finished
+2025-05-31 19:46:23 | INFO | Loading finished
+2025-05-31 19:46:23 | INFO | Loading finished
+2025-05-31 19:46:24 | INFO | Model weights for ensemble:
+2025-05-31 19:46:24 | INFO | Model weights for ensemble:
+2025-05-31 19:46:24 | INFO | Model weights for ensemble:
+2025-05-31 19:46:24 | INFO | 
+Ensemble prediction statistics:
+2025-05-31 19:46:24 | INFO | 
+Ensemble prediction statistics:
+2025-05-31 19:46:24 | INFO | 
+Ensemble prediction statistics:
+2025-05-31 19:46:24 | INFO | Class 0: 86 samples
+2025-05-31 19:46:24 | INFO | Class 0: 86 samples
+2025-05-31 19:46:24 | INFO | Class 0: 86 samples
+2025-05-31 19:46:24 | INFO | Class 1: 257 samples
+2025-05-31 19:46:24 | INFO | Class 1: 257 samples
+2025-05-31 19:46:24 | INFO | Class 1: 257 samples
+2025-05-31 19:46:24 | INFO | Class 2: 885 samples
+2025-05-31 19:46:24 | INFO | Class 2: 885 samples
+2025-05-31 19:46:24 | INFO | Class 2: 885 samples
+2025-05-31 19:46:24 | INFO | Class 3: 83 samples
+2025-05-31 19:46:24 | INFO | Class 3: 83 samples
+2025-05-31 19:46:24 | INFO | Class 3: 83 samples
+2025-05-31 19:46:24 | INFO | Class 4: 96 samples
+2025-05-31 19:46:24 | INFO | Class 4: 96 samples
+2025-05-31 19:46:24 | INFO | Class 4: 96 samples
+2025-05-31 19:46:24 | INFO | Class 5: 123 samples
+2025-05-31 19:46:24 | INFO | Class 5: 123 samples
+2025-05-31 19:46:24 | INFO | Class 5: 123 samples
+2025-05-31 19:46:24 | INFO | Average confidence: 0.9685
+2025-05-31 19:46:24 | INFO | Average confidence: 0.9685
+2025-05-31 19:46:24 | INFO | Average confidence: 0.9685
+2025-05-31 19:46:24 | INFO | Min confidence: 0.4003
+2025-05-31 19:46:24 | INFO | Min confidence: 0.4003
+2025-05-31 19:46:24 | INFO | Min confidence: 0.4003
+2025-05-31 19:46:24 | INFO | Max confidence: 1.0000
+2025-05-31 19:46:24 | INFO | Max confidence: 1.0000
+2025-05-31 19:46:24 | INFO | Max confidence: 1.0000
+2025-05-31 19:46:25 | INFO | Predictions saved to /home/haislich/Documents/noisy_labels/submission/testset_C.csv
+2025-05-31 19:46:25 | INFO | Predictions saved to /home/haislich/Documents/noisy_labels/submission/testset_C.csv
+2025-05-31 19:46:25 | INFO | Predictions saved to /home/haislich/Documents/noisy_labels/submission/testset_C.csv
